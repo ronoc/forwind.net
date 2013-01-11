@@ -1,0 +1,11 @@
+<div id="crumb_trail">
+YOU ARE HERE : <%= home_link %><span id='small_white_txt'> / </span> <span id = "ct_links">
+
+
+<a href=<%= '/' + @context.downcase %>><%= @context %></a></span>
+ /
+<span id = "ct_links">
+<%= link_to @item, :action => @item.downcase  %>
+</span>
+</div>
+

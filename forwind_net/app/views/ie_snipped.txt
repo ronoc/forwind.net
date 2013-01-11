@@ -1,0 +1,4 @@
+         	<% if @use_ie_warning == true %>
+         		<%= render(:partial => "shared/ie_header") %>
+           	<% end %>
+

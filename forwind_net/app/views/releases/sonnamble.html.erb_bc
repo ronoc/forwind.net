@@ -1,0 +1,20 @@
+<br>
+<h1>Tangent series </h1>
+<br>
+<span id= "tangent_blurb">
+All electronics make sole use of custom built externals (which are available from the software section). 'Tangent B' is a live recording of our performance at the Stadgarten Koln Germany 2/3/08.
+</span>
+<ul id="software-list">
+<li>
+<% @audio.each do |audio| %>
+<%= image_tag(audio.image_path)%>
+<div>
+<h2><%= audio.name %></h2>
+<p>duration: <%= track_duration(audio)%></p>  
+<p><%= link_to " " + image_tag("form/download_arrow.gif"), (audio.asset_path)%></p>
+</div>
+</li>
+<% end %>
+
+</ul>
+

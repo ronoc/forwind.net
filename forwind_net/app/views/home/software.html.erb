@@ -1,0 +1,21 @@
+<br>
+<h1>
+Pure Data externals for Linux </h1>
+<ul id="software-list">
+<% @software.each do |software| %>
+
+
+
+
+<li>
+<%= image_tag(software.image_path)%>
+<div>
+<h2><%= software.title %></h2>
+<p><%= software.desc %></p>
+<p><%= software.file_size %><a href="/<%= software.asset_path %>"> <%= image_tag ("form/download_arrow.gif") %></a></p>
+</div>
+</li>
+<% end %>
+</ul>
+
+

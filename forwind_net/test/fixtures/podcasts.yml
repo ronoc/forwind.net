@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 0
+  title: Our Past Our Predator
+  artist_id: 7
+  available: true
+  file_name: /podcasts/FWDP00
+  genre: drone, electroacoustic
+  cat_no: FWDP00
+  duration: 40
+  

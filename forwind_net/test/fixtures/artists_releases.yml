@@ -1,0 +1,16 @@
+our_past:
+  artist_id: 7
+  release_id: 4
+
+seven:
+  artist_id: 4
+  release_id: 2
+
+sehnsucht:
+  artist_id: 4
+  release_id: 3
+
+form:
+  artist_id: 1
+  release_id: 1
+

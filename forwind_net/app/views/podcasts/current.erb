@@ -1,0 +1,25 @@
+<div id="podcasts">
+<ul>
+<% @podcast.track_list.tracks.sort_by { |tr| tr.position }.each do |t| %>
+<li><dl><dt><span><%= (t.position + 1).to_s %></span><strong><%= t.artist_title.upcase %></strong></dt><dd><%= t.label.upcase %></dd></dl></li>
+<% end %>
+</ul>
+<ol>
+<li><dl><dt><span>TITLE :</span><%= @podcast.title.upcase %></dt></dl></li>
+<li><dl><dt><span>COMPILED & MIXED BY :</span><%= @podcast.artist.name.upcase %></dt></dl></li>
+<li><dl><dt><span>GENRE :</span><%= @podcast.genre.upcase %></dt></dl></li>
+
+<li><dl><dt><span>RELEASE DATE :</span><%= @podcast.updated_at.strftime("%Y/%m/%d") %></dt></dl></li>
+<li><dl><dt><span>CATALOGUE # :</span><%= @podcast.cat_no %></dt></dl></li>
+<% if @podcast.available? %>
+<li><dl><dt><span><a href=<%= "/audio" + @podcast.file_name + ".zip" %>>
+<%= @podcast.duration.to_s %> MINUTE 320 KBPS MP3 MIX</span><img src="/images/releases/zip_icon.gif"></a></dt> <dd></dd></dl></li>
+<% end %>
+<li><dl><dt><span>ATOM PODCAST FEED</span></dt><dd><a href= "http://www.forwind.net/podcasts.atom"><img src="/images/index/feed_symbol.png"/></a></dd></dl></li>
+     
+<img src="/images/releases/outpatient.jpg">
+
+</ol>
+
+
+</div>

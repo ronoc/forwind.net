@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+form:
+   title: Form
+   cat: FWD00
+   long_desc:
+   release_date:
+   release_date: Time.mktime(2008,09,21)
+   short_desc: "The Album Form released on Digipak CD and MP3 is a retrospective of CjC's work from early 2000's.
+               A big thanks to Fitzroy and Finn for the excellent artwork."
+   id: 1
+
+seven_months:
+   title: Seven months in E minor
+   cat: FWD01
+   release_date: Time.mktime(2010,03,31)
+   short_desc: "Sonnamble debut long player is now available. An improvisational work featuring live electronics with laptsteel,
+   double bass, guitar and analogue synths."
+   id: 2
+
+hz:
+   title: Horizontal Volumes
+   cat: FWD02
+   short_desc: "The emphasis of this series or works is on programmed art, dynamic systems designed and exercised for a unique artistic purpose."
+   id: 3
+
+traces:
+   title: Our Past Our Predator
+   cat: FWD03
+   short_desc: "40 minute 320kb/sec mp3 mix"
+   id: 4
+
+

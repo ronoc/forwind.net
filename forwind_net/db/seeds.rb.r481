@@ -1,0 +1,14 @@
+rel = Release.find_by_title "Form"
+rel.long_desc = "Form is a retrospective of the CJC output between 2000 & 2003. Spacial geometric concepts act as the origins of the timbre and expression within this found-sound digital work.
+<br/><br/> 
+Previous releases from this album :<br/><a href='http://www.psychonavigation.com/releases.html'>Psychonavigation :</a> PSY 001,PSY 002, PSY 003, PSY 033<br/><a href='http://www.electrocd.com/en/cat/sido_010/'>Silverdoor :</a>SIDO 10"
+rel.available = false
+rel.save
+
+n = ReleaseLink.new(:location => "http://www.normanrecords.com/records/115080", :vendor => "Norman Records", :release_id => rel.id, :link_type => RELEASE_LINK_TYPES[:PHYSICAL])
+b = ReleaseLink.new(:location => "http://boomkat.com/downloads/430858-cjc-form", :vendor => "Boomkat", :release_id => rel.id, :link_type => RELEASE_LINK_TYPES[:DOWNLOAD])
+a = ReleaseLink.new(:location => "http://www.amazon.co.uk/Form/dp/B005EPEMQY/ref=dm_ap_alb1?ie=UTF8&qid=1312617386&sr=301-1", :vendor => "Amazon", :release_id => rel.id, :link_type => RELEASE_LINK_TYPES[:DOWNLOAD])
+
+n.save
+b.save
+a.save

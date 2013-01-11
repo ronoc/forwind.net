@@ -1,0 +1,32 @@
+schisms = Podcast.new(:title => "Revolve", :cat_no => "FWDP11",
+:file_name => "/podcasts/FWDP11", :duration => 152, :genre => "Turntablism", :available => true)
+jm = Artist.find_by_name("Square Waves")
+jm.save
+schisms.artist = jm
+schisms.save
+
+schisms_track_list = TrackList.new
+schisms_track_list.podcast = schisms
+schisms.track_list = schisms_track_list 
+schisms.save
+schisms_track_list.save
+
+tracks = []
+tracks << Track.new(:position => 0, :artist_title => "Composition N.4 - Milan Knizak", :label => "Kissing Spell") 
+tracks << Track.new(:position => 1, :artist_title => "Tone-Arm Two - Janek Schaefer", :label => "Fat Cat Records") 
+tracks << Track.new(:position => 2, :artist_title => "Solo - Claus Van Bebber", :label => "Intermedium Records") 
+tracks << Track.new(:position => 3, :artist_title => "Overt Topaz Reference - Barnes . Kajiwara . Rosenfeld", :label => "Quakebasket") 
+tracks << Track.new(:position => 4, :artist_title => "First Fold - Tetuzi Akiyama Toshimaru Nakamura Taku Sugimoto Mark Wastell", :label => "Confront")
+tracks << Track.new(:position => 5, :artist_title => "Pittsburgh, July 5, 2002 - Toshio Kajiwara, DJ Olive, Christian Marclay", :label => "Asphodel")  
+tracks << Track.new(:position => 6, :artist_title => "Switch No.2 + Boîtier - Martin Tétreault, Lynda Gaudreau", :label => "Actuelle")  
+tracks << Track.new(:position => 7, :artist_title => "Allurement 3 - Otomo Yoshihide / Axel Dörner / Sachiko M / Martin Brandlmayr", :label => "Neos")  
+tracks << Track.new(:position => 7, :artist_title => "Chime Chime (re-rung) - Philip Jeck", :label => "Touch")  
+tracks << Track.new(:position => 8, :artist_title => "Sweetest Sensation - Marina Rosenfeld", :label => "Room 40")  
+
+tracks << Track.new(:position => 9, :artist_title => "Track 4b + 3a - Bellows", :label => "Planam - Biplano")  
+
+tracks.each do |t|
+  t.track_list = schisms_track_list
+  t.save 
+end
+

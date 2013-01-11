@@ -1,0 +1,12 @@
+<div id="tabs">
+<hr/>
+<span ID = "<%=@highlight_sonnamble%>" >
+<%= link_to_if(@highlight_sonnamble.nil?, "  SONNAMBLE  ", { :controller => 'releases', :action => "sonnamble" }) %></span><span id='small_white_txt'> | </span>
+<span ID = "<%=@highlight_hz%>" >
+<%= link_to_if(@highlight_hz.nil?, "  HORIZONTAL VOLUMES  ", { :action => "horizontal_volumes" }) %></span><span id='small_white_txt'> | </span>
+<span ID = "<%=@highlight_cjc%>" ><%= link_to_if( @highlight_cjc.nil?, "  CJC  ", { :action => "cjc" }) %></span><span id='small_white_txt'> </span>
+<!--span ID = "<%=@highlight_traces%>" ><%= link_to_if( @highlight_traces.nil?, "  TRACES  ", { :action => "traces" }) %></span><span id='small_white_txt'-->
+<!--span ID = "<%=@highlight_archive%>" ><%= link_to_if( @highlight_archive.nil?, "  ARCHIVE  ", { :action => "archive" }) %></span><span id='small_white_txt'>  |  </a -->
+<hr/>
+</div>
+

@@ -1,0 +1,18 @@
+<div id="releases_nav">
+<ul>
+<% @releases.each do |release| %>
+
+<li>
+<%= link_to_if active_rel_link?(release), release.title.upcase, :controller => "releases", :action => "show", :id => release.cat %>
+  <% unless release.pieces.empty? %>
+      <% release.pieces.each do |piece| %>
+        <dl><dt><%= "- " %><%= link_to_if active_piece_link?(piece), "PIECE " + (release.pieces.index(piece) + 1).to_s , "/releases/" + release.cat + "/pieces/" + piece.id.to_s %></dt></dl>
+      <% end %>
+  <% end %>
+</li>
+<% end %>
+</ul>
+</div>
+
+<!-piece.title.upcase ->
+

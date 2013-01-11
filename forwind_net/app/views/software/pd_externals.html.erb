@@ -1,0 +1,23 @@
+
+
+<div id="pd_externals-list">
+<ol id="pd_externals-list">
+<% @software.each do |software| %>
+<li>
+	<dl>
+		<dt><%= image_tag(software.image_path)%></dt>
+		<dt><span><%= software.title %> </span> <strong><%= software.desc %>
+		<% if @software.index(software) == 2 %>
+			The <a href="http://music.nuim.ie//musictec/SndObj/main.html">SndObj</a> DSP library is a Dependency.<% end %> 
+</strong></dt>
+		<dd><%= software.file_size %></dd>
+		<dd><a href="<%= software.asset_path %>" title="Download <%= software.title %> for Linux">Download</a></dd>
+	</dl>
+</li>
+<% end %>
+</ol>
+</div>
+
+
+
+

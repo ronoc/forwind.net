@@ -1,0 +1,14 @@
+<div id="content_container">
+
+<% @podcasts.each do |podcast| %>
+<div id="podcast_index_promo">
+<a href=<%= "/podcasts/#{podcast.id}" %>><img src="<%="/images#{podcast.file_name}_sm.jpg" %>"/></a>
+<span><%= link_to podcast.title, {:controller => "podcasts", :id => podcast.id, :action => "show"} %></span>
+<p>
+Compiled by <%= podcast.artist.name %>. 
+
+</p>
+</div>
+<% end %>
+</div>
+

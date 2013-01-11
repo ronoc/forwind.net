@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<tracklist>
+
+	<track url="../../audio/jos/192/stem_192.mp3" dnload="">
+		<title><![CDATA[STEM]]></title>
+		<time><![CDATA[1:45]]></time>
+	</track>
+
+	<track url="../../audio/jos/192/feed_back_couple_preview_192.mp3" dnload="">
+		<title><![CDATA[FEED BACK COUPLE]]></title>
+		<time><![CDATA[1:04]]></time>
+	</track>
+
+  <track url="../../audio/jos/192/desire_paths_preview_192.mp3" dnload="">
+    <title><![CDATA[DESIRE PATHS]]></title>
+    <time><![CDATA[1:04]]></time>
+  </track>
+
+  <track url="../../audio/jos/192/instant_wait_192.mp3" dnload="">
+    <title><![CDATA[INSTANT WAIT]]></title>
+     <time><![CDATA[3:49]]></time>
+   </track>
+
+  <track url="../../audio/jos/192/hidden_preview_192.mp3" dnload="">
+    <title><![CDATA[HIDDENS]]></title>
+    <time><![CDATA[1:00]]></time>
+  </track>
+
+  <track url="../../audio/jos/192/fine_line_preview_192.mp3" dnload="">
+    <title><![CDATA[FINE LINE]]></title>
+     <time><![CDATA[1:00]]></time>
+   </track>
+
+</tracklist>
+

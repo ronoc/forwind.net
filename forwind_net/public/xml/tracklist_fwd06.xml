@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<tracklist>
+
+	<track url="" dnload="">
+		<title><![CDATA[APHELION I]]></title>
+		<time><![CDATA[2:39]]></time>
+	</track>
+
+	<track url="" dnload="">
+		<title><![CDATA[APHELION II]]></title>
+		<time><![CDATA[10:08]]></time>
+	</track>
+
+  <track url="../../audio/releases/fwd06/sonnamble-blindlight-12.mp3" dnload="">
+    <title><![CDATA[BLINDLIGHT]]></title>
+    <time><![CDATA[10:36]]></time>
+  </track>
+
+  <track url="../../audio/releases/fwd06/sonnamble-society-12.mp3" dnload="">
+    <title><![CDATA[SOCIETY]]></title>
+     <time><![CDATA[7:04]]></time>
+   </track>
+
+</tracklist>
+
