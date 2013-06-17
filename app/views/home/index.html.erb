@@ -1,12 +1,12 @@
 <div id="content_container">
-	
+
 <div id="home_promo_header">
 
 <a href="http://www.normanrecords.com/poogle/index.php?q=forwind"><img src="/images/index/cd-promo2.jpg"></a>
 
 <p></p>
 </div>
-	
+
 <section id="container_2grid_left">
 <div class="title-hr-2gridleft">
 <hr/>
@@ -39,12 +39,12 @@
 	<hr/>
 	</div>
 
-	<div class="home-podcast-boxgrid podcast-captionfull">  
-    	<img src=<%="/images/podcasts/" + @podcast.cat_no + "_sm.jpg"%>></a>  
-    	<div class="podcast-cover podcast-boxcaption">  
-        	<h2><a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>><%= @podcast.title %></a></h2>  
-        	<p>Compiled & Mixed by <%= @podcast.artist.name %><br/>Genre: <%= @podcast.genre %></p>  
-    	</div>  
+	<div class="home-podcast-boxgrid podcast-captionfull">
+    	<img src=<%="/images/podcasts/" + @podcast.cat_no + "_sm.jpg"%>></a>
+    	<div class="podcast-cover podcast-boxcaption">
+        	<h2><a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>><%= @podcast.title %></a></h2>
+        	<p>Compiled & Mixed by <%= @podcast.artist.name %><br/>Genre: <%= @podcast.genre %></p>
+    	</div>
 	</div>
 
 </div>
@@ -60,11 +60,11 @@
 	<% @blogs.each do |blog| %>
 	<div class="home-blogroll-post">
 		<h3><%= link_to(blog.title, blog) %></h3>
-		<p><%= truncate(130, strip_tags(blog.parsed_body)) %></p>
-		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>		
+		<p><%= truncate(strip_tags(blog.parsed_body)) %></p>
+		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>
 	</div>
 	<% end %>
-	
+
 
 </div>
 

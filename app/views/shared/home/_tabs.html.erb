@@ -43,7 +43,7 @@
   <li>
 <%= link_to_if(not_in_context("podcasts", nil, "index"), "PODCASTS", { :controller => 'podcasts', :action => 'index'}) %>
     <ol>
-      <li><%= link_to_if( not_in_context("podcasts", nil, "current"), "CURRENT", { :controller => "podcasts", :action => "current" }) %></li>
+      <li><%# link_to_if( not_in_context("podcasts", nil, "current"), "CURRENT", { :controller => "podcasts", :action => "current" }) %></li>
       <li><%= link_to_if( not_in_context("podcasts", "index"), "ARCHIVE", { :controller => "podcasts", :action => "index" }) %></li>
       <li></li>
 	  </ol>
