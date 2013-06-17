@@ -9,7 +9,6 @@ class CreateTracks < ActiveRecord::Migration
       t.integer :position
       t.timestamps
     end
-		Fixtures.create_fixtures('test/fixtures', File.basename("tracks.yml", '.*'))
   end
 
   def self.down

@@ -60,8 +60,8 @@
 	<% @blogs.each do |blog| %>
 	<div class="home-blogroll-post">
 		<h3><%= link_to(blog.title, blog) %></h3>
-		<p><%= truncate(strip_tags(blog.parsed_body), 130, "...[ ]") %></p>
-		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>
+		<p><%= truncate(130, strip_tags(blog.parsed_body)) %></p>
+		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>		
 	</div>
 	<% end %>
 	

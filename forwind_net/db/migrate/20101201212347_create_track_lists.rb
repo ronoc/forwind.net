@@ -6,7 +6,6 @@ class CreateTrackLists < ActiveRecord::Migration
       t.integer :podcast_id, :null => false
       t.timestamps
     end
-		Fixtures.create_fixtures('test/fixtures', File.basename("track_lists.yml", '.*'))
   end
 
   def self.down

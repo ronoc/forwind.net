@@ -11,8 +11,9 @@
 	</h1>
 
 	<p class="blogPostPostedAt">
+		Posted
 		<% if blog_post.show_user? %>
-			By <span class="blogPoster"><%= blog_post.user.username %></span>
+			By <span class="blogPoster"><%= blog_post.user_name %></span>
 		<% end %>
 		on 
 		<span class="blogPostDate"><%= blog_post.formatted_updated_at %></span>
@@ -22,7 +23,7 @@
 		<%= blog_post.parsed_body %>
 	</div>
 
-
+	<hr class="blogPostBreak" />
 	<% unless blog_post.tags.blank? %>
 		<p class="blogPostTags">
 			<b>Tags: </b>
@@ -32,21 +33,23 @@
 	
 	<p class="blogFooter">
 		<ul class="blogList">
-				
+			<li class="blogListFirst"><%= link_to(pluralize(blog_post.blog_comments.count, 'comment'), blog_post_path(blog_post), :class => 'blogCommentCount') %></li>
+			<% if params[:action] == 'show' %>
+				<li><%= link_to('Back', blog_posts_path) %></li>
+			<% end %>
+		
 		
 			<% if current_user && current_user.admin? %>
-				<li class="blogListFirst"><%= link_to('Edit Post', edit_blog_post_path(blog_post))%></li>
+				<li><%= link_to('Edit Post', edit_blog_post_path(blog_post))%></li>
 				<li><%= link_to('Delete', blog_post_path(blog_post), :method => :delete, :confirm => "Are you sure you want to destroy the post: #{blog_post.title}") %></li>
 			<% end %>
 		</ul>
 	</p>
 	
-	<% if defined?(show_comments) && show_comments == true %>
-		<%= render :partial => 'blog_posts/comments' %>
+	<% if defined?(show_comments) %>
 		<%= render :partial => 'blog_comments/new_blog_comment', :locals => {:blog_comment => @blog_comment} %>
-	<% end %>
-	<% unless defined?(show_comments) %>
-		 <hr class="blogPostBreak" />
+		<%= render :partial => 'blog_posts/comments' %>
 	<% end %>
 	
+	<br style="clear: both;" />
 </div>

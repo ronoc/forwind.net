@@ -10,7 +10,6 @@ class CreateAssets < ActiveRecord::Migration
 		  t.string :location
       t.timestamps
     end
-    Fixtures.create_fixtures('test/fixtures', File.basename("assets.yml", '.*'))
   end
 
   def self.down

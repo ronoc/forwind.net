@@ -12,16 +12,16 @@
   <li>
 <%= link_to_if( not_in_context("releases", nil, "index"), "RELEASES", { :controller => "releases" }) %>
     <ol>
-      <li><%= link_to_if( not_in_context("releases", "FWD09"), "NORTH PALACE", {:controller => "releases", :action => "FWD09"}) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD08"), "TICKS AND MOANS", { :controller => "releases", :action => "FWD08" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD07"), "VARDØGR", { :controller => "releases", :action => "FWD07" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD06"), "BLINDLIGHT", { :controller => "releases", :action => "FWD06" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD05"), "ALONG THE WEAK ROPE", { :controller => "releases", :action => "FWD05" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD03"), "WINTERLANDS", { :controller => "releases", :action => "FWD04" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD03"), "ELVERS", { :controller => "releases", :action => "FWD03" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD02"), "FEED BACK COUPLE", { :controller => "releases", :action => "FWD02" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD01"), "SEVEN MONTHS IN E MINOR", { :controller => "releases", :action => "FWD01" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD00"), "FORM", { :controller => "releases", :action => "FWD00" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD09"), "NORTH PALACE", {:controller => "releases", :action => 'show', :id => "FWD09"}) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD08"), "TICKS AND MOANS", { :controller => "releases", :action => 'show', :id => "FWD08" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD07"), "VARDØGR", { :controller => "releases", :action => 'show', :id => "FWD07" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD06"), "BLINDLIGHT", { :controller => "releases", :action => 'show', :id => "FWD06" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD05"), "ALONG THE WEAK ROPE", { :controller => "releases", :action => 'show', :id => "FWD05" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD03"), "WINTERLANDS", { :controller => "releases", :action => 'show', :id => "FWD04" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD03"), "ELVERS", { :controller => "releases", :action => 'show', :id => "FWD03" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD02"), "FEED BACK COUPLE", { :controller => "releases", :action => 'show', :id => "FWD02" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD01"), "SEVEN MONTHS IN E MINOR", { :controller => "releases", :action => 'show', :id => "FWD01" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "FWD00"), "FORM", { :controller => "releases", :action => 'show', :id => "FWD00" }) %></li>
       <li></li>
 	  </ol>
   </li>

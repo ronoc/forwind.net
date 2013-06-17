@@ -1,4 +1,4 @@
-ActionController::Routing::Routes.draw do |map|
+Rails.application.routes.draw do
     # NAMED ROUTES
 
     #map.login "login", :controller => "user_sessions", :action => "new"
@@ -8,41 +8,22 @@ ActionController::Routing::Routes.draw do |map|
     #map.about 'home/about', :controller => 'home', :action => 'about'
     match "/about", :to => "home#about", :as => "about"
 
-
     # RESOURCES
     #map.resources :podcasts, :only => [:index, :show, :current]
-    resources :podcasts do 
-        podcast do
-            :only => [:index, :show, :current]
-        end
-    end
+    resources :podcasts
 
     #map.resources :user_sessions
-    resources :user_sessions do
-    end
+    resources :user_sessions
 
     #map.resources :users
-    resources :users do
-    end
+    resources :users
 
     #map.resources :artists, :has_many => [:releases]
-    resources :artists do 
-        artist do 
-            :has_many => [:releases]
-        end
-    end
+    resources :artists
 
     #map.resources :releases, :only => [:index, :show], :has_many => [:pieces]
-    resources :artists do 
-        artist do 
-            :has_many => [:releases]
-        end
-    end
+    resources :releases 
    
-    #map.resources :home
-    resources :home do
-    end
-
     #map.root :controller => "home"
     root :to => "home#index"
 
@@ -50,6 +31,6 @@ ActionController::Routing::Routes.draw do |map|
     #map.connect ':controller/:action/:id.:format'
     #match '/:controller(/:action(/:id))'    
     #map.connect ':controller/:action/:id'
-    match '/:controller(/:action(/:id))'    
+    #match '/:controller(/:action(/:id))'    
 end
 

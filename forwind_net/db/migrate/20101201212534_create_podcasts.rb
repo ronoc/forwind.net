@@ -12,7 +12,6 @@ class CreatePodcasts < ActiveRecord::Migration
       t.integer :duration, :null => false
       t.timestamps
     end
-		Fixtures.create_fixtures('test/fixtures', File.basename("podcasts.yml", '.*'))
   end
 
   def self.down

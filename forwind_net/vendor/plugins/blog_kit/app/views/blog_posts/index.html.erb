@@ -3,6 +3,7 @@
 <%= stylesheet_link_tag 'blog_kit' %>
 <%= stylesheet_link_tag 'syntax/' + (BlogKit.instance.settings['theme'] || 'mac_classic') %>
 <%= auto_discovery_link_tag :atom, blog_posts_path(:format => :atom) %>
+
 <%= render :partial => 'admin_links' %>
 
 <% if @blog_posts.size == 0 && !params[:page] %>
@@ -12,21 +13,13 @@
 	</div>
 <% else %>
 	<% if @tag %>
-	<div id='TagHeading'>
-		Tag: <%= @tag.upcase %>
-  </div>
+		<h1>Tag: <%= @tag %></h1>
 	<% end %>
-	<div class='blogRightHandNav'>
-		<img src="/images/index/podcastRSS_icon_small.png"/>
-		<a href="http://www.forwind.net/blog_posts.atom">ATOM FEED</a>
-	<%= blog_tags_list %>
-	</div>
 	<%= render :collection => @blog_posts, :partial => 'blog_post' %>
 <% end %>
-
 
 <div class="blogPages">
 	<%= will_paginate @blog_posts %>
 </div>
 
-
+<%= render :partial => 'admin_links' %>

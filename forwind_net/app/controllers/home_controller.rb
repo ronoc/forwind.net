@@ -30,7 +30,7 @@ class HomeController < ApplicationController
           end
         end
       end
-      if @blogs.length > 2:
+      if @blogs.length > 2
         break
       end
     end

@@ -6,7 +6,6 @@ class CreateArtistsReleases < ActiveRecord::Migration
       t.integer :artist_id
       t.integer :release_id
       end
-      Fixtures.create_fixtures('test/fixtures', File.basename("artists_releases.yml", '.*'))
     end
 
     def self.down

@@ -52,11 +52,16 @@ module ForwindNet
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
-
+    config.cache_classes = false
+    config.action_controller.perform_caching = true
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.log_level = :warning
+    config.time_zone = 'UTC'
+    #config.action_controller.session = {:session_key => "_myapp_session", 
+    #                                    :secret => "forwinds_secret_phrase_which_is_30_characters"}
   end
 end

@@ -8,7 +8,6 @@ class CreatePieces < ActiveRecord::Migration
   		t.string :title, :null => false
 			t.string :description
     end
-		Fixtures.create_fixtures('test/fixtures', File.basename("pieces.yml", '.*'))
   end
 
   def self.down

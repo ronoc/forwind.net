@@ -15,9 +15,11 @@ class BlogPost < ActiveRecord::Base
 	
 	validates_presence_of :title
 	validates_presence_of :body
+
+  default_scope :order => 'published_at DESC'
 	
-	named_scope :published, { :conditions => {:published => true }}
-	named_scope :drafts, { :conditions => {:published => false }}
+	scope :published, { :conditions => {:published => true }}
+	scope :drafts, { :conditions => {:published => false }}
 	
 	before_save :check_published, :if => :not_resaving?
 	before_save :save_tags, :if => :not_resaving?
@@ -34,7 +36,7 @@ class BlogPost < ActiveRecord::Base
 
 	def tags_with_links
 		html = self.tags.split(/,/).collect {|t| "<a href=\"/blog_posts/tag/#{t.strip}\">#{t.strip}</a>" }.join(', ')
-		return html
+		return html.html_safe if html.respond_to?(:html_safe)
 	end
 	
 	def save_tags
@@ -92,7 +94,7 @@ class BlogPost < ActiveRecord::Base
 	
 	def user_name(skip_link=false)
 		if !skip_link && BlogKit.instance.settings['link_to_user']
-			return "<a href=\"/users/#{self.user.id}\">#{CGI.escapeHTML(self.user.name)}</a>"
+			return "<a href=\"/users/#{self.user.id}\">#{CGI.escapeHTML(self.user.name)}</a>".html_safe
 		else
 			return self.user.name
 		end
