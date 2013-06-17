@@ -9,7 +9,7 @@ development:
   pool: 5
   encoding: unicode
   username: ronoc
-  password:
+  password: 
 
 production:
   adapter: postgresql
@@ -17,4 +17,4 @@ production:
   pool: 5
   encoding: unicode
   username: ronoc
-  password:
+  password: 
