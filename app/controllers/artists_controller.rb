@@ -4,12 +4,12 @@ class ArtistsController < ApplicationController
   def index
     @artists = []
     @artists << Artist.find_by_name("Tomonari Nozaki")
-    @artists << Artist.find_by_name("Dentistry") 
-    @artists << Artist.find_by_name("fourth page") 
+    @artists << Artist.find_by_name("Dentistry")
+    @artists << Artist.find_by_name("fourth page")
     @artists << Artist.find_by_name("James O'Sullivan")
     @artists << Artist.find_by_name("Clang Sayne")
-    @artists << Artist.find_by_name("Elvers") 
-    @artists << Artist.find_by_name("Sonnamble") 
+    @artists << Artist.find_by_name("Elvers")
+    @artists << Artist.find_by_name("Sonnamble")
     @artists << Artist.find_by_name("CjC")
   end
 
@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
     elsif params[:id] == 'Clang Sayne' or params[:id] == 'ClangSayne'
       search_query = 'Clang Sayne'
     elsif params[:id] == 'Sonnamble'
-      search_query = 'Sonnamble' 
+      search_query = 'Sonnamble'
     elsif params[:id] == 'fourth page' or params[:id] == 'FourthPage'
       search_query = 'fourth page'
     elsif params[:id] == 'Tomonari Nozaki' or params[:id] == 'TomonariNozaki'
@@ -33,8 +33,9 @@ class ArtistsController < ApplicationController
     else
       search_query = params[:id].capitalize
     end
-    @artist ||= Artist.find_by_name(search_query)    
+    pry
+    @artist ||= Artist.find_by_name(search_query)
     puts "artist name = " + @artist.name
-  end 
+  end
 
 end

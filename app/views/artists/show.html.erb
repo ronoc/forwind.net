@@ -1,7 +1,7 @@
 <div id="content_container">
 
 <div id="container_2grid_left">
-	
+
 	<img src="<%="/images/artists/" + @artist.image %>"/>
 		<div class="p_contentSpacer">
 		</div>
@@ -12,8 +12,8 @@
 
 
 <div id= "container_1grid_right">
-	
-	
+
+
 	<dl>
 	    <dt>ARTIST :</dt>
 	    <dd><%= @artist.name.upcase %></dd>
@@ -24,17 +24,17 @@
 	    <dt>WHEN :</dt>
 	    <dd><%= @artist.start_date.year.to_s + " - " + @artist.end_date.year.to_s %></dd>
 	</dl>
-	
+
 		<p>
 			FORWIND RELEASES :
-		</p> 
+		</p>
   		<ul>
 		<% @artist.releases.each do |rel| %>
 		<li><a href="<%= "/releases/" + rel.cat %>"><%= rel.title + " - " + rel.cat %></a></li>
 		<% end %>
 		</ul>
 		<p>
-			EXTERNAL LINKS : 
+			EXTERNAL LINKS :
 		</p>
 			<ul>
 			<% @artist.links.each do |link| %>

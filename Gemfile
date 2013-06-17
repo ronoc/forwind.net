@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'pry'
 gem 'authlogic'
 gem 'will_paginate'
 gem 'bluecloth'
