@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+  <title>Forwind | <%= @context.downcase%></title>
+	<%= javascript_include_tag "application", "email" %>
+  <%= stylesheet_link_tag('forwind') %>
+<meta name="google-site-verification" content="Oq2AaagB6c_NXK25RChwoHq0tn7yRod2WRabKCgsYD8" />
+<meta name="description" content="Forwind is a publishing label providing a platform for a wide range of genres from live improvisation to precise studio completed treatments, constructions and compositions. Home to Sonnamble, Fourth Page, Elvers, Clang Sayne, CjC, James O'Sullivan. Regular Podacsts and news from the improv electro acoustic scene." />
+
+<link rel="icon" href="/images/index/favicon.ico" type="image/x-icon" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="/javascripts/boxgrid.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+    <body>
+
+         <div id="outer_container">
+
+          		<% if current_user %>
+          		<%= link_to "Logout", logout_path %>
+          		<% end %>
+
+          		<div id="crumb_trail">
+          		</div>
+           		<%- flash.each do |name, msg| -%>
+           		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+           		<%- end -%>
+           		<div id="inner_container">
+	           	<%= render(:partial => "shared/home/tabs") %>
+             	<%= @content_for_layout %>
+				<div id="footer">
+					<div id="footer-links">
+						<div class="title-hr-2gridleft">
+						<hr/>
+						<h2>Links</h2>
+						<hr/>
+						</div>
+						<ul class="footerLinks">
+							<li><a href="http://soundcloud.com/forwind" title="Visit our SoundCloud page">SoundCloud</a></li>
+							<li><a href="http://twitter.com/#!/forwindings" title="View our tweets">Twitter</a></li>
+							<li><a href="http://www.facebook.com/pages/Forwind/143631062329300" title="Visit our Facebook page">Facebook</a></li>
+							<li><a href="http://www.mixcloud.com/Forwind/" title="Visit our MixCloud page">MixCloud</a></li>
+						<ul>
+					</div>
+					<div id="footer-subscribe">
+						<div class="title-hr-1gridright">
+						<hr/>
+						<h2>Subscribe to our newsletter</h2>
+						<hr/>
+						</div>
+		
+<form accept-charset="UTF-8" action="/home/subscribe" method="post">
+							<div id="newshold">
+<input type="text" id="newsinput" placeholder="enter your email address" name="email"><input type="submit" id="newssub" value="subscribe" >
+							</div>
+</form>						
+						
+					</div>
+
+				</div>
+				</div>
+				
+				
+
+				<div id="legal-notice">
+				<p class="copyright"><i>for/wind.net </i>&#169; <i><script type="text/javascript">document.write((new Date()).getFullYear());</script></i></p>
+				</div>
+					
+			</div>
+			
+			
+      <script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
+  		<script type="text/javascript">
+        try{
+          var pageTracker = _gat._getTracker("UA-8508337-1");
+          pageTracker._trackPageview();
+          } catch(err) {}
+      </script>
+    </body>
+</html>
+

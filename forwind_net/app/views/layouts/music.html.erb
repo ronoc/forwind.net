@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <title>Forwind | <%= @context.downcase%></title>
+  <%= stylesheet_link_tag('forwind') %>
+<%= auto_discovery_link_tag(:atom, "/feeds.atom") %>
+<link rel="icon" href="/images/index/favicon.ico" type="image/x-icon" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+	</head>
+    <body>
+      <div id="outer_container">
+          <div id="crumb_trail">
+          </div>
+           <div id="inner_container">
+	        	<%= render(:partial => "shared/home/tabs") %>
+            <%= @content_for_layout %>
+            
+
+
+            
+				<div id="footer">
+					<div id="footer-links">
+						<div class="title-hr-2gridleft">
+						<hr/>
+						<h2>Links</h2>
+						<hr/>
+						</div>
+						<ul class="footerLinks">
+							<li><a href="http://soundcloud.com/forwind" title="Visit our Sound Cloud page">Sound Cloud</a></li>
+							<li><a href="http://twitter.com/#!/forwindings" title="View our tweets">Twitter</a></li>
+							<li><a href="http://www.facebook.com/pages/Forwind/143631062329300" title="Visit our Facebook page">Facebook</a></li>
+							 <li><a href="http://www.mixcloud.com/Forwind/" title="Visit our MixCloud page">MixCloud</a></li>
+
+
+						<ul>
+					</div>
+					<div id="footer-subscribe">
+						<div class="title-hr">
+						<hr/>
+						<h2>Subscribe to our newsletter</h2>
+						<hr/>
+						</div>
+						
+<form accept-charset="UTF-8" action="/home/subscribe" method="post">
+							<div id="newshold">
+								
+<!-- %= email_field_tag("email", value = "subscribe", options = {:controller => "home", :action => "subscribe"}) % -->
+<input type="text" id="newsinput" placeholder="enter your email address" name="email"><input type="submit" id="newssub" value="subscribe" >
+							</div>
+						
+</form>						
+						
+					</div>
+
+				</div>
+				</div>
+				
+				
+
+				<div id="legal-notice">
+				<p class="copyright"><i>for/wind.net </i>&#169; <i><script type="text/javascript">document.write((new Date()).getFullYear());</script></i></p>
+				</div>
+					
+					
+			
+			</div>
+                       
+                        
+      <script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
+  		<script type="text/javascript">
+        try{
+          var pageTracker = _gat._getTracker("UA-8508337-1");
+          pageTracker._trackPageview();
+          } catch(err) {}
+      </script>
+    </body>
+</html>
+
