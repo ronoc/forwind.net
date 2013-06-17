@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
 
   create_table "artists", :force => true do |t|
     t.string   "name",        :limit => 1000, :null => false
-    t.string   "description",                 :null => false
+    t.text     "description",                 :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.string   "image"
@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
   end
 
   create_table "releases", :force => true do |t|
-    t.string   "title",                                          :null => false
-    t.string   "long_desc",    :limit => 1000
+    t.string   "title",                          :null => false
+    t.text     "long_desc"
     t.datetime "release_date"
-    t.string   "short_desc",                                     :null => false
-    t.string   "cat",                                            :null => false
+    t.string   "short_desc",                     :null => false
+    t.string   "cat",                            :null => false
     t.integer  "artist_id"
-    t.boolean  "available",                    :default => true
+    t.boolean  "available",    :default => true
   end
 
   create_table "track_lists", :force => true do |t|
