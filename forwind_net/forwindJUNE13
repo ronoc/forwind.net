@@ -1,0 +1,1622 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: artists; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE artists (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    image character varying(255),
+    location character varying(255),
+    start_date timestamp without time zone,
+    end_date timestamp without time zone
+);
+
+
+ALTER TABLE public.artists OWNER TO ronoc;
+
+--
+-- Name: artists_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE artists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.artists_id_seq OWNER TO ronoc;
+
+--
+-- Name: artists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE artists_id_seq OWNED BY artists.id;
+
+
+--
+-- Name: artists_releases; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE artists_releases (
+    artist_id integer,
+    release_id integer
+);
+
+
+ALTER TABLE public.artists_releases OWNER TO ronoc;
+
+--
+-- Name: assets; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE assets (
+    id integer NOT NULL,
+    piece_id integer NOT NULL,
+    medium integer NOT NULL,
+    title character varying(255) NOT NULL,
+    description character varying(255),
+    location character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.assets OWNER TO ronoc;
+
+--
+-- Name: assets_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE assets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.assets_id_seq OWNER TO ronoc;
+
+--
+-- Name: assets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE assets_id_seq OWNED BY assets.id;
+
+
+--
+-- Name: blog_comments; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE blog_comments (
+    id integer NOT NULL,
+    blog_post_id integer,
+    user_id integer,
+    user_ip character varying(255),
+    user_agent character varying(255),
+    referrer character varying(255),
+    name character varying(255),
+    site_url character varying(255),
+    email character varying(255),
+    body text,
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE public.blog_comments OWNER TO ronoc;
+
+--
+-- Name: blog_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE blog_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.blog_comments_id_seq OWNER TO ronoc;
+
+--
+-- Name: blog_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE blog_comments_id_seq OWNED BY blog_comments.id;
+
+
+--
+-- Name: blog_images; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE blog_images (
+    id integer NOT NULL,
+    image_file_name character varying(255),
+    image_content_type character varying(255),
+    image_file_size integer,
+    image_updated_at timestamp without time zone,
+    blog_post_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.blog_images OWNER TO ronoc;
+
+--
+-- Name: blog_images_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE blog_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.blog_images_id_seq OWNER TO ronoc;
+
+--
+-- Name: blog_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE blog_images_id_seq OWNED BY blog_images.id;
+
+
+--
+-- Name: blog_posts; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE blog_posts (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    body text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    published boolean DEFAULT false NOT NULL,
+    user_id integer,
+    published_at timestamp without time zone
+);
+
+
+ALTER TABLE public.blog_posts OWNER TO ronoc;
+
+--
+-- Name: blog_posts_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE blog_posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.blog_posts_id_seq OWNER TO ronoc;
+
+--
+-- Name: blog_posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE blog_posts_id_seq OWNED BY blog_posts.id;
+
+
+--
+-- Name: blog_tags; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE blog_tags (
+    id integer NOT NULL,
+    blog_post_id integer,
+    tag character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.blog_tags OWNER TO ronoc;
+
+--
+-- Name: blog_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE blog_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.blog_tags_id_seq OWNER TO ronoc;
+
+--
+-- Name: blog_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE blog_tags_id_seq OWNED BY blog_tags.id;
+
+
+--
+-- Name: links; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE links (
+    id integer NOT NULL,
+    artist_id integer,
+    location character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.links OWNER TO ronoc;
+
+--
+-- Name: links_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.links_id_seq OWNER TO ronoc;
+
+--
+-- Name: links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE links_id_seq OWNED BY links.id;
+
+
+--
+-- Name: pieces; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE pieces (
+    id integer NOT NULL,
+    release_id integer NOT NULL,
+    artist_id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    description character varying(255)
+);
+
+
+ALTER TABLE public.pieces OWNER TO ronoc;
+
+--
+-- Name: pieces_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE pieces_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pieces_id_seq OWNER TO ronoc;
+
+--
+-- Name: pieces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE pieces_id_seq OWNED BY pieces.id;
+
+
+--
+-- Name: podcasts; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE podcasts (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    artist_id integer NOT NULL,
+    file_name character varying(255) NOT NULL,
+    available boolean DEFAULT false,
+    genre character varying(255) NOT NULL,
+    cat_no character varying(255) NOT NULL,
+    duration integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.podcasts OWNER TO ronoc;
+
+--
+-- Name: podcasts_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE podcasts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.podcasts_id_seq OWNER TO ronoc;
+
+--
+-- Name: podcasts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE podcasts_id_seq OWNED BY podcasts.id;
+
+
+--
+-- Name: release_links; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE release_links (
+    id integer NOT NULL,
+    location character varying(255) NOT NULL,
+    release_id integer NOT NULL,
+    vendor character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    link_type integer
+);
+
+
+ALTER TABLE public.release_links OWNER TO ronoc;
+
+--
+-- Name: release_links_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE release_links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.release_links_id_seq OWNER TO ronoc;
+
+--
+-- Name: release_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE release_links_id_seq OWNED BY release_links.id;
+
+
+--
+-- Name: releases; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE releases (
+    id integer NOT NULL,
+    title character varying(255),
+    long_desc text,
+    release_date timestamp without time zone,
+    short_desc character varying(255),
+    cat character varying(255),
+    artist_id integer,
+    available boolean
+);
+
+
+ALTER TABLE public.releases OWNER TO ronoc;
+
+--
+-- Name: releases_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE releases_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.releases_id_seq OWNER TO ronoc;
+
+--
+-- Name: releases_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE releases_id_seq OWNED BY releases.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO ronoc;
+
+--
+-- Name: track_lists; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE track_lists (
+    id integer NOT NULL,
+    podcast_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.track_lists OWNER TO ronoc;
+
+--
+-- Name: track_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE track_lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.track_lists_id_seq OWNER TO ronoc;
+
+--
+-- Name: track_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE track_lists_id_seq OWNED BY track_lists.id;
+
+
+--
+-- Name: tracks; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE tracks (
+    id integer NOT NULL,
+    track_list_id integer NOT NULL,
+    artist_title character varying(255) NOT NULL,
+    label character varying(255),
+    "position" integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.tracks OWNER TO ronoc;
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE tracks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracks_id_seq OWNER TO ronoc;
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE tracks_id_seq OWNED BY tracks.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    username character varying(255),
+    email character varying(255),
+    crypted_password character varying(255),
+    password_salt character varying(255),
+    persistence_token character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.users OWNER TO ronoc;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ronoc
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO ronoc;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ronoc
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY artists ALTER COLUMN id SET DEFAULT nextval('artists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY assets ALTER COLUMN id SET DEFAULT nextval('assets_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY blog_comments ALTER COLUMN id SET DEFAULT nextval('blog_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY blog_images ALTER COLUMN id SET DEFAULT nextval('blog_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY blog_posts ALTER COLUMN id SET DEFAULT nextval('blog_posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY blog_tags ALTER COLUMN id SET DEFAULT nextval('blog_tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY links ALTER COLUMN id SET DEFAULT nextval('links_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY pieces ALTER COLUMN id SET DEFAULT nextval('pieces_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY podcasts ALTER COLUMN id SET DEFAULT nextval('podcasts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY release_links ALTER COLUMN id SET DEFAULT nextval('release_links_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY releases ALTER COLUMN id SET DEFAULT nextval('releases_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY track_lists ALTER COLUMN id SET DEFAULT nextval('track_lists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ronoc
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: artists; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY artists (id, name, description, created_at, updated_at, image, location, start_date, end_date) FROM stdin;
+1	CjC	Conor J Curran is an electronic musician and sound artist based\nin London. He studied at Trinity College Dublin under electroacoustic composers\nDonnacha Dennehy and Roger Doyle and has been involved in many different music\nprojects such as Liquid Hifi, Street Thunder, Sonnamble and his solo project CjC.\n  </p><p>His work, both music and audio/visual software, has been used in modern\ndance by Dance Theatre of Ireland (Evidence 2001) and in Film by Conor McCourt\n(Four Cops 1999). Conor's Parallel, a music visualisation application, was\nfeatured at London’s Cybersonica 2002, on Rhizome.org, Neural.it and in 'Exhibit1'at\n the Digital Hub in Dublin from January to March 2003.</p><p>CjC has released material\non Psychonavigation Records, Silverdoor and Forwind. Even though completed in 2003,\nConor's debut solo album 'Form' was not released until 2008 on Forwind. It encompasses\nelectronic instrumentals from melodic to abstract. Spatial geometric concepts act as\nthe origins of the timbre and expression. Form to a large extent was influenced by the\nParallel software Conor was writing at the time. Track titles, album artwork and the\naural visual language all strictly adhere to the spacial concept of Form.	2010-12-12 15:14:12	2011-03-06 21:59:25	cjc.jpg	Dublin, Dungarvan	1999-01-01 00:00:00	2003-01-01 00:00:00
+3	Liquid Hifi	Sinead Buckley & Conor Curran 97-99, Dublin	2010-12-12 15:14:12	2010-12-12 15:14:12	\N	\N	\N	\N
+4	Sonnamble	Sonnamble was formed in 2009 by Conor Curran and Peter Marsh to explore the possibilities of live improvisational playing and real time digital processing. Two albums were released featuring Marsh’s stringed instruments (lap steel guitar, double bass and bass guitar) fed through Curran’s custom software routines. These received some critical acclaim and airplay on both the BBC and RTE, drawing comparisons with the likes of Christian Fennesz.	2010-12-12 15:14:12	2012-10-03 09:17:23	sonnamble.jpg	London	2008-01-01 00:00:00	2012-03-06 21:33:36
+5	JEAN-BAPTISTE THIEBAUT & SCORPNE HORRIBLE	stuff	2010-12-12 15:14:12	2010-12-12 15:14:12	\N	\N	\N	\N
+6	JASON FREEMAN, PATRICIA REED, AND MAJA CERAR	stuff	2010-12-12 15:14:12	2010-12-12 15:14:12	\N	\N	\N	\N
+7	Traces	Shane Lawlor's pseudynom.	2010-12-12 15:14:12	2010-12-12 15:14:12	\N	\N	\N	\N
+8	James O'Sullivan	James O’Sullivan is a London-based electric guitar player. His work explores the relationship\nbetween improvisation, recording and performance. He has worked extensively within the parameters of song, in particular in collaboration with song\nwriter David Hurn, and the improvisational quartet Clang Sayne, and his musical input on these\nrecordings is far-ranging. \n</p><p>\nWith David Hurn’s material, his contribution is always attached to and\ncentred around a pre-existing song, and serves to continue the idea or mood created by the voice,\nwords or chord changes within the song itself. With Clang Sayne, although the first record consists\nof improvisations around a set of pre-written songs, the outcomes are more unpredictable, the main\naim being to create songs or pieces of music in the moment of playing, through establishing a solid\nrapport within the group of musicians.\n</p><p>\nIn addition to these ongoing projects, O’Sullivan and Hurn are the founders of ‘Four Seasons\nTelevision’, a project that, using the two founders’ improvisations as a sort of centre, collaborates\nwith musicians of wide-ranging influences. James is also a member of the improvisational group\nfounded by Thanos Chrysakis, ‘Tetras’.	2010-12-12 15:14:12	2012-03-21 22:53:36	jos.jpg	London	2005-01-01 00:00:00	2012-03-06 21:33:36
+312708591	Street Thunder	The anonymous Street Thunder 2001-2002, Dublin	2010-12-12 15:14:12	2010-12-12 15:14:12	\N	\N	\N	\N
+312708592	Peter Marsh		2011-01-04 10:32:45	2011-01-04 10:32:45	\N	\N	\N	\N
+312708593	Elvers	'Elvers' is a trio formed in 2008 by friends who wished to\n explore a shared interest in improvised music making without rules, particularly\n improv rules. Its members have been playing together in various combinations for\nmuch longer though. Trumpet player Ian R. Watson, double bassist Peter Marsh and\npercussionist Paul May have been regular or semi regular fixtures on the fringes\nof the London free improv scene over the last few years. </p><p>Watson and Marsh took\npart in many of Ashley Wales's short run club night 'Back in your town' at the Red\nRose until its demise. But most of their playing is in different areas such as\nfolk, jazz, rock and blues - May with Duke Garwood, Petra Jean Philliipson,\n Carolyn Hume, Clang Sayne and others (often in tandem with Marsh),\n whilst  Watson currently plays with Solus Rex, 64 bit and The Treecreepers,\na duo with Bellowhead percussionist Pete Flood. Marsh and Watson also collaborated\n in electric jazz outfit Lob.	2011-03-06 21:33:36	2012-03-21 22:54:25	elvers.jpg	London	2008-01-01 00:00:00	2012-03-06 21:33:36
+312708594	Clang Sayne	Clang Sayne is a platform for songwriter and improvisor, Laura Hyland\nto collaborate with other artists from all disciplines. It began as a\nband exploring the boundaries between song and improvisation, the main\noutput of which to date has been the album, 'Winterlands', and ongoing\nmusical performances. Since its incarnation Clang Sayne has slowly\nbegun to grow into a bigger project combining song and improvisation\nwith other artforms.	2011-03-17 00:14:31	2011-03-21 09:57:03	clangsayne.jpg	London, Wexford	2008-01-01 00:00:00	2011-03-17 00:14:31
+312708595	fourth page	4th Page's music is improvised. Some of it sounds like it wasn't. Fragments of jazz, trace elements of the more experimental side of English folk and even Krautrock surface in a quietly intense music that floats effortlessly between dark, stretched songforms and impressionist abstraction.<br/><br/>\nHeralding mainly from London, Fourth Page came together informally in 2010. The members had played together in\nvarious combinations but not as a quartet. <br/><br/>Carolyn Hume and Paul May had played as a duo for the last ten years\nreleasing five critically acclaimed albums on Leo Records, Peter Marsh and Paul May have played together in\nvarious groups as well as recently providing the live rhythm section for Petra Jean Phillipson. Charlie Beresford\n(known in the main for his solo work and studio production) came into the equation after a recent recording that he,\nPaul May and Duke Garwood made under the guise of Abdon Liberty.	2011-05-18 23:45:19	2012-03-21 22:55:40	fourth_page.jpg	London	2010-01-01 00:00:00	2012-05-18 23:45:19
+312708596	Jones & Marsh	stuff	2011-05-30 22:26:42	2011-05-30 22:26:42	\N	\N	\N	\N
+312708597	Square Waves	Fionn Wallace's alias	2011-09-13 21:03:54	2011-09-13 21:03:54	\N	\N	\N	\N
+312708598	SKZW	Simon	2011-12-11 19:38:25	2011-12-11 19:38:25	\N	Cork	\N	\N
+312708599	Siewert/Marsh/May	blah de blah	2012-02-15 20:23:38	2012-02-15 20:23:38	\N	\N	\N	\N
+312708600	Dentistry	Dublin trio, Dentistry, consisting of Cian Walker,\n Patrick Fennelly and Jason Joomun, draw influence from a large number of\n sources from Cage to Ambarchi. </br> Starting off as a virtual collaboration the project developed online and         \norganically until they were ready to enter the studio armed with instruments\nand electronics to record the material for their debut.  Vardøgr is \nthe end product of those sessions where the trio set about producing a work\nthat hinged on extensive improvisation as well as more traditional \nstructure.	2012-03-21 20:19:17	2012-04-09 11:01:17	dentistry.jpg	Dublin	20011-01-01 00:00:00	2012-03-21 20:19:17
+312708601	Tomonari Nozaki	Tomonari Nozaki is an emerging producer from Tokyo.\nHe originally operated in the minimal techno scene in Japan where his focus was very much on the abstract. \nHe experimented further which led to his sound evolving into the more lush and compositional widescreen analogue soundscapes he now creates. Devastating and emotive are two words that come to mind.\n<br/><br/>\nTomo's technique uses a mix of reel to reel tape edits, analogue synths and a whole host of old outboard. After listening it is obvious that Tomos current work wasn't produced on a computer. A perceptive ear as always with Forwind material is mandatory.\n<br/><br/>\nHe has been previously released under his <i>UNKNOWNjp</i> alias on the Slovakian Label Soun Records. The next installment in his fast maturing sound will be heard when he makes his physical release debut on forwind in early 2013.<br/><br/>Photo by Ryu Kasai.	2012-11-28 18:42:26	2012-12-13 12:33:29	tomo.jpg	Tokyo	1998-11-28 18:40:53	2012-11-28 18:41:41
+312708602	Ronoc		2013-04-11 01:31:58	2013-04-11 01:31:58	\N	London	\N	\N
+\.
+
+
+--
+-- Name: artists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('artists_id_seq', 312708603, false);
+
+
+--
+-- Data for Name: artists_releases; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY artists_releases (artist_id, release_id) FROM stdin;
+4	3
+4	2
+7	4
+1	1
+\.
+
+
+--
+-- Data for Name: assets; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY assets (id, piece_id, medium, title, description, location, created_at, updated_at) FROM stdin;
+1	1	3	Max Msp patch	\N	\N	2010-12-12 15:14:12	2010-12-12 15:14:12
+\.
+
+
+--
+-- Name: assets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('assets_id_seq', 2, false);
+
+
+--
+-- Data for Name: blog_comments; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY blog_comments (id, blog_post_id, user_id, user_ip, user_agent, referrer, name, site_url, email, body, created_at) FROM stdin;
+\.
+
+
+--
+-- Name: blog_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('blog_comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: blog_images; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY blog_images (id, image_file_name, image_content_type, image_file_size, image_updated_at, blog_post_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: blog_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('blog_images_id_seq', 1, false);
+
+
+--
+-- Data for Name: blog_posts; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY blog_posts (id, title, body, created_at, updated_at, published, user_id, published_at) FROM stdin;
+1	Severed Head, Dublin	![alt_text](http://www.forwind.net/images/index/forwind-severed-head.png)<br/>\r\n\r\nI would like to thank the good people at Severed Head for hosting us last week. A great night was had by all. I never saw Dublin looking so pretty under a foot of  snow.\r\n\r\n[Severed Head Performance details](http://severedhead.net/event.aspx?id=8)	2010-12-12 15:19:13	2010-12-12 15:19:28	t	2	2010-12-12 15:19:28
+2	James O'Sullivan at Cafe Oto	[![alt text](http://www.forwind.net/images/podcasts/jos.png)](http://vimeo.com/17534160)\r\n\r\nExcellent [footage](http://vimeo.com/17534160) of a recent show at London's Cafe Oto of guitarist James O' Sullivan.\r\n \r\n'feed back couple', James's first solo release is due out on Forwind early 2011.	2010-12-14 20:58:53	2011-02-09 10:49:48	t	2	2010-12-14 21:12:19
+3	New Logo	![Forwind Logo](http://www.forwind.net/images/index/forwind_logo.gif)\r\n\r\nTrying to conjure a brief for a new logo design for Forwind was for us a daunting task. \r\nUp until now design for either of the two releases or the site has been the good work of Paul Finn. \r\n\r\nWe definitely wanted to keep this style but just add a touch of graphic finesse to the overall look through the logo. \r\n\r\n\r\nI think the overall brief for Hannes (designer) amounted to "we would like to\r\nrepresent the idea of winding, to stress that the pronunciation is\r\nforw/y/nd not forw/i/nd." Not much direction given there really, doesn't elaborate much on what it should be instead focuses on something else entirely.\r\nEither way Hannes obviously knew exactly what to do and for that Shane and I would like to thank you so much ! It suits the subtle clean design previously laid down by Paul while also marking out its own take on what Forwind is about. \r\n\r\nGreat work Hannes, much appreciated.  \r\n\r\n   \r\n\r\n	2010-12-21 19:33:24	2010-12-21 20:52:34	t	2	2010-12-21 20:45:54
+4	aNOther Festival	![Wien aNOther festival](http://www.forwind.net/images/index/another_big.jpg)\r\n\r\nWe have received some very positive feedback from the showing of [Gavin Owen's visual piece for Sonnamble's Sehsucht](http://vimeo.com/9613609) at 'aNOther Festival' in Vienna in November. \r\nThanks so much Wei-Ya Lin for accepting the submission. Hopefully next year Sonnamble will come and play.	2010-12-24 13:44:59	2010-12-24 13:48:31	t	2	2010-12-24 13:48:31
+5	Milkfactory Review	A quality [review](http://www.themilkfactory.co.uk/st/2010/06/sonnamble-seven-months-in-e-minor-forwind/) of Sonnamble's 'Seven Months in E minor' from the Milkman.	2010-12-24 20:38:35	2010-12-24 20:48:09	t	2	2010-12-24 20:48:09
+6	412Limited Sonnamble review	An in-depth thoroughly positive [review](http://www.412limited.co.uk/house-electro/features/sonnamble-seven-months-in-e-minor-review) from Stephen Howe at 412Limited.	2010-12-24 20:54:56	2010-12-24 21:00:21	t	2	2010-12-24 21:00:21
+8	Our Past Our Predator	The first in a series of Forwind podcasts, Traces [40 minute epic montage](http://www.forwind.net/podcasts/0) deserves your full attention.\r\n\r\n 	2011-01-04 21:49:25	2011-01-04 21:54:19	t	2	2011-01-04 21:54:18
+9	Winter Songs	A [suitably seasonal podcast](http://www.forwind.net/podcasts/1) compiled by Peter Marsh. 	2011-01-04 22:13:49	2011-01-04 22:15:42	t	2	2011-01-04 22:15:42
+10	Stop/Run jam in Dublin	Interesting and captivating results from an [improv session](http://www.eddevane.com/2010/12/stoprun-jam-with-ed-devane-paul-rowan.html) featuring Ed Devane and several Irish sound artists and musicians at the Severed Head gallery space in Dublin.  	2011-01-08 01:12:10	2011-01-08 01:34:27	t	1	2011-01-08 01:33:43
+12	Podcast - Outpost	![Forwind Podcast - Outpost](http://www.forwind.net/images/podcasts/FWDP02.jpg)\r\n\r\n[Outpost](http://www.forwind.net/podcasts/2) is the foreboding new podcast from Traces featuring a dark audio mash of vinyl, cassettes, digital, field recordings, interview cut ups and laptop beepage. Frontiers and peripheries in the audio, physical and virtual worlds are the running themes throughout. Like or loathe at your leisure. It’s not pop.\r\n	2011-01-31 21:43:53	2011-11-26 15:06:37	t	1	2011-02-02 00:05:03
+13	'feed back couple' album preview now on Soundcloud.	[Stem](http://soundcloud.com/forwind/1-stem)  is the set opener from James O'Sullivan's first album of solo guitar pieces 'feed back couple', soon to be released on the Forwind label. Hit the link and get listening! 	2011-03-08 16:35:13	2011-03-08 17:30:45	t	1	2011-03-08 17:30:45
+14	Brand new rhythmical nibbles on soundcloud 	Brand new tracks from James O'Sullivan and Elvers are now available to have a musical mull over on our [soundcloud](http://soundcloud.com/forwind) page. These are taken from James and Elvers forthcoming albums on forwind. The finer details can be found on our [releases](http://www.forwind.net/releases) page if you can't help becoming curiouser and curiouser! Enjoy!	2011-03-20 16:32:14	2011-03-20 16:44:12	t	1	2011-03-20 16:44:12
+15	Elvers on BBC Radio 3	![alt text](http://profile.ak.fbcdn.net/hprofile-ak-snc4/203567_118559704893869_2160990_n.jpg)\r\n\r\nAptly named radio host Fiona Talkington, played our very own Elvers last night on BBC Radio 3's [Late Junction](http://www.bbc.co.uk/programmes/b00zt79t) with a track taken from their forthcoming debut on forwind. 'Cutthroat' is featured about an hour and fourteen minutes into the show but don't feel obliged to skip straight to - As ever there is some fabulous music from the outer reaches played right throughout the show. Happy listening friends. 	2011-03-31 20:30:24	2011-05-31 10:47:52	t	1	2011-03-31 00:00:00
+16	State51	Forwind is happily and relievedly at the end of the 'find-a-new-distributor' process!\r\n\r\nWe have put pen to paper with State51 who ticked all the boxes for us when it came to the nitty gritty of getting our catalog the best online outlets and experimental music exposure possible. \r\n\r\nThese things are obviously hugely important when you are trying to pop your head out from underneath the absolute deluge of new music that is released every week. And even more so when you are not exactly releasing music that is going to trouble  the charts.... if they still exist!\r\n\r\nAs a result of the above we can now finally announce release dates for our next three albums:\r\n\r\nJames O'Sullivan's 'feed back couple', Elvers - 'Elvers' and Clang Sayne - 'Winterlands' will all be released on May16th and available to buy through boomkat , itunes, amazon etc.\r\n\r\nWill update soon with further details about the releases including availability of physical formats.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n	2011-05-02 09:30:59	2011-05-02 13:48:12	t	1	2011-05-02 13:48:12
+17	New releases - Elvers	[![Elvers album art work](http://www.forwind.net/images/releases/fwd03.png)](http://www.forwind.net/releases/FWD03)\r\n\r\nWriting about music is, as someone famously said, a bit like dancing to architecture. It's even harder when you're responsible for the music, or at least a third of it. Anyway, here goes...\r\n\r\nElvers are a trio of Ian R. Watson, trumpet, Peter Marsh (ie me), bass and Paul May on drums. We've been together a couple of years though have played together in various combinations for quite a lot longer. We recorded and mixed the album in a day at Onecat studios in Brixton, then collected our favourite bits together for Conor to work his mastering magic on the results.\r\n\r\nThe tricky bit is describing what we do - everything is improvised and I suppose there are bits of jazz in there as well as drones, weird clanging and squeaking and the occasional groove. What I do like about this group is the space in it, and the warmth. Some of it's very pretty, some of it's quite confrontational. Some of it sounds like pygmy music made on a distant moon. And it's less than 40 minutes long. Just like a proper album. We hope you like it.	2011-05-19 23:32:14	2011-05-20 09:08:48	t	3	2011-05-19 23:32:14
+18	New release - James O' Sullivan - Feedback Couple	[![feed back couple artwork](http://forwind.net/images/releases/fwd02.png)](http://www.forwind.net/releases/FWD02)\r\n\r\nI'm not on this record, which makes it easier to write about. I do play with James in a couple of groups, and have seen him play in various line-ups and most rewardingly, solo. And I can say in all honesty that he's one of the most remarkable guitarists I've ever played with or seen anywhere come to think of it.\r\n\r\nHere he's on his own, with his Telecaster, trusty but knackered Yamaha amp and an array of metal objects, drumsticks and various unidentified bits and pieces. And that's it. No loopers, phasers, flangers, pitchshifters or fuzzboxes. (He does use a volume pedal, but that doesn't really count). I should add that James can also play a bit like Chet Atkins, but he hasn't done that here.\r\n\r\nWhat he has done is craft a series of improvised guitar pieces that range from the starkly beautiful to the scabrously filthy. And it's up there with pretty much any improvised guitar music I can think of. Not only is O'Sullivan's vocabulary of textures pretty huge, he uses them with an attention to structure and development that is pretty rigorous, Which makes it a rewarding listen, even though you most likely wouldn't want to listen to it first thing in the morning. \r\n\r\nIf I was reviewing this album for a clever musical publication I'd probably end up describing the title track as sounding like the sound of an electricity substation being slowly demolished by robots in a rainstorm. Which isn't very helpful, I suppose. Even if it is quite accurate. \r\n\r\nDid you get that I like it? Seriously, if you're into exploratory guitar music, this one's for you. Honest.\r\n\r\n\r\n\r\n	2011-05-20 00:15:01	2011-05-20 09:07:18	t	3	2011-05-20 00:15:01
+19	Schism - Jones & Marsh	[![Forwind podcast](http://forwind.net/images/podcasts/FWDP03.jpg)](http://forwind.net/podcasts/3)\r\n\r\nThis is a [podcast](http://forwind.net/podcasts/3) of 100% original material from Chris Jones and Peter Marsh. Instruments include electric guitar, noise, double bass and one instance of a virtual piano, mainly recorded live, some tinkered with afterwards. A piece of work that well deserves your full attention.  	2011-05-31 00:42:30	2011-06-01 01:03:32	t	2	2011-06-01 01:03:32
+20	NEW RELEASE - CLANG SAYNE - WINTERLANDS	[![Clang Sayne Winterlands artwork](http://forwind.net/images/releases/fwd04.png)](http://forwind.net/releases/FWD04)\r\n\r\nI played the bass on this one but I'm going to write about it as if I hadn't, because that's a lot easier. Plus, it's not like I wrote any of it. Which isn't a disclaimer, by the way. See? It's not easy writing about stuff you've played on. Particularly when the rest of the band might read it. \r\n\r\n\r\nSo (adopts neutral tone)... This album has already created a wee bit of a stir, picking up some very favourable reviews and airplay since its initial CD release in 2010. \r\n\r\n\r\nThough the name Clang Sayne applies to any number of collaborative projects involving singer and guitarist Laura Hyland, Winterlands was recorded by a quartet that had worked pretty intensively together. \r\n\r\n\r\nClang Sayne's music has often been termed 'avant folk', but it's not really on the money as a description. Someone once described it as 'AMM meets Joni Mitchell', which Laura hated, but at least iit's more specific. \r\n\r\n\r\nHer songs are deceptively complex, their melodies picked out by her nimbly intricate acoustic guitar and lithe, expressive singing. Meanwhile bass, drums and guitar create a restless, swooping backdrop of drones, soft, clicking pulses and nautical clanging (6th form poetry alert), some of which is more or less scored, some entirely improvised. \r\n\r\n\r\nThere is a distinctly nautical feel to the whole album (see 'Brigantine' and 'Shipwrecks' for the most obvious examples), but it's not all drift; a couple of tunes threaten to rock out and James O' Sullivan's electric guitar often gets feral and nasty. \r\n\r\n\r\nSome songs are barely songs at all in the usual sense or are put together, while others flirt with more conventional forms.  Comparisons have been made to people like Tim Buckley, late Talk Talk and Sandy Denny, but they're really not on the money either.\r\n\r\n\r\n(Abandons neutral tone) listening now after a long while and so having a bit of distance from it, it does feel like we got something quite special for about 70% of the record. Which isn't a bad hit rate. And that the songs we were working with were all pretty special. \r\n\r\n\r\nAnyway enough of my yakkin', as Marty Di Bergi would say. [Have a listen](http://forwind.net/releases/FWD04).	2011-06-01 00:59:58	2011-06-02 16:10:50	t	3	2011-06-01 09:59:20
+21	Elvers Review	![alt text](http://www.sorenkjaergaard.com/images/1207642631.6095.jpg)\r\n\r\nVery positive review of Elvers debut release on forwind. Check out the kind words here at [all about jazz](http://www.allaboutjazz.com/php/article.php?id=39687)	2011-06-13 21:38:59	2011-06-13 21:51:59	t	1	2011-06-13 21:51:59
+22	New Release - Fourth Page - Along The Weak Rope	![Along the weak rope, fourth page art work](http://forwind.net/images/releases/fwd05.png)\r\n\r\nSimilar to Pete I guess I felt a bit strange when asked to write a few words about Fourth Page – while I wasn’t involved in making the album I have been part of the team of beavers at the label trying to get it across the finish line release wise - and these things should be neutral right?! Well yes, but to be fair I had so little to do with anything involving the erm/haha A&R bit of this album ending up on forwind I do feel there is suitable distance between me and the release to not be indicted just yet...\r\n\r\nSo the album. Well the first thing I thought when sitting down to write about it was how I was going to avoid saying 'dark and moody'. But I can't. Those words were made for this album and it's just not fair if I can't use them here! So there - we are done with it! But review cliches aside the album is without doubt at times a very intense listen. The foreboding title track itself being a perfect example of this. There is a real feeling of menace and danger with the minor piano chords, scattering percussion and Beresford's murky, evocative image of moving 'along the weak rope'. But there is also a real sense of adventure and mischief in there too especially in the vocal that encourages the listener to 'lean across the edge'. There are certain animation studios around the planet I would love to see have a go at providing an accompanying video. But in the context of the album it's a very effective opener that really pulls you in from the get go and grabs your attention before some of the more downbeat reflective tracks that follow.\r\n\r\nTracks like 'Your Warm Silhouette' and 'The Air in Between' are definitely at the slower paced end of the scale on the album but they are still too brooding, mournful and indeed busy to ever feel 'laid back'. This sense of contrast between the introspective feel of the album and the outside danger and chaos is perfectly linked up and aurally represented in what Paul May brings to the tracks with his arsenal of ruzzers, rickles, vwipps and twizzers! (You'll understand when you listen!) They ping their way around the mix in some of the more minimal moments arrangement wise and really add an eccentric, edgy but complementary rhythmical edge to the proceedings, and also gives the songs some extra bite and depth during some of the more traditional sounding arrangements.\r\n\r\nThe production is excellent throughout and manages to pull off that trick of making the whole experience seem quite intimate – you can hear Beresford's every hiss - while giving the fantastic musicianship plenty of room to breathe and be appreciated. And it genuinely deserves this. Hume's piano performances are engaging throughout and effectively restrained especially in places like the beginning of 'The Air in Between'. Marsh adds a warm and industrious backbone to the tracks where he is a little further down in the mix and puts in as near as there is to a rollicking performance on the tracks he completely drives like 'Citadel'.\r\n\r\nSo there's my snapshot.  If you are looking for something to fill that moody, jazzy, reflective, melancholy etc etc late night slot on your playlist but like me need it to still have some real aftertaste then this is a highly recommended addition..	2011-06-18 20:50:28	2011-06-19 13:19:19	t	1	2011-06-19 13:17:57
+23	Forwind on Boomkat	![alt text](\r\nhttp://2010.futureeverything.org/assets/images/musicians/boomkat.jpg) \r\n\r\nQuick - drive by - zooming piece of news this!\r\n\r\nFWD05 - Fourth Page's  'Along the Weak Rope'  has been added to our ever growing label section on wage killing website supreme [boomkat](http://boomkat.com/search?q=Forwind&fields[]=label&commit=!)!\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n	2011-07-06 17:34:57	2011-07-06 17:43:46	t	1	2011-07-06 17:43:46
+24	New Wire Tapper feat. Sonnamble	![alt text](http://www.thewire.co.uk/images/issues/issue330/main/wiretapper26_cover.jpg)\r\n\r\nVery exciting piece of news this! Sonnamble are featured on the new Wire Tapper compilation that comes with the latest edition of the [magazine](http://www.thewire.co.uk/articles/7057/). The track used is 'Aphelion I' taken from the upcoming Sonnamble album ['Blindlight'](http://www.forwind.net/releases/fwd06), the duo's latest foray into the possibilities of electro-acoustic improvisation and real time processing. 	2011-07-13 19:42:53	2011-07-14 22:38:53	t	1	2011-07-14 22:38:53
+25	New Release - Sonnamble - Blindlight	[![Sonnamble Blindlight FWD06](http://forwind.net/images/releases/fwd06.png)](http://www.forwind.net/releases/fwd06)\r\n\r\n[Blindlight](http://www.forwind.net/releases/fwd06) is the second release from London based electro-acoustic\r\nimprovisers Sonnamble, again consisting of Conor Curran on electronics\r\nand software and Peter Marsh on stringed instruments. \r\n\r\nThe recording sessions took place not long after the release of the duo's well received debut Seven Months in E Minor and according to Curran it's 'a nice little closer to that chapter'. Again, the focus is on Marsh's lap steel guitar, whose drones, chords and twangs are coaxed into expansive ambient\r\nfuzziness or atomised into grains of noise by Curran's home-cooked\r\nsoftware. But there's a spareness and a more pronounced spikiness to the music this time round; it's still immersive stuff, but more edgy. There's even some spoken word on the closing Society;\r\na recording of Curran's uncle describing the state of Irish mental health in the last century. It's funnier than it sounds, but the combination with the dolorous swirls of processed lap steel give it a curious emotional resonance.\r\nThe title is a corruption of the name of an installation piece by sculptor\r\nAntony Gormley, in which vistors were invited to wander around in a\r\nlarge, brightly lit glass tank full of thick grey fog. "I went two or three\r\ntimes", says Marsh. "It was a very weird, but kind of comforting experi-\r\nence. You could hardly see your hand in front of your face. The music,\r\nwhen it's really working, gives me the same kind of feeling, so it seemed\r\nlike a good title for what we'd done..."\r\nOpening track ‘Aphelion I’ was selected for the latest Wire Tapper\r\ncompilation available with the August edition of the magazine.\r\n	2011-07-25 12:38:24	2011-07-25 12:43:00	t	2	2011-07-25 12:43:00
+26	RE-RELEASE-CJC-FORM	[![CjC-Form-Artwork](http://forwind.net/images/releases/fwd00.png)](http://www.forwind.net/releases/FWD00)\r\n\r\nIt may seem a little odd 'rereleasing' this album. [Form](http://www.forwind.net/releases/FWD00) is about 8 years old, has had numerous tracks from it put out on vinyl and various compilations and had a full long player printed as the first Forwind release back in 2008. \r\n<br/>\r\nBack in 2008 when I went about compiling the album, I took all my finished pieces from the said period and tried to find a track order and listing. Many tracks did not make the cut. Others were shortened with various little edits and then mastered with what tools I had to hand (at the time using Studio 64 linux distro running just Jamin!). Not having the appropriate hardware or monitoring for mastering can be problematic particularly when the source material is a sampled and sequenced digital work. For this edition I have changed the version of Elastic (previously released on vinyl on [Psychonavigation](http://psychonavigation.com) - PSY 002) from what was included in the 2008 edition. The reason being that during the recent mastering of Form at Cyclone it became apparent that the previously released mix was essentially distorted !\r\n<br/>\r\nIt seems that in my attempt to master Form on my own in 2008 I had obviously overlooked some glaring problems.\r\nLesson learnt, never master your own output. A mastering engineer will immediately hear glaring issues that you won't. \r\n<br/>\r\nThis kind of audio in my opinion really needs warming up during the mastering which can be difficult to achieve without some nice and expensive analogue kit, something like this [Manley](http://www.manley.com/mslc.php) for instance. Graham at [Cyclone](http://www.cyclonemusic.co.uk/index.html) did a fantastic job here. The lower mids as usual were problematic but also I had over EQ'd the life out of it in the 2008 version. Graham managed to restore life to it and also give it a well needed polish.\r\n<br/>\r\nForm is an album that was written between 2001-03 while I lived in Dublin and in my home town of Dungarvan. For majority of that time I was studying at the Music & Media technologies department at Trinity college Dublin where I was fortunate to be lectured by the likes of [Donnacha Dennehey](http://www.donnachadennehy.com/), Dermot Furlong and [Roger Doyle](http://rogerdoyle.com/). I would like to think the course material (such as electroacoustic composition and survey, Psychoacoustics, DSP) deeply influenced my output during this period. All instruments were originally sourced. Either recorded live or created from scratch from sampling or DSP. It features vocalists such as Laura Hyland from Clang Sayne and Suzanne Spratt whose previous choir experience adds a definite haunted feeling to track 4, In Between.\r\n<br/>  \r\nThis remastered version finally has the feel to it that I was trying to achieve way back when. The artwork delivered by [Paul Finn](http://www.fitzroyandfinn.co.uk) back in 2008 perfectly captured the aesthetic that we were after. At last, 8 years later, I can now sleep soundly knowing Form is actually finished. Anal, I know I know ...	2011-08-15 23:01:14	2011-08-16 00:03:41	t	2	2011-08-16 00:03:40
+27	Sonnamble Blindlight review	[![Din mag logo](http://www.dinmag.co.uk/images/dinbimboheader.png)](http://www.dinmag.co.uk/sonnamble-blindlight)\r\n\r\nForwind's first [review](http://www.dinmag.co.uk/sonnamble-blindlight/) on Din Mag of the latest Sonnamble release.	2011-08-29 19:31:15	2011-08-29 19:50:23	t	2	2011-08-29 19:50:23
+29	Square Waves Podcast 	![Square Waves](http://forwind.net/images/podcasts/FWDP04.jpg)\r\n\r\n\r\n['Untitled rain'](http://forwind.net/podcasts/4) is the first in a series of podcasts for Forwind from Square Waves available now from the podcasts section. \r\nPlenty more thoroughly recommended Square Waves podcasts are available from Sound Cloud [here](http://soundcloud.com/squarewaves) 	2011-09-14 13:36:26	2011-09-14 13:36:26	t	2	2011-09-14 13:36:26
+30	Blindlight Milkfactory Review	[![](http://www.forwind.net/images/index/themilkfactory.png)](http://www.themilkfactory.co.uk/st/2011/09/sonnamble-blindlight-forwind/)\r\n\r\n*This second Sonnamble album builds on its predecessor’s complex set up. Here, Conor Curran weaves Peter Marsh’s original sound sources and textures into a series of stunning miniature constructions which manage to be at once challenging, immersive and evocative.*\r\n<br>\r\n\r\nThe Milk Factory gives a rating of 4.4/5 for Sonnamble's Blindlight. Read the full review [here](http://www.themilkfactory.co.uk/st/2011/09/sonnamble-blindlight-forwind/).	2011-09-15 23:33:54	2011-09-30 22:21:13	t	2	2011-09-15 23:42:13
+31	Second Square Waves Podcast for Forwind	![alt text](http://forwind.net/images/podcasts/FWDP05.jpg)\r\n\r\nSecond [podcast](http://forwind.net/podcasts/5) of the series from Square Waves available now. Over two hours of field recordings to chew on! 	2011-10-02 12:15:42	2011-10-02 12:18:05	t	1	2011-10-02 12:18:05
+32	Forwindings-19-11-2011	![Forwindings flyer](http://forwind.net/images/index/forwindings_blog.jpg)\r\n<br/>\r\nTickets available online from [WeGotTickets](http://www.wegottickets.com/event/137937)\r\n<br/>\r\nThis event on\r\n[Facebook](http://www.facebook.com/event.php?eid=130440207058224) and\r\n[Last FM](http://www.last.fm/event/2060711+Forwindings)\r\n<br/>\r\nFor the past year or three Forwind Recordings have been quietly\r\nassembling a small but beautifully formed roster of left field artists\r\nfrom the UK and Ireland. Forwindings is an event that brings many of\r\nthem together in the suitably atmospheric setting of London’s\r\nShoreditch Church in an evening of eclectic, and immersive sonic\r\nexploration.\r\n<br/>\r\nEclectic is the word; the music on offer ranges from sludgecore dub to\r\nfree improv to dystopic ambient drones to improvised songs to ambient\r\njazz and live electroacoustic processing and a few dozen other hybrids\r\nthat might not exist just yet. Bring some cushions.\r\n<br/>\r\n<i> Updated to reflect last minute cancellations from both Beyond 6 and Clang Sayne.</i>\r\n<br/>\r\n<i>[Platform](http://www.minimalresourcemanipulation.co.uk/news.html)</i>\r\n\r\n<br/>\r\n<i>the moon is a spaceship</i> -\r\nCavernous dub meets stretched whacked out psychedelic dronecore from\r\nelectric guitar and software in a windtunnel on the edge of a black\r\nhole.\r\n<br/>\r\n<i>Wei-ya Lin & Charlie Beresford</i> -\r\nImprovisation for viola and acoustic guitar.<br/>\r\n<br/>\r\n<i>Elvers</i> -\r\nPoised, spacey and sometimes deeply groovy free jazz from an acoustic\r\ntrio of trumpet, bass and drums. “a group to watch” (All About Jazz)\r\n<br/>\r\n<i>James O’ Sullivan/Found Drowned</i> -\r\nRich abstract soundscapes from a bewildering array of metal objects,\r\nan electric guitar and a volume pedal - Keith Rowe with a hint of Chet\r\nAtkins, perhaps. Joined by double bass and percussion to explore the\r\nmissing link between Can, AMM and the Jim Hall Trio.\r\n<br/>\r\n<i>Ed Devane</i> -\r\nDeep listening celestial drones from zithers and processing.\r\n<br/>\r\n<i>Sonnamble</i> - \r\nImmersive electroacoustic improvisation from lapsteel guitar, dobro,\r\nviola, percussion and processing. “unveils its profound beauty with\r\ngreat care”  (The Milk Factory)\r\n<br/>\r\n<i>Fourth Page</i> -\r\nImprovising quartet play hushed, intense songs that can recall Bill\r\nEvans, John Martyn or Morton Feldman. “the kind of song cycle Schubert\r\nmight have written if he was around today” (Fiona Talkington, Late\r\nJunction, Radio 3)\r\n<br/>\r\n	2011-10-04 14:17:50	2011-11-19 02:07:38	t	2	2011-10-04 14:37:03
+33	Sonnamble at aNOther Festival	![alt text](http://www.palaiskabelwerk.at/upload//ano32.jpg)\r\n\r\nForwind duo Sonnamble take to the stage as part of an improvisation focused evening at  [aNOther festival](http://events.wien.info/en/4wu/another-festival/) next Saturday at the [Palais Kabel Werk](http://www.palaiskabelwerk.at/program_event_more.php?menu_id=20&Event[filter][year]=2011&Event[filter][month]=10&Event[EVENT_ID]=191&Event[EVENT_PROGRAM_ID]=721) venue in Vienna. Ticket info , directions and all the necessary details can be found by following the links included. Hope to see some of you there.\r\n\r\n\r\n\r\n\r\n	2011-10-12 12:11:31	2011-10-12 12:19:09	t	1	2011-10-12 12:19:09
+34	Futuresequence review of Blindlight	![alt text](http://www.futuresequence.com/images/logo-redesign.png)\r\n\r\nSome very honest and positive words about the latest Sonnamble release courtesy of the excellent [futuresequence](http://www.futuresequence.com/article/sonnamble-blindlight/) site.	2011-10-16 15:47:27	2011-10-16 15:55:12	t	1	2011-10-16 15:55:12
+35	BBC Music review Blindlight	![alt text](http://static.bbc.co.uk/frameworks/barlesque/1.10.0/desktop/3/img/blocks/light.png)\r\n\r\nSmall radio and television operation's [take](http://www.bbc.co.uk/music/reviews/j2wx) on Sonnamble's latest party starter Blindlight! 	2011-10-16 15:58:20	2011-10-16 16:02:45	t	1	2011-10-16 16:02:45
+36	Square Waves Podcast #3 : Vibrations	[![Square Waves](http://forwind.net/images/podcasts/FWDP06.jpg)](http://forwind.net/podcasts/6)\r\n\r\nThird [podcast](http://forwind.net/podcasts/6) from Fionn is in. Nearly three hours of String/Synth based material to digest.	2011-10-19 13:56:57	2011-10-19 13:59:05	t	2	2011-10-19 13:59:05
+37	Blindlight video 	[![blindlight-screenshot](http://www.forwind.net/images/blindlight-go.png)](http://vimeo.com/30399780)\r\n\r\nOnce again Gavin Owens has shot, edited and produced a stunning [visual piece](http://vimeo.com/30399780) for the title track from the new Sonnamble album. \r\nThe piece consists of over 13,000 photos.\r\nWatch loud and full and preferably in a moment of calm.\r\n\r\n\r\n\r\n	2011-10-20 01:03:16	2011-10-20 01:46:01	t	2	2011-10-20 01:46:01
+38	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\nOver two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:32:30	2011-11-07 00:32:30	f	1	\N
+39	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) Over two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:33:15	2011-11-07 00:33:15	f	1	\N
+40	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) \r\n\r\nOver two hours of [Free Improv(http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:33:42	2011-11-07 00:33:42	f	1	\N
+41	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) \r\n\r\nOver two hours of [Free Improv] (http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:34:05	2011-11-07 00:34:05	f	1	\N
+42	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) Over two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:34:33	2011-11-07 00:34:33	f	1	\N
+43	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)                                                                             Over two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:34:53	2011-11-07 00:34:53	f	1	\N
+44	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)                                                                          Over two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:35:59	2011-11-07 00:35:59	f	1	\N
+45	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)Over two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:36:28	2011-11-07 00:36:28	f	1	\N
+46	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) Over two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:36:46	2011-11-07 00:36:46	f	1	\N
+47	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) Podcast number 4 from Square Waves  \r\n\r\n\r\nOver two hours of [Free Improv](http://www.forwind.net/podcasts/7) on Podcast number 4 from Square Waves.	2011-11-07 00:37:19	2011-11-07 00:37:19	f	1	\N
+48	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg) Two hours of [Free Improv](http://www.forwind.net/podcasts/7) to mull over on Podcast number 4 from Square Waves.	2011-11-07 00:38:09	2011-11-07 00:38:09	f	1	\N
+49	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)Two hours of [Free Improv](http://www.forwind.net/podcasts/7) to mull over on Podcast number 4 from Square Waves.	2011-11-07 00:38:19	2011-11-07 00:38:19	f	1	\N
+50	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\nTwo hours of [Free Improv](http://www.forwind.net/podcasts/7) to mull over on Podcast number 4 from Square Waves.	2011-11-07 00:38:27	2011-11-07 00:38:27	f	1	\N
+51	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\nTwo hours of [Free Improv(http://www.forwind.net/podcasts/7) to mull over on Podcast number 4 from Square Waves.	2011-11-07 00:38:38	2011-11-07 00:38:38	f	1	\N
+52	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\n\r\n\r\nTwo hours of [Free Improv](http://www.forwind.net/podcasts/7) to mull over on Podcast number 4 from Square Waves.	2011-11-07 00:38:54	2011-11-07 00:38:54	f	1	\N
+53	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\n\r\n\r\nOver two hours of [Free Improv](http://www.forwind.net/podcasts/7) excursions to mull over on Podcast number 4 from Square Waves.	2011-11-07 00:40:16	2011-11-07 00:40:16	f	1	\N
+54	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\n\r\n\r\nOver two hours of [Free Improv](http://www.forwind.net/podcasts/7) excursions to mull over on smartly titled Podcast number 4 from Square Waves!	2011-11-07 00:44:27	2011-11-07 00:44:27	f	1	\N
+55	Square Waves Podcast - The Hated Music	![alt text](http://www.forwind.net/images/podcasts/FWDP07.jpg)\r\n\r\n\r\nOver two hours of [Free Improv](http://www.forwind.net/podcasts/7) excursions to mull over on smartly titled Podcast number 4 from Square Waves!	2011-11-07 00:44:57	2011-11-07 00:44:57	t	1	2011-11-07 00:44:57
+56	Forwind on Rte Lyric FM:Nova	![alt text](http://img.rasset.ie/00006c930c8r.jpg)\r\nMuch appreciated [radio play](http://www.rte.ie/lyricfm/nova/1489151.html)and kind words for Sonnamble and Elvers on one of our favourite radio shows Nova. 	2011-11-07 11:12:05	2011-11-07 11:12:05	f	1	\N
+57	Forwind on Rte Lyric FM:Nova	![alt text](http://img.rasset.ie/00006c930c8r.jpg)\r\n\r\n\r\nMuch appreciated [radio play](http://www.rte.ie/lyricfm/nova/1489151.html)and kind words for Sonnamble and Elvers on one of our favourite radio shows Nova. 	2011-11-07 11:12:33	2011-11-07 11:12:33	f	1	\N
+58	Forwind on Rte Lyric FM:Nova	![alt text](http://img.rasset.ie/00006c930c8r.jpg)\r\n\r\n\r\nMuch appreciated [radio play](http://www.rte.ie/lyricfm/nova/1489151.html)and kind words for Sonnamble and Elvers on one of our favourite radio shows Nova. 	2011-11-07 11:12:44	2011-11-07 11:12:44	f	1	\N
+59	Forwind on Rte Lyric FM:Nova	![alt text](http://img.rasset.ie/00006c930c8r.jpg)\r\n\r\n\r\nMuch appreciated [radio play](http://www.rte.ie/lyricfm/nova/1489151.html) and kind words for Sonnamble and Elvers on one of our favourite radio shows Nova. 	2011-11-07 11:25:58	2011-11-07 11:25:58	f	1	\N
+60	Forwind on Rte Lyric FM:Nova	![alt text](http://img.rasset.ie/00006c930c8r.jpg)\r\n\r\n\r\nMuch appreciated [radio play](http://www.rte.ie/lyricfm/nova/1489151.html) and kind words for Sonnamble and Elvers on one of our favourite radio shows Nova hosted as ever by Bernard Clarke. 	2011-11-07 11:26:42	2011-11-07 11:26:42	t	1	2011-11-07 11:26:42
+61	Forwindings	Forwind would like to thank all those who contributed to a special evening at St. Leonards. A special thanks goes out to Robin for the beautiful venue, Celia Topping for her captivating photography and Paul Cowie and Mark Punt for filming the whole event. Charlie Beresford worked tirelessly to  record the evening which we will make available shortly. \r\n\r\n<br/>\r\n![Ed Devane performing at Forwindings](http://www.forwind.net/images/index/ed.jpg)\r\n\r\n<i> Ed Devane </i>\r\n<br/>\r\n<br/>\r\n![Charlie Beresford from Fourth Page performing at Forwindings](http://www.forwind.net/images/index/charlie.jpg) \r\n\r\n<i> Charlie Beresford from Fourth Page </i>\r\n<br/>\r\n<br/>\r\n![Elvers performing at Forwindings](http://www.forwind.net/images/index/elvers-fwdings.jpg)\r\n<i> Elvers </i>\r\n<br/>\r\n<br/>\r\n![Sonnamble performing at Forwindings](http://www.forwind.net/images/index/sonnamble-fwdings.jpg)\r\n<i> Wei-ya Lin, Peter Marsh and Conor Curran from Sonnamble </i>\r\n<br/>\r\n<br/>\r\n![Paul May performing at Forwindings](http://www.forwind.net/images/index/paul.jpg)\r\n<i> Paul May from Fourth Page, Sonnamble, Elvers, Found drowned ... </i>\r\n<br/>\r\n<br/>\r\n![James O'Sullivan/Found Drowned performing at Forwindings](http://www.forwind.net/images/index/found-drowned.jpg)\r\n<i> James O'Sullivan and Found Drowned</i>\r\n<br/>\r\n<br/>\r\n\r\n![the mooon is a spaceship performing at Forwindings](http://www.forwind.net/images/index/derek.jpg)\r\n<i> the moon is a spaceship</i>\r\n	2011-11-26 13:17:06	2011-11-26 14:50:20	t	2	2011-11-26 14:44:50
+62	Square Waves 3.5: Voltage / Lungs	[![Podcast image for FWDP08](http://www.forwind.net/images/index/fwdp08-blogpost.jpg)](http://forwind.net/podcasts/8)\r\n\r\nFollowing on in the free improv vein Square Waves 3.5 is now [available](http://forwind.net/podcasts/8). 	2011-12-03 10:27:31	2011-12-03 10:30:15	t	2	2011-12-03 10:30:15
+63	SKZW - Storm	![SKZW podcast image](http://www.forwind.net/images/podcasts/FWDP09_blog.jpg)\r\n</br>\r\nNew podcast available from a new Irish contributor, SKZW. At this rate of podcast churn we will be starting to run out of server space soon ! 	2011-12-11 21:02:17	2011-12-12 00:32:53	t	2	2011-12-11 21:03:57
+64	Feed Back Couple reviewed	John Eyles at All About Jazz has written a nice review of James O' Sullivan's debut for Forwind. [Read it here](http://www.allaboutjazz.com/php/article.php?id=41080)...	2012-01-02 14:27:30	2012-01-02 14:29:57	t	3	2012-01-02 14:27:30
+65	Upcoming	Plans are afoot for a batch of new releases for the end of March. Details will be announced shortly but it'll include a set of live recordings by an expanded Sonnamble line-up made in London and Vienna. Listen to a sneak preview [here](http://soundcloud.com/forwind/sonnamble-live-in-london). \r\n\r\nAnother new addition are Dublin trio Dentistry, who describe themselves as having influences from Cage to Ambarchi; their album is an eclectic mix of improv and structure from electronics and live instrumentation, and is much more fun that that description might suggest...\r\n\r\nAlso there'll be a live recording from Fourth Page made at Forwindings last year which the band reckon is their best yet. Another sneak preview is [here](http://soundcloud.com/forwind/fourth-page-ticks-and-moans).\r\n\r\nWe're also working on another Forwindings event to be held at Shoreditch Church at around the same time; again, date to be announced...	2012-01-24 17:05:02	2012-03-19 19:58:05	t	3	2012-01-24 17:05:02
+66	Sequence 3	[![Sequence 3 artwork](http://forwind.net/images/index/sequence-3.jpg)](http://www.futuresequence.com/releases/sequence-three/)\r\n\r\n[Future Sequence](http://www.futuresequence.com/releases/sequence-three/) have just released their third Sequence compilation and have included a Sonnamble piece along side numbers from MachineFabriek, Maps and diagrams, Field Rotation and many more. \r\n\r\n'Vespers' by Sonnamble was recorded at the Forwindings night back in November at St. Leonards in Shoreditch, London. The Sonnamble lineup that night was Wei-ya Lin on Viola, Paul May on Drums, Peter Marsh on Dobro guitar and Conor Curran on electronics.   	2012-03-04 15:19:48	2012-03-08 09:34:43	t	2	2012-03-04 15:29:37
+67	LAC 2012	![CCRMA's listening room](http://www.forwind.net/images/index/listening_room.jpg)\r\nOver the weekend I attended the Linux Audio Conference at Stanford, California. Sonnamble's Aphelion (I & II) was fortunate to be included in the listening roster at the CCRMA's listening room (pictured above).  \r\n<br/>\r\nNeedless to say the whole conference was inspiring. An event like this in such a location attracts a very interesting assortment of heads from musicians to engineers to inventors or more likely a mixture of all of the above. I would like to thank the organisers [Fernando Lopez-Lezcano](https://ccrma.stanford.edu/~nando/) and [Bruno Ruviaro](http://www.brunoruviaro.com/), Frank Neumann, [Robin Gareus](http://gareus.org/) and [Julius O. Smith III](https://ccrma.stanford.edu/~jos/). Great work guys and very much looking forward to next year's LAC at IEM in Graz, Austria !	2012-04-16 16:30:21	2012-04-17 01:52:46	t	2	2012-04-17 01:52:46
+69	Vienna/Budapest	Sonnamble plan to play a series of gigs in both cities next week.\r\n<br/>\r\n\r\n**Velac Gala #69**<br/>\r\n*Tuesday 22/05/2012*<br/>\r\nbrut konzerthaus <br/>\r\nlothringerstrasse 20<br/> \r\n1030 Vienna<br/>\r\nTuesday 22/05/2010<br/>\r\ndoors: 9:00pm <br/>\r\n[http://velak.klingt.org/](http://velak.klingt.org/)\r\n<br/>\r\n\r\n**JAZZAJ fesztivál**<br/>\r\n*Wednesday 23/05/2012*<br/> \r\nMika Tivadar Mulató<br/>\r\n1075 Budapest<br/>\r\nVII. kerület<br/>\r\nKazinczy utca 47<br/> \r\ndoors: 9:00pm<br/> \r\n[http://www.facebook.com/events/445004008849604/](http://www.facebook.com/events/445004008849604)\r\n<br/>\r\n**Sunday Driver**<br/>\r\n*Sunday 27/05/2012*<br/>\r\nRienößlgasse 12/4, 1040 Wien<br/>\r\ndoors: 2pm<br/>\r\n[http://www.facebook.com/events/212657362186875/](http://www.facebook.com/events/212657362186875/)	2012-05-17 21:03:55	2012-05-23 10:56:14	t	2	2012-05-17 21:21:13
+78	VARDØGR Digipack CD now available	![FWD07 digipack cd](http://www.forwind.net/images/index/dv-bp.png)\r\n\r\n<br/>\r\nAfter a number of complications with the plant we are so relieved and excited (all at the same time) to finally get Dentistry's Vardøgr out in Digipak format. This should show up in a number of outlets in the not so distant future but as always it is available now at  [Norman Records](http://www.normanrecords.com/records/137536-dentistry---vardogr-).\r\n<br/>\r\nA special thank you to [Annekathrin Gröninger](http://www.annegroen.de/) for the artwork and to our in-house Hannes Jentsch for his impeccable design.  	2012-11-09 16:36:24	2012-11-09 18:33:48	t	2	2012-11-09 16:58:57
+79	Forwind Physicals available from Piccadilly Records Manchester	[![alt text](http://www.piccadillyrecords.com/imgsite/shopfront.jpg)](http://www.piccadillyrecords.com/shop/search.php?search=forwind)\r\n\r\nNew Forwind physicals now available at one of the last proper record shops left standing - [Piccadilly Records](http://www.piccadillyrecords.com/shop/search.php?search=forwind) in Manchester!\r\n	2012-11-28 14:00:52	2012-11-28 14:04:44	t	1	2012-11-28 14:04:44
+70	Dentistry - 'Vardøgr' Out Today	[![alt text](http://www.forwind.net/images/releases/fwd07.png)](http://www.forwind.net/releases/fwd07)\r\n\r\nForwind 07 hits the virtual shelves today at [boomkat](http://boomkat.com/downloads/518446-dentistry-vard-gr), iTunes, [Amazon](http://www.amazon.co.uk/Vard%C3%B8gr/dp/B007UD4XX0/ref=sr_1_1?ie=UTF8&qid=1337539975&sr=8-1), [Juno](http://www.junodownload.com/products/vardogr/1958109-02/) and all the usual suspects.\r\n\r\nHere are the details! \r\n<br/> \r\n\r\nForwind is very pleased to present one of the murkiest, most foreboding excursions on the label so far in [‘Vardøgr’](http://www.forwind.net/releases/FWD07) the debut long player from the Dublin trio [Dentistry](http://www.forwind.net/artists/Dentistry).\r\n<br/>\r\n\r\nThe word vardøgr is a Norwegian term defined as 'a premonitory sound or sight of a person before he arrives’. Like a reverse episode of déjà vu possibly, the title hints at many of the mysterious sensory anomalies that have confronted many of the great thinkers and spiritualists as they have contemplated the philosophical minefield of trying to understand human consciousness and perception. And it is this foggy terrain that gets explored over the albums five tracks.\r\n<br/>\r\nDentistry are Cian Walker, Patrick Fennelly and Jason Joomun -\r\n<br/>\r\n\r\nStarting off as a virtual collaboration the project developed offline and organically until they were ready to enter the studio armed with instruments and electronics to record the material for their debut. Vardøgr is the end product of those sessions where the trio set about producing a work that hinged on extensive improvisation as well as more traditional stucture. They draw influence from a large number of sources from Cage to Ambarchi which is evidenced in the restrained and evocative nature of their beguiling debut. \r\n<br/>\r\n\r\nHope you get a chance to listen.	2012-05-20 18:56:27	2012-05-21 08:57:49	t	1	2012-05-21 00:41:58
+71	Forwind 07 - Review	[![alt text](http://acloserlisten.files.wordpress.com/2012/01/acl-ideas10.jpg)](http://acloserlisten.com/2012/06/02/dentistry-vardogr/)\r\n\r\nAlways nice to get reviewed by someone who really listens to the material and appreciates the details after all those hours spent poring over them! Head over and check out a  blinding [review](http://acloserlisten.com/2012/06/02/dentistry-vardogr/) of the Dentistry debut [Vardøgr](http://www.forwind.net/releases/fwd07)  from Richard over at a closer listen. 	2012-06-02 17:14:47	2012-06-02 17:50:29	t	1	2012-06-02 17:50:29
+72	Sonnamble tour acknowledgements	After our minitour of Vienna and Budapest we would like to thank\r\n\r\nTamara Wilhelm,\r\nStefan Fraunberger\r\nand everyone at Klingt.org,\r\nMarkus Zahradnik (Photographer),\r\nErnö Rupik,\r\nSamu Gryllus,\r\nRonald Vitzthum,\r\nBerndt Thuner, \r\nJohannes Kretz\r\n&\r\nEmber Sári\r\nfor taking great care of us. \r\n<br/>\r\nWe have put together an [abstract video](http://www.youtube.com/watch?v=A4e7fevOfAc&feature=relmfu)\r\nfrom a piece from our performance at Velac Gala in Vienna.\r\n[![Velac Gala performance - Sonnamble](http://www.forwind.net/images/index/video-screenshot.png)](http://www.youtube.com/watch?v=A4e7fevOfAc&feature=relmfu)\r\n<br/>\r\n\r\nSome pics from that same gig:\r\n\r\n![Velac Gala - Sonnamble](http://www.forwind.net/images/index/weiya-velac-gala.png)\r\n![Velac Gala - Sonnamble](http://www.forwind.net/images/index/pete-velac-gala.png)\r\n![Velac Gala - Sonnamble](http://www.forwind.net/images/index/paul-velac-gala.png)\r\n![Velac Gala - Sonnamble](http://www.forwind.net/images/index/conor-velac-gala.png)\r\n	2012-06-05 20:41:01	2012-06-08 16:34:31	t	2	2012-06-05 20:46:12
+73	Fourth Page On Tour	Fourth Page are on tour across the UK in August. Full dates are [here](http://4thpagemusic.blogspot.co.uk/2012/06/tour-dates.html). The band's third album 'Ticks and Moans' (recorded at last year's Forwindings event) will also appear on Forwind around the same time.\r\n\r\nAs a warm up to the tour the band play a special show alongside Elvers and cellist Hannah Marshall at Shoreditch Church on July 7th. Tickets available [here](http://www.wegottickets.com/event/162836). 	2012-06-22 11:01:01	2012-06-22 12:07:44	t	3	2012-06-22 11:32:12
+74	Fourth Page - Ticks and Moans Out Now!	![](http://forwind.net/images/releases/fwd08.png)\r\n\r\nThe new Fourth Page album (FWD08) is out today. Here's the press release...\r\n\r\nThis is the third release from Fourth Page and their second for Forwind. It's a live set recorded at St Leonard's Church in Shoreditch during the Forwindings mini-festival in late 2011 (previous releases were also recorded live, but without an audience).\r\n\r\nThis is possibly the group's most brooding and atmospheric work to date, sumptuously recorded in St Leonard's spacious acoustic by guitarist/vocalist Charlie Beresford. Joining him as usual are pianist Carolyn Hume, bassist Peter Marsh and percussionist Paul May for a suite of five spontaneously composed songs. \r\n\r\nReviews of the band's previous recordings have drawn comparisons with Mark Hollis, Robert Wyatt, classic Krautrock, the Spontaneous Music Ensemble and even Schubert's Winterreise. There's probably a lot of truth in those comparisons, but it's the band's ability to take elements of jazz, minimalism and free improvisation and stitch them into stretched, hushed, dark songs before your ears that's the most remarkable thing about them. Clocking in at 37 minutes, this is a record where barely a note is wasted. We hope you like it.\r\n\r\nThe band are on tour at the moment You can listen to two pieces recorded a few days back [here](http://soundcloud.com/4thpage/sets/live-recordings-summer-2012/).	2012-08-06 13:08:38	2012-08-06 21:43:13	t	3	2012-08-06 13:09:09
+75	Dalston Sound Feature	[![alt text](http://www.doublebassprofiles.com/userimages/profilephotos/thumb/1/38/71_1999.jpg)](http://dalstonsound.wordpress.com/2012/08/18/forwind-label-roundup-fourth-page-ticks-and-moans-sonnamble-blindlight-elvers-elvers/)\r\n\r\nHead over to [Dalston Sound](http://dalstonsound.wordpress.com/2012/08/18/forwind-label-roundup-fourth-page-ticks-and-moans-sonnamble-blindlight-elvers-elvers/) who have very kindly done an in depth roundup of the forwind releases to date that feature the hardest working man with a double bass and lapsteel we know - Peter Marsh!	2012-08-20 22:22:03	2012-08-20 22:31:38	t	1	2012-08-20 22:31:38
+76	Blindlight digipak CD now available	![Blindlight CD photo](http://forwind.net/images/index/bl-blogpost.png)\r\n\r\nA remixed and remastered version of Sonnamble's Blindlight is now available in digipak CD format through [Stashed Goods](http://www.store.fluid-radio.co.uk/2012/10/sonnamble-blindlight-cd/) and [Norman Records](http://www.normanrecords.com/records/129504-sonnamble-blindlight). The digital version will be available through all the normal outlets from Monday the 15th of this month.<br/>\r\nThis is a far more polished and palatable version of what was originally released. Hopefully more digestible than it's harsher predecessor. <br/>\r\nFor those of you who bought the original and would like it replaced with this version please get in touch via the email address on the about page. \r\n\r\n	2012-10-13 17:37:20	2012-10-13 18:24:07	t	2	2012-10-13 17:50:59
+77	New Traces Podcast	[![alt text](http://www.forwind.net/images/podcasts/FWDP12.jpg)](http://www.forwind.net/podcasts/12)\r\n\r\n\r\nShane continues the 'Traces' podcast series with ['Outage'](http://www.forwind.net/podcasts/12). Usual kitchen sink mix of pop n politics over a wall of hissing outsider sounds.\r\n\r\n	2012-11-06 21:22:00	2012-11-06 21:36:22	t	1	2012-11-06 21:36:22
+80	It's just music baby	![soundart radio logo](http://forwind.net/images/index/soundart_badge_winter_transparent.png)\r\n\r\nThe monthly show 'It's just music baby' on Devon's Soundart radio station will feature material from a number of past Forwind releases for a second month running tonight. The broadcast can be listened to live on [soundartradio.org.uk](http://www.soundartradio.org.uk/) or on [soundcloud](https://soundcloud.com/its-just-music-baby).\r\n \r\nA big thanks to Richard from the show for the support and the great mixes. Keep up the good work !\r\n\r\n	2013-02-14 10:04:37	2013-02-14 10:09:11	t	2	2013-02-14 10:09:11
+81	Tomonari Nozaki 'North Palace' Out Now	[![north palace cover](http://forwind.net/images/releases/fwd09.png)](http://www.forwind.net/releases/fwd09)\r\n\r\nEveryone at forwind is delighted to finally let go of the balloon and unleash Tokyo based producer ‘Tomonari Nozaki’s [‘North Palace’](http://www.forwind.net/releases/fwd09)\r\n\r\n<br />\r\n\r\nHe may not be the only artist to have forsaken the convenience of producing his music on a macbook but there haven't been many we have heard who have produced such a thoroughly captivating sound from their old reel to reel tape units and analogue equipment in recent times.\r\n\r\n<br />\r\n\r\n‘Tomo's' hugely immersive sound feels like opening an old dusty wooden box and hearing a frayed melancholy soundtrack to somewhere standing outside of time and the concerns of the world. It manages to be remote and indefinable in parts but has such spirit and warmth it's hard not to let yourself become completely absorbed.\r\n\r\n<br />\r\n\r\nTomonari has been previously released under his UNKNOWNjp. alias on the Slovakian Label Soun Records. ‘North Palace’ sees him make his physical release debut, the first of hopefully many more.\r\n\r\n<br />\r\n\r\n It has been a real labour of love getting this album across the finish line with a huge amount of TLC going into the production, mastering, artwork and presentation.\r\n\r\n<br />\r\n \r\nThere is an album sampler available to listen to now on [soundcloud](https://soundcloud.com/forwind/fwd09-tomonari-nozaki-north) featuring excerpts from all of the albums tracks\r\n\r\n<br />\r\n \r\nWe hope you enjoy the music as much as we enjoyed helping to get it out there.\r\n \r\n	2013-02-24 18:04:07	2013-02-28 12:34:24	t	1	2013-02-28 12:34:24
+82	North Palace Reviews	![alt text](http://forwind.net/images/releases/fwd09.png)\r\n\r\nLots of positive reviews to read through for FWD09 courtesy of \r\n[theliminal](http://www.theliminal.co.uk/2013/03/tomonari-nozaki-north-palace/), [scrolldust](http://scrolldust.com/2013/02/25/tomonari-nozaki-north-palace/) and [Dalston Sound](http://dalstonsound.wordpress.com/2013/03/14/tomonari-nozaki-north-palace/). 	2013-03-15 01:43:53	2013-03-15 14:45:25	t	1	2013-03-15 14:45:25
+83	Live Sonnamble Podcast	[![Frozen Leaves](http://forwind.net/images/podcasts/FWDP13.jpg)](http://forwind.net/podcasts/13)\r\n</br>\r\nOur first [podcast](http://forwind.net/podcasts/13) of 2013 is now available. It is a collection of live performances from the *Sonnamble* four piece that played Vienna a number of times, Budapest and London during the last quarter of 2011 and mid 2012. </br></br>\r\nUnfortunately this will be the last of that line-up for *Sonnamble*. In truth this podcast is the failed attempt at a third album. [Blindlight](http://forwind.net/releases/fwd06) (*Sonnamble's* second) was  recorded way back in 2010 and ever since we had been struggling to move the project on to a new phase experimenting with different line-ups but never really gaining any momentum or consistency. I may continue with *Sonnamble* again at some point but for now the project is retired.\r\n</br></br>\r\nThis line-up for these performances is:\r\n</br></br>\r\nWei-ya Lin - Viola<br/>\r\nPaul May - Percussion<br/>\r\nPeter Marsh - Double Bass/Dobro guitar<br/>\r\nConor Curran - Electronics<br/>\r\n</br>\r\nAs ever mixed, mastered and produced by Conor Curran.\r\n</br></br>\r\nPhotography by mother dearest Maura Curran at Glenlodge, Dungarvan, Ireland.\r\n</br></br>\r\nAvailable to stream @ [Mixcloud](http://www.mixcloud.com/Forwind/sonnamblings/)\r\n  	2013-04-11 14:36:19	2013-04-12 23:19:07	t	2	2013-04-11 15:09:47
+\.
+
+
+--
+-- Name: blog_posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('blog_posts_id_seq', 84, false);
+
+
+--
+-- Data for Name: blog_tags; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY blog_tags (id, blog_post_id, tag) FROM stdin;
+40	3	forwind design
+63	5	reviews
+64	5	sonnamble
+69	6	reviews
+70	6	sonnamble
+76	9	podcasts
+196	13	james o'sullivan
+262	16	state51
+263	16	releases
+282	17	elvers
+283	17	releases
+295	15	elvers
+296	15	bbc radio 3
+297	15	late junction
+299	19	podcasts
+304	18	james o'sullivan
+305	18	releases
+308	20	clang sayne
+309	20	releases
+338	10	severed head gallery
+339	10	ed devane
+373	23	releases
+374	23	boomkat
+375	23	fourth page
+393	24	sonnamble
+394	24	the wire
+405	25	releases
+406	25	sonnamble
+431	26	releases
+432	26	cjc
+433	22	fourth page
+434	22	releases
+439	27	reviews
+440	27	sonnamble
+449	29	podcasts
+462	14	james o'sullivan
+463	14	elvers
+464	30	reviews
+465	30	sonnamble
+468	31	podcasts
+480	4	events
+481	4	sonnamble
+482	4	audiovisual
+487	2	james o'sullivan
+488	2	audiovisual
+499	33	sonnamble
+500	33	another festival
+501	33	events
+516	34	sonnamble
+517	34	reviews
+524	35	sonnamble
+525	35	reviews
+529	36	podcasts
+535	37	sonnamble
+536	38	podcasts
+537	39	podcasts
+538	40	podcasts
+539	41	podcasts
+540	42	podcasts
+541	43	podcasts
+542	44	podcasts
+543	45	podcasts
+544	46	podcasts
+545	47	podcasts
+546	48	podcasts
+547	49	podcasts
+548	50	podcasts
+549	51	podcasts
+550	52	podcasts
+551	53	podcasts
+552	54	podcasts
+553	55	podcasts
+554	56	nova
+555	57	nova
+556	58	nova
+557	59	nova
+558	60	nova
+561	32	events
+570	61	events
+572	12	podcasts
+573	8	podcasts
+574	1	events
+575	1	sonnamble
+576	1	james o'sullivan
+580	62	podcasts
+584	63	podcasts
+591	64	james o'sullivan
+592	64	reviews
+593	21	elvers
+594	21	reviews
+615	66	sonnamble
+616	66	future sequence
+622	65	sonnamble
+623	65	fourth page
+624	65	forwindings
+625	65	dentistry
+634	67	sonnamble
+635	67	lac2012
+640	68	sonnamble
+641	68	events
+679	70	dentistry
+680	70	releases
+681	69	sonnamble
+682	69	events
+725	71	reviews
+726	71	dentistry
+730	72	sonnamble
+731	72	velac gala
+732	72	events
+741	73	fourth page
+742	73	elvers
+746	74	fourth page
+752	75	reviews
+753	75	fourth page
+754	75	elvers
+755	75	sonnamble
+761	76	sonnamble
+786	77	podcasts
+793	78	dentistry
+796	79	dentistry
+797	79	sonnamble
+800	80	soundartradio
+810	81	tomonari nozaki
+811	81	releases
+834	82	tomonari nozaki
+835	82	reviews
+850	83	sonnamble
+851	83	podcasts
+\.
+
+
+--
+-- Name: blog_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('blog_tags_id_seq', 852, false);
+
+
+--
+-- Data for Name: links; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY links (id, artist_id, location, created_at, updated_at) FROM stdin;
+2	1	http://www.thedigitalhubexhibit.com/events-archive/exhibit/exhibit1	2011-03-06 21:33:36	2011-03-06 21:33:36
+4	1	http://www.electrocd.com/en/cat/sido_010/	2011-03-06 21:33:36	2011-03-06 21:33:36
+5	8	http://www.soundcloud.com/james-osullivan	2011-03-06 21:33:36	2011-03-06 21:33:36
+6	8	http://www.soundcloud.com/four-seasons-television	2011-03-06 21:33:36	2011-03-06 21:33:36
+7	8	http://www.davidhurn.co.uk	2011-03-06 21:33:36	2011-03-06 21:33:36
+8	8	http://www.clangsayne.net	2011-03-06 21:33:36	2011-03-06 21:33:36
+9	8	http://www.auralterrains.com/releases/6	2011-03-06 21:33:36	2011-03-06 21:33:36
+10	8	http://www.jamesosullivan.co.uk	2011-03-06 21:33:36	2011-03-06 21:33:36
+11	4	http://www.themilkfactory.co.uk/st/2010/06/sonnamble-seven-months-in-e-minor-forwind/	2011-03-06 21:33:36	2011-03-06 21:33:36
+13	312708593	http://www.myspace.com/ianrwatson	2011-03-06 21:33:36	2011-03-06 21:33:36
+14	312708593	http://www.elvers.blogspot.com	2011-03-06 21:33:36	2011-03-06 21:33:36
+15	312708594	http://www.clangsayne.net/	2011-03-17 00:14:31	2011-03-17 00:14:31
+16	312708594	http://www.myspace.com/clangsayne	2011-03-17 00:14:31	2011-03-17 00:14:31
+17	312708594	http://www.soundcloud.com/clangsayne	2011-03-17 00:14:31	2011-03-17 00:14:31
+18	312708594	http://www.last.fm/music/Clang+Sayne 	2011-03-17 00:14:31	2011-03-17 00:14:31
+19	312708595	http://www.brightfieldproductions.co.uk/4thpage/	2011-05-18 23:45:19	2011-05-18 23:45:19
+20	\N	https://sites.google.com/site/unknownjptokyo	2012-11-29 11:10:23	2012-11-29 11:12:00
+21	\N	http://soun.bandcamp.com/album/romantica	2012-11-29 11:11:20	2012-11-29 11:12:08
+24	\N	https://sites.google.com/site/unknownjptokyo	2012-11-29 11:33:39	2012-11-29 11:33:39
+25	312708601	https://www.sites.google.com/site/unknownjptokyo/	2012-11-29 11:44:32	2012-11-29 11:48:54
+26	312708601	http://www.soun.bandcamp.com/album/romantica	2012-11-29 11:51:42	2012-11-29 11:51:42
+\.
+
+
+--
+-- Name: links_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('links_id_seq', 27, false);
+
+
+--
+-- Data for Name: pieces; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY pieces (id, release_id, artist_id, title, description) FROM stdin;
+1	3	5	Portrait Sonification	\N
+2	3	6	Graph Theory	\N
+3	3	2	Sehnsucht	\N
+\.
+
+
+--
+-- Name: pieces_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('pieces_id_seq', 4, false);
+
+
+--
+-- Data for Name: podcasts; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY podcasts (id, title, artist_id, file_name, available, genre, cat_no, duration, created_at, updated_at) FROM stdin;
+1	Winter Songs	312708592	/podcasts/FWDP01	t	electroacoustic, improv	FWDP01	49	2011-01-04 10:32:45	2011-01-04 10:32:45
+2	Outpost	7	/podcasts/FWDP02	t	noise, drone, experimental	FWDP02	40	2011-02-01 20:50:42	2011-02-01 20:50:42
+3	Schism	312708596	/podcasts/FWDP03	t	guitar synth drone	FWDP03	35	2011-05-30 22:26:42	2011-05-31 01:44:25
+4	Untitled with Rain	312708597	/podcasts/FWDP04	t	guitar based	FWDP04	107	2011-09-13 21:03:54	2011-09-20 22:58:47
+5	The Given	312708597	/podcasts/FWDP05	t	field recordings	FWDP05	148	2011-09-30 21:31:58	2011-09-30 21:31:58
+6	Vibrations	312708597	/podcasts/FWDP06	t	Strings/Synth	FWDP06	175	2011-10-18 13:44:07	2011-10-18 13:44:07
+7	The Hated Music	312708597	/podcasts/FWDP07	t	Free Improvisation	FWDP07	140	2011-11-04 17:23:09	2011-11-04 17:23:09
+8	Voltage/Lungs	312708597	/podcasts/FWDP08	t	Free Improvisation	FWDP08	130	2011-12-03 09:41:04	2011-12-03 09:41:04
+9	Storm	312708598	/podcasts/FWDP09	t	Electronic	FWDP09	73	2011-12-11 19:41:16	2011-12-11 19:41:16
+10	aNother Festival	312708599	/podcasts/FWDP10	t	Free Improvisation	FWDP10	38	2012-02-15 20:23:38	2012-02-15 20:23:38
+11	Revolve	312708597	/podcasts/FWDP11	t	Turntablism	FWDP11	152	2012-03-20 10:34:39	2012-03-20 10:34:39
+12	Outage	7	/podcasts/FWDP12	t	Mix	FWDP12	42	2012-11-03 22:08:28	2012-11-03 22:10:45
+13	Sonnamblings	312708602	/podcasts/FWDP13	t	Live Performance	FWDP13	2330	2013-04-11 01:52:57	2013-04-11 01:52:57
+\.
+
+
+--
+-- Name: podcasts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('podcasts_id_seq', 14, false);
+
+
+--
+-- Data for Name: release_links; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY release_links (id, location, release_id, vendor, created_at, updated_at, link_type) FROM stdin;
+1	http://boomkat.com/downloads/405723-elvers-elvers	6	Boomkat	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+2	http://www.amazon.co.uk/Elvers/dp/B004YXO2QM/ref=sr_shvl_album_1?ie=UTF8&qid=1305538280&sr=301-1	6	Amazon	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+3	http://www.emusic.com/album/Elvers-Elvers-MP3-Download/12535210.html	6	Emusic	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+4	http://itunes.apple.com/gb/album/elvers/id435295326	6	iTunes	2011-05-16 19:11:35	2011-05-16 19:11:35	\N
+5	http://boomkat.com/downloads/405724-james-o-sullivan-feed-back-couple	5	Boomkat	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+6	http://www.amazon.co.uk/feed-back-couple/dp/B004YXNY98/ref=sr_shvl_album_1?ie=UTF8&qid=1305566845&sr=301-1	5	Amazon	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+7	http://www.emusic.com/album/James-O-Sullivan-feed-back-couple-MP3-Download/12535093.html	5	Emusic	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+8	http://itunes.apple.com/gb/album/feed-back-couple/id435295114	5	iTunes	2011-05-16 19:11:35	2011-05-16 19:11:35	\N
+9	http://boomkat.com/downloads/405892-clang-sayne-winterlands	7	Boomkat	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+10	http://www.amazon.co.uk/Winterlands/dp/B004YXQR38/ref=sr_shvl_album_1?ie=UTF8&qid=1305567303&sr=301-1	7	Amazon	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+11	http://www.emusic.com/album/Clang-Sayne-Winterlands-MP3-Download/12535026.html	7	Emusic	2011-05-16 19:11:35	2011-06-19 19:58:39	1
+12	http://itunes.apple.com/gb/album/winterlands/id435295595	7	iTunes	2011-05-16 19:11:35	2011-05-16 19:11:35	\N
+13	http://www.clangsayne.net/shop.html	7	ClangSayne.net	2011-05-20 09:47:22	2011-06-19 19:58:39	0
+14	http://www.jamesosullivan.co.uk/buy.html	5	JamesOSullivan.co.uk	2011-05-20 09:47:22	2011-06-19 19:58:39	0
+15	http://www.normanrecords.com//cd/115079-sonnamble-seven-months-in-e-minor	2	Norman Records	2011-06-11 16:39:00	2011-06-19 19:58:39	0
+16	http://boomkat.com/downloads/304898-sonnamble-seven-months-in-e-minor	2	Boomkat	2011-06-11 16:39:01	2011-06-19 19:58:39	1
+17	http://www.amazon.co.uk/Seven-Months-In-E-Minor/dp/B0051RP16A/ref=sr_1_1?ie=UTF8&qid=1307806277&sr=8-1	2	Amazon	2011-06-11 16:39:01	2011-06-19 19:58:39	1
+18	http://www.emusic.com/album/Sonnamble-Seven-months-in-E-minor-MP3-Download/12614131.html	2	Emusic	2011-06-11 16:39:01	2011-06-19 19:58:39	1
+19	http://itunes.apple.com/gb/album/seven-months-in-e-minor/id371692981	2	iTunes	2011-06-11 16:39:01	2011-06-11 16:39:01	\N
+20	http://www.amazon.co.uk/Along-The-Weak-Rope/dp/B0051RNDYW/ref=sr_1_2?ie=UTF8&qid=1307808332&sr=8-2	8	Amazon	2011-06-11 16:57:43	2011-06-19 19:58:39	1
+21	http://www.emusic.com/album/fourth-page-along-the-weak-rope-MP3-Download/12614005.html	8	Emusic	2011-06-11 16:57:43	2011-06-19 19:58:39	1
+22	http://open.spotify.com/album/5FJwm3YStSRFDV248EIFA5	8	Spotify	2011-06-11 16:57:43	2011-06-19 19:58:39	2
+23	http://open.spotify.com/album/2Wjwb2mL9WTpd1A49td1ey	7	Spotify	2011-06-19 19:58:39	2011-06-19 19:58:39	2
+24	http://mapsadaisical.wordpress.com/2010/03/10/clang-sayne-winterlands-clang-sayne/	7	Mapsadaisical	2011-06-19 19:58:39	2011-06-19 19:58:39	3
+25	http://www.clangsayne.net/pressitem_thewireclivebell.html	7	The Wire	2011-06-19 19:58:39	2011-06-19 19:58:39	3
+26	http://open.spotify.com/album/3gOVRtu5cNKN8icHKLEAOX	2	Spotify	2011-06-19 19:58:39	2011-06-19 19:58:39	2
+27	http://www.themilkfactory.co.uk/st/2010/06/sonnamble-seven-months-in-e-minor-forwind/	2	The Milk Factory	2011-06-19 19:58:39	2011-06-19 19:58:39	3
+29	http://open.spotify.com/album/6pt7ZB2Ikvl2JZazWHxWaC	6	Spotify	2011-06-19 19:58:40	2011-06-19 19:58:40	2
+30	http://www.allaboutjazz.com/php/article.php?id=39687	6	All About Jazz	2011-06-19 19:58:40	2011-06-19 19:58:40	3
+31	http://open.spotify.com/album/1ugm6WmoKDHUzad9iO0Pw4	5	Spotify	2011-06-19 19:58:40	2011-06-19 19:58:40	2
+32	http://www.experimedia.net/index.php?main_page=product_music_info&cPath=1&products_id=1458	2	Experimedia	2011-06-21 20:32:51	2011-06-21 20:32:51	0
+35	http://www.play.com/Music/MP3-Download-Album/4-/20197342/-/Product.html	8	Play	2011-07-14 21:16:43	2011-07-14 21:16:43	1
+36	http://boomkat.com/downloads/423434-fourth-page-along-the-weak-rope	8	Boomkat	2011-07-14 21:16:43	2011-07-14 21:16:43	1
+37	http://itunes.apple.com/gb/album/along-the-weak-rope/id438832981	8	ITunes	2011-07-14 21:16:43	2011-07-14 21:16:43	1
+42	http://www.normanrecords.com/records/115080	1	Norman Records	2011-08-06 08:11:50	2011-08-06 08:11:50	0
+43	http://boomkat.com/downloads/430858-cjc-form	1	Boomkat	2011-08-06 08:11:50	2011-08-06 08:11:50	1
+44	http://www.amazon.co.uk/Form/dp/B005EPEMQY/ref=dm_ap_alb1?ie=UTF8&qid=1312617386&sr=301-1	1	Amazon	2011-08-06 08:11:50	2011-08-06 08:11:50	1
+45	http://open.spotify.com/album/5dtHr3E1Tzj88q6yXJXvWU	1	Spotify	2011-08-15 12:19:49	2011-08-15 12:19:49	2
+46	http://itunes.apple.com/us/album/form/id452455193	1	iTunes	2011-08-15 18:12:11	2011-08-15 18:12:11	1
+47	http://www.dinmag.co.uk/sonnamble-blindlight/	9	DIN	2011-08-29 15:04:44	2011-08-29 15:04:44	3
+48	http://www.themilkfactory.co.uk/st/2011/09/sonnamble-blindlight-forwind/	9	The Milk Factory	2011-09-14 13:45:54	2011-09-14 13:45:54	3
+49	http://www.bbc.co.uk/music/reviews/j2wx	9	BBC	2011-10-14 15:26:11	2011-10-14 15:26:11	3
+50	http://www.futuresequence.com/article/sonnamble-blindlight/	9	future sequence	2011-10-14 15:29:18	2011-10-14 15:30:00	3
+51	http://www.normanrecords.com/cd/129467-fourth-page-along-the-weak-rope	8	Norman Records	2011-10-21 23:15:39	2011-10-21 23:15:39	0
+52	http://www.normanrecords.com/cd/129504-sonnamble-blindlight	9	Norman Records	2011-10-21 23:19:50	2011-10-21 23:19:50	0
+53	http://www.allaboutjazz.com/php/article.php?id=41080	5	All About Jazz	2012-01-02 23:05:18	2012-01-02 23:05:18	3
+54	http://boomkat.com/downloads/518446-dentistry-vard-gr	10	Boomkat	2012-05-15 17:20:28	2012-05-15 17:20:28	1
+55	http://www.junodownload.com/products/vardogr/1958109-02/	10	Juno	2012-05-15 17:33:51	2012-05-15 17:33:51	1
+56	http://open.spotify.com/artist/2zP742b1GeivyhGIFecyY9	10	Spotify	2012-05-21 00:26:14	2012-05-21 00:26:14	2
+57	http://www.ambientblog.net/blog/2012-05-20/dentistry-vardogr	10	Ambient Blog	2012-05-21 00:28:52	2012-05-21 00:28:52	3
+58	http://acloserlisten.com/2012/06/02/dentistry-vardogr/	10	A Closer Listen	2012-06-05 08:35:31	2012-06-05 08:35:31	3
+59	http://itunes.apple.com/us/artist/dentistry/id519358996?ign-mpt=uo%3D4	10	iTunes	2012-06-05 08:40:12	2012-06-05 08:40:12	1
+60	http://boomkat.com/downloads/550766-fourth-page-ticks-and-moans	11	Boomkat	2012-08-06 12:14:46	2012-08-06 12:14:46	1
+61	http://www.thejazzmann.com/reviews/review/fourth-page-five-turnings-duo-the-lion-ballroom-leominster-herefordshire/	11	TheJazzman.com	2012-08-10 08:35:26	2012-08-10 08:35:26	3
+62	http://itunes.apple.com/album/ticks-and-moans/id542307648?v0=9988&ign-mpt=uo%3D1	11	iTunes	2012-08-10 08:38:40	2012-08-10 08:38:40	1
+63	http://open.spotify.com/album/4ilbkLc9LshS1QuU5oisQr	11	Spotify	2012-08-10 08:40:25	2012-08-10 08:40:25	2
+64	http://www.store.fluid-radio.co.uk/2012/10/sonnamble-blindlight-cd/	9	Stashed Goods	2012-10-05 15:28:51	2012-10-05 15:30:26	0
+65	http://boomkat.com/downloads/581456-sonnamble-blindlight	9	Boomkat	2012-10-05 15:36:43	2012-10-05 15:36:43	1
+66	http://www.normanrecords.com/records/137536-dentistry---vardogr-	10	Norman Records	2012-12-22 14:53:42	2012-12-22 14:53:42	0
+67	http://boomkat.com/cds/640646-sonnamble-blindlight	9	Boomkat	2013-01-22 09:22:16	2013-01-22 09:22:16	0
+68	http://boomkat.com/cds/640647-dentistry-vardogr	10	Boomkat	2013-01-22 09:25:31	2013-01-22 09:25:31	0
+69	http://dalstonsound.wordpress.com/2013/01/09/dentistry-vardogr-taus-pinna/	10	Dalston Sound	2013-02-08 17:13:47	2013-02-08 17:13:47	3
+70	http://www.normanrecords.com/records/139002-tomonari-nozaki-north-palace	12	Norman	2013-02-25 10:20:44	2013-02-25 10:20:44	0
+71	http://www.soundcloud.com/forwind/fwd09-tomonari-nozaki-north	12	Soundcloud	2013-02-25 10:29:07	2013-02-25 10:29:07	2
+72	http://www.store.fluid-radio.co.uk/2013/02/tomonari-nozaki-north-palace-cd	12	Stashed Goods	2013-02-25 10:31:34	2013-02-25 10:31:34	0
+73	http://scrolldust.com/2013/02/25/tomonari-nozaki-north-palace	12	Scrolldust	2013-02-25 14:22:40	2013-02-25 14:22:40	3
+74	http://www.boomkat.com/downloads/666207-tomonari-nozaki-north-palace	12	Boomkat	2013-03-04 10:08:43	2013-03-04 10:08:43	\N
+75	http://boomkat.com/downloads/666207-tomonari-nozaki-north-palace	12	Boomkat	2013-03-04 10:09:37	2013-03-06 10:33:30	1
+76	http://boomkat.com/cds/670429-tomonari-nozaki-north-palace	12	Boomkat	2013-03-05 15:56:20	2013-03-05 15:56:20	0
+77	http://dalstonsound.wordpress.com/2013/03/14/tomonari-nozaki-north-palace/	12	Dalston Sound	2013-03-15 10:47:07	2013-03-15 10:47:07	3
+78	http://www.theliminal.co.uk/2013/03/tomonari-nozaki-north-palace/	12	The Liminal	2013-03-15 10:48:28	2013-03-15 10:48:28	3
+\.
+
+
+--
+-- Name: release_links_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('release_links_id_seq', 79, false);
+
+
+--
+-- Data for Name: releases; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY releases (id, title, long_desc, release_date, short_desc, cat, artist_id, available) FROM stdin;
+1	Form	Form is a retrospective of the CJC output between 2000 & 2003. Spacial geometric concepts act as the origins of the timbre and expression within this found-sound digital work.\n<br/><br/> \nPrevious releases from this album :<br/><a href='http://www.psychonavigation.com/releases.html'>Psychonavigation :</a> PSY 001,PSY 002, PSY 003, PSY 033<br/><a href='http://www.electrocd.com/en/cat/sido_010/'>Silverdoor :</a>SIDO 10	2008-09-22 00:00:00	<i>CJC’s ‘Elastics’ with its clattering watery drums and fuzzy noises backed by poignant melodies and lush strings to build a superb track of trademark electronics.</i> - Boomkat 	FWD00	1	t
+2	Seven months in E minor	<i>Seven Months In E Minor is a record which unveils its profound beauty with great care, and requires a level on commitment to fully appreciate its depth. This said, the great ease with which Sonnamble arrange the various components at their disposal into consistent pieces and the deep level of understanding between the two musicians makes it a wonderfully enjoyable record.</i> - themilkfactory	2010-03-29 00:00:00	<i>Seven Months In E Minor is a record which unveils its profound beauty with great care, and requires a level on commitment to fully appreciate its depth.</i> - themilkfactory	FWD01	4	t
+5	feed back couple	‘feed back\ncouple’ consists of pieces taken from long, exploratory recordings, which show the range of James's solo\nwork at that point in time, from textural, abstract (almost ambient) use of the guitar to more free-\nflowing, percussive, angular and (even!) melodic. The over-arching aim in all cases is to show the\ndetail and potential of each sound or sound event.	2011-05-16 10:00:00	<i>O'Sullivan manages to produce rich and varied music ... He is adept at generating several complementary sounds simultaneously, often creating the impression that there is more than one player at work.</i> - John Eyles - all about jazz	FWD02	8	t
+6	elvers	<i>Each of the three has his own distinctive style, but readily adapts to the playing of the other two—true to that desire not to make rules. So, when Marsh's bass gets into a groove and lays down a repeated bass line well into the lengthy 'Sawtooth' (each track is titled after a type of eel, in keeping with the group's name), May and then Watson fall in with it as naturally as breathing. And when Marsh ceases to play the line, they revert to equal three-way playing as before. Simple: no rules, no dogma...</i> - John Eyles, All about Jazz	2011-05-16 11:00:00	<i>Overall, the album reveals Elvers to have its own well-defined identity and sound, a happy amalgam of its three component parts, making it a group to watch.</i> - John Eyles, all about jazz	FWD03	312708593	t
+7	Winterlands	<i>This is a set of live, organic, no-safety-net performances; there is something exhilarating about this modest yet perverse album and its refusal to conform</i> - Clive Bell, The Wire	2011-05-16 12:00:00	<i>This is a set of live, organic, no-safety-net performances; there is something exhilarating about this modest yet perverse album and its refusal to conform</i> - Clive Bell, The Wire.	FWD04	312708594	t
+8	Along the weak rope	“...beautifully produced doing justice to all the amazing sounds, and I love the Hawksmoor, damp, cobwebby feel . I thought it was perhaps the sort of song cycle Schubert might have written if he'd been around today. The anguish of Winterreise with its chinks of light.... Sylvian too.” - Fiona Talkington, Late Junction, BBC Radio 3	2011-05-31 00:00:00	<i>I thought it was perhaps the sort of song cycle Schubert might have written if he'd been around today. The anguish of Winterreise with its chinks of light.... Sylvian too.</i> - Fiona Talkington, Late Junction, BBC Radio 3.	FWD05	312708595	t
+9	Blindlight	Blindlight is the second release from London based electro-acoustic improvisers Sonnamble, again consisting of Conor Curran on electronics and software and Peter Marsh on stringed instruments.<br/><br/> Again the focus is on Marsh's lap steel guitar, whose drones, chords and twangs are coaxed into expansive ambient fuzziness or atomised into grains of noise by Curran's home-cooked software patches. But there's a spareness and a more pronounced spikiness to the music this time round; it's still immersive uff, but more edgy... <br/><br/> This record was initially released in mid 2011, a remixed/remastered version of this album was re-released both physically (digipak CD) and digitally in October 2012.	2012-10-15 12:56:09	<i> Sonnamble’s approach is an intellectual one, with melody and rhythm alien concepts. Yet these ambient, floating, minimalist soundscapes still have the ability to emote...</i> - Wyndham Wallace - BBC Music	FWD06	4	t
+10	VARDØGR	One of the murkiest, most foreboding excursions on the label so far - <i>Vardøgr</i> is the debut long player from the Dublin trio Dentistry. </br> The word vardøgr is a Norwegian term defined as <i>a premonitory sound or sight of a person before he arrives...</i>	2012-05-21 00:00:00	<i>This trio has done well to exercise restraint, to suggest rather than to show.  In using this technique, they imitate the best directors, who create tension without resorting to shock...</i> - Richard Allen - A Closer Listen	FWD07	312708600	t
+11	Ticks and Moans	Ticks and Moans is the third release from Fourth Page and their second for Forwind. As usual, the music is entirely improvised and performed live, though this time it was recorded in front of an audience in the beautiful acoustic of St Leonard's Church, Shoreditch. A sumptuously recorded, darkly atmospheric mix of improvised song and texture that is their best work so far.	2012-08-06 00:00:00	Recorded in front of an audience in the beautiful acoustic of St Leonard's Church, Shoreditch. Our second Fourth Page release is a darkly atmospheric mix of improvised song and texture that is their best work so far.	FWD08	312708595	t
+12	North Palace	'North Palace' is the third release and first physical by Tokyo composer and producer Tomonari Nozaki. \n<br/><br/>\n'Tomo's' hugely immersive sound feels like opening an old dusty wooden box and \nhearing a frayed melancholy soundtrack to somewhere standing outside of time and the concerns of the world.\nIt manages to be remote and indefinable in parts but has such spirit, sincerity and indeed warmth it's hard not \nto let yourself become completely absorbed.<br/><br/> \nAnyone who has been following the forwind story so far will know we don't go for bluster.\nHand on heart this is genuinely sublime stuff.	2013-02-25 00:00:00	Our most distant neighbour to join us on the label so far, Tomonari comes good from Tokyo with an unabashed and resplendent set of tracks that are easily some of the most emotive and affecting heard on forwind so far.	FWD09	312708601	t
+\.
+
+
+--
+-- Name: releases_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('releases_id_seq', 13, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY schema_migrations (version) FROM stdin;
+20100314202134
+20100314202321
+20100314204939
+20100314205106
+20100314210928
+20101128193839
+20101129151159
+20101129151200
+20101129151201
+20101129151202
+20101201212347
+20101201212402
+20101201212534
+20110210215653
+20110219232151
+20110303214201
+20110303221818
+20110515122442
+20110618104921
+\.
+
+
+--
+-- Data for Name: track_lists; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY track_lists (id, podcast_id, created_at, updated_at) FROM stdin;
+1	1	2011-01-04 10:32:45	2011-01-04 10:32:45
+2	2	2011-02-01 20:50:42	2011-02-01 20:50:42
+3	3	2011-05-30 22:26:42	2011-05-30 22:26:42
+4	4	2011-09-13 21:03:54	2011-09-13 21:03:54
+5	5	2011-09-30 21:31:58	2011-09-30 21:31:58
+6	6	2011-10-18 13:44:07	2011-10-18 13:44:07
+7	7	2011-11-04 17:23:09	2011-11-04 17:23:09
+8	8	2011-12-03 09:41:04	2011-12-03 09:41:04
+9	9	2011-12-11 19:41:16	2011-12-11 19:41:16
+10	10	2012-02-15 20:23:38	2012-02-15 20:23:38
+11	11	2012-03-20 10:34:39	2012-03-20 10:34:39
+12	12	2012-11-03 22:08:28	2012-11-03 22:08:28
+13	13	2013-04-11 01:52:57	2013-04-11 01:52:57
+\.
+
+
+--
+-- Name: track_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('track_lists_id_seq', 14, false);
+
+
+--
+-- Data for Name: tracks; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY tracks (id, track_list_id, artist_title, label, "position", created_at, updated_at) FROM stdin;
+64810937	0	Hg Wells   Extract From Talk On Communications	BBC RECORDS	0	2010-12-12 15:14:12	2012-02-06 01:27:58
+78719920	0	Meam   The L (Untitled)	SKAM	4	2010-12-12 15:14:12	2012-02-06 01:27:58
+138313941	0	Loscil   Sous Marin	ONE	16	2010-12-12 15:14:12	2012-02-06 01:27:58
+175142436	0	Ella Fitzgerald   Blue Moon	HIS MASTERS VOICE	20	2010-12-12 15:14:12	2012-02-06 01:27:58
+218589063	0	Keith Fullerton Whitman   Generator 3	ROOT STRATA	9	2010-12-12 15:14:12	2012-02-06 01:27:58
+257115342	0	Xabec   Feuerstern	DRONE RECORDS	12	2010-12-12 15:14:12	2012-02-06 01:27:58
+288870769	0	Charlemagne Palestine   B03	STAALPLAAT SOUNDSYSTEM	15	2010-12-12 15:14:12	2012-02-06 01:27:58
+375002490	0	Fs Bluum   Fehl	MORR MUSIC	11	2010-12-12 15:14:12	2012-02-06 01:27:58
+411147592	0	Jz.Arkh   Arkh 06 V2	JZ.ARKH.CO.UK	19	2010-12-12 15:14:12	2012-02-06 01:27:58
+450215437	0	Jack Payne And The Bbc Dance Orchestra   Happy Days Are Here Again	BBC RECORDS	1	2010-12-12 15:14:12	2012-02-06 01:27:58
+498629140	0	Scott Haggart   1.17 White Daughters Edit	DISKONO	5	2010-12-12 15:14:12	2012-02-06 01:27:58
+559752675	0	Raven Chacon   La'ts'aadah For Solo Violin Performed By Mark Menzies	ANARCHYMOON RECORDINGS	10	2010-12-12 15:14:12	2012-02-06 01:27:58
+612243215	0	Seasons (Pre Din)   Untitled 05 Stars And Lights	THY-REC	22	2010-12-12 15:14:12	2012-02-06 01:27:58
+640737786	0	Valet   Touch Me Im Sick	ROOT STRATA	14	2010-12-12 15:14:12	2012-02-06 01:27:58
+717179523	0	Robin Fox  Melophobia	EDITIONS MEGO	6	2010-12-12 15:14:12	2012-02-06 01:27:58
+768773788	0	Felix Kubin   Wagner 99	DISKONO	2	2010-12-12 15:14:12	2012-02-06 01:27:58
+797355477	0	Lezet Throuroof   Its Easy	LEZET_THROUROOF	18	2010-12-12 15:14:12	2012-02-06 01:27:58
+867572539	0	Bjork   State Of Emergency (Alec Empire "The Planet Of Ice" Remix)	ONE LITTLE INDIAN	3	2010-12-12 15:14:12	2012-02-06 01:27:58
+945058907	0	Atheus   The Magic Mountain	GHOST SOUNDS	13	2010-12-12 15:14:12	2012-02-06 01:27:58
+973100822	0	Muttermal   Northern Exposure	DIGITALBIOTOPE	8	2010-12-12 15:14:12	2012-02-06 01:27:58
+1031227063	0	Scott Haggart  1.17 Lary Seven Edit	DISKONO	21	2010-12-12 15:14:12	2012-02-06 01:27:58
+1060745282	0	Sonnamble   Trasnochar	FORWIND	17	2010-12-12 15:14:12	2012-02-06 01:27:58
+1060745283	1	Polwechsel/Fennesz - Framing 8	Erstwhile	0	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745284	1	Abdon Liberty - Like A Smile		1	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745285	1	Toru Takemitsu - Water Music	RCA Victrola	2	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745286	1	Fritz Hauser - Skizzen, Gedanken, Gesten III	hat[now]ART	3	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745287	1	Trapist - My Shoulder Was The One You Cried On That Day	hatOLOGY 586	4	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745288	1	Natasha Barrett - Displaced: Replaced - Fog Light Wind	empreintes DIGITALes 	5	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745289	1	Supersilent - 5.4	Rune Grammofon	6	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745290	1	Lotos & Burkhard Schlothauer & Poul Naes - Konzert fur Streichinstrumente	NURNICHTNUR	7	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745291	1	Eric Aldea - Petit Buddah II	Ici D'Ailleurs	8	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745292	1	Marcus Schmickler - Agogh	A-Musik	9	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745293	1	Mark Hollis - The Colour of Spring	Spectrum	10	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745294	1	Peter Cusack - Roar Over Ice	Recommended	11	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745295	1	Seasons (pre-din) - Every Heart I Know Has Been Broken	THY	12	2011-01-04 10:32:45	2011-01-04 10:32:45
+1060745296	2	File Under Toner - Violins	Hazard Records	0	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745297	2	Shrine - The Silo Sanctuary	Drone Records	1	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745298	2	Cosey Fanni Tutti & Philippe Petit - Invisible Whispers	Dirter Promotions	2	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745299	2	Noise Dreams Machina - In	Drone Records	3	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745300	2	Hierro - Locked Groove	Immolate	4	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745301	2	Pierre Henry & Pierre Schaeffer - Deux Aspects de Piano	Ducretet Thomson	5	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745302	2	Robert Piotrowicz - \tSchool Girl Band Of Gromovaya Balka (Performed On 10th Anniversary Of Death Of Emil Cioran) 	Bocian Records	6	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745303	2	Johnny Cash - Hiawatha's Vision	Colombia	7	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745304	2	Pete Swanson - Challenger A Untitled	Not On Label (Pete Swanson Self-released)	8	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745305	2	Beethoven - Symphony 3 Eroica - Finale - Berlin Philharmonic . Herbert von Karajan	Deutsche Grammophon	9	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745306	2	AGF - Antye Greie - Fuchs 	Crosstalk	10	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745307	2	Polmo Polpo - Rottura	Audi Sensa	11	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745308	2	Zhao Jiping - Flute Solo - Raise the Red Lantern	Milan Records	12	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745309	2	Jana Winderen - The Noisiest Guys on the Planet	Ash International	13	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745310	2	MCMLXV - Sequence 1	MCMLXV	14	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745311	2	Philip Jeck - Tenderberries Version	Touch 7 inch Series	15	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745312	2	Innercity - Future Life A3	Aguirre Records	16	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745313	2	Lume - Mosquitos	Diskono	17	2011-02-01 20:50:42	2011-02-01 20:50:42
+1060745314	3	Schism 1 - Jones & Marsh		0	2011-05-30 22:26:42	2011-05-30 22:26:42
+1060745315	3	Schism 2 - Jones & Marsh		1	2011-05-30 22:26:42	2011-05-30 22:26:42
+1060745316	3	Schism 3 - Jones & Marsh		2	2011-05-30 22:26:42	2011-05-30 22:26:42
+1060745317	3	Schism 4 - Jones & Marsh		3	2011-05-30 22:26:42	2011-05-30 22:26:42
+1060745318	3	Schism 5 - Jones & Marsh		4	2011-05-30 22:26:42	2011-05-30 22:26:42
+1060745319	3	Schism 6 - Jones & Marsh		5	2011-05-30 22:26:42	2011-05-30 22:26:42
+1060745320	4	19 Guitars - Oren Ambarchi & Scott Horscroft	Textile Records	0	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745321	4	Folia part 6 - Yannis Kyriakides & Andy Moore	Unsounds	1	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745322	4	2-Opt out - Yellow Swans	Type	2	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745323	4	July - Fennesz	Touch	3	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745324	4	Untitled - Tetuzi Akiyama & Jason kahn	For4ears	4	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745325	4	Blindlight - Sonnamble	Forwind	5	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745326	4	Praying for the light to last forever - My Cat is an Alien	Elliptical Noise	6	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745327	4	Brilliant blue sky between us - Six Organs of Admittance 	Drag City	7	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745328	4	Untitled with rain - John Fahey	revenant	8	2011-09-13 21:03:54	2011-09-13 21:03:54
+1060745329	5	Untitled - Slavic Kwie		0	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745330	5	Male Capercallie Display - Chris Watson	Touch	1	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745331	5	Silent landscapes No. 2 - Robert Curgenven	recorded Fields	2	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745332	5	June 17 - Nurse With Wound	ICR	3	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745333	5	Vatnajókull - Chris Watson	Touch	4	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745334	5	One - Ernst Karel	and/OAR	5	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745335	5	Kataract {Alpha Mix} part 1 - Daniel Menche	 Editions Mego	6	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745336	5	Headphones - AER	Touch	7	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745337	5	Field Recording - janek Schaefer	Stichting Mixer	8	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745338	5	Cacerolada - Justin Bennett	 Stichting Mixer	9	2011-09-30 21:31:58	2011-09-30 21:31:58
+1060745339	6	Indeed (Side B) - Oren Ambarchi & Jim O’Rourke	Editions Mego	0	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745340	6	Stolen Ground - Richard Skelton	Sustain-Release	1	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745341	6	Varforgraterdu - Amy King		2	2011-10-18 13:44:07	2011-10-18 13:49:03
+1060745342	6	Soil/Subsoil - Amanda Ferry		3	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745343	6	Never Gets Out Of Me - Ellen Fullman	Important Records	4	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745344	6	One - Ernst Karel	and/OAR	5	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745345	6	Light - Barn Owl & The Infinite Strings Ensemble	 Important Records	6	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745346	6	Poure - Phill Niblock	Touch	7	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745347	6	A Brighter Summer Day - Burning Star Core	Thin Wrist Recordings	8	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745348	6	Rotational Change For Windmil - Eleh	Touch	9	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745349	6	Transamorem - Transmortem - Eliane Radigue	Important Records	10	2011-10-18 13:44:07	2011-10-18 13:44:07
+1060745350	7	Zion Hill - Albert Ayler Quintet	Revanant	0	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745351	7	Snusvisan - The Thing	Smalltown SuperJazz	1	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745352	7	Love Conquers All Motherfucker - Cold Bleak Heat	Family Vineyard	2	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745353	7	A Lean and Tortured Heart - Paul Flaherty and Chris Corsano	Family Vineyard	3	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745354	7	033103 Paris - Text of Light	A Silent Place	4	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745355	7	Here Come The Fucking Dead - Dream/Aktion Unit	Volcanic Tongue	5	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745356	7	ICA Theatre London - Otomo Yoshihide	Meenna	6	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745357	7	The Cosmic Explorer - Sun Ra Arkestra	Universe	7	2011-11-04 17:23:09	2011-11-04 17:23:09
+1060745358	8	Revolt - John Butcher & Phil Durrant	Wobbly Rail	0	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745359	8	Dark Rags #1 - Evan Parker and Keith Rowe	Potlatch	1	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745360	8	For Mario Schiano And Andre Williams - Mats Gustafsson & His All-Stars Feat. John Corbett	Xeric	2	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745361	8	Teem III - Olivia Block & Kyle Bruckmann	either/OAR	3	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745362	8	A Mean Fiddle -  Eddie Prevost, Jim O'Rourke 	complacency	4	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745363	8	Which Shews That There Are More Ways to Kill a Dog Than Hanging - John Tilbury and Evan Parker	matchless recordings	5	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745364	8	What Remains - John Butcher	Weight of Wax	6	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745365	8	Les Cornichons - The Contest of Pleasures	Potlatch	7	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745366	8	Tane - Toshimaru Nakamura	samadhisound	7	2011-12-03 09:41:04	2011-12-03 09:41:04
+1060745367	9	Ensi - Pan Sonic	Blast First	0	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745368	9	Discomfort - Thembi Soddell	Cajid Media	1	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745369	9	Minus Degrees, Bare Feet, Tickles - Vladislav Delay Quartet	Honest Jon's Records	2	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745370	9	Into Bios (Intro) - Byetone	Raster-Noton	3	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745371	9	Plastic Star (Session) - Byetone	Raster-Noton	4	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745372	9	Rahina I / Mayhem I	Blast First	5	2011-12-11 19:41:16	2013-06-04 08:55:20
+1060745373	9	Augmatic Disport - Autechre	Warp Records	6	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745374	9	Tangent - Emptyset	Subtext	7	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745375	9	Mirrors - Kangding Ray	Raster-Noton	8	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745376	9	Cloudchamber - Deathprod	Rune Grammofon	9	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745377	9	Studies For Thunder - Robert Henke	Imbalance Computer Music	10	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745378	9	Towboat - Deathprod	Rune Grammofon	11	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745379	9	Amoco Cadiz - Speedy J	Novamute	12	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745380	9	Haliod Xerrox Copy 1 - Alva Noto	Raster-Noton	13	2011-12-11 19:41:16	2011-12-11 19:41:16
+1060745381	10	One		0	2012-02-15 20:23:38	2012-02-15 20:23:38
+1060745382	10	Two		1	2012-02-15 20:23:38	2012-02-15 20:23:38
+1060745383	10	Three		2	2012-02-15 20:23:38	2012-02-15 20:23:38
+1060745384	10	Four		3	2012-02-15 20:23:38	2012-02-15 20:23:38
+1060745385	11	Composition N.4 - Milan Knizak	Kissing Spell	0	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745386	11	Tone-Arm Two - Janek Schaefer	Fat Cat Records	1	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745387	11	Solo - Claus Van Bebber	Intermedium Records	2	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745388	11	Overt Topaz Reference - Barnes . Kajiwara . Rosenfeld	Quakebasket	3	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745389	11	First Fold - Tetuzi Akiyama Toshimaru Nakamura Taku Sugimoto Mark Wastell	Confront	4	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745390	11	Pittsburgh, July 5, 2002 - Toshio Kajiwara, DJ Olive, Christian Marclay	Asphodel	5	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745391	11	Switch No.2 + Boîtier - Martin Tétreault, Lynda Gaudreau	Actuelle	6	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745392	11	Allurement 3 - Otomo Yoshihide / Axel Dörner / Sachiko M / Martin Brandlmayr	Neos	7	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745393	11	Chime Chime (re-rung) - Philip Jeck	Touch	7	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745394	11	Sweetest Sensation - Marina Rosenfeld	Room 40	8	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745395	11	Track 4b + 3a - Bellows	Planam - Biplano	9	2012-03-20 10:34:39	2012-03-20 10:34:39
+1060745396	12	Hold the Strays - Zelienople	Root Strata	0	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745397	12	Accidental Guitars - Geoff Mullen	R.E.L. Records	1	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745398	12	Mobius Coil - Rose Kallal	WCEC	2	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745399	12	Loop - RRR100 	RRR	3	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745400	12	Spice Trail - Cindytalk & Phillipe Petit	Lumberton Trading Company	4	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745401	12	Fantasia (NeverEnding Story OST) - Klaus Doldinger	Warner	5	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745402	12	Loop - RRR100	RRR	6	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745403	12	Newsroom - Sidney Frey	Audio Fidelity	7	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745404	12	La Dolce Vita - Nino Roto	Ricordi	8	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745405	12	Harshing (Kevin Drumm GODDAMNIT!! 1,2,3 Remix) - Russell Haswell 	Downwards	9	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745406	12	Cuckoo - Sidney Frey	Audio Fidelity	10	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745407	12	Loop - RRR100	RRR	11	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745408	12	Elsie - Moin	Confessions	12	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745409	12	Loop - Harry Williamson	Tape Projects	13	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745410	12	Loop	RRR	14	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745411	12	Amplification Temple Nevada - themoonisaspaceship	Unreleased	15	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745412	12	The Cimex Invasion	Unknown	16	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745413	12	Loop - RRR100	RRR	17	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745414	12	Chairman Mao, You are the Red Sun in Our Hearts - Military Band of the Chinese People's Liberation Army	China record Company	18	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745415	12	Wizard of Oz - Show N Tell	Mono Gram	19	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745416	12	The Angular Positions of his Ghost - Christian Cosmos	Bed of Nails	20	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745417	12	Wrestling - Kevin Drumm, Jerome Noetinger and Robert Piotrowicz	Bocian Records	21	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745418	12	We'll All Go Riding on a Rainbow - Woods	Decca	22	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745419	12	Close - Deaf Center	Type	23	2012-11-03 22:08:28	2012-11-03 22:08:28
+1060745420	13	Best Intentions - Sonnamble	Forwind	0	2013-04-11 01:52:57	2013-04-11 01:52:57
+1060745421	13	Agro - Sonnamble	Forwind	1	2013-04-11 01:52:57	2013-04-11 01:52:57
+1060745422	13	Impasse - Sonnamble	Forwind	2	2013-04-11 01:52:57	2013-04-11 01:52:57
+1060745423	13	Fei feng fei fan - Sonnamble	Forwind	3	2013-04-11 01:52:57	2013-04-11 01:52:57
+1060745424	13	Pointless - Sonnamble	Forwind	4	2013-04-11 01:52:57	2013-04-11 01:52:57
+1060745425	13	Vespers - Sonnamble	Forwind	5	2013-04-11 01:52:57	2013-04-11 01:52:57
+\.
+
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('tracks_id_seq', 1060745426, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ronoc
+--
+
+COPY users (id, username, email, crypted_password, password_salt, persistence_token, created_at, updated_at) FROM stdin;
+1	shane	shane@forwind.net	2e996486d76f9943deb92ca821433f90d587a716075d3e2c9d8a95e813e99e48a7fbfb29a4fa676a18a8a2498ffcfbd24eb740517064093abfbe45e8f1a503c5	n0ZsN51z3U0h6n2wHXqa	c11e91c9c766139a955f309034896503d99a3cbb3dba04f0a88f833dd572df765b48ef89b50fd02eace7022534bf3514452c3a92794e7ca57e816a3037abdb09	2010-12-12 15:14:25	2010-12-12 15:14:25
+2	ronoc	conor@forwind.net	67753de62ea1001311ac66bf401e0e96adcabdc1572d4413f5f3ea2bdd1065642cce6b316a8c04582915476b1e96fb8a9fc6ef8ac94bda0068b7c1772e0cb17b	qSIsCcmJSdHhbYh24B	3aacf3adfcf3f83f1e897f5f3b83bc8476c503d37696679ae8a9c566a3e4987d307d2c302ee7c68959cd4d8e8d9c52d5e56cd020e6887fd0dae3bddd33281d69	2010-12-12 15:14:25	2010-12-12 15:14:25
+3	peter	peter@forwind.net	b48379cf9d437ed18fc1c9ba9b01e18bbce4a4d6e1b26f309f5823048cfd8943ca8dac18b0ba3c29f7b111e6394d58ed69dcc64611c6632c219defb54809f15a	fu46ojUynb18VxH6V	7615a5b37e38da71737ea04a7e242a857418e9c9911e039cf441bbb57b5aed9bb3696225f8656e3f113775880573238c81ca6b9488f816274f597cd4457da04b	2011-05-19 09:46:17	2011-05-19 09:46:17
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ronoc
+--
+
+SELECT pg_catalog.setval('users_id_seq', 4, false);
+
+
+--
+-- Name: artists_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY artists
+    ADD CONSTRAINT artists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: assets_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY assets
+    ADD CONSTRAINT assets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_comments
+    ADD CONSTRAINT blog_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_images_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_images
+    ADD CONSTRAINT blog_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_posts
+    ADD CONSTRAINT blog_posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_tags
+    ADD CONSTRAINT blog_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: links_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY links
+    ADD CONSTRAINT links_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pieces_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY pieces
+    ADD CONSTRAINT pieces_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: podcasts_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY podcasts
+    ADD CONSTRAINT podcasts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: release_links_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY release_links
+    ADD CONSTRAINT release_links_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: releases_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY releases
+    ADD CONSTRAINT releases_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: track_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY track_lists
+    ADD CONSTRAINT track_lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY tracks
+    ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_blog_comments_on_blog_post_id; Type: INDEX; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE INDEX index_blog_comments_on_blog_post_id ON blog_comments USING btree (blog_post_id);
+
+
+--
+-- Name: index_blog_images_on_blog_post_id; Type: INDEX; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE INDEX index_blog_images_on_blog_post_id ON blog_images USING btree (blog_post_id);
+
+
+--
+-- Name: index_blog_tags_on_blog_post_id; Type: INDEX; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE INDEX index_blog_tags_on_blog_post_id ON blog_tags USING btree (blog_post_id);
+
+
+--
+-- Name: index_blog_tags_on_tag; Type: INDEX; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE INDEX index_blog_tags_on_tag ON blog_tags USING btree (tag);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: ronoc; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
