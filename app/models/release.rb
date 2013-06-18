@@ -8,12 +8,12 @@ class Release < ActiveRecord::Base
   end
   
   def sort_links
-    @links = {RELEASE_LINK_TYPES[:PHYSICAL] => [],
-              RELEASE_LINK_TYPES[:DOWNLOAD] => [],
-              RELEASE_LINK_TYPES[:STREAM] => [],
-              RELEASE_LINK_TYPES[:REVIEW] => []}
+    @links = {ReleaseLink.types[:PHYSICAL] => [],
+              ReleaseLink.types[:DOWNLOAD] => [],
+              ReleaseLink.types[:STREAM] => [],
+              ReleaseLink.types[:REVIEW] => []}
     release_links.each do |link|
-      unless RELEASE_LINK_TYPES.has_value?(link.link_type)
+      unless ReleaseLink.types.has_value?(link.link_type)
         next
       end
       @links[link.link_type] << link
@@ -24,28 +24,28 @@ class Release < ActiveRecord::Base
     if @links.nil?
       sort_links
     end
-    return @links[RELEASE_LINK_TYPES[:STREAM]]
+    return @links[ReleaseLink.types[:STREAM]]
   end
 
   def physicals
     if @links.nil?
       sort_links
     end
-    return @links[RELEASE_LINK_TYPES[:PHYSICAL]]
+    return @links[ReleaseLink.types[:PHYSICAL]]
   end
 
   def downloads
     if @links.nil?
       sort_links
     end
-    return @links[RELEASE_LINK_TYPES[:DOWNLOAD]]
+    return @links[ReleaseLink.types[:DOWNLOAD]]
   end
 
   def reviews
     if @links.nil?
       sort_links
     end
-    return @links[RELEASE_LINK_TYPES[:REVIEW]]
+    return @links[ReleaseLink.types[:REVIEW]]
   end
 
 end
