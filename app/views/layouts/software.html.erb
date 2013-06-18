@@ -26,11 +26,11 @@
            <%= render(:partial => "shared/crumb_trail") %>
            <div id="form_inner_container">
             <hr>
-	           <%= render(:partial => "shared/software/tabs") %> 
+	           <%= render(:partial => "shared/software/tabs") %>
             <hr/>
-            <%= @content_for_layout %>
+            <%= yield %>
 		 </div>
-  </div>          
+  </div>
     </body>
 </html>
 
