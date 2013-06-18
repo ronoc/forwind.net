@@ -1,20 +1,20 @@
-#development:
-#  adapter: sqlite3
-#  database: db/development.sqlite3
-#  pool: 5
-#  timeout: 5000
-development:
-  adapter: postgresql
-  database: forwind_development
-  pool: 5
-  encoding: unicode
-  username: ronoc
-  password: 
+common: &common
+  adapter:  postgresql
+  host: localhost
+  pool:     5
+  timeout:  5000
+  min_messages: warning
 
-production:
-  adapter: postgresql
-  database: forwind_production
-  pool: 5
-  encoding: unicode
-  username: ronoc
-  password: 
+development: &development
+  <<: *common
+  database: forwind_development
+
+test: &test
+  <<: *common
+  database: forwind_test
+
+
+production: &production
+  <<: *common
+  database: fowrind_development
+
