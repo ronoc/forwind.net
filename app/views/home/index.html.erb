@@ -1,0 +1,80 @@
+<div id="content_container">
+
+<div id="home_promo_header">
+
+<a href="http://www.normanrecords.com/poogle/index.php?q=forwind"><img src="/images/index/cd-promo2.jpg"></a>
+
+<p></p>
+</div>
+
+<section id="container_2grid_left">
+<div class="title-hr-2gridleft">
+<hr/>
+<h2>Recent Releases</h2>
+<hr/>
+</div>
+
+
+<% @small_releases.each do |release| %>
+<% unless @small_releases.index(release) > 3 %>
+<div class="home-promo-boxgrid captionfull">
+<img src= <%="/images/releases/"+ release.cat.downcase + "_sm.jpg" %>></img>
+<div class="cover boxcaption">
+<h2><a href=<%= "/releases/" + release.cat %> title="..."><%= release.cat %>:<%= release.title %></a></h2>
+<p><%= release.short_desc %></p>
+</div>
+</div>
+<% end %>
+<% end %>
+
+</section>
+
+<aside>
+
+<div id="home_podcast_promo">
+
+	<div class="title-hr-1gridright">
+	<hr/>
+	<h2>Latest podcast</h2>
+	<hr/>
+	</div>
+
+	<div class="home-podcast-boxgrid podcast-captionfull">
+    	<img src=<%="/images/podcasts/" + @podcast.cat_no + "_sm.jpg"%>></a>
+    	<div class="podcast-cover podcast-boxcaption">
+        	<h2><a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>><%= @podcast.title %></a></h2>
+        	<p>Compiled & Mixed by <%= @podcast.artist.name %><br/>Genre: <%= @podcast.genre %></p>
+    	</div>
+	</div>
+
+</div>
+
+
+<div id="home_blogroll">
+
+	<div class="title-hr-1gridright">
+		<hr/>
+		<h2>News</h2>
+		<hr/>
+	</div>
+	<% @blogs.each do |blog| %>
+	<div class="home-blogroll-post">
+		<h3><%= link_to(blog.title, blog) %></h3>
+		<p><%= truncate(strip_tags(blog.parsed_body)) %></p>
+		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>
+	</div>
+	<% end %>
+
+
+</div>
+
+</aside>
+
+</div>
+
+
+
+
+
+
+
