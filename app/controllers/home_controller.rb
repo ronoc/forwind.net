@@ -16,7 +16,6 @@ class HomeController < ApplicationController
     @promo_release = rels[promo_index]
     @podcast = Podcast.last
     bs = BlogPost.find :all
-    bs.reverse!
     
     @blogs = []
     titles = []

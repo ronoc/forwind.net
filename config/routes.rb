@@ -7,21 +7,11 @@ Rails.application.routes.draw do
     # RESOURCES
     get 'podcasts/current'
     resources :podcasts
-
     resources :user_sessions
-
     resources :users
-
     resources :artists
-
     resources :releases 
    
     root :to => "home#index"
-
-    # Install the default route as the lowest priority.
-    #map.connect ':controller/:action/:id.:format'
-    #match '/:controller(/:action(/:id))'    
-    #map.connect ':controller/:action/:id'
-    #match '/:controller(/:action(/:id))'    
 end
 
