@@ -7,14 +7,13 @@
   </head>
     <body>
 	   	<div id="form_crumb_trail_container">
-           <%= render(:partial => "shared/crumb_trail") %> 
+           <%= render(:partial => "shared/crumb_trail") %>
            <div id="form_inner_container">
            <hr>
-	       <%= render(:partial => "shared/current/tabs") %> 
+	       <%= render(:partial => "shared/current/tabs") %>
            <hr>
-           <%= @content_for_layout %>
-		</div>  
-	</div>  
+           <%= yield %>
+		</div>
+	</div>
    </body>
 </html>
-     

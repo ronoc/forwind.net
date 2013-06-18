@@ -5,12 +5,12 @@
   <title>forwind.net | <%= @context.downcase%></title>
   <%= stylesheet_link_tag('forwind') %>
 </head>
-    <body>             
-    <div id="outer_container">	
+    <body>
+    <div id="outer_container">
           <div id="crumb_trail">
           </div>
-    <%= @content_for_layout %>
+    <%= yield %>
     </div>
     </body>
 </html>
-     
+

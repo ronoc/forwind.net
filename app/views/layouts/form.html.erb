@@ -4,21 +4,20 @@
 <head>
   <title>Forwind | <%= @context%></title>
   <%= stylesheet_link_tag('forwind') %>
-  
+
 </head>
     <body>
          	<div id="form_crumb_trail_container">
-           <%= render(:partial => "shared/crumb_trail") %> 
+           <%= render(:partial => "shared/crumb_trail") %>
            <div id="form_inner_container">
            <%= image_tag ('form/form_header.gif')%>
             <hr>
-	           <%= render(:partial => "shared/form/tabs") %> 
+	           <%= render(:partial => "shared/form/tabs") %>
             <hr/>
-            <%= @content_for_layout %>
-		
+            <%= yield %>
+
 
 		</div>
-  </div>          
+  </div>
     </body>
 </html>
-     

@@ -33,7 +33,6 @@ class ArtistsController < ApplicationController
     else
       search_query = params[:id].capitalize
     end
-    pry
     @artist ||= Artist.find_by_name(search_query)
     puts "artist name = " + @artist.name
   end
