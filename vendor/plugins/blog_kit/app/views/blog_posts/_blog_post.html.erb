@@ -20,7 +20,7 @@
 	</p>
 
 	<div class="blogPostBody">
-		<%= blog_post.parsed_body %>
+		<%= blog_post.parsed_body.html_safe %>
 	</div>
 
 	<% unless blog_post.tags.blank? %>

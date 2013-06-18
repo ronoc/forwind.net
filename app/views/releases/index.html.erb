@@ -4,8 +4,8 @@
 <div class="release_index_promo">
 <a href=<%= "/releases/#{release.id}" %>>
 <img src= <%="/images/releases/"+ release.cat.downcase + "_sm.jpg" %>></img></a>
-<h2><%= link_to release.title, release %></h2>
-<p><%= release.short_desc %></p>
+<h2><%= link_to release.title.html_safe, release %></h2>
+<p><%= release.short_desc.html_safe %></p>
 </div>
 <% end %>
 </div>
