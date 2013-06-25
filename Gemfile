@@ -26,8 +26,6 @@ gem 'authlogic'
 gem 'will_paginate'
 gem 'bluecloth'
 gem 'gibbon'
-gem 'blogkit', '0.0.0', :git => 'git://github.com/ryanstout/blog_kit.git', :branch => 'rails3'
-gem 'tmail'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,5 +1,4 @@
 require 'gibbon'
-require 'tmail'
 
 class HomeController < ApplicationController
   layout 'home'
@@ -40,7 +39,6 @@ class HomeController < ApplicationController
   	email_address = params['email']
   	puts "subscribe email " + email_address
   	begin
-  	  TMail::Address.parse(email_address)
   	  gb = Gibbon.new("04eb5415991d0463f76a8b0d6d4c7048-us4")
   	  gb.list_subscribe(:id => "ed662591d5", :email_address => email_address)		  
   	  flash[:notice] = "Confirmation email in the post..."
