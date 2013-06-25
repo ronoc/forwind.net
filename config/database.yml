@@ -16,4 +16,4 @@ test: &test
 
 production: &production
   <<: *common
-  database: forwind_production
+  database: forwind_development

@@ -59,7 +59,7 @@
 	</div>
 	<% @blogs.each do |blog| %>
 	<div class="home-blogroll-post">
-		<h3><a href=<%= "/blog_posts/" + blog.title %> title=<%= blog.title %>><%= blog.title %></a></h3>
+		<h3><%= link_to(h(blog.title), blog) %></h3>
 		<p><%= strip_tags(blog.parsed_body).truncate(130).html_safe %></p>
 		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>
 	</div>
