@@ -13,16 +13,12 @@ class PodcastsController < ApplicationController
   end
     
   def show
-    if params[:id] == "current"
-      redirect_to current
-    end
     @podcast ||= Podcast.find(params[:id])
-    @podcasts ||= Podcast.find :all
   end
 
   def current
-    @podcasts = Podcast.find :all
     @podcast = Podcast.last
+    render :show
   end
     
 end

@@ -2,7 +2,7 @@
 
 <tracklist>
 
-	<track url="../../audio/releases/fwd09/1-part-i.mp3" dnload="">
+	<track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd09/1-part-i.mp3" dnload="">
 		<title><![CDATA[PART I]]></title>
 		<time><![CDATA[10:27]]></time>
 	</track>
@@ -17,7 +17,7 @@
     <time><![CDATA[08:29]]></time>
   </track>
 
-  <track url="../../audio/releases/fwd09/4-part-iv.mp3" dnload="">
+  <track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd09/4-part-iv.mp3" dnload="">
     <title><![CDATA[PART IV]]></title>
      <time><![CDATA[05:15]]></time>
    </track>
