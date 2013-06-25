@@ -1114,14 +1114,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 
 
 
-
-
-
-
 /***** NEWSLETTER ****/
-
-
-
 
 #newshold {
   position: relative;
@@ -1138,6 +1131,11 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 
 input:focus {
   outline: none;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  height: 35px;
+  line-height: 30px;
+  position: absolute;
 }
 
 #newsinput {
@@ -1157,6 +1155,7 @@ input:focus {
   top: 17px;
   text-indent: 10px;
   color: #666666;
+  vertical-align: middle;
 }
 
 #newshold input {
@@ -1164,9 +1163,10 @@ input:focus {
 }
 #newshold input::-webkit-input-placeholder {
   position: absolute;
- }
+  display: block;
+}
 #newshold input:-moz-placeholder {
-      padding-left: 10px;
+  padding-left: 10px;
 }
 #newssub {
   position: absolute;
