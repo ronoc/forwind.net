@@ -2,34 +2,34 @@
 
 <tracklist>
 
-	<track url="../../audio/jos/192/stem_192.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[STEM]]></title>
-		<time><![CDATA[1:45]]></time>
+		<time><![CDATA[01:43]]></time>
 	</track>
 
-	<track url="../../audio/jos/192/feed_back_couple_preview_192.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[FEED BACK COUPLE]]></title>
-		<time><![CDATA[1:04]]></time>
+		<time><![CDATA[05:06]]></time>
 	</track>
 
-  <track url="../../audio/jos/192/desire_paths_preview_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[DESIRE PATHS]]></title>
-    <time><![CDATA[1:04]]></time>
+    <time><![CDATA[05:16]]></time>
   </track>
 
-  <track url="../../audio/jos/192/instant_wait_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[INSTANT WAIT]]></title>
-     <time><![CDATA[3:49]]></time>
+     <time><![CDATA[03:46]]></time>
    </track>
 
-  <track url="../../audio/jos/192/hidden_preview_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[HIDDENS]]></title>
-    <time><![CDATA[1:00]]></time>
+    <time><![CDATA[07:40]]></time>
   </track>
 
-  <track url="../../audio/jos/192/fine_line_preview_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[FINE LINE]]></title>
-     <time><![CDATA[1:00]]></time>
+     <time><![CDATA[20:46]]></time>
    </track>
 
 </tracklist>

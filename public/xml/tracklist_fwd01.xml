@@ -2,37 +2,37 @@
 
 <tracklist>
 
-	<track url="../../audio/sonnamble/192/sonnamble_opening_192.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[OPENING]]></title>
 		<time><![CDATA[2:41]]></time>
 	</track>
 
-	<track url="../../audio/sonnamble/192/sonnamble_sehnsucht_192.mp3" dnload="">
+	<track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd01/sehnsucht.mp3" dnload="">
 		<title><![CDATA[SEHNSUCHT]]></title>
 		<time><![CDATA[8:06]]></time>
 	</track>
 
-  <track url="../../audio/sonnamble/192/sonnamble_transnochar_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[TRASNOCHAR]]></title>
     <time><![CDATA[7:07]]></time>
   </track>
 
-  <track url="../../audio/sonnamble/192/sonnamble_dbass_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[NIMBUS]]></title>
      <time><![CDATA[2:00]]></time>
    </track>
-        <track url="../../audio/sonnamble/192/sonnamble_knock_knock_192.mp3" dnload="">
+        <track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd01/KnockKnock.mp3" dnload="">
                 <title><![CDATA[KNOCK KNOCK]]></title>
                 <time><![CDATA[10:27]]></time>
         </track>
 
 
-  <track url="../../audio/sonnamble/192/sonnamble_nocturne_192.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[NOCTURNE]]></title>
      <time><![CDATA[4:39]]></time>
    </track>
 
-	<track url="../../audio/sonnamble/192/sonnamble_heal_192.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[HEAL]]></title>
 		<time><![CDATA[8:28]]></time>
 	</track>
