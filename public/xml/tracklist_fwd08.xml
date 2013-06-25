@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tracklist>
-	<track url="../../audio/releases/fwd08/01-beyond-the-line.mp3" dnload="">
+	<track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd08/01-beyond-the-line.mp3" dnload="">
 		<title><![CDATA[BEYOND THE LINE]]></title>
 		<time><![CDATA[6:25]]></time>
 	</track>
@@ -10,7 +10,7 @@
 		<time><![CDATA[5:14]]></time>
 	</track>
 
-  <track url="../../audio/releases/fwd08/03-touch.mp3" dnload="">
+  <track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd08/03-touch.mp3" dnload="">
     <title><![CDATA[TOUCH]]></title>
     <time><![CDATA[6:53]]></time>
   </track>

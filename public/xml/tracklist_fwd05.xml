@@ -2,34 +2,34 @@
 
 <tracklist>
 
-	<track url="../../audio/releases/fwd05/192/1_along_the_weak_rope.mp3" dnload="">
+	<track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd05/1_along_the_weak_rope.mp3" dnload="">
 		<title><![CDATA[ALONG THE WEAK ROPE]]></title>
-		<time><![CDATA[6:00]]></time>
+		<time><![CDATA[06:00]]></time>
 	</track>
 
-	<track url="../../audio/releases/fwd05/192/2_your_warm_silhouette_preview.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[YOUR WARM SILHOUETTE]]></title>
-		<time><![CDATA[1:00]]></time>
+		<time><![CDATA[06:48]]></time>
 	</track>
 
-  <track url="../../audio/releases/fwd05/192/3_citadel_preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[CITADEL]]></title>
-    <time><![CDATA[1:00]]></time>
+    <time><![CDATA[09:26]]></time>
   </track>
 
-  <track url="../../audio/releases/fwd05/192/4_twist_of_the_tongue_preview.mp3 " dnload="">
+  <track url="" dnload="">
     <title><![CDATA[TWIST OF THE TONGUE]]></title>
-     <time><![CDATA[1:04]]></time>
+     <time><![CDATA[10:22]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd05/192/5_the_air_in_between.mp3 " dnload="">
+  <track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd05/5_the_air_in_between.mp3" dnload="">
     <title><![CDATA[THE AIR IN BETWEEN]]></title>
      <time><![CDATA[6:12]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd05/192/6_the_ash_tree_preview.mp3 " dnload="">
+  <track url="" dnload="">
     <title><![CDATA[THE ASH TREE]]></title>
-     <time><![CDATA[1:04]]></time>
+     <time><![CDATA[05:27]]></time>
    </track>
 
 </tracklist>

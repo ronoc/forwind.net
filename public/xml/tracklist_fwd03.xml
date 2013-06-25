@@ -2,24 +2,24 @@
 
 <tracklist>
 
-	<track url="../../audio/releases/fwd03/192/wolf.mp3" dnload="">
+	<track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd03/wolf.mp3" dnload="">
 		<title><![CDATA[WOLF]]></title>
 		<time><![CDATA[09:45]]></time>
 	</track>
 
-	<track url="../../audio/releases/fwd03/192/sawtooth-preview.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[SAWTOOTH]]></title>
-		<time><![CDATA[01:19]]></time>
+		<time><![CDATA[15:40]]></time>
 	</track>
 
-  <track url="../../audio/releases/fwd03/192/cuthroat.mp3" dnload="">
+  <track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd03/cuthroat.mp3" dnload="">
     <title><![CDATA[CUTHROAT]]></title>
     <time><![CDATA[03:31]]></time>
   </track>
 
-  <track url="../../audio/releases/fwd03/192/conger-preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[CONGER]]></title>
-     <time><![CDATA[01:02]]></time>
+     <time><![CDATA[07:46]]></time>
    </track>
 
 </tracklist>

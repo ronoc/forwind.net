@@ -2,54 +2,54 @@
 
 <tracklist>
 
-	<track url="../../audio/releases/fwd04/192/1-Brigantine-Preview.mp3" dnload="">
+	<track url="" dnload="">
 		<title><![CDATA[BRIGANTINE]]></title>
-		<time><![CDATA[0:59]]></time>
+		<time><![CDATA[6:49]]></time>
 	</track>
 
-	<track url="../../audio/releases/fwd04/192/2-Gemstone.mp3" dnload="">
+	<track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd04/2-Gemstone.mp3" dnload="">
 		<title><![CDATA[GEMSTONE]]></title>
 		<time><![CDATA[3:51]]></time>
 	</track>
 
-  <track url="../../audio/releases/fwd04/192/3-Lady-Grey's-Allotment.mp3" dnload="">
+  <track url="https://s3-eu-west-1.amazonaws.com/forwindreleasepreviews/fwd04/3-Lady-Greys-Allotment.mp3" dnload="">
     <title><![CDATA[LADY GREY'S ALLOTMENT]]></title>
-    <time><![CDATA[07:28]]></time>
+    <time><![CDATA[7:29]]></time>
   </track>
 
-  <track url="../../audio/releases/fwd04/192/4-A-Death-And-A-Vision-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[A DEATH AND A VISION]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[2.47]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd04/192/5-A-Ritual-To-Read-Each-Other-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[A RITUAL TO READ TO EACH OTHER]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[4:04]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd04/192/6-On-The-Promise-Of-A-Blue-Sky-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[ON THE PROMISE OF A BLUE SKY]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[6:14]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd04/192/7-The-Hushed-Bud-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[THE HUSHED BUD]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[5:19]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd04/192/8-Grain-Of-Sand-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[GRAIN OF SAND]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[3:09]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd04/192/9-Bric-a-Brac-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[BRIC-A-BRAC]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[6:24]]></time>
    </track>
 
-  <track url="../../audio/releases/fwd04/192/10-Shipwrecks-Preview.mp3" dnload="">
+  <track url="" dnload="">
     <title><![CDATA[SHIPWRECKS]]></title>
-     <time><![CDATA[0:59]]></time>
+     <time><![CDATA[5:27]]></time>
    </track>
 
 </tracklist>

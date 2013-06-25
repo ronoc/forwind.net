@@ -2,7 +2,7 @@
 
 <div id="home_promo_header">
 
-<a href="http://www.normanrecords.com/poogle/index.php?q=forwind"><img src="/images/index/cd-promo2.jpg"></a>
+<a href="/releases/fwd09"><img src="/images/index/tomo-artist-banner-with-text.png"></a>
 
 <p></p>
 </div>
@@ -21,7 +21,7 @@
 <img src= <%="/images/releases/"+ release.cat.downcase + "_sm.jpg" %>></img>
 <div class="cover boxcaption">
 <h2><a href=<%= "/releases/" + release.cat %> title="..."><%= release.cat %>:<%= release.title %></a></h2>
-<p><%= release.short_desc %></p>
+<p><%= release.short_desc.html_safe %></p>
 </div>
 </div>
 <% end %>
@@ -59,8 +59,8 @@
 	</div>
 	<% @blogs.each do |blog| %>
 	<div class="home-blogroll-post">
-		<h3><%= link_to(blog.title, blog) %></h3>
-		<p><%= truncate(strip_tags(blog.parsed_body)) %></p>
+		<h3><a href=<%= "/blog_posts/" + blog.title %> title=<%= blog.title %>><%= blog.title %></a></h3>
+		<p><%= strip_tags(blog.parsed_body).truncate(130).html_safe %></p>
 		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>
 	</div>
 	<% end %>

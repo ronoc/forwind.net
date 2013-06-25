@@ -72,6 +72,7 @@ class BlogPostsController < ApplicationController
   end
 
   def create
+    puts "blog post to be created " + params[:blog_post].to_s(); 
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post.user_id = current_user.id
 

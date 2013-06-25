@@ -33,7 +33,7 @@
 
 <dl>
 	<dd><img src="/images/index/podcastFILE_icon.png"></dd>
-	<dt><a href=<%= "/audio" + @podcast.file_name + ".zip" %>>ZIP FILE</a></dt>
+	<dt><a href=<%="https://s3-eu-west-1.amazonaws.com/forwindpodcasts/" + @podcast.cat_no + '.mp3'%>>MP3 FILE</a></dt>
 	<% end %>
 	<dd><img src="/images/index/podcastRSS_icon.png"></dd>
 	<dt><a href= "http://www.forwind.net/podcasts.atom">ATOM FEED</a></dt>
