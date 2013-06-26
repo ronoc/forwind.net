@@ -1156,6 +1156,7 @@ input:focus {
   text-indent: 10px;
   color: #666666;
   vertical-align: middle;
+  line-height: 30px;
 }
 
 #newshold input {
