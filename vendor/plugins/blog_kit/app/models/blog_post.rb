@@ -17,7 +17,7 @@ class BlogPost < ActiveRecord::Base
 	validates_presence_of :body
 	attr_accessible :title
 	attr_accessible :body
-	
+
   default_scope :order => 'published_at DESC'
 	
 	scope :published, { :conditions => {:published => true }}
@@ -45,10 +45,12 @@ class BlogPost < ActiveRecord::Base
 		if @tags
 			# Remove old tags
 			self.blog_tags.delete_all
-		
+			puts 'here after deleting tags'
 			# Save new tags
 			@tags.split(/,/).each do |tag|
+				puts 'here about to save ' + tag
 				self.blog_tags.build(:tag => tag.strip.downcase)
+				puts 'here 3'
 			end
 		end
 	end

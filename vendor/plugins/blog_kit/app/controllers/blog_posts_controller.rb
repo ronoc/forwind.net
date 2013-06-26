@@ -93,6 +93,10 @@ class BlogPostsController < ApplicationController
 
     respond_to do |format|
       if @blog_post.update_attributes(params[:blog_post])
+        @blog_post.tags=(params[:blog_post][:tags])
+        @blog_post.save_tags()
+        #puts "blog post to be created " + @blog_post.tags(); 
+        @blog_post.save
         flash[:notice] = 'BlogPost was successfully updated.'
         format.html { redirect_to(@blog_post) }
         format.xml  { head :ok }

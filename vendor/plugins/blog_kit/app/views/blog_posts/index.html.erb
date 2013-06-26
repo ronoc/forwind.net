@@ -12,9 +12,12 @@
 		<p>There are currently no blog posts, please check back shortly.</p>
 	</div>
 <% else %>
+	<div class="blogPost">
 	<% if @tag %>
 		<h1>Tag: <%= @tag %></h1>
 	<% end %>
+	</div>
+
 	<div class='blogRightHandNav'>
 		<img src="/images/index/podcastRSS_icon_small.png"/>
 		<a href="http://www.forwind.net/blog_posts.atom">ATOM FEED</a>
@@ -25,6 +28,7 @@
 <% end %>
 
 <div class="blogPages">
+
 	<%= will_paginate @blog_posts %>
 </div>
 

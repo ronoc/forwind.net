@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 			get :tag
 		end
 	end
+    match "/blog_posts/tag/(/:id)" => "blog_posts#tag"  	
 end
