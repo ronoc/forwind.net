@@ -72,12 +72,14 @@ class BlogPostsController < ApplicationController
   end
 
   def create
-    puts "blog post to be created " + params[:blog_post].to_s(); 
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post.user_id = current_user.id
 
     respond_to do |format|
       if @blog_post.save
+        @blog_post.tags=(params[:blog_post][:tags])
+        @blog_post.save_tags()
+        @blog_post.save
         flash[:notice] = 'BlogPost was successfully created.'
         format.html { redirect_to(@blog_post) }
         format.xml  { render :xml => @blog_post, :status => :created, :location => @blog_post }
@@ -93,9 +95,9 @@ class BlogPostsController < ApplicationController
 
     respond_to do |format|
       if @blog_post.update_attributes(params[:blog_post])
+
         @blog_post.tags=(params[:blog_post][:tags])
         @blog_post.save_tags()
-        #puts "blog post to be created " + @blog_post.tags(); 
         @blog_post.save
         flash[:notice] = 'BlogPost was successfully updated.'
         format.html { redirect_to(@blog_post) }
