@@ -3,6 +3,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = []
+    @artists << Artist.find_by_name("Jeff Carey")
     @artists << Artist.find_by_name("Tomonari Nozaki")
     @artists << Artist.find_by_name("Dentistry")
     @artists << Artist.find_by_name("fourth page")
@@ -30,11 +31,12 @@ class ArtistsController < ApplicationController
       search_query = 'fourth page'
     elsif params[:id] == 'Tomonari Nozaki' or params[:id] == 'TomonariNozaki'
       search_query = 'Tomonari Nozaki'
+    elsif params[:id] == 'Jeff Carey' or params[:id] == 'JeffCarey'
+      search_query = 'Jeff Carey'
     else
       search_query = params[:id].capitalize
     end
     @artist ||= Artist.find_by_name(search_query)
-    puts "artist name = " + @artist.name
   end
 
 end

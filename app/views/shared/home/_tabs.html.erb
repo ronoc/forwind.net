@@ -28,6 +28,7 @@
 <li>
 <%= link_to_if( not_in_context("artists", nil, "index"), "ARTISTS", { :controller => "artists" }) %>
     <ol>
+     <li><%= link_to_if( not_in_context("artists", "JeffCarey"), "JEFF CAREY", { :controller => "artists", :action => "show", :id => 'JeffCarey'}) %></li> 
      <li><%= link_to_if( not_in_context("artists", "TomonariNozaki"), "TOMONARI NOZAKI", { :controller => "artists", :action => "show", :id => 'TomonariNozaki' }) %></li>
       <li><%= link_to_if( not_in_context("artists", "Dentistry"), "DENTISTRY", { :controller => "artists", :action => "show", :id => 'Dentistry' }) %></li>
       <li><%= link_to_if( not_in_context("artists", "FourthPage"), "FOURTH PAGE", { :controller => "artists", :action => "show", :id => 'FourthPage' }) %></li>
