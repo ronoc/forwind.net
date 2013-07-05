@@ -15,14 +15,18 @@ class ReleasesController < ApplicationController
     @releases << Release.find_by_cat('FWD00')
   end
 
-	def show
-	  check_params
-    if params[:id].to_i.to_s != "0"
-      @release = Release.find(params[:id])
-    end
-		@release ||= Release.find_by_cat(params[:id])
-          
+  def current
+    @release = Release.find :last
+    render :show
+  end
 
+	def show
+    params[:id] = params[:id].upcase
+    @release ||= Release.find_by_cat(params[:id])
+    unless @release
+      @release = Release.find(params[:id])
+      puts 'params id = ' + params[:id].to_s
+    end
 	end
 
   def context
@@ -30,12 +34,4 @@ class ReleasesController < ApplicationController
     @item = params[:id].nil? ? "FWD01" : params[:id].upcase
   end
 
-  def check_params
-    if params[:id] == "cjc"
-      params[:id] = "FWD00"
-    elsif params[:id] == "sonnamble"
-      params[:id] = "FWD01"
-    end
-    params[:id] = params[:id].upcase
-  end
 end

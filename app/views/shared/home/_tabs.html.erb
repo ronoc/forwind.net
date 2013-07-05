@@ -12,34 +12,13 @@
   <li>
 <%= link_to_if( not_in_context("releases", nil, "index"), "RELEASES", { :controller => "releases" }) %>
     <ol>
-      <li><%= link_to_if( not_in_context("releases", "FWD09"), "NORTH PALACE", {:controller => "releases", :action => 'show', :id => "FWD09"}) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD08"), "TICKS AND MOANS", { :controller => "releases", :action => 'show', :id => "FWD08" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD07"), "VARDØGR", { :controller => "releases", :action => 'show', :id => "FWD07" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD06"), "BLINDLIGHT", { :controller => "releases", :action => 'show', :id => "FWD06" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD05"), "ALONG THE WEAK ROPE", { :controller => "releases", :action => 'show', :id => "FWD05" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD03"), "WINTERLANDS", { :controller => "releases", :action => 'show', :id => "FWD04" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD03"), "ELVERS", { :controller => "releases", :action => 'show', :id => "FWD03" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD02"), "FEED BACK COUPLE", { :controller => "releases", :action => 'show', :id => "FWD02" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD01"), "SEVEN MONTHS IN E MINOR", { :controller => "releases", :action => 'show', :id => "FWD01" }) %></li>
-      <li><%= link_to_if( not_in_context("releases", "FWD00"), "FORM", { :controller => "releases", :action => 'show', :id => "FWD00" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", nil, "current"), "CURRENT", { :controller => "releases", :action => "current" }) %></li>
+      <li><%= link_to_if( not_in_context("releases", "index"), "CATALOGUE", { :controller => "releases", :action => "index" }) %></li>
       <li></li>
-	  </ol>
+    </ol>
   </li>
 <li>
 <%= link_to_if( not_in_context("artists", nil, "index"), "ARTISTS", { :controller => "artists" }) %>
-    <ol>
-     <li><%= link_to_if( not_in_context("artists", "AtomEye"), "ATOM EYE", { :controller => "artists", :action => "show", :id => 'AtomEye'}) %></li>      
-     <li><%= link_to_if( not_in_context("artists", "JeffCarey"), "JEFF CAREY", { :controller => "artists", :action => "show", :id => 'JeffCarey'}) %></li> 
-     <li><%= link_to_if( not_in_context("artists", "TomonariNozaki"), "TOMONARI NOZAKI", { :controller => "artists", :action => "show", :id => 'TomonariNozaki' }) %></li>
-      <li><%= link_to_if( not_in_context("artists", "Dentistry"), "DENTISTRY", { :controller => "artists", :action => "show", :id => 'Dentistry' }) %></li>
-      <li><%= link_to_if( not_in_context("artists", "FourthPage"), "FOURTH PAGE", { :controller => "artists", :action => "show", :id => 'FourthPage' }) %></li>
-      <li><%= link_to_if( not_in_context("artists", "ClangSayne"), "CLANG SAYNE", { :controller => "artists", :action => "show", :id => 'ClangSayne' }) %></li>
-      <li><%= link_to_if( not_in_context("artists", "Elvers"), "ELVERS", { :controller => "artists", :action => "show", :id => 'Elvers' }) %></li>
-      <li><%= link_to_if( not_in_context("artists", "JamesOSullivan"), "JAMES O'SULLIVAN", { :controller => "artists", :action => "show", :id => 'JamesOSullivan' }) %></li>
-      <li><%= link_to_if( not_in_context("artists", "Sonnamble"), "SONNAMBLE", { :controller => "artists", :action => "show", :id => 'Sonnamble' }) %></li>
-      <li><%= link_to_if(not_in_context("artists", "CjC"), "CjC", { :controller => "artists", :action => "show", :id => 'CjC' }) %></li>
-      <li></li>
-	  </ol>
   </li>
 
   <li>

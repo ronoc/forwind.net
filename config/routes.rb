@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     # RESOURCES
     get 'podcasts/current'
+    get 'releases/current'
     post 'home/subscribe'
         
     resources :podcasts
