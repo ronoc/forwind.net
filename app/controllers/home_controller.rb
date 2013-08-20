@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     @recent = rels
     promo_index = 0
     @small_releases = []
-    (0...5).each do |x|
+    (0...6).each do |x|
       @small_releases << rels[x] unless rels[x].available == false
     end
     @promo_release = rels[promo_index]

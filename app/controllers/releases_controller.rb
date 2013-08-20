@@ -3,6 +3,8 @@ class ReleasesController < ApplicationController
   
   def index
     @releases = []
+    @releases << Release.find_by_cat('FWD11')
+    @releases << Release.find_by_cat('FWD10')
     @releases << Release.find_by_cat('FWD09')
     @releases << Release.find_by_cat('FWD08')
     @releases << Release.find_by_cat('FWD07')
@@ -16,7 +18,7 @@ class ReleasesController < ApplicationController
   end
 
   def current
-    @release = Release.find :last
+    @release = Release.find_by_cat('FWD09')
     render :show
   end
 

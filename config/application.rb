@@ -61,7 +61,5 @@ module ForwindNet
     config.assets.version = '1.0'
     config.log_level = :warning
     config.time_zone = 'UTC'
-    #config.action_controller.session = {:session_key => "_myapp_session", 
-    #                                    :secret => "forwinds_secret_phrase_which_is_30_characters"}
   end
 end
