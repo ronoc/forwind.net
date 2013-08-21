@@ -13,7 +13,6 @@ test: &test
   <<: *common
   database: forwind_test
 
-
 production: &production
   <<: *common
   database: forwind_development
