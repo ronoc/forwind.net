@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110618104921) do
+ActiveRecord::Schema.define(:version => 20130907083847) do
 
   create_table "artists", :force => true do |t|
-    t.string   "name",        :limit => 1000, :null => false
-    t.text     "description",                 :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image"
     t.string   "location"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.string   "slug"
   end
 
   create_table "artists_releases", :id => false, :force => true do |t|
@@ -35,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
     t.string   "title",       :null => false
     t.string   "description"
     t.string   "location"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "blog_comments", :force => true do |t|
@@ -60,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "blog_post_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "blog_images", ["blog_post_id"], :name => "index_blog_images_on_blog_post_id"
@@ -87,8 +88,8 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
   create_table "links", :force => true do |t|
     t.integer  "artist_id"
     t.string   "location",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pieces", :force => true do |t|
@@ -106,33 +107,33 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
     t.string   "genre",                         :null => false
     t.string   "cat_no",                        :null => false
     t.integer  "duration",                      :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "release_links", :force => true do |t|
     t.string   "location",   :null => false
     t.integer  "release_id", :null => false
     t.string   "vendor",     :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "link_type"
   end
 
   create_table "releases", :force => true do |t|
-    t.string   "title",                          :null => false
+    t.string   "title"
     t.text     "long_desc"
     t.datetime "release_date"
-    t.string   "short_desc",                     :null => false
-    t.string   "cat",                            :null => false
+    t.string   "short_desc"
+    t.string   "cat"
     t.integer  "artist_id"
-    t.boolean  "available",    :default => true
+    t.boolean  "available"
   end
 
   create_table "track_lists", :force => true do |t|
     t.integer  "podcast_id", :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tracks", :force => true do |t|
@@ -140,8 +141,8 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
     t.string   "artist_title",  :null => false
     t.string   "label"
     t.integer  "position"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -150,8 +151,8 @@ ActiveRecord::Schema.define(:version => 20110618104921) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

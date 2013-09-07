@@ -2,7 +2,7 @@
 
 <% @artists.each do |artist| %>
 <div class="artist_index_promo">
-<a href=<%= "/artists/#{artist.id}" %>><img src="<%="/images/artists/#{small_artists_image(artist.image)}" %>"/></a>
+<a href=<%= "/artists/#{artist.slug}" %>><img src="<%="/images/artists/#{small_artists_image(artist.image)}" %>"/></a>
 <span><%= link_to artist.name, artist %></span>
 </div>
 <% end %>

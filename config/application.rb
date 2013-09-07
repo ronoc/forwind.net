@@ -61,5 +61,18 @@ module ForwindNet
     config.assets.version = '1.0'
     config.log_level = :warning
     config.time_zone = 'UTC'
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+        r301    '/artists/312708603',   '/artists/jeffcarey'
+        r301    '/artists/312708604',   '/artists/atomeye'
+        r301    '/artists/312708601',   '/artists/tomonarinozaki'
+        r301    '/artists/312708595', '/artists/fourthpage'                
+        r301    '/artists/4', '/artists/sonnamble'
+        r301    '/artists/1', '/artists/cjc'
+        r301    '/artists/312708600', '/artists/dentistry'
+        r301    '/artists/312708595', '/artists/fourthpage'
+        r301    '/artists/312708594', '/artists/clangsayne'
+        r301    '/artists/312708593', '/artists/elvers'
+        r301    '/artists/8', '/artists/jamesosullivan'
+    end
   end
 end
