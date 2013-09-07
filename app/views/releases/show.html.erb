@@ -48,6 +48,13 @@
 <% if @release.available == false %>
   Availability links to follow shortly.
 <% else %>
+  <% unless @release.discogs.empty? %>
+    <% unless @release.reviews.empty? %>
+      <br/>
+    <% end %>
+    Digipack CDs from the <a href=<%= @release.discogs[0].location %>>Forwind Discogs Shop</a>
+    <br/><br/>
+  <% end %>
   <% unless @release.physicals.empty? %>
     CDs available from 
     <% @release.physicals.each do |link| %>
