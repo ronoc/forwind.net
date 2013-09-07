@@ -41,5 +41,4 @@ class ArtistsController < ApplicationController
     end
     @artist ||= Artist.find_by_name(search_query)
   end
-
 end
