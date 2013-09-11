@@ -15,6 +15,7 @@ class ReleasesController < ApplicationController
     @releases << Release.find_by_cat('FWD02')
     @releases << Release.find_by_cat('FWD01')
     @releases << Release.find_by_cat('FWD00')
+    render layout: 'home'
   end
 
   def current
@@ -24,11 +25,12 @@ class ReleasesController < ApplicationController
 
 	def show
     params[:id] = params[:id].upcase
+
     @release ||= Release.find_by_cat(params[:id])
     unless @release
       @release = Release.find(params[:id])
-      puts 'params id = ' + params[:id].to_s
     end
+    @thing = @release
 	end
 
   def context

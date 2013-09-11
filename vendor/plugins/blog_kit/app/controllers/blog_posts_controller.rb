@@ -15,7 +15,7 @@ class BlogPostsController < ApplicationController
     @index_title = BlogKit.instance.settings['blog_name'] || 'Blog'
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :share => false}
       format.xml  { render :xml => @blog_posts }
 			format.atom
     end
@@ -53,7 +53,7 @@ class BlogPostsController < ApplicationController
 		@blog_comments = @blog_post.blog_comments.paginate(:page => params[:page], :order => 'created_at DESC')
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :share => false}
       format.xml  { render :xml => @blog_post }
     end
   end
@@ -135,6 +135,8 @@ class BlogPostsController < ApplicationController
 		def choose_layout
 			if ['new', 'edit', 'create', 'update'].include?(params[:action])
 				BlogKit.instance.settings['admin_layout'] || 'application'
+      elsif 'show' == params[:action]
+        'music'  
 			else
 				BlogKit.instance.settings['layout'] || 'application'
 			end

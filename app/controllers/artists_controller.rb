@@ -13,6 +13,7 @@ class ArtistsController < ApplicationController
     @artists << Artist.find_by_name("Elvers")
     @artists << Artist.find_by_name("Sonnamble")
     @artists << Artist.find_by_name("CjC")
+    render layout: 'home'
   end
 
   def show

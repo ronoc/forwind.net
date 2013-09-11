@@ -5,8 +5,9 @@ class PodcastsController < ApplicationController
     @podcasts = Podcast.find :all
     @podcast = @podcasts.sort_by{|x| x.created_at }.last
     @podcasts.reverse!
+
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => 'home'}
       format.xml  { render :xml => @podcasts }
 			format.atom { render :atom => @podcasts }
     end

@@ -552,7 +552,7 @@ clear:left;
   clear:both;
   height:210px;
   margin: 0px 0 0 0;
-    padding: 30px 22px 20px 20px;
+  padding: 30px 22px 20px 20px;
 }
 
 #footer h2 {
@@ -570,8 +570,37 @@ clear:left;
   float: left;
 }
 
+#socialLinks ul{
+  padding-top: 19px;
+  width: 500px;
+  height:210px;
+  list-style: None;
+}
 
+#socialLinks li{
+  float: left;
+  position: relative;
+  width: 5.6em;
+  text-align: left;
+  cursor: default;
+  background-color: #2F2D2E;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  list-style: none;
+  padding: 0;
+  opacity:0.4;
+}
 
+#socialLinks li:hover {
+  opacity: 1;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  -ms-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
 
 #footer-subscribe {
 width: 242px;
