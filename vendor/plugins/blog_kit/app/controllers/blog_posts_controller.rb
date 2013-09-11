@@ -51,9 +51,11 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.find(params[:id])
 		@blog_comment = @blog_post.blog_comments.new
 		@blog_comments = @blog_post.blog_comments.paginate(:page => params[:page], :order => 'created_at DESC')
+    
+    set_sharing_details(@blog_post.title, "http://www.forwind.net/blog_posts/" + @blog_post.to_param, @blog_post.title)
 
     respond_to do |format|
-      format.html { render :share => false}
+      format.html {}
       format.xml  { render :xml => @blog_post }
     end
   end
@@ -128,7 +130,6 @@ class BlogPostsController < ApplicationController
 				redirect_to blog_posts_path
 				return false
 			end
-			
 			return true
 		end
 		

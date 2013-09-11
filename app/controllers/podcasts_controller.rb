@@ -15,11 +15,20 @@ class PodcastsController < ApplicationController
     
   def show
     @podcast ||= Podcast.find(params[:id])
+    set_sharing_details(share_text(), "http://www.forwind.net/podcasts/" + @podcast.id.to_s, @podcast.title)
   end
 
   def current
     @podcast = Podcast.last
-    render :show
+    set_sharing_details(share_text(), "http://www.forwind.net/podcasts/" + @podcast.id.to_s, @podcast.title)
+    render :show    
+  end
+
+  def share_text
+    unless @podcast
+      return ""
+    end
+    "Forwind | Podcasts | " + @podcast.title
   end
     
 end

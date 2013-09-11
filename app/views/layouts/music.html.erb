@@ -2,18 +2,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
-  <title>Forwind | <%= @context.downcase%></title>
+  <title>Forwind | <%= @context.humanize %> | <%= @share_details[:title_subtext] %></title>
+<meta name="google-site-verification" content="Oq2AaagB6c_NXK25RChwoHq0tn7yRod2WRabKCgsYD8" />
+<meta name="description" content= "Forwind | <%= @context.humanize %> | <%= @share_details[:title_subtext] %>" />
+<meta name="keywords" content="Forwind, <%= @context.humanize %>, <%= @share_details[:title_subtext] %>" />   
   <%= stylesheet_link_tag('forwind') %>
   <%= stylesheet_link_tag('sharre') %>
 <%= auto_discovery_link_tag(:atom, "/feeds.atom") %>
  <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
 <script src="/javascripts/jquery.sharrre-1.3.4.min.js"></script>
-<%= javascript_include_tag "jquery.sharrre-1.3.4.min" %>
 <link rel="icon" href="/images/index/favicon.ico" type="image/x-icon" />
-<meta property="og:image" content=<%= @thing.facebookIcon %>/>
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
 	</head>
     <body>
 
@@ -29,7 +27,7 @@
 						<div class="title-hr-2gridleft">
 						<hr/>
 							<div id="example2">
-							<div id="shareme" data-url=<%= request.url %> data-text="Forwind.net | Releases">
+							<div id="shareme" data-url="<%= @share_details[:link] %>" data-text="<%= @share_details[:text] %>" >
 							</div>						
 						       <script>
 						            $('#shareme').sharrre({
@@ -41,6 +39,8 @@
 						              template: '<div class="box"><div class="left">SHARE</div><div class="middle"><a href="#" class="facebook">F</a><a href="#" class="twitter">T</a><a href="#" class="googleplus">+1</a></div></div>',
 						              enableHover: false,
 						              enableTracking: true,
+						              text: "<%= @share_details[:text] %>",
+						              title: "<%= @share_details[:text] %>",
 						              render: function(api, options){
 						                $(api.element).on('click', '.twitter', function() {
 						                  api.openPopup('twitter');

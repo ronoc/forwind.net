@@ -20,7 +20,15 @@ class ReleasesController < ApplicationController
 
   def current
     @release = Release.find_by_cat('FWD09')
+    set_sharing_details(share_text(), "http://www.forwind.net/releases/" + @release.cat.downcase, @release.title)
     render :show
+  end
+
+  def share_text
+    unless @release 
+      return ""
+    end
+    @release.artist.name + " | " + @release.title + " | " + @release.cat
   end
 
 	def show
@@ -30,7 +38,7 @@ class ReleasesController < ApplicationController
     unless @release
       @release = Release.find(params[:id])
     end
-    @thing = @release
+    set_sharing_details(share_text(), "http://www.forwind.net/releases/" + @release.cat.downcase, @release.title)
 	end
 
   def context

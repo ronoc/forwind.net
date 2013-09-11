@@ -16,7 +16,15 @@ class ArtistsController < ApplicationController
     render layout: 'home'
   end
 
+  def share_text
+    unless @artist
+      return ""
+    end
+    "Forwind | Artists | " + @artist.name
+  end
+
   def show
     @artist = Artist.find_by_slug(params[:id])
+    set_sharing_details(share_text(), "http://www.forwind.net/artists/" + @artist.slug, @artist.name)
   end
 end

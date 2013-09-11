@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
   
+  def set_sharing_details(text, link, title_subtext)
+    @share_details = {:text => text, :link => link, :title_subtext => title_subtext}
+  end
+
   def title(ttl)
     @page_title = ttl
   end 
