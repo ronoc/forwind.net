@@ -11,7 +11,7 @@
 		<p>There are currently no blog posts, please check back shortly.</p>
 	</div>
 <% else %>
-	<%= render :collection => @blog_posts, :partial => 'blog_post' %>
+	<%= render :collection => @blog_posts, :partial => 'blog_post', :locals => {:show_br => true} %>
 <% end %>
 
 <div class="blogPages">
