@@ -67,14 +67,16 @@
     <% end %>
   <br/>
   <% end %>
-  Flac and Mp3 available from 
-  <% @release.downloads.each do |link| %>
-     <a href=<%= link.location %>><%= link.vendor %></a>
+  <% unless @release.downloads.empty? %>
+    Flac and Mp3 available from 
+    <% @release.downloads.each do |link| %>
+      <a href=<%= link.location %>><%= link.vendor %></a>
         <% if @release.downloads.index(link) == @release.downloads.size - 2 %>
         and
         <% elsif @release.downloads.index(link) != @release.downloads.size - 1 %>
         ,
-      <% end %> 
+        <% end %> 
+    <% end %>
   <% end %>
 
   <br/>

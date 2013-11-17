@@ -19,7 +19,7 @@ class ReleasesController < ApplicationController
   end
 
   def current
-    @release = Release.find_by_cat('FWD10')
+    @release = Release.find_by_cat('FWD11')
     set_sharing_details(share_text(), "http://www.forwind.net/releases/" + @release.cat.downcase, @release.title)
     render :show
   end
