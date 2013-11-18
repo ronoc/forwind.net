@@ -64,6 +64,7 @@ module ForwindNet
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
         r301    '/artists/312708603',   '/artists/jeffcarey'
         r301    '/artists/312708604',   '/artists/atomeye'
+        r301    '/artists/AtomEye',   '/artists/atomeye'
         r301    '/artists/312708601',   '/artists/tomonarinozaki'
         r301    '/artists/312708595', '/artists/fourthpage'                
         r301    '/artists/4', '/artists/sonnamble'
