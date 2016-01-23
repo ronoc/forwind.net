@@ -2,12 +2,11 @@ class Release < ActiveRecord::Base
   has_many :pieces
   belongs_to :artist
   has_many :release_links
-  
 
   def last_three
     Release.find(:all).sort_by
   end
-  
+
   def sort_links
     @links = {ReleaseLink.types[:PHYSICAL] => [],
               ReleaseLink.types[:DOWNLOAD] => [],
@@ -20,7 +19,7 @@ class Release < ActiveRecord::Base
       end
       @links[link.link_type] << link
     end
-  end  
+  end
 
   def streams
     if @links.nil?

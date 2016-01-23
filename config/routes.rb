@@ -7,14 +7,13 @@ Rails.application.routes.draw do
     # RESOURCES
     get 'podcasts/current'
     get 'releases/current'
-    post 'home/subscribe'
-        
+
     resources :podcasts
     resources :user_sessions
     resources :users
     resources :artists
-    resources :releases 
-   
+    resources :releases
+
     root :to => "home#index"
 end
 

@@ -1,5 +1,3 @@
-require 'gibbon'
-
 class HomeController < ApplicationController
   layout 'home'
   before_filter :random_promo
@@ -16,10 +14,10 @@ class HomeController < ApplicationController
     @promo_release = rels[promo_index]
     @podcast = Podcast.last
     bs = BlogPost.find :all
-    
+
     @blogs = []
     titles = []
-    
+
     bs.each do |x|
       unless (x.tags.include?("podcasts"))
         unless (x.published == false)
@@ -34,21 +32,5 @@ class HomeController < ApplicationController
       end
     end
   end
-
-  def subscribe
-  	email_address = params['email']
-    if /^([^@\s'"]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.match(email_address)
-      gb = Gibbon.new("04eb5415991d0463f76a8b0d6d4c7048-us4")
-      begin
-        gb.list_subscribe(:id => "ed662591d5", :email_address => email_address)     
-        flash[:notice] = "Confirmation email in the post..."
-      rescue
-        flash[:error] = 'Looks like you have already subscribed to our mailing list !'
-      end
-    else
-  	  flash[:error] = "Oops that email address did not validate ?"
-  	end	
-  	redirect_to :action => "index"	
-  end	
 end
 

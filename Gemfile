@@ -26,7 +26,6 @@ gem 'pry'
 gem 'authlogic'
 gem 'will_paginate'
 gem 'bluecloth'
-gem 'gibbon'
 gem 'rack-rewrite', '~> 1.2.1'
 
 # To use ActiveModel has_secure_password

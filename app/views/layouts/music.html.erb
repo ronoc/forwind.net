@@ -14,8 +14,6 @@
 <link rel="icon" href="/images/index/favicon.ico" type="image/x-icon" />
 	</head>
     <body>
-
-	
       <div id="outer_container">
           <div id="crumb_trail">
           </div>
@@ -23,57 +21,32 @@
 	        	<%= render(:partial => "shared/home/tabs") %>
             	<%= yield %>
 				<div id="footer">
-					<div id="footer-links">
-						<div class="title-hr-2gridleft">
+							<div id="footer-links">
 						<hr/>
-							<div id="example2">
-							<div id="shareme" data-url="<%= @share_details[:link] %>" data-text="<%= @share_details[:text] %>" >
-							</div>						
-						       <script>
-						            $('#shareme').sharrre({
-						              share: {
-						                twitter: true,
-						                facebook: true,
-						                googlePlus: true
-						              },
-						              template: '<div class="box"><div class="left">SHARE</div><div class="middle"><a href="#" class="facebook">F</a><a href="#" class="twitter">T</a><a href="#" class="googleplus">+1</a></div></div>',
-						              enableHover: false,
-						              enableTracking: true,
-						              text: "<%= @share_details[:text] %>",
-						              title: "<%= @share_details[:text] %>",
-						              render: function(api, options){
-						                $(api.element).on('click', '.twitter', function() {
-						                  api.openPopup('twitter');
-						                });
-						                $(api.element).on('click', '.facebook', function() {
-						                  api.openPopup('facebook');
-						                });
-						                $(api.element).on('click', '.googleplus', function() {
-						                  api.openPopup('googlePlus');
-						                });
-						              }
-						            });
-						        </script>
-							</div>
+						<h2>LINKS</h2>
 						<hr/>
+						<div id="socialLinks">
+							<ul>
+							<li><a href="http://soundcloud.com/forwind" title="Visit our SoundCloud page" target="_blank"><img src='/images/index/soundcloud-24x24.png'></a></li>
+							<li><a href="http://twitter.com/#!/forwindings" title="View our tweets" target="_blank"><img src='/images/index/twitter-24x24.png'></a></li>
+							<li><a href="http://www.facebook.com/pages/Forwind/143631062329300" title="Visit our Facebook page" target="_blank"><img src='/images/index/facebook-24x24.png'></a></li>
+							<li><a href="http://www.mixcloud.com/Forwind/" title="Visit our Vimeo page" target="_blank"><img src="/images/index/mixcloud.png" alt="Mixcloud" /></a></li>
+						<ul>
 						</div>
 					</div>
-					<div id="footer-subscribe">
+					<!--div id="footer-subscribe">
 						<div class="title-hr-1gridright">
 						<hr/>
 						<h2>Subscribe to our newsletter</h2>
 						<hr/>
 						</div>
-
 <form accept-charset="UTF-8" action="/home/subscribe" method="post">
 							<div id="newshold">
 <input type="text" id="newsinput" placeholder="enter your email address" name="email"/><input type="submit" id="newssub" value="subscribe" />
 							</div>
 </form>
+					</div-->
 
-					</div>
-
-				</div>
 				</div>
 				</div>
 
@@ -82,8 +55,6 @@
 				<div id="legal-notice">
 				<p class="copyright"><i>for/wind.net </i>&#169; <i><script type="text/javascript">document.write((new Date()).getFullYear());</script></i></p>
 				</div>
-
-
 
 			</div>
 

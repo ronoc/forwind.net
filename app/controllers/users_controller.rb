@@ -5,7 +5,7 @@ layout "home"
     return
     #@user = User.new
   end
-  
+
   def create
     redirect_to root_url
     return
@@ -17,13 +17,13 @@ layout "home"
       render :action => 'new'
     end
   end
-  
+
   def edit
     redirect_to root_url
     return
     @user = current_user
   end
-  
+
   def update
     redirect_to root_url
     return

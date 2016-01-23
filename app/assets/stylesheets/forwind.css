@@ -564,29 +564,30 @@ clear:left;
 }
 
 #footer-links {
-  width: 516px;
-  height:210px;
+  width: 750px;
+  height: 210px;
   float: left;
 }
 
 #socialLinks ul{
   padding-top: 19px;
-  width: 500px;
+  padding-right: 50px;
+  width: 535px;
   height:210px;
   list-style: None;
 }
 
 #socialLinks li{
-  float: left;
   position: relative;
-  width: 5.6em;
+  width: 4.6em;
   text-align: left;
+  float: right;
   cursor: default;
   background-color: #2F2D2E;
   margin-top: 0px;
   margin-left: 0px;
   margin-bottom: 5px;
-  margin-right: 10px;
+  margin-right: 5px;
   list-style: none;
   padding: 0;
   opacity:0.4;

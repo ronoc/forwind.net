@@ -1,6 +1,6 @@
 class ReleasesController < ApplicationController
   layout 'music'
-  
+
   def index
     @releases = []
     @releases << Release.find_by_cat('FWD11')
@@ -25,7 +25,7 @@ class ReleasesController < ApplicationController
   end
 
   def share_text
-    unless @release 
+    unless @release
       return ""
     end
     @release.artist.name + " | " + @release.title + " | " + @release.cat
