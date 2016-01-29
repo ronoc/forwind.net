@@ -31,7 +31,7 @@
 
 <ol>
 <% unless @release.reviews.empty? %>
-  Online reviews from      
+  Online reviews from
   <% @release.reviews.each do |link| %>
     <a href=<%= link.location %>><%= link.vendor %></a>
     <% if @release.reviews.size > 1 %> 
@@ -48,15 +48,8 @@
 <% if @release.available == false %>
   Availability links to follow shortly.
 <% else %>
-  <% unless @release.discogs.empty? %>
-    <% unless @release.reviews.empty? %>
-      <br/>
-    <% end %>
-    Digipack CDs from the <a href=<%= @release.discogs[0].location %>>Forwind Discogs Shop</a>
-    <br/><br/>
-  <% end %>
   <% unless @release.physicals.empty? %>
-    CDs available from 
+    <%= @release.preferred_format %> available from 
     <% @release.physicals.each do |link| %>
        <a href=<%= link.location %>><%= link.vendor %></a>
         <% if @release.physicals.index(link) == @release.physicals.size - 2 %>
