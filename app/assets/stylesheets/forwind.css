@@ -1074,7 +1074,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
   float: left;
   list-style:none;
   color: #ffffff;
-  margin: 30px 0px 0px 0px;
+  margin: 52px 0px 0px 0px;
 }
 
 #podcast_download p.podcastDuration{
@@ -1119,14 +1119,14 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 }
 
 #podcast_download p{
-  margin: 5px 0 0 0px;
+  margin: 10px 0 0 0px;
   padding: 0;
   list-style:none;
   color: #ffffff;
 }
 
 #podcast_download ol li dl dd img{
-  padding: 10px 0 0 10px;
+  padding: 12px 0 0 10px;
   margin: 0;
   text-align: center;
 }

@@ -23,21 +23,16 @@
 
 	<dt>CATALOGUE # :</dt>
     <dd><%= @podcast.cat_no %></dd>
+
+	<dt>DURATION :</dt>
+    <dd><%= @podcast.duration.to_s %> minutes</dd>
+
 <% if @podcast.available? %>
 </dl>
 
 
 <div id="podcast_download">
-	<p>DOWNLOAD PODCAST</p>
-	<p class="podcastDuration">(<%= @podcast.duration.to_s %> minute, 320 kbps, mp3 mix)</p>
-
-<dl>
-	<dd><img src="/images/index/podcastFILE_icon.png"></dd>
-	<dt><a href=<%="https://s3-eu-west-1.amazonaws.com/forwindpodcasts/" + @podcast.cat_no + '.mp3'%>>MP3 FILE</a></dt>
-	<% end %>
-	<dd><img src="/images/index/podcastRSS_icon.png"></dd>
-	<dt><a href= "http://www.forwind.net/podcasts.atom">ATOM FEED</a></dt>
-</dl>
+<iframe width="200" height="60" src=<%= @podcast.mixcloud_url %> frameborder="0"></iframe><div style="clear: both; height: 3px; width: 192px;"></div><p style="display: block; font-size: 11px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; margin: 0px; padding: 3px 4px; color: rgb(153, 153, 153); width: 192px;"><div style="clear: both; height: 3px; width: 192px;"></div>	<% end %>
 </div>
 </div>
 
