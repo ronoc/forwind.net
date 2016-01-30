@@ -66,7 +66,7 @@ module ForwindNet
         r301    '/artists/312708604',   '/artists/atomeye'
         r301    '/artists/AtomEye',   '/artists/atomeye'
         r301    '/artists/312708601',   '/artists/tomonarinozaki'
-        r301    '/artists/312708595', '/artists/fourthpage'                
+        r301    '/artists/312708595', '/artists/fourthpage'
         r301    '/artists/4', '/artists/sonnamble'
         r301    '/artists/1', '/artists/cjc'
         r301    '/artists/312708600', '/artists/dentistry'
@@ -74,6 +74,11 @@ module ForwindNet
         r301    '/artists/312708594', '/artists/clangsayne'
         r301    '/artists/312708593', '/artists/elvers'
         r301    '/artists/8', '/artists/jamesosullivan'
+    end
+    config.before_configuration do
+      puts File.expand_path("#{__FILE__}/../blogkit/lib")
+      $:.unshift File.expand_path("#{__FILE__}/../../blogkit/lib")
+      require 'blog_kit'
     end
   end
 end

@@ -12,10 +12,12 @@
 
 
 require 'singleton'
-class BlogKit
+class BlogKit < Rails::Engine
 	include Singleton
-	
+	config.autoload_paths << File.expand_path("..", __FILE__)
+
 	def initialize
+		BlogKit.instance
 		load_config
 	end
 	

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.1.2'
 
 gem 'rails', '3.2.11'
 
@@ -27,6 +27,7 @@ gem 'authlogic'
 gem 'will_paginate'
 gem 'bluecloth'
 gem 'rack-rewrite', '~> 1.2.1'
+# gem "blogkit", :path => './blogkit'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
