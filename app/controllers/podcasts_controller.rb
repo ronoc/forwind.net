@@ -3,7 +3,8 @@ class PodcastsController < ApplicationController
 
   def index
     @podcasts = Podcast.find :all
-    @podcast = @podcasts.sort_by{|x| x.created_at }.last
+    @podcasts = @podcasts.sort_by{|x| x.created_at }
+    @podcast = @podcasts.last
     @podcasts.reverse!
 
     respond_to do |format|
