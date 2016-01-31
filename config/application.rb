@@ -79,6 +79,7 @@ module ForwindNet
       puts File.expand_path("#{__FILE__}/../blogkit/lib")
       $:.unshift File.expand_path("#{__FILE__}/../../blogkit/lib")
       require 'blog_kit'
+      BlogKit.instance
     end
   end
 end

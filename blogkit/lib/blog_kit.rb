@@ -9,15 +9,12 @@
 # 
 # ActionView::Base.send(:include, TmSyntaxHighlighting::Helper)
 # ActionController::Base.send(:extend, TmSyntaxHighlighting::Controller)
-
-
 require 'singleton'
 class BlogKit < Rails::Engine
 	include Singleton
-	config.autoload_paths << File.expand_path("..", __FILE__)
 
 	def initialize
-		BlogKit.instance
+		config.autoload_paths << File.expand_path("..", __FILE__)
 		load_config
 	end
 	
