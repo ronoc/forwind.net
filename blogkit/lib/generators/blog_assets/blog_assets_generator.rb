@@ -24,7 +24,7 @@ class BlogAssetsGenerator < Rails::Generators::Base
 		migration_template 'blog_images_migration.rb', "db/migrate/create_blog_images.rb"
 		copy_file "config/blog_kit.yml", "config/blog_kit.yml"
 		copy_file "blog_kit.css", "public/stylesheets/blog_kit.css"
-				
+
 		# Copy highlighting bundles
 		empty_directory "public/stylesheets/syntax"
 		copy_file "syntax/active4d.css", "public/stylesheets/syntax/active4d.css"

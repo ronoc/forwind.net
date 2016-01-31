@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
 
   def title(ttl)
     @page_title = ttl
-  end 
- 
+  end
+
   def require_user
     return true
   end
