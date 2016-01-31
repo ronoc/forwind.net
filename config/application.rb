@@ -59,6 +59,7 @@ module ForwindNet
     config.assets.initialize_on_precompile = false
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
     config.log_level = :warning
     config.time_zone = 'UTC'
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
@@ -76,7 +77,6 @@ module ForwindNet
         r301    '/artists/8', '/artists/jamesosullivan'
     end
     config.before_configuration do
-      puts File.expand_path("#{__FILE__}/../blogkit/lib")
       $:.unshift File.expand_path("#{__FILE__}/../../blogkit/lib")
       require 'blog_kit'
       BlogKit.instance

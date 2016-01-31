@@ -5,12 +5,6 @@ rescue Exception => e
 	require 'erb'
 	puts "Could not load bluecloth #{e.inspect}"
 end
-begin
-	require 'uv'
-rescue Exception => e
-	require 'erb'
-	puts "Could not load UltraViolet"
-end
 
 module BlogKitModelHelper
 	def code_highlight_and_markdown(text, markdown_options = {})
