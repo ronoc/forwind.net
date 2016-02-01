@@ -565,13 +565,13 @@ clear:left;
 
 #footer-links {
   width: 750px;
-  height: 30px;
+  height: 46px;
   float: left;
 }
 
 #socialLinks ul{
   padding-right: 50px;
-  padding-top: 1px;
+  padding-top: 10px;
   margin : 0;
   width: 535px;
   height:22px;
