@@ -2,7 +2,7 @@
 
 <div id="container_2grid_left">
 
-	<img src="<%="/images/artists/" + @artist.image %>"/>
+	<img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
 		<div class="p_contentSpacer">
 		</div>
 		<p>

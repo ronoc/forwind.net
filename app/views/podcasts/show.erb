@@ -1,7 +1,7 @@
 <div id="content_container">
 
 <div id="container_2grid_left">
-<img src=<%= "/images#{@podcast.file_name}.jpg" %>>
+<img src=<%=File.join(@s3_images, @podcast.file_name + ".jpg") %>>
 <dl class="podcastTracks">
 <% @podcast.track_list.tracks.sort_by { |tr| tr.position }.each do |t| %>
 <dt><%= (t.position + 1).to_s %></dt><dd><%= t.artist_title %></dd><dd class="podcastTrackLabel"><%= t.label.upcase %></dd>

@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
 		@releases << rels[2]
 		@releases << rels[0]
 		@releases
+    @s3_images = "https://s3-eu-west-1.amazonaws.com/forwind-images/"
   end
 
 end

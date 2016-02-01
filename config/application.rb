@@ -11,6 +11,7 @@ end
 
 module ForwindNet
   class Application < Rails::Application
+    config.s3_images = "https://s3-eu-west-1.amazonaws.com/forwind-images/"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

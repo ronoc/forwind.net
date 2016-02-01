@@ -2,7 +2,7 @@
 
 <% @artists.each do |artist| %>
 <div class="artist_index_promo">
-<a href="<%= "/artists/#{artist.slug}" %>"><img src="<%="/images/artists/#{small_artists_image(artist.image)}" %>"/></a>
+<a href="<%= "/artists/#{artist.slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artist.image)) %>></a>
 <span><a href="<%= "/artists/#{artist.slug}" %>"><%= artist.name %></a></span>
 </div>
 <% end %>
