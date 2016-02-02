@@ -14,7 +14,7 @@
 <% else %>
 
 	<div class='blogRightHandNav'>
-		<img src="/images/index/podcastRSS_icon_small.png"/>
+		<img src=<%=File.join(@s3_images, "index", "podcastRSS_icon_small.png")%>>
 		<a href="http://www.forwind.net/blog_posts.atom">ATOM FEED</a>
 	<%= blog_tags_list %>
 	</div>
