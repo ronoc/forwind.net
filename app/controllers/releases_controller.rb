@@ -3,6 +3,7 @@ class ReleasesController < ApplicationController
 
   def index
     @releases = []
+    @releases << Release.find_by_cat('FWD12')
     @releases << Release.find_by_cat('FWD11')
     @releases << Release.find_by_cat('FWD10')
     @releases << Release.find_by_cat('FWD09')
