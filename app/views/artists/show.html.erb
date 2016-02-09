@@ -22,7 +22,11 @@
 	    <dd><%= @artist.location.upcase %></dd>
 
 	    <dt>WHEN :</dt>
+	    <% unless @artist.active %>
 	    <dd><%= @artist.start_date.year.to_s + " - " + @artist.end_date.year.to_s %></dd>
+	    <% else %>
+	    <dd><%= @artist.start_date.year.to_s + " - " + DateTime.now.year.to_s %></dd>
+	    <% end %>
 	</dl>
 
 		<p>
