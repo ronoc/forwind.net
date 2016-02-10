@@ -41,10 +41,6 @@ class ApplicationController < ActionController::Base
 		@use_ie_warning = false
 		if request.user_agent.include?('MSIE')
 			@use_ie_warning = true
-					#@message = "It looks as if you are using some sort of Microsoft browser. If my naive browser detection method has mistakenly recognized an IE type browser well then my apologies, my email is at the end of this notice (I do intend to make it cross browser compatible sometime when time permits whenever that will be :).
-#<p>
-#But if in fact you are using IE well I'm afraid this site does not work on Microsoft browsers due to their non standard handling of CSS. You should really use Firefox, Safari or Opera. Sometime soon I will hopefully get this site to work on all browsers. "
-			#render :partial => 'shared/bomb', :layout=>false
 		end
 	end
 
