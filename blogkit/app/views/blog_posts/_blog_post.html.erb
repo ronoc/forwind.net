@@ -13,7 +13,7 @@
 	<p class="blogPostPostedAt">
 		Posted
 		<% if blog_post.show_user? %>
-			By <span class="blogPoster"><%= blog_post.user_name %></span>
+			by <span class="blogPoster"><%= blog_post.user_name %></span>
 		<% end %>
 		on 
 		<span class="blogPostDate"><%= blog_post.formatted_updated_at %></span>
