@@ -4,14 +4,22 @@ class HomeController < ApplicationController
 
   def random_promo
     rels = Release.find :all
+    @small_releases = []
+    chosen = ["FWD11", "FWD10", "FWD08", "FWD07", "FWD09", "FWD01"]
+    rels.each do |rel|
+      if rel.cat.in?(chosen)
+        @small_releases << rel
+      end
+    end
+    @small_releases.shuffle!
     rels = rels.sort_by{|x| x.release_date}.reverse!
     @recent = rels
     promo_index = 0
-    @small_releases = []
-    (0...6).each do |x|
-      @small_releases << rels[x] unless rels[x].available == false
-    end
-    @promo_release = rels[promo_index]
+
+    #(0...6).each do |x|
+    #  @small_releases << rels[x] unless rels[x].available == false
+    #end
+    #@promo_release = rels[promo_index]
     @podcast = Podcast.last
     bs = BlogPost.find :all
 
