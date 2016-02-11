@@ -27,7 +27,7 @@ admin_layout: 'default'
 theme: 'mac_classic'
 
 # Link to the default user path (/users/[id])
-link_to_user: true
+link_to_user: false
 
 # Show line numbers next to code
 show_link_numbers: false
