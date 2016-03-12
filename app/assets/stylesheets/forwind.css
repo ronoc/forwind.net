@@ -910,73 +910,67 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 
 #release_container li
 {
-    margin:0 0 4px 0;
-    overflow:hidden;
-    padding:0;
-    margin:0;
+  margin:0 0 4px 0;
+  overflow:hidden;
+  padding:0;
+  margin:0;
 }
 
-#release_container li dl, #release_container li dt, #release_container li dd
+#release_container li dl, #release_container li dt
 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-#release_container li dd a{
-    display:block;
-    height:40px;
-    width: 40px;
-    padding: 0 0 0 20px;
-    text-indent:-9999px;
-    background:url(/images/releases/zip_icon.gif) 0 0 no-repeat;
+
+#release_container li dt {
+  float:left;
 }
 
-#release_container li dt, #release_container li dd {
-    float:left;
+#release_container li dd span {
+  float:left;
 }
-
 
 #release_container li dt span {
-    color: #b9bcbe;
-    display:block;
-    float:left;
-    width:171px;
+  color: #b9bcbe;
+  display:block;
+  float:left;
+  width:171px;
 }
 
 #release_container li dt strong {
-    display:block;
+  display:block;
   float: right;
-    width: 150px;
+  width: 150px;
 }
 
 #release_container img {display:block;margin:0 20px 0 0;float:left;}
 #release_container li {display:block;margin:0 0 0.72em 20px;}
 
-#release_container ul{
-  margin: 0 0 0 0;
-  padding: 18px 0 0 0;
-  list-style: None;
+#release_container ul {
+  padding: 20px 0 20px 0;
 }
 
-#release_container ul li strong{
+#release_container ul li dl dt span{
+  color: #b9bcbe;
   display:block;
-  float: right;
-  width: 180px;
-  font-weight: 100;
+  float:left;
+  width:20px;
 }
 
-#release_container p{
-  /*
-  This looks like it may be redundant
-  margin: 0; 0 0 0;
-  padding: 120px 0 0 0;
-    color: #b9bcbe;
-  width: 330px;
-  display: block;
-  float: left;*/
+#release_container ul dd{
+  color: #b9bcbe;
+  float:left;
+  width:151px;
 }
 
+#release_container ul dL{
+  color: #b9bcbe;
+}
 
+#release_container iframe {
+  float: left;
+}
 
 /*form description --------------------*/
 

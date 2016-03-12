@@ -1,38 +1,49 @@
+require 'json'
+require 'net/http'
+
 module ReleasesHelper
 
-  # TODO: Sort by track no!
   def cjc_form
     Album.find(:first)
-    #AudioAsset.find(:all, :conditions => ['artist_id = ? AND album_id = ?', 1, 1 ])
   end
 
-  def tracklist_offset(release)
-    if release.cat == 'FWD02'
-      0
-    elsif release.cat == 'FWD03'
-      0
-    elsif release.cat == 'FWD04'
-      0
-    elsif release.cat == 'FWD00'
-      0
+  def tracklistings(release)
+    optimal = 8
+    musicbrainz = "http://musicbrainz.org/ws/2/release/#{release.mb_id}?inc=recordings&fmt=json"
+    response = Net::HTTP.get_response(URI.parse(musicbrainz))
+    if(response.code.match(/5|4[0-9]{2}/))
+      # Musicbrainz's JSON API is sometimes down, let's use our S3 backup
+      puts "let's use our S3 backup"
+      musicbrainz = "https://s3-eu-west-1.amazonaws.com/forwind-backups/releases/#{release.cat}.json"
+      puts musicbrainz
+      response = Net::HTTP.get_response(URI.parse(musicbrainz))
+      puts response.body
     end
-  end
-
-  def tracklist_height(release)
-    if release.cat == 'FWD02'
-      95
-    elsif release.cat == 'FWD03'
-      80
-    elsif release.cat == 'FWD04'
-      240
-    elsif release.cat == 'FWD00'
-      240
+    releases = []
+    payload = JSON.parse(response.body)["media"][0]["tracks"]
+    payload.each do |t|
+      release = {}
+      release["title"] = t["title"]
+      unless t["number"].length == 2
+        release["number"] = t["number"].rjust(2, '0')
+      else
+        release["number"] = t["number"]
+      end
+      release["length"] = Time.at(t["length"]/1000).utc.strftime("%M:%S")
+      releases << release
     end
-
+    delta = (optimal - releases.length) - 2
+    if(delta > 0)
+      (0..delta).each do |c|
+        puts "here"
+        releases << "break"
+      end
+    end
+    releases
   end
 
   def small_releases_image(release)
-    release.cat.downcase + '_sm.png'  
+    release.cat.downcase + '_sm.png'
   end
 
   def cjc
@@ -40,8 +51,8 @@ module ReleasesHelper
   end
 
   def title_formatted(title)
-      words = title.split(" ")
-      words.join("  |  ")
+    words = title.split(" ")
+    words.join("  |  ")
   end
 
   def active_piece_link?(piece)
@@ -54,10 +65,6 @@ module ReleasesHelper
       return true
     end
     release.title != rel.title
-  end
-
-  def street_thunder
-    AudioAsset.find(:all, :conditions => ['artist_id = ?', 2 ])[0]
   end
 
    def vimeo_embed(id, width=725, height=(width*9/16))

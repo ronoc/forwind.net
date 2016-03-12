@@ -9,21 +9,18 @@
 <li><dl><dt><span>LABEL :</span> FORWIND</dt></dl></li>
 <li><dl><dt><span>CATALOGUE # :</span><%= @release.cat %></dt></dl></li>
 </ol>
-<p style="height: <%= tracklist_offset(@release) %>px"></p>
 <ul>
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="320" height="240" id=<%= "audio_" + @release.cat.downcase %> + align="middle"> <param name="FlashVars" value=<%= "xmlURL=/xml/tracklist_" + @release.cat.downcase + ".xml"%>>
-    <param name="allowScriptAccess" value="sameDomain" />
-    <param name="allowFullScreen" value="false" />
-    <param name="movie" value="/tracklist.swf" />
-    <param name="quality" value="high" />
-    <param name="scale" value="noscale" />
-    <param name="salign" value="lt" />
-    <param name="bgcolor" value="#2f2d2e" />
-    <embed src="/tracklist.swf" flashvars=<%= "xmlURL=/xml/tracklist_" + @release.cat.downcase + ".xml"%> quality="high" scale="noscale" salign="lt" bgcolor="#2f2d2e" width="320" height="<%= tracklist_height(@release) %>px" name=<%= "xmlURL=/xml/tracklist_" + @release.cat.downcase + ".xml" %> align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /></object>
-	</ul>
+<% tracklistings(@release).each do |track| %>
+<% if track == "break" %>
+</br>
+<% else %>
+<li><dl><dt><span><%= track["number"] %>:</span><dd style="color:white;"><%= track["title"] %></dd><%= track["length"]%></dt></dl></li>
+<% end %>
+<% end %>
+</ul>
 
+<%= raw @release.stream_location %>
 </div>
-
 <div id="new_release_details">
 <p>
 <%= @release.long_desc.html_safe %>
@@ -34,7 +31,7 @@
   Online reviews from
   <% @release.reviews.each do |link| %>
     <a href=<%= link.location %>><%= link.vendor %></a>
-    <% if @release.reviews.size > 1 %> 
+    <% if @release.reviews.size > 1 %>
       <% if @release.reviews.index(link) == @release.reviews.size - 2 %>
         and
       <% elsif @release.reviews.index(link) != @release.reviews.size - 1 %>
