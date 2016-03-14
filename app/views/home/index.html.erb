@@ -18,7 +18,9 @@
 <% @small_releases.each do |release| %>
 <% unless @small_releases.index(release) > 3 %>
 <div class="home-promo-boxgrid captionfull">
+<a href=<%= "/releases/" + release.cat %>>
 <img src= <%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg") %>></img>
+</a>
 <div class="cover boxcaption">
 <h2><a href=<%= "/releases/" + release.cat %> title="..."><%= release.cat %>:<%= release.title %></a></h2>
 <p><%= release.short_desc.html_safe %></p>
@@ -40,6 +42,7 @@
 	</div>
 
 	<div class="home-podcast-boxgrid podcast-captionfull">
+			<a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>>
     	<img src=<%=File.join(@s3_images, "podcasts", @podcast.cat_no + "_sm.jpg")%>></a>
     	<div class="podcast-cover podcast-boxcaption">
         	<h2><a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>><%= @podcast.title %></a></h2>
