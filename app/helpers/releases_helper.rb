@@ -35,7 +35,6 @@ module ReleasesHelper
     delta = (optimal - releases.length) - 2
     if(delta > 0)
       (0..delta).each do |c|
-        puts "here"
         releases << "break"
       end
     end

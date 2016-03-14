@@ -36,7 +36,7 @@
         and
       <% elsif @release.reviews.index(link) != @release.reviews.size - 1 %>
         ,
-      <% end %> 
+      <% end %>
     <% end %>
 <% end %>
 <br/>
@@ -46,7 +46,9 @@
   Availability links to follow shortly.
 <% else %>
   <% unless @release.physicals.empty? %>
-    <br/>
+    <% unless @release.reviews.empty? %>
+      <br/>
+    <% end %>
     <%= @release.preferred_format %> available from 
     <% @release.physicals.each do |link| %>
        <a href=<%= link.location %>><%= link.vendor %></a>
@@ -59,7 +61,9 @@
   <br/>
   <% end %>
   <% unless @release.downloads.empty? %>
-    <br/>
+    <% unless @release.reviews.empty?  && @release.physicals.empty? %>
+      <br/>
+    <% end %>
     Flac and Mp3 available from 
     <% @release.downloads.each do |link| %>
       <a href=<%= link.location %>><%= link.vendor %></a>
