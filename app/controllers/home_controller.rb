@@ -16,10 +16,6 @@ class HomeController < ApplicationController
     @recent = rels
     promo_index = 0
 
-    #(0...6).each do |x|
-    #  @small_releases << rels[x] unless rels[x].available == false
-    #end
-    #@promo_release = rels[promo_index]
     @podcast = Podcast.last
     bs = BlogPost.find :all
 

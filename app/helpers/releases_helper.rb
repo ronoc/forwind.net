@@ -13,11 +13,9 @@ module ReleasesHelper
     response = Net::HTTP.get_response(URI.parse(musicbrainz))
     if(response.code.match(/5|4[0-9]{2}/))
       # Musicbrainz's JSON API is sometimes down, let's use our S3 backup
-      puts "let's use our S3 backup"
+      puts "let's use our S3 backup, musicbrainz JSON api is not at all stable yet."
       musicbrainz = "https://s3-eu-west-1.amazonaws.com/forwind-backups/releases/#{release.cat}.json"
-      puts musicbrainz
       response = Net::HTTP.get_response(URI.parse(musicbrainz))
-      puts response.body
     end
     releases = []
     payload = JSON.parse(response.body)["media"][0]["tracks"]
