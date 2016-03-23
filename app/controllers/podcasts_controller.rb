@@ -1,5 +1,5 @@
 class PodcastsController < ApplicationController
-  layout 'music'
+  layout 'home'
 
   def index
     @podcasts = Podcast.find :all

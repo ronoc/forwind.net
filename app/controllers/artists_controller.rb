@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  layout 'music'
+  layout 'home'
 
   def index
     @artists = []
