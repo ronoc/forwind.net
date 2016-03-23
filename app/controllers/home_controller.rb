@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def random_promo
     rels = Release.find :all
     @small_releases = []
-    chosen = ["FWD11", "FWD12", "FWD13", "FWD10", "FWD07", "FWD09", "FWD06"]
+    chosen = ["FWD11", "FWD12", "FWD13", "FWD10", "FWD14"]
     rels.each do |rel|
       if rel.cat.in?(chosen)
         @small_releases << rel
