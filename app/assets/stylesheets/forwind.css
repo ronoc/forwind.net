@@ -573,7 +573,7 @@ clear:left;
   padding-right: 50px;
   padding-top: 10px;
   margin : 0;
-  width: 535px;
+  width: 565px;
   height:22px;
   list-style: None;
 }
@@ -604,9 +604,9 @@ clear:left;
 }
 
 #footer-subscribe {
-width: 242px;
+  width: 242px;
   height:210px;
-padding: 0 0 0px 0px;
+  padding: 0 0 0px 0px;
   float: left;
 }
 
@@ -615,8 +615,8 @@ padding: 0 0 0px 0px;
   height: 210px;
   margin:12px 16px 4px 0px;
   padding: 0px;
-    float:left;
-    list-style: None;
+  float:left;
+  list-style: None;
   font-style:italic;
 }
 
@@ -644,49 +644,49 @@ p.copyright {
 }
 
 .home-promo-boxgrid {
-    width: 242px;
-    height: 242px;
+  width: 242px;
+  height: 242px;
   margin:12px 16px 4px 0px;
   padding: 0px;
-    float:left;
-    overflow: hidden;
-    position: relative;
+  float:left;
+  overflow: hidden;
+  position: relative;
 }
 
 
 
 .home-promo-boxgrid img{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 0;
   margin:0px;
   padding: 0px;
 }
 
 
 .captionfull .boxcaption {
-    float: left;
-    position: absolute;
-    background: #2f2d2e;
-    height: 122px;
-    width: 100%;
+  float: left;
+  position: absolute;
+  background: #2f2d2e;
+  height: 122px;
+  width: 100%;
   margin:0px 0px 0px 0px;
   padding: 0px;
-    opacity: .9;
-    /* For IE 5-7 */
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-    /* For IE 8 */
-    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-    }
+  opacity: .9;
+  /* For IE 5-7 */
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  /* For IE 8 */
+  -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
 
 
 #container_2grid_left  .boxcaption h2 {
-    padding: 8px 0px 8px 10px;
+  padding: 8px 0px 8px 10px;
   margin: 0px 0px 0px 0px;
-    font-weight:normal;
-    font-size: .875em;
-    line-height:1;
+  font-weight:normal;
+  font-size: .875em;
+  line-height:1;
 }
 
 
@@ -694,18 +694,18 @@ p.copyright {
 #container_2grid_left .boxcaption p {
   margin: 0px 0px 0px 10px;
   padding: 0px 0px 0px 0px;
-      line-height:1.4;
+  line-height:1.4;
 }
 
 
 .captionfull .boxcaption {
-      top: 242px;
-      left: 0;
-  }
+  top: 242px;
+  left: 0;
+}
 .caption .boxcaption {
-      top: 242px;
-      left: 0;
-  }
+  top: 242px;
+  left: 0;
+}
 
 
 
@@ -742,70 +742,63 @@ aside {
 
 
 .home-podcast-boxgrid {
-    width: 242px;
-    height: 121px;
+  width: 242px;
+  height: 121px;
   margin:12px 0 4px 0px;
   padding: 0px;
-    float:left;
-    overflow: hidden;
-    position: relative;
+  float:left;
+  overflow: hidden;
+  position: relative;
 }
 
 
 .home-podcast-boxgrid img{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 0;
   margin:0px;
   padding: 0px;
 }
 
 
 .podcast-boxcaption {
-    float: left;
-    position: absolute;
-    background: #2f2d2e;
-    height: 122px;
-    width: 100%;
-    opacity: .9;
-    /* For IE 5-7 */
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-    /* For IE 8 */
-    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-    }
-
-
-.podcast-boxcaption h2 {
-    padding: 0px 0px 0px 10px;
-    font-weight:normal;
-    font-size: .875em;
-    text-transform: uppercase;
-    line-height:2;
+  float: left;
+  position: absolute;
+  background: #2f2d2e;
+  height: 122px;
+  width: 100%;
+  opacity: .9;
+  /* For IE 5-7 */
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  /* For IE 8 */
+  -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 
 
-
-
+.podcast-boxcaption h2 {
+  padding: 0px 0px 0px 10px;
+  font-weight:normal;
+  font-size: .875em;
+  text-transform: uppercase;
+  line-height:2;
+}
 
 .podcast-captionfull .podcast-boxcaption {
-      top: 121px;
-      left: 0;
-  }
+  top: 121px;
+  left: 0;
+}
+
 .podcast-caption .podcast-boxcaption {
-      top: 121;
-      left: 0;
-  }
+  top: 121;
+  left: 0;
+}
 
 
 .podcast-cover {
 
 background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
   }
-
-
-
-
 
 #home_blogroll {
   width: 258px;
