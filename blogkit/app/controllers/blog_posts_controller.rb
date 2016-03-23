@@ -137,7 +137,7 @@ class BlogPostsController < ApplicationController
 			if ['new', 'edit', 'create', 'update'].include?(params[:action])
 				BlogKit.instance.settings['admin_layout'] || 'application'
       elsif 'show' == params[:action]
-        'music'  
+        'home'
 			else
 				BlogKit.instance.settings['layout'] || 'application'
 			end
