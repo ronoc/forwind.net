@@ -1047,7 +1047,10 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 }
 
 
-
+dl.podcastTracks dt {
+  display:block;
+  width:15px;
+}
 
 #podcasts_footer{
   font-size: 0.7em;
