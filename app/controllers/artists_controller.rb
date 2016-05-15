@@ -3,7 +3,9 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = []
-    @artists << Artist.find_by_name("Atom Eye")    
+    @artists << Artist.find_by_name("Machinefabriek")
+    @artists << Artist.find_by_name("Philippe Petit")
+    @artists << Artist.find_by_name("Atom Eye")
     @artists << Artist.find_by_name("Jeff Carey")
     @artists << Artist.find_by_name("Tomonari Nozaki")
     @artists << Artist.find_by_name("Dentistry")
