@@ -1,6 +1,6 @@
 class Release < ActiveRecord::Base
   has_many :pieces
-  belongs_to :artist
+  has_and_belongs_to_many :artists
   has_many :release_links
 
   def last_three

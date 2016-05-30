@@ -31,7 +31,8 @@ class ReleasesController < ApplicationController
     unless @release
       return ""
     end
-    @release.artist.name + " | " + @release.title + " | " + @release.cat
+    artists = @release.artists.map{|artist| artist.name}.join("|")
+    artists + " | " + @release.title + " | " + @release.cat
   end
 
 	def show

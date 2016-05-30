@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  has_many :releases
+  has_and_belongs_to_many :releases
   has_many :links
 end
 

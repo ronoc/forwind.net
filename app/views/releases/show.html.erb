@@ -3,7 +3,11 @@
 <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
 
 <ol>
-<li><dl><dt><span>ARTIST :</span> <a href=<%= "/artists/" + @release.artist.slug %>><%= @release.artist.name.upcase%></a></dt></dl></li>
+<% unless @release.artists.size === 1%>
+<li><dl><dt><span>ARTISTS :</span> <%= raw munge_artist_names(@release) %></dt></dl></li>
+<% else %>
+<li><dl><dt><span>ARTIST :</span> <a href=<%= "/artists/" + @release.artists.first.slug %>><%= @release.artists.first.name.upcase%></a></dt></dl></li>
+<% end %>
 <li><dl><dt><span>ALBUM :</span><%= @release.title.upcase %></dt></dl></li>
 <li><dl><dt><span>RELEASE DATE :</span> <%= @release.release_date.strftime("%Y/%m/%d")%></dt></dl></li>
 <li><dl><dt><span>LABEL :</span> FORWIND</dt></dl></li>

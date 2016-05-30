@@ -7,6 +7,14 @@ module ReleasesHelper
     Album.find(:first)
   end
 
+  def munge_artist_names(release)
+    result = []
+    release.artists.map do |artist|
+      result << "<a href=/artists/#{artist.slug}>#{artist.name.upcase}</a>"
+    end
+    result.join(" & ")
+  end
+
   def tracklistings(release)
     optimal = 8
     musicbrainz = "http://musicbrainz.org/ws/2/release/#{release.mb_id}?inc=recordings&fmt=json"
