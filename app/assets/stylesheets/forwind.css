@@ -820,6 +820,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
   font-size: .875em;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 6px 0px;
+  color: #b9bcbe;
 }
 
 #home_blogroll .date {
@@ -852,6 +853,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
   color: #ffffff;
   font-size: .875em;
   text-align: justify;
+  color: #b9bcbe;
 }
 
 .release_index_promo h2{
