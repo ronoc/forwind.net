@@ -53,7 +53,7 @@
     <% unless @release.reviews.empty? %>
       <br/>
     <% end %>
-    <%= @release.preferred_format %> available from 
+    <%= @release.preferred_format %> available from
     <% @release.physicals.each do |link| %>
        <a href=<%= link.location %>><%= link.vendor %></a>
         <% if @release.physicals.index(link) == @release.physicals.size - 2 %>
@@ -68,14 +68,14 @@
     <% unless @release.reviews.empty?  && @release.physicals.empty? %>
       <br/>
     <% end %>
-    Flac and Mp3 available from 
+    Flac and Mp3 available from
     <% @release.downloads.each do |link| %>
       <a href=<%= link.location %>><%= link.vendor %></a>
         <% if @release.downloads.index(link) == @release.downloads.size - 2 %>
         and
         <% elsif @release.downloads.index(link) != @release.downloads.size - 1 %>
         ,
-        <% end %> 
+        <% end %>
     <% end %>
   <% end %>
 
@@ -84,7 +84,7 @@
   <% unless @release.streams.empty? %>
   <br/>
     <% @release.streams.each do |link| %>
-      Stream sampler from <%= link_to link.vendor, link.location %> 
+      Stream sampler from <%= link_to link.vendor, link.location %>
     <% end %>
   <% end %>
 

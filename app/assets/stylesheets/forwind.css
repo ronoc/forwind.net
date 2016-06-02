@@ -124,9 +124,6 @@ h3{
  margin:0 0 0 0;
 }
 
-
-
-
 #content_container{
   margin: 0 0px 0 20px;
   padding: 0 0 0 0;
@@ -150,9 +147,6 @@ div.title-hr-1gridright {
   width:242px;
 }
 
-
-
-
 #container_2grid_left h2 {
   margin-left: 0px;
   color:#fff;
@@ -161,7 +155,6 @@ div.title-hr-1gridright {
   text-transform: uppercase;
   line-height:2;
 }
-
 
 #container_2grid_left p {
   font-size: .875em;
@@ -335,14 +328,6 @@ clear:left;
     display:block;
     padding: 20px 0 0 0;
 }
-
-
-
-
-
-
-
-
 
 #crumb_trail{
  padding: 20px 0px 0px 0px;
@@ -810,6 +795,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
     width: 237px;
     margin:12px 0 22px 0px;
     padding: 0px 5px 0px 0px;
+    text-align: justify;
 }
 
 #home_blogroll h2 {
@@ -865,6 +851,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 .release_index_promo p{
   color: #ffffff;
   font-size: .875em;
+  text-align: justify;
 }
 
 .release_index_promo h2{
@@ -877,7 +864,7 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
 
 .release_index_promo img{
   width: 242px;
-    height: 242px;
+  height: 242px;
   margin: 0 0 0 0;
   padding: 0 0 5px 0;
 }
@@ -974,16 +961,17 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
   list-style: none;
   color: #fff;
   width: 750px;
-  font-size: 0.875em;
   color: #b9bcbe;
 }
 
 #new_release_details p{
   margin:0 0 0 0;
-  padding: 0 0 0 0;
+  padding:0 0 0 0;
+  font-size: 0.975em;
   width: 358px;
   float: left;
   color: #b9bcbe;
+  text-align: justify;
 }
 
 #new_release_details ol{
@@ -1261,6 +1249,20 @@ input:focus {
   float: left;
   list-style:none;
   color: #b9bcbe;
+}
+
+#container_2grid_left .artist_desc p {
+  font-size: .975em;
+  padding: 0px 28px 10px 0px;
+  color: #b9bcbe;
+  text-align: justify;
+}
+
+#container_2grid_left p.about {
+  font-size: .975em;
+  padding: 0px 28px 10px 0px;
+  color: #b9bcbe;
+  text-align: justify;
 }
 
 
