@@ -5,7 +5,8 @@
 	<img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
 		<br/><br/>
 		<div class="artist_desc">
-		<%= @artist.description.html_safe %>
+		<p>
+		<%= @artist.description.html_safe %></p>
 		</div>
 </div>
 
