@@ -23,7 +23,7 @@ class ReleasesController < ApplicationController
   end
 
   def current
-    @release = Release.find_by_cat('FWD14')
+    @release = Release.find_by_cat($redis.get("currentRelease"));
     set_sharing_details(share_text(), "http://www.forwind.net/releases/" + @release.cat.downcase, @release.title)
     render :show
   end
