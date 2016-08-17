@@ -4,4 +4,5 @@
 ###### Overview
 * Rails 3 application
 * PostGres DB
+* Redis
 * Hosted on Heroku
