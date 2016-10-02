@@ -2,23 +2,14 @@ class ReleasesController < ApplicationController
   layout 'home'
 
   def index
-    @releases = []
-    @releases << Release.find_by_cat('FWD15')
-    @releases << Release.find_by_cat('FWD14')
-    @releases << Release.find_by_cat('FWD13')
-    @releases << Release.find_by_cat('FWD12')
-    @releases << Release.find_by_cat('FWD11')
-    @releases << Release.find_by_cat('FWD10')
-    @releases << Release.find_by_cat('FWD09')
-    @releases << Release.find_by_cat('FWD08')
-    @releases << Release.find_by_cat('FWD07')
-    @releases << Release.find_by_cat('FWD06')
-    @releases << Release.find_by_cat('FWD05')
-    @releases << Release.find_by_cat('FWD04')
-    @releases << Release.find_by_cat('FWD03')
-    @releases << Release.find_by_cat('FWD02')
-    @releases << Release.find_by_cat('FWD01')
-    @releases << Release.find_by_cat('FWD00')
+    releaseCats = $redis.lrange("releases", 0, $redis.llen("releases")-1)
+    @releases = [];
+    releaseCats.each do |cat|
+      release = Release.find_by_cat(cat.upcase)
+      if(release)
+        @releases << release
+      end
+    end
     render layout: 'home'
   end
 

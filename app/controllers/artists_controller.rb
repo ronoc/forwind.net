@@ -2,19 +2,14 @@ class ArtistsController < ApplicationController
   layout 'home'
 
   def index
-    @artists = []
-    @artists << Artist.find_by_name("Machinefabriek")
-    @artists << Artist.find_by_name("Philippe Petit")
-    @artists << Artist.find_by_name("Atom Eye")
-    @artists << Artist.find_by_name("Jeff Carey")
-    @artists << Artist.find_by_name("Tomonari Nozaki")
-    @artists << Artist.find_by_name("Dentistry")
-    @artists << Artist.find_by_name("fourth page")
-    @artists << Artist.find_by_name("James O'Sullivan")
-    @artists << Artist.find_by_name("Clang Sayne")
-    @artists << Artist.find_by_name("Elvers")
-    @artists << Artist.find_by_name("Sonnamble")
-    @artists << Artist.find_by_name("CjC")
+    artistNames = $redis.lrange("artists", 0, $redis.llen("artists")-1)
+    @artists = [];
+    artistNames.each do |name|
+      artist = Artist.find_by_slug(name)
+      if(artist)
+        @artists << artist
+      end
+    end
     render layout: 'home'
   end
 
