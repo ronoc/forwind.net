@@ -4,7 +4,7 @@
 
 <ol>
 <% unless @release.artists.size === 1%>
-<li><dl><dt><span>ARTISTS :</span> <%= raw munge_artist_names(@release) %></dt></dl></li>
+<li><dl><dt><span>ARTISTS :</span> <p><%= raw munge_artist_names(@release) %></p></dt></dl></li>
 <% else %>
 <li><dl><dt><span>ARTIST :</span> <a href=<%= "/artists/" + @release.artists.first.slug %>><%= @release.artists.first.name.upcase%></a></dt></dl></li>
 <% end %>
