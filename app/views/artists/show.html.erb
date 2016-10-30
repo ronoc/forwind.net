@@ -16,7 +16,7 @@
 
 	<dl>
 	    <dt>ARTIST :</dt>
-	    <dd><%= @artist.name.upcase %></dd>
+	    <dd><%= @artist.name.mb_chars.upcase.to_s %></dd>
 
 	    <dt>LOCATION :</dt>
 	    <dd><%= @artist.location.upcase %></dd>

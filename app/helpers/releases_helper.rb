@@ -10,7 +10,7 @@ module ReleasesHelper
   def munge_artist_names(release)
     result = []
     release.artists.map do |artist|
-      result << "<a href=/artists/#{artist.slug}>#{artist.name.upcase}</a>"
+      result << "<a href=/artists/#{artist.slug}>#{artist.name.mb_chars.upcase.to_s}</a>"
     end
     result.join(" & ")
   end
