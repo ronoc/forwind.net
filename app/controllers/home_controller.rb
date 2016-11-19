@@ -5,26 +5,12 @@ class HomeController < ApplicationController
   def random_promo
     featured = $redis.lrange("featuredReleases", 0, $redis.llen("releases")-1)
     @small_releases = Release.all(:conditions => ["cat IN (?)", featured])
-    @small_releases.shuffle!
-    @podcast = Podcast.last
-    bs = BlogPost.find :all
-
-    @blogs = []
-    titles = []
-
-    bs.each do |x|
-      unless (x.tags.include?("podcasts"))
-        unless (x.published == false)
-          unless(titles.include?(x.title))
-            @blogs << x
-            titles << x.title
-          end
-        end
-      end
-      if @blogs.length > 2
-        break
-      end
-    end
+                             .shuffle
+    pds = Podcast.pluck(:id)
+    @podcast = Podcast.find(pds.sample)
+    @blogs = BlogPost.all(:limit => 6, :conditions => ["published_at IS NOT NULL"], :order => "published_at")
+                     .reject{|b| b.tags.include?("podcasts")}
+                     .first(3)
   end
 end
 
