@@ -3,19 +3,9 @@ class HomeController < ApplicationController
   before_filter :random_promo
 
   def random_promo
-    rels = Release.find :all
-    @small_releases = []
-    chosen = ["FWD11", "FWD12", "FWD13", "FWD10", "FWD14", "FWD15"]
-    rels.each do |rel|
-      if rel.cat.in?(chosen)
-        @small_releases << rel
-      end
-    end
+    featured = $redis.lrange("featuredReleases", 0, $redis.llen("releases")-1)
+    @small_releases = Release.all(:conditions => ["cat IN (?)", featured])
     @small_releases.shuffle!
-    rels = rels.sort_by{|x| x.release_date}.reverse!
-    @recent = rels
-    promo_index = 0
-
     @podcast = Podcast.last
     bs = BlogPost.find :all
 
