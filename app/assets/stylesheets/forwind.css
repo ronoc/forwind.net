@@ -935,6 +935,11 @@ background:url(/images/index/podcast-promo-bg.jpg) 0 0 no-repeat;
   width: 150px;
 }
 
+#release_container p{
+  float : right;
+  padding : 0 124px 0 0;
+}
+
 #release_container img {display:block;margin:0 20px 0 0;float:left;}
 #release_container li {display:block;margin:0 0 0.72em 20px;}
 
