@@ -19,7 +19,7 @@
 	    <dd><%= @artist.name.mb_chars.upcase.to_s %></dd>
 
 	    <dt>LOCATION :</dt>
-	    <dd><%= @artist.location.upcase %></dd>
+	    <dd><%= @artist.location.mb_chars.upcase.to_s %></dd>
 
 	    <dt>WHEN :</dt>
 	    <% unless @artist.active %>
