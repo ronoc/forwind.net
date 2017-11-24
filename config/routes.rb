@@ -1,19 +1,3 @@
 Rails.application.routes.draw do
-    # NAMED ROUTES
-    match "/login", :to => "user_sessions#new", :as => "login"
-    match "/logout", :to => "user_sessions#destroy", :as => "logout"
-    match "/about", :to => "home#about", :as => "about"
-
-    # RESOURCES
-    get 'podcasts/current'
-    get 'releases/current'
-
-    resources :podcasts
-    resources :user_sessions
-    resources :users
-    resources :artists
-    resources :releases
-
-    root :to => "home#index"
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-

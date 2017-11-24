@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 gem 'rails', '5.1.4'
-gem 'pg'
+gem 'pg', '~> 0.18.4'
 gem 'redis'
+gem 'rack-rewrite'
+gem 'listen'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,5 +18,5 @@ gem 'redis'
 #gem 'authlogic'
 #gem 'will_paginate'
 #gem 'bluecloth'
-#gem 'rack-rewrite'
+
 
