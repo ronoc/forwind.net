@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>Forwind | <%= @context.downcase%></title>
-	<%= javascript_include_tag "application", "email" %>
+	<%= javascript_include_tag "application" %>
   	<%= stylesheet_link_tag('forwind') %>
     <%= stylesheet_link_tag('sharre') %>
 <meta name="google-site-verification" content="Oq2AaagB6c_NXK25RChwoHq0tn7yRod2WRabKCgsYD8" />
@@ -39,10 +39,6 @@
     <body>
 
          <div id="outer_container">
-
-          		<% if current_user %>
-          		<%= link_to "Logout", logout_path %>
-          		<% end %>
 
           		<div id="crumb_trail">
           		</div>

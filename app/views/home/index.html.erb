@@ -13,13 +13,14 @@
 <hr/>
 </div>
 
-
 <% @small_releases.each do |release| %>
 <% unless @small_releases.index(release) > 3 %>
 <div class="home-promo-boxgrid captionfull">
+
 <a href=<%= "/releases/" + release.cat %>>
-<img src= <%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg") %>></img>
+	<img src= <%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg") %>></img>
 </a>
+
 <div class="cover boxcaption">
 <h2><a href=<%= "/releases/" + release.cat %> title="..."><%= release.cat %>:<%= release.title %></a></h2>
 <p><%= release.short_desc.html_safe %></p>
@@ -48,25 +49,6 @@
         	<p>Compiled & Mixed by <%= @podcast.artist.name %><br/>Genre: <%= @podcast.genre %></p>
     	</div>
 	</div>
-
-</div>
-
-
-<div id="home_blogroll">
-
-	<div class="title-hr-1gridright">
-		<hr/>
-		<h2>News</h2>
-		<hr/>
-	</div>
-	<% @blogs.each do |blog| %>
-	<div class="home-blogroll-post">
-		<h3><%= link_to(h(truncate(blog.title)), blog) %></h3>
-		<p><%= strip_tags(blog.parsed_body).truncate(130).html_safe %></p>
-		<div class="date"><%= blog.published_at.strftime('%m/%d/%Y') %></div>
-	</div>
-	<% end %>
-
 
 </div>
 

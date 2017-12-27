@@ -2,7 +2,7 @@ class PodcastsController < ApplicationController
   layout 'home'
 
   def index
-    @podcasts = Podcast.find :all
+    @podcasts = Podcast.all
     @podcasts = @podcasts.sort_by{|x| x.created_at }
     @podcast = @podcasts.last
     @podcasts.reverse!

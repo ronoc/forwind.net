@@ -6,6 +6,7 @@ gem 'pg', '~> 0.18.4'
 gem 'redis'
 gem 'rack-rewrite'
 gem 'listen'
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

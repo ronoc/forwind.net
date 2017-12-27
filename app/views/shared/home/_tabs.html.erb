@@ -32,11 +32,8 @@
 	  </ol>
 </li>
   <li>
-<%= link_to_if(not_in_context("blog_posts"), "NEWS", { :controller => 'blog_posts'}) %></li>
-
-  <li>
-<%= link_to_if(not_in_context("home", nil, "about"), "ABOUT", { :controller => 'home', :action => "about" }) %>
-</li>
+  <%= link_to_if(not_in_context("home", nil, "about"), "ABOUT", { :controller => 'home', :action => "about" }) %>
+  </li>
 </ol>
 
 </div>
