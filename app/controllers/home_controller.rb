@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
-  layout 'home'
+  layout 'base'
   before_action :random_promo
-
+  
   def random_promo
     featured = $redis.lrange("featuredReleases", 0, $redis.llen("releases")-1)
     @small_releases = Release.where("cat IN (?)", featured)
