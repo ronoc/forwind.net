@@ -4,7 +4,26 @@
   	<meta name="google-site-verification" content="Oq2AaagB6c_NXK25RChwoHq0tn7yRod2WRabKCgsYD8" />
     <meta name="description" content="An independent music publishing label born in 2009. " />
     <meta name="keywords" content="Forwind, Jeff Carey, Clang Sayne, James O'Sullivan, CjC, Atom eye, Sonnamble, Fourth Page, Tomonari Nozaki, independent record label, London, electronic music"  />
-    <!-- TODO: add JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://www.forwind.net",
+      "name": "Forwind Publishing",
+      "description" : "An independent publishing label established in 2009",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "email" : "webquery@forwind.net"
+      }],
+      "department": [{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "http://www.forwind.net/releases",
+        "name": "Forwind Releases",
+        "description" : "Browse our full catalogue of releases"
+      }]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rosarivo" rel="stylesheet" />
     <%= stylesheet_link_tag('base') %>
@@ -17,171 +36,21 @@
                     <h1>
                         <a href="#">forwind</a>
                     </h1>
-                    <nav class="nav--primary">
-                        <ul>
-                            <li><a href="#">Releases</a></li>
-                            <li><a href="#">Artists</a></li>
-                            <li><a href="#">Label</a></li>
-                        </ul>    
-                    </nav>
+                    <%= render(:partial => "shared/navigation") %>
                 </div>
             </header>
             <div class="content-container layout-block">
-                <!-- TODO: add yield -->
-
-                <section class="content-block">
-                    <h2 class="heading heading--floating-button">
-                        <a href="#">Release</a>
-                    </h2>
-                    <figure>
-                        <a href="#">
-                            <img src="https://placeimg.com/800/400/nature/grayscale" alt="Alt desc" />
-                        </a>    
-                    </figure>
-                </section>
-
-                <section class="content-block">
-                    <h2 class="heading heading--content-block">
-                        <a href="#">
-                            Latest news
-                            <strong>News archive</strong>
-                        </a>
-                    </h2>
-                    <div class="column-container column-container__2-cols">
-                        <div class="column-block">
-                            <h3 class="heading">Analogue chat interview</h3>
-                            <p>
-                                Richard from Analogue Chat and It&#39;s not music baby interviews Hannes and Conor about past, present and future for the Forwin...
-                            </p>
-                        </div>
-                        <div class="column-block">
-                            <h3 class="heading">Analogue chat interview</h3>
-                            <p>
-                                Our aim is to provide a platform for music that maximises the expressive potential of sound, instruments and voices either through physical or electronic means, whether composed, constructed or improvised.    
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="content-block">
-                    <h2 class="heading heading--content-block">
-                        <a href="#">
-                            Featured releases
-                            <strong>Explore back catalogue</strong>
-                        </a>
-                    </h2>
-                    <div class="column-container column-container__3-cols">
-                        <figure class="column-block">
-                            <a href="#">
-                                <img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-                            </a> 
-                            <figcaption class="figcaption">
-                                <a href="#">
-                                    <span class="figcaption__label">Jeremy Keenan</span>
-                                    <span class="figcaption__label">Scripts</span>
-                                </a>
-                            </figcaption>  
-                        </figure>
-                        <figure class="column-block">
-                            <a href="#">
-                                <img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-                            </a> 
-                            <figcaption class="figcaption">
-                                <a href="#">
-                                    <span class="figcaption__label">Jeremy Keenan</span>
-                                    <span class="figcaption__label">Scripts</span>
-                                </a>
-                            </figcaption>  
-                        </figure>
-                        <figure class="column-block">
-                            <a href="#">
-                                <img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-                            </a> 
-                            <figcaption class="figcaption">
-                                <a href="#">
-                                    <span class="figcaption__label">Jeremy Keenan</span>
-                                    <span class="figcaption__label">Scripts</span>
-                                </a>
-                            </figcaption>  
-                        </figure>
-                    </div>
-                </section>
-
-                <section class="content-block">
-                    <h2 class="heading heading--content-block">
-                        <a href="#">
-                            Featured artists
-                            <strong>Browse all artists</strong>
-                        </a>
-                    </h2>
-                    <div class="column-container column-container__2-cols"> 
-                        <figure class="column-block">
-                            <a href="#">
-                                <img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
-                            </a> 
-                            <figcaption class="figcaption">
-                                <a href="#">
-                                    <span class="figcaption__label">Jeremy Keenan</span>
-                                    <span class="figcaption__label">Scripts</span>
-                                </a>
-                            </figcaption>  
-                        </figure>
-                        <figure class="column-block">
-                            <a href="#">
-                                <img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
-                            </a> 
-                            <figcaption class="figcaption">
-                                <a href="#">
-                                    <span class="figcaption__label">Jeremy Keenan</span>
-                                    <span class="figcaption__label">Scripts</span>
-                                </a>
-                            </figcaption>  
-                        </figure>
-                    </div>
-                </section>
-
-                <section class="content-block">
-                    <h2 class="heading heading--content-block">
-                        <a href="#">
-                            Featured podcast
-                            <strong>Listen to more podcasts</strong>
-                        </a>
-                    </h2>
-                </section>
-
-                <section class="content-block">
-                    <h2 class="heading heading--content-block">
-                        <a href="#">
-                            About
-                            <strong>Read on and contact details</strong>
-                        </a>
-                    </h2>
-                    <div class="column-container column-container__2-cols">
-                        <div class="column-block">
-                            <p>
-                                Forwind (pronounced <em title="fɔː waɪnd">fɔː waɪnd</em>) is a multi-genre label currently operating from Berlin, Manchester and London.
-                            </p>
-                            <p>
-                                We&#39;re not worried about fitting neatly into one section in the record shop. Our passion is for adventurous music with a serious attention to detail, from the performance to the production.
-                            </p>
-                        </div>
-                        <div class="column-block">
-                            <p>
-                                Our aim is to provide a platform for music that maximises the expressive potential of sound, instruments and voices either through physical or electronic means, whether composed, constructed or improvised.    
-                            </p>
-                        </div>
-                    </div>
-                </section> 
+                <%= yield %>
             </div>
             <footer>
                 <div class="section-wrapper column-container column-container__2-cols column-container--v-centered">
-                    <nav class="column-block">
+                    <nav class="nav column-block">
                         <ul class="nav--social-media">
-                            <li><a href="#">Bandcamp</a></li>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Soundcloud</a></li>
-                            <li><a href="#">YouTube</a></li>
+                            <li><a href="http://forwind.bandcamp.com">Bandcamp</a></li>
+                            <li><a href="http://www.facebook.com/pages/Forwind/143631062329300">Facebook</a></li>
+                            <li><a href="http://twitter.com/#!/forwindings">Twitter</a></li>
+                            <li><a href="http://soundcloud.com/forwind">Soundcloud</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC7KlAGrDB_X5BxX4HrRsXHA">YouTube</a></li>
                         </ul>    
                     </nav>
                     <div class="copyright-notice column-block">
@@ -191,7 +60,13 @@
             </footer>
         </main>
         <%= javascript_include_tag "application" %>
-        <!-- TODO: add Google analytics -->
+        <!--script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script-->
+        <script type="text/javascript">
+            /* try{
+                var pageTracker = _gat._getTracker("UA-8508337-1");
+                pageTracker._trackPageview();
+            } catch(err) {} */
+        </script>
     </body>
 </html>
 
