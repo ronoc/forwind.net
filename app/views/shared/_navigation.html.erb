@@ -1,0 +1,21 @@
+<nav class="nav nav--primary">
+    <div class="nav__menu-toggle">
+        <input type="checkbox" />
+        <span class="hamburger">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </span>
+        <ul class="nav__menu">
+            <li>
+                <%= link_to_if( not_in_context("releases", nil, "index"), "Releases", { :controller => "releases" }) %>
+            </li>
+            <li>
+                <%= link_to_if( not_in_context("artists", nil, "index"), "Artists   ", { :controller => "artists" }) %>
+            </li>
+            <li>
+                <a href="#">Label</a>
+            </li>
+        </ul>
+    </div>
+</nav>
