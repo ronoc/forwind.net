@@ -19,6 +19,7 @@ $font-size: 14pt;
 $font-size-med: 12pt;
 $font-size-sm: 10pt;
 $link-color:#fff;
+$border-color:#fff;
 $spacing-factor: 15px;
 $background-color-block: rgb(17, 26, 65);
 
@@ -53,6 +54,10 @@ div {
     @else if $point == s {
         @media all and (max-width: 480px)  { @content ; }
     }
+ }
+
+ @mixin background-color-block($opacity) {
+    background-color: rgba(17, 26, 65, $opacity);
  }
 
 /* Placeholder selectors
@@ -116,6 +121,7 @@ footer {
 header {
     min-height: 300px;
     position: relative;
+    padding: 0;
     h1 {
         position: absolute;
         top: $spacing-factor * 3;
@@ -139,6 +145,17 @@ footer {
 }
 
 .nav {
+    @include breakpoint(m) {
+        font-size: $font-size;
+    }
+    &.nav--primary {
+        position: relative;
+        top: 45px;
+        left: $spacing-factor;
+        @include breakpoint(m) {
+            position: static;
+        }
+    }
     ul {
         list-style: none;
         padding: 0;
@@ -147,84 +164,92 @@ footer {
         display: inline-block;
         margin-right: $spacing-factor * 1.5;
         @include breakpoint(m) {
-            text-align: right;
-            margin-right: 0;
-            margin-left: $spacing-factor * 1.5;
-
+            display: block;
+            margin: 0;
         }
     }
     a {
         @extend %alt-link;
     }
-}
 
-.nav--primary {
-
-}
-
-.nav__menu-toggle {
-    display: block;
-    position: absolute;
-    top: $spacing-factor * 3;
-    right:  $spacing-factor;
-    z-index: 1;
-    user-select: none;
-    .nav__menu {
-        top: -1000px;
-        position: absolute;
-    }
     input {
-        display: block;
-        width: 40px;
-        height: 32px;
-        position: absolute;
-        top: -10px;
-        right: 0px;
-        cursor: pointer;
-        opacity: 0; 
-        z-index: 2;
-        &:checked ~ .hamburger .hamburger-line {
-          transform: rotate(45deg) translate(-7px, -17px);
-        }
-        &:checked ~ .hamburger .hamburger-line:nth-last-child(3) {
-          opacity: 0;
-          transform: rotate(0deg) scale(0.2, 0.2);
-        }
-        &:checked ~ .hamburger .hamburger-line:nth-last-child(2) {
-          transform: rotate(-45deg) translate(-1px, 13px);
-        }
-        &:checked ~ .nav__menu {
-            top: $spacing-factor;
-        }
-
+        display: none;
     }
-    .hamburger {
-        width: 40px;
-        height: 32px;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    .hamburger-line {
-        display: block;
-        width: 30px;
-        height: 4px;
-        margin-bottom: 5px;
-        position: relative;
-        background: $link-color;
-        border-radius: 3px;
-        z-index: 1;
-        transform-origin: 4px 0px;
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                    opacity 0.55s ease;
-        &:first-child {
-          transform-origin: 0% 0%;
-        }
+}
 
-        &:nth-last-child(2) {
-          transform-origin: 0% 100%;
-        }       
+@include breakpoint(m) {
+    .nav__menu-toggle {
+        user-select: none;
+        .nav__menu {
+            transform-origin: 0 0;
+            transform: translate(0, -1000px);
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            z-index: 3;
+            padding-bottom: $spacing-factor;
+            @include background-color-block(0.7);
+            border-bottom: 1px solid $border-color;
+            transition: transform 0.1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            li {
+                padding-top: $spacing-factor;
+            }
+            a {
+                display: block;
+            }
+        }
+        input {
+            display: block;
+            width: 30px;
+            height: 32px;
+            position: absolute;
+            top: 35px;
+            right: 10px;
+            cursor: pointer;
+            opacity: 0; 
+            z-index: 5;
+            &:checked ~ .nav__menu {
+                transform: translate(0, 0);
+            }
+            &:checked ~ .hamburger .hamburger-line {
+              transform: rotate(45deg) translate(-7px, -17px);
+            }
+            &:checked ~ .hamburger .hamburger-line:nth-last-child(3) {
+              opacity: 0;
+              transform: rotate(0deg) scale(0.2, 0.2);
+            }
+            &:checked ~ .hamburger .hamburger-line:nth-last-child(2) {
+              transform: rotate(-45deg) translate(-1px, 13px);
+            }
+        }
+        .hamburger {
+            width: 30px;
+            height: 32px;
+            position: absolute;
+            top: $spacing-factor * 3;
+            right: $spacing-factor;
+        }
+        .hamburger-line {
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: $link-color;
+            border-radius: 3px;
+            z-index: 4;
+            transform-origin: 4px 0px;
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                        opacity 0.55s ease;
+            &:first-child {
+              transform-origin: 0% 0%;
+            }
+    
+            &:nth-last-child(2) {
+              transform-origin: 0% 100%;
+            }       
+        }
     }
 }
 
@@ -274,6 +299,12 @@ footer {
     margin: 0 $spacing-factor * 3;
 }
 
+.section-wrapper__header {
+    @include breakpoint(m) {
+		margin: 0;
+	}
+}
+
 .content-container {
     max-width: 1300px;
     .content-block {
@@ -294,6 +325,9 @@ footer {
 .page--home .content-container {
     position: relative;
     top: -200px;
+    @include breakpoint(m) {
+		top: -150px;
+	}
 }
 
 .column-container {
