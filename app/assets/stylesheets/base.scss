@@ -5,70 +5,14 @@
 
 /* Imports
 ========================================================================== */
-@import './normalize';
+//utils
+@import './shared/normalize';
+@import './shared/vars';
+@import './shared/mixins';
+@import './shared/placeholders';
 
-/* Variables
-========================================================================== */
-$page-bg: #000;
-$font-color-primary: rgb(255, 255, 255);
-$font-color-secondary: rgb(150, 77, 68);
-$font-family-primary: 'Rosarivo', Georgia, serif;
-$font-family-secondary: 'Open Sans', Arial, Helvetica, sans-serif;
-$font-letter-spacing-heading: 0.15em;
-$font-size: 14pt;
-$font-size-med: 12pt;
-$font-size-sm: 10pt;
-$link-color:#fff;
-$border-color:#fff;
-$spacing-factor: 15px;
-$background-color-block: rgb(17, 26, 65);
-
-/* Mixins
-========================================================================== */
-
-/**
-    
-breakpoint
-usage:
-
-div {
-    @include breakpoint({xl|l|m|s|xs}) {
-		// rules
-	}
-}
-
-*/
-@mixin breakpoint($point) {
-    @if $point == xl {
-        @media all and (max-width: 1690px) { @content ; }
-    }
-    @else if $point == l {
-        @media all and (max-width: 1280px) { @content ; }
-    }
-    @else if $point == m {
-        @media all and (max-width: 980px) { @content ; }
-    }
-    @else if $point == sm {
-        @media all and (max-width: 736px)  { @content ; }
-    }
-    @else if $point == s {
-        @media all and (max-width: 480px)  { @content ; }
-    }
- }
-
- @mixin background-color-block($opacity) {
-    background-color: rgba(17, 26, 65, $opacity);
- }
-
-/* Placeholder selectors
-========================================================================== */
-
-%alt-link {
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
-  }
+//modules
+@import './shared/nav';
 
 /* Site CSS
 ========================================================================== */
@@ -86,7 +30,6 @@ body {
     font-size: $font-size;
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;    
-
 }
 
 a {
@@ -94,7 +37,7 @@ a {
     &:active,
     &:visited,
     &:hover {
-        color: $link-color;
+        color: $link-color-primary;
     }
     &:hover {
         text-decoration: underline;
@@ -106,7 +49,7 @@ img {
 }
 
 p {
-    margin-bottom: $spacing-factor * 1.5;
+    margin-bottom: $spacing-factor * 2;
 }
 
 header,
@@ -119,13 +62,15 @@ footer {
 }
 
 header {
-    min-height: 300px;
+    min-height: 205px;
     position: relative;
     padding: 0;
-    h1 {
+    .logo {
+        display: block;
         position: absolute;
         top: $spacing-factor * 3;
         left: 50%;
+        z-index: 10;
         @include breakpoint(m) {
             left: $spacing-factor;
         }
@@ -144,112 +89,16 @@ footer {
     }
 }
 
-.nav {
-    @include breakpoint(m) {
-        font-size: $font-size;
-    }
-    &.nav--primary {
-        position: relative;
-        top: 45px;
-        left: $spacing-factor;
-        @include breakpoint(m) {
-            position: static;
-        }
-    }
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        margin-right: $spacing-factor * 1.5;
-        @include breakpoint(m) {
-            display: block;
-            margin: 0;
-        }
-    }
-    a {
-        @extend %alt-link;
-    }
-
-    input {
-        display: none;
-    }
-}
-
-@include breakpoint(m) {
-    .nav__menu-toggle {
-        user-select: none;
-        .nav__menu {
-            transform-origin: 0 0;
-            transform: translate(0, -1000px);
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            z-index: 3;
-            padding-bottom: $spacing-factor;
-            @include background-color-block(0.7);
-            border-bottom: 1px solid $border-color;
-            transition: transform 0.1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-            li {
-                padding-top: $spacing-factor;
-            }
-            a {
-                display: block;
-            }
-        }
-        input {
-            display: block;
-            width: 30px;
-            height: 32px;
-            position: absolute;
-            top: 35px;
-            right: 10px;
-            cursor: pointer;
-            opacity: 0; 
-            z-index: 5;
-            &:checked ~ .nav__menu {
-                transform: translate(0, 0);
-            }
-            &:checked ~ .hamburger .hamburger-line {
-              transform: rotate(45deg) translate(-7px, -17px);
-            }
-            &:checked ~ .hamburger .hamburger-line:nth-last-child(3) {
-              opacity: 0;
-              transform: rotate(0deg) scale(0.2, 0.2);
-            }
-            &:checked ~ .hamburger .hamburger-line:nth-last-child(2) {
-              transform: rotate(-45deg) translate(-1px, 13px);
-            }
-        }
-        .hamburger {
-            width: 30px;
-            height: 32px;
-            position: absolute;
-            top: $spacing-factor * 3;
-            right: $spacing-factor;
-        }
-        .hamburger-line {
-            display: block;
-            width: 30px;
-            height: 4px;
-            margin-bottom: 5px;
-            position: relative;
-            background: $link-color;
-            border-radius: 3px;
-            z-index: 4;
-            transform-origin: 4px 0px;
-            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                        opacity 0.55s ease;
-            &:first-child {
-              transform-origin: 0% 0%;
-            }
-    
-            &:nth-last-child(2) {
-              transform-origin: 0% 100%;
-            }       
-        }
+blockquote {
+    font-size: $font-size-md;
+    margin-bottom: $spacing-factor;
+    @extend %clearfix;
+    color: $blockquote-color;
+    cite {
+        display: block;
+        float: right;
+        margin: $spacing-factor;
+        color: $font-color-primary;
     }
 }
 
@@ -257,20 +106,28 @@ footer {
     font-weight: normal;
     text-transform: uppercase;
     margin-bottom: $spacing-factor * 2;
-    letter-spacing: $font-letter-spacing-heading    ;
-    &--floating-button a {
-        font-family: $font-family-secondary;
-        display: inline-block;
-        background-color: $background-color-block;
-        padding: $spacing-factor;
-        position: absolute;
-        left: $spacing-factor * 2;
-        top: $spacing-factor * 2;
-
+    &--article-title {
+        letter-spacing: $font-letter-spacing-heading;
+    }
+    &--widget {
+        text-transform: none;
+        margin-bottom: $spacing-factor / 2  ;
+    }
+    &--floating-button {
+        margin: 0;
+        a {
+            font-family: $font-family-secondary;
+            display: inline-block;
+            background-color: $background-color-block;
+            padding: $spacing-factor;
+            position: absolute;
+            left: $spacing-factor * 2;
+            top: $spacing-factor * 2;
+        }
     }
     &--content-block a {
         font-family: $font-family-secondary;
-        font-size: $font-size-med;
+        font-size: $font-size-md;
         strong {
             color: $font-color-secondary;
             font-size: $font-size-sm;
@@ -306,28 +163,40 @@ footer {
 }
 
 .content-container {
-    max-width: 1300px;
+    max-width: $content-max-width;
+    min-height: 200px;
+    position: relative;
+    top: -90px;
     .content-block {
         position: relative;
-        margin: 0 $spacing-factor $spacing-factor * 3 $spacing-factor;
-        padding-bottom: $spacing-factor * 2;
+        margin-bottom: $spacing-factor * 2;
+        padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
+        @include breakpoint(m) {
+            margin-bottom: $spacing-factor;
+            padding-bottom: $spacing-factor;
+        }
+        &.aside__widget {
+            font-family: $font-family-secondary;
+            font-size: $font-size-sm;
+            margin-bottom: $spacing-factor * 2;
+            @include breakpoint(m) {
+                font-size: $font-size-md;
+            } 
+            a {
+                @extend %alt-link;
+                color: $link-color-secondary;
+            }
+        }
+        
     }
 }
 
-.context-block__banner {
+.content-block__banner {
     @include breakpoint(m) {
 		.heading--floating-button {
             display: none;
         }
-	}
-}
-
-.page--home .content-container {
-    position: relative;
-    top: -200px;
-    @include breakpoint(m) {
-		top: -150px;
-	}
+    }
 }
 
 .column-container {
@@ -335,6 +204,7 @@ footer {
     justify-content: space-evenly;
     align-items: flex-start;
     flex-direction: row;
+    &__article,
     &--v-centered {
         align-items: center;
     }
@@ -345,6 +215,30 @@ footer {
             margin-right: 0;
         }
     }
+    &__article {
+        @include breakpoint(m) {
+            flex-flow: column nowrap;
+        }
+        .column-block {
+            align-self: start;
+            &__main-content {
+                flex-basis: 66%;
+                order: 1;
+                @include breakpoint(m) {
+                    order: 2;
+                    flex-basis: 100%;
+                }
+            }    
+            &__aside {
+                flex-basis: 33%;
+                order: 2;
+                @include breakpoint(m) {
+                    order: 1;
+                    flex-basis: 100%;
+                }
+            }
+        }
+    }
     &__2-cols {
         .column-block {
             flex-basis: 50%;
@@ -352,8 +246,31 @@ footer {
     }
     &__3-cols {
         .column-block {
-            flex-basis: 33%;
+            flex-basis: 33.3%;
         }
+    }
+}
+
+.column-block__main-content {
+    .content-block__banner {
+        display: block;
+        @include breakpoint(m) {
+            display: none;
+        }
+    }
+}
+
+.column-block__aside {
+    .content-block__banner {
+        display: none;
+        @include breakpoint(m) {
+            display: block;
+        }
+    }
+    h1 {
+        @include breakpoint(m) {
+            font-size: $font-size-lg;
+        } 
     }
 }
 
@@ -361,12 +278,13 @@ footer {
     display: block;
     font-family: $font-family-secondary;
     font-size: $font-size-sm;
-    &__label {
-        display: block;
-    }
     a {
         @extend %alt-link;
     }
+}
+
+.text-title {
+    display: block;
 }
 
 .img__logo {
@@ -375,6 +293,35 @@ footer {
     margin-right: $spacing-factor * 4;
 }
 
-aside {
-
+.table--release-details {
+    width: 100%;
+    border-collapse: collapse;
+    caption {
+        display: block;
+        text-align: left;
+        margin-bottom: $spacing-factor * 2;
+    }
+    .table-row {
+        display: flex;
+    }
+    .table-cell {
+        padding: $spacing-factor / 3;
+        padding-top: 0;
+        &--track-name {
+            flex-basis: 75%;
+        }
+    }
 }
+
+.link--button {
+    background-color: $background-color-block;
+    display: block;
+    text-align: center;
+    padding: $spacing-factor $spacing-factor * 2;
+    @extend %alt-link;
+    color: $link-color-primary !important;
+}
+
+.visually-hidden {
+    @extend %visuallyhidden;
+  }

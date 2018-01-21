@@ -1,5 +1,5 @@
 class ReleasesController < ApplicationController
-  layout 'home'
+  layout 'base'
 
   def index
     releaseCats = $redis.lrange("releases", 0, $redis.llen("releases")-1)
@@ -10,7 +10,7 @@ class ReleasesController < ApplicationController
         @releases << release
       end
     end
-    render layout: 'home'
+    render layout: 'base'
   end
 
   def current

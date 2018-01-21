@@ -28,6 +28,10 @@ module ApplicationHelper
     return ''
   end
 
+  def is_active?(link_path)
+    current_page?(link_path) ? "active" : ""
+   end
+
   def is_feedable?
     return params[:controller] == "podcasts"    
   end
