@@ -106,8 +106,24 @@ blockquote {
     font-weight: normal;
     text-transform: uppercase;
     margin-bottom: $spacing-factor * 2;
+    @include breakpoint(m) {
+		margin-bottom: $spacing-factor;
+    }
+    &--page-title {
+        font-size: $font-size-lg;
+    }
     &--article-title {
         letter-spacing: $font-letter-spacing-heading;
+        .sub-heading {
+            text-transform: none;
+            font-size: $font-size-sm;
+            display: block;
+            font-family: $font-family-secondary;
+        }
+        a {
+            @extend %alt-link;
+        }
+        
     }
     &--widget {
         text-transform: none;
@@ -135,6 +151,10 @@ blockquote {
             display: inline-block;
             text-indent: $spacing-factor / 2;
         }
+        &:hover {
+            background-color: white;
+            color: black;
+        }
     }
     a {
         text-decoration: none;
@@ -154,6 +174,9 @@ blockquote {
 
 .section-wrapper {
     margin: 0 $spacing-factor * 3;
+    @include breakpoint(m) {
+		margin: 0 $spacing-factor;
+	}
 }
 
 .section-wrapper__header {
@@ -166,14 +189,13 @@ blockquote {
     max-width: $content-max-width;
     min-height: 200px;
     position: relative;
-    top: -90px;
+    top: -$top-negative-margin;
     .content-block {
         position: relative;
         margin-bottom: $spacing-factor * 2;
         padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
         @include breakpoint(m) {
-            margin-bottom: $spacing-factor;
-            padding-bottom: $spacing-factor;
+            padding-bottom: 0;
         }
         &.aside__widget {
             font-family: $font-family-secondary;
@@ -187,7 +209,24 @@ blockquote {
                 color: $link-color-secondary;
             }
         }
-        
+        &--title-heading {
+            margin-bottom: 0;
+            height: $top-negative-margin - $spacing-factor;
+            .heading--article-title,
+            .heading--page-title {
+                display: inline-block;
+            }
+            .heading--article-title {
+                font-size: $font-size-lg;
+            }
+            
+        }
+        &--article {
+            a {
+                @extend %alt-link;
+                color: $link-color-secondary;
+            }
+        }
     }
 }
 
@@ -208,14 +247,23 @@ blockquote {
     &--v-centered {
         align-items: center;
     }
+    @include breakpoint(sm) {
+        flex-direction: column;
+    }
     .column-block {
         margin-right: $spacing-factor;
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
         }
+        &__figure {
+            @include breakpoint(m) {
+                margin-bottom: $spacing-factor * 2;
+            }
+        }
     }
     &__article {
+        margin-top: $spacing-factor;
         @include breakpoint(m) {
             flex-flow: column nowrap;
         }
@@ -240,14 +288,10 @@ blockquote {
         }
     }
     &__2-cols {
-        .column-block {
-            flex-basis: 50%;
-        }
+        flex-basis: 50%;
     }
     &__3-cols {
-        .column-block {
-            flex-basis: 33.3%;
-        }
+        flex-basis: 33.3%;
     }
 }
 
@@ -287,10 +331,32 @@ blockquote {
     display: block;
 }
 
-.img__logo {
+.img {
     width: auto;
     display: inline-block;
-    margin-right: $spacing-factor * 4;
+
+    &--center {
+        margin: 0 auto $spacing-factor * 2 auto;
+        display: block;
+    }
+
+    &--right {
+        float: right;
+        margin: 0 0 $spacing-factor * 2 $spacing-factor * 2;
+    }
+
+    &--left {
+        float: left;
+        margin: 0 $spacing-factor * 2 $spacing-factor * 2 0;
+    }
+    
+    &__logo {        
+        margin-right: $spacing-factor * 4;
+        @include breakpoint(sm) {
+            margin: 0 0 $spacing-factor 0;
+            display: block;
+        }
+    }
 }
 
 .table--release-details {

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :podcasts
   get 'current', to: :current, controller: 'podcasts'
   get 'about', to: :about, controller: 'home'
+  get 'news', to: :news, controller: 'home'
 end
