@@ -138,6 +138,7 @@ DEPENDENCIES
   pg (~> 0.18.4)
   rack-rewrite
   rails (= 5.1.4)
+  railties (= 5.1.4)
   redis
   sass-rails
 
