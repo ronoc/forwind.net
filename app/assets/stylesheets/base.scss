@@ -86,6 +86,7 @@ footer {
     }
     .copyright-notice {
         text-align: right;
+        margin: $spacing-factor * 2 0;
     }
 }
 
@@ -255,10 +256,13 @@ blockquote {
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
+            @include breakpoint(sm) {
+                margin-right: auto;
+            }
         }
         &__figure {
-            @include breakpoint(m) {
-                margin-bottom: $spacing-factor * 2;
+            @include breakpoint(sm) {
+                margin: 0 auto $spacing-factor * 2 auto;
             }
         }
     }
@@ -289,6 +293,12 @@ blockquote {
     }
     &__2-cols {
         flex-basis: 50%;
+        .column-block {
+            width: 50%;
+            @include breakpoint(m) {
+                width: auto;
+            }
+        }
     }
     &__3-cols {
         flex-basis: 33.3%;
@@ -334,7 +344,9 @@ blockquote {
 .img {
     width: auto;
     display: inline-block;
-
+    &--thumb {
+        border: 1px solid white;
+    }
     &--center {
         margin: 0 auto $spacing-factor * 2 auto;
         display: block;
@@ -353,28 +365,68 @@ blockquote {
     &__logo {        
         margin-right: $spacing-factor * 4;
         @include breakpoint(sm) {
-            margin: 0 0 $spacing-factor 0;
+            margin: 0 auto $spacing-factor auto;
             display: block;
         }
     }
 }
 
-.table--release-details {
+.table {
     width: 100%;
     border-collapse: collapse;
+    text-align: left;
+    .table-cell {
+        vertical-align: top;
+    }
+    &--release-details {
+        .table-row {
+            display: flex;
+        }
+        .table-cell {
+            padding: $spacing-factor / 3;
+            padding-top: 0;
+            &--track-name {
+                padding-top: 0;
+                flex-basis: 75%;
+            }
+        }
+    }
     caption {
         display: block;
         text-align: left;
         margin-bottom: $spacing-factor * 2;
     }
-    .table-row {
-        display: flex;
-    }
-    .table-cell {
-        padding: $spacing-factor / 3;
-        padding-top: 0;
-        &--track-name {
-            flex-basis: 75%;
+    &--catalogue {
+        margin-right: $spacing-factor;
+        margin-left: $spacing-factor;
+        th {
+            height: $top-negative-margin - $spacing-factor;
+            font-size: $font-size-lg;
+            padding-bottom: $spacing-factor * 2;
+        }
+        .table-cell {
+            font-family: $font-family-secondary;
+            font-size: $font-size-md;
+            padding: 0 $spacing-factor $spacing-factor 0;
+            width: 50%;
+            &--format,
+            &--date {
+                width: 25%;
+            }
+            span {
+                display: block;
+            }
+            @include breakpoint(sm) {
+                font-size: $font-size-sm;
+                padding: 0 $spacing-factor / 2 $spacing-factor / 2 0;
+            }
+        }
+        .img--thumb {
+            margin-right: $spacing-factor * 2;
+            float: left;
+            @include breakpoint(sm) {
+                margin-right: $spacing-factor;
+            }
         }
     }
 }

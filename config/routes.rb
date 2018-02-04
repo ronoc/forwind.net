@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :podcasts
   get 'current', to: :current, controller: 'podcasts'
   get 'about', to: :about, controller: 'home'
+  # created for UI-dev purposes
   get 'news', to: :news, controller: 'home'
+  get 'catalogue', to: :catalogue, controller: 'home'
 end
