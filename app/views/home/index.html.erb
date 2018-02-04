@@ -1,64 +1,164 @@
-<div id="content_container">
-<div id="home_promo_header">
+<h1 class="visually-hidden">Forwind &mdash; home</h1>
 
-<%=raw banner() %>
-
-<p></p>
-</div>
-
-<section id="container_2grid_left">
-<div class="title-hr-2gridleft">
-<hr/>
-<h2>Featured Releases</h2>
-<hr/>
-</div>
-
-<% @small_releases.each do |release| %>
-<% unless @small_releases.index(release) > 3 %>
-<div class="home-promo-boxgrid captionfull">
-
-<a href=<%= "/releases/" + release.cat %>>
-	<img src= <%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg") %>></img>
-</a>
-
-<div class="cover boxcaption">
-<h2><a href=<%= "/releases/" + release.cat %> title="..."><%= release.cat %>:<%= release.title %></a></h2>
-<p><%= release.short_desc.html_safe %></p>
-</div>
-</div>
-<% end %>
-<% end %>
-
+<section class="content-block content-block__banner">
+	<h2 class="heading heading--floating-button">
+		<a href="#">Release</a>
+	</h2>
+	<figure>
+		<a href="#">
+			<img src="https://placeimg.com/800/400/nature/grayscale" alt="Alt desc" />
+		</a>    
+	</figure>
 </section>
 
-<aside>
-
-<div id="home_podcast_promo">
-
-	<div class="title-hr-1gridright">
-	<hr/>
-	<h2>Featured podcast</h2>
-	<hr/>
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<a href="#">
+			Latest news
+			<strong>News archive</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__2-cols">
+		<div class="column-block">
+			<h3 class="heading heading--article-title">
+				<a href="#">Analogue chat interview</a>
+			</h3>
+			<div class="content-block--article">
+				<p>
+					Richard from Analogue Chat and It&#39;s not music baby interviews Hannes and Conor about past, present and future for the <a href="#">Forwind</a>
+				</p>
+			</div>
+		</div>
+		<div class="column-block">
+			<h3 class="heading heading--article-title">
+				<a href="#">Analogue chat interview</a>
+			</h3>
+			<div class="content-block--article">
+				<p>
+					Our aim is to provide a platform for music that maximises expressive potential.
+				</p>
+				<p>
+					 <a href="#">More</a>
+				</p>
+			</div>
+		</div>
 	</div>
+</section>
 
-	<div class="home-podcast-boxgrid podcast-captionfull">
-			<a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>>
-    	<img src=<%=File.join(@s3_images, "podcasts", @podcast.cat_no + "_sm.jpg")%>></a>
-    	<div class="podcast-cover podcast-boxcaption">
-        	<h2><a href=<%= "/podcasts/" + @podcast.id.to_s %> title=<%= @podcast.title %>><%= @podcast.title %></a></h2>
-        	<p>Compiled & Mixed by <%= @podcast.artist.name %><br/>Genre: <%= @podcast.genre %></p>
-    	</div>
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<a href="#">
+			Featured releases
+			<strong>Explore back catalogue</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__3-cols">
+		<figure class="column-block column-block__figure">
+			<a href="#">
+				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
+			</a> 
+			<figcaption class="figcaption">
+				<a href="#">
+					<span class="text-title">Jeremy Keenan</span>
+					<span class="text-title">Scripts</span>
+				</a>
+			</figcaption>  
+		</figure>
+		<figure class="column-block column-block__figure">
+			<a href="#">
+				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
+			</a> 
+			<figcaption class="figcaption">
+				<a href="#">
+					<span class="text-title">Jeremy Keenan</span>
+					<span class="text-title">Scripts</span>
+				</a>
+			</figcaption>  
+		</figure>
+		<figure class="column-block column-block__figure">
+			<a href="#">
+				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
+			</a> 
+			<figcaption class="figcaption">
+				<a href="#">
+					<span class="text-title">Jeremy Keenan</span>
+					<span class="text-title">Scripts</span>
+				</a>
+			</figcaption>  
+		</figure>
 	</div>
+</section>
 
-</div>
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<a href="#">
+			Featured artists
+			<strong>Browse all artists</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__2-cols"> 
+		<figure class="column-block column-block__figure">
+			<a href="#">
+				<img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
+			</a> 
+			<figcaption class="figcaption">
+				<a href="#">
+					<span class="text-title">Jeremy Keenan</span>
+					<span class="text-title">Scripts</span>
+				</a>
+			</figcaption>  
+		</figure>
+		<figure class="column-block column-block__figure">
+			<a href="#">
+				<img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
+			</a> 
+			<figcaption class="figcaption">
+				<a href="#">
+					<span class="text-title">Jeremy Keenan</span>
+					<span class="text-title">Scripts</span>
+				</a>
+			</figcaption>  
+		</figure>
+	</div>
+</section>
 
-</aside>
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<a href="#">
+			Featured podcast
+			<strong>Listen to more podcasts</strong>
+		</a>
+	</h2>
+	<div class="column-block">
+		Player here
+	</div>
+</section>
 
-</div>
-
-
-
-
-
-
-
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<a href="/about">
+			About
+			<strong>Read on and contact details</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__2-cols">
+		<div class="column-block">
+			<p>
+				Forwind (pronounced <em title="fɔː waɪnd">fɔː waɪnd</em>) is a multi-genre label currently operating from Berlin, Manchester and London.
+			</p>
+			<p>
+				We&#39;re not worried about fitting neatly into one section in the record shop. Our passion is for adventurous music with a serious attention to detail, from the performance to the production.
+			</p>
+		</div>
+		<div class="column-block">
+			<p>
+				Our aim is to provide a platform for music that maximises the expressive potential of sound, instruments and voices either through physical or electronic means, whether composed, constructed or improvised.    
+			</p>
+		</div>
+	</div>
+</section>
+<section class="content-block content-block__logos">
+	<a href="#"><img class="img img__logo" src="https://placeimg.com/175/110/nature/grayscale" alt="Alt desc" /></a>
+	<a href="#"><img class="img img__logo" src="https://placeimg.com/175/110/nature/grayscale" alt="Alt desc" /></a>
+	<a href="#"> <img class="img img__logo" src="https://placeimg.com/175/110/nature/grayscale" alt="Alt desc" /></a>
+</section>
