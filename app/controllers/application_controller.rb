@@ -2,18 +2,13 @@ class ApplicationController < ActionController::Base
   # Pick a unique cookie name to distinguish our session data from others'
   #session :session_key => '_forwind_session_id'
   layout 'default'
-  before_filter :context, :child, :set_up
+  before_action :set_up
 
   helper_method :current_user
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
-  end
-
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.record
   end
 
   def set_sharing_details(text, link, title_subtext)
@@ -24,21 +19,9 @@ class ApplicationController < ActionController::Base
     @page_title = ttl
   end
 
-  def require_user
-    return true
-  end
-
-  def context
-    @context = params[:controller].upcase
-    @item = params[:action].upcase
-  end
-
-  def child
-    @child = params[:action].upcase
-  end
-
   def set_up
     @s3_images = "https://s3-eu-west-1.amazonaws.com/forwind-images/"
+    @context = "Publishing"
   end
 
 end

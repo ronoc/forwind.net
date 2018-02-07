@@ -1,0 +1,17 @@
+<div id="content_container">
+<% @releases.each do |release| %>
+<div class="release_index_promo">
+<a href=<%="/releases/"+release.cat.downcase %>>
+<img src= <%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg") %>></img></a>
+<h2><a href=<%="/releases/"+release.cat.downcase %>> <%= release.title.html_safe%></a></h2>
+<p><%= release.short_desc.html_safe %></p>
+</div>
+<% end %>
+</div>
+
+
+
+
+
+
+
