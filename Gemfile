@@ -10,16 +10,6 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'rake', '12.3.0'
-# Gems used only for assets and not required
-# in production environments by default.
-#group :assets do
-#  gem 'sass-rails'
-#  gem 'uglifier'
-#end
 
-#gem 'pry'
-#gem 'authlogic'
-#gem 'will_paginate'
-#gem 'bluecloth'
 
 
