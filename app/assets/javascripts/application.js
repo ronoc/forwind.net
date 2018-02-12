@@ -1,5 +1,0 @@
-(function(){
-    /**
-     * forwind.net js
-    */
-});

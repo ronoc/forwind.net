@@ -22,6 +22,5 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find_by_slug(params[:id].downcase)
-    set_sharing_details(share_text(), "http://www.forwind.net/artists/" + @artist.slug, @artist.name)
   end
 end

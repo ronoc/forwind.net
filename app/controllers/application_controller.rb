@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
   layout 'default'
   before_action :set_up
 
-  def set_sharing_details(text, link, title_subtext)
-    @share_details = {:text => text, :link => link, :title_subtext => title_subtext}
-  end
-
   def title(ttl)
     @page_title = ttl
   end

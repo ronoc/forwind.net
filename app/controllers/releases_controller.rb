@@ -32,7 +32,6 @@ class ReleasesController < ApplicationController
     unless @release
       @release = Release.find(params[:id])
     end
-    set_sharing_details(share_text(), "http://www.forwind.net/releases/" + @release.cat.downcase, @release.title)
 	end
 
   def context
