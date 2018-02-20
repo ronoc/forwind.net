@@ -25,11 +25,16 @@ html, body {
 
 body {
     font-family: $font-family-primary;
-    background: $page-bg;
+    background: $background-color-block;
     color: $font-color-primary;
     font-size: $font-size;
     line-height: 1.4;
-    -webkit-font-smoothing: antialiased;    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;    
+}
+
+main {
+    background: $page-bg;    
 }
 
 a {
@@ -136,10 +141,10 @@ blockquote {
             font-family: $font-family-secondary;
             display: inline-block;
             background-color: $background-color-block;
-            padding: $spacing-factor;
+            padding: $spacing-factor * 0.5 $spacing-factor;
             position: absolute;
             left: $spacing-factor * 2;
-            top: $spacing-factor * 2;
+            top: $spacing-factor;
         }
     }
     &--content-block a {
@@ -223,6 +228,7 @@ blockquote {
             
         }
         &--article {
+            padding-top: $spacing-factor * 0.5;
             a {
                 @extend %alt-link;
                 color: $link-color-secondary;
@@ -232,6 +238,7 @@ blockquote {
 }
 
 .content-block__banner {
+    font-size: $font-size-md;
     @include breakpoint(m) {
 		.heading--floating-button {
             display: none;
@@ -252,7 +259,7 @@ blockquote {
         flex-direction: column;
     }
     .column-block {
-        margin-right: $spacing-factor;
+        margin-right: $spacing-factor * 2;
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
