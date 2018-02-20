@@ -34,7 +34,9 @@ body {
 }
 
 main {
-    background: $page-bg;    
+    background: $page-bg;
+    background-image: url("ghosts.jpg");
+    background-size: cover;
 }
 
 a {
@@ -155,11 +157,10 @@ blockquote {
             font-size: $font-size-sm;
             text-transform: none;
             display: inline-block;
-            text-indent: $spacing-factor / 2;
+            text-indent: $spacing-factor * 0.67;
         }
         &:hover {
-            background-color: white;
-            color: black;
+            opacity: 0.8;
         }
     }
     a {
@@ -338,7 +339,7 @@ blockquote {
 .figcaption {
     display: block;
     font-family: $font-family-secondary;
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
     a {
         @extend %alt-link;
     }
