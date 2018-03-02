@@ -143,9 +143,9 @@ blockquote {
             font-family: $font-family-secondary;
             display: inline-block;
             background-color: $background-color-block;
-            padding: $spacing-factor * 0.5 $spacing-factor;
+            padding: $spacing-factor * 0.5 $spacing-factor * 1;
             position: absolute;
-            left: $spacing-factor * 2;
+            left: $spacing-factor * 2.2;
             top: $spacing-factor;
         }
     }
@@ -239,7 +239,7 @@ blockquote {
 }
 
 .content-block__banner {
-    font-size: $font-size-md;
+    font-size: $font-size-sm;
     @include breakpoint(m) {
 		.heading--floating-button {
             display: none;
