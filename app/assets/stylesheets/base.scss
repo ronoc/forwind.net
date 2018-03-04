@@ -35,7 +35,7 @@ body {
 
 main {
     background: $page-bg;
-    background-image: url("ghosts.jpg");
+    background-image: url("https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/background.jpg");
     background-size: cover;
 }
 
@@ -56,7 +56,7 @@ img {
 }
 
 p {
-    margin-bottom: $spacing-factor * 2;
+    margin-bottom: $spacing-factor * 1.2;
 }
 
 header,
