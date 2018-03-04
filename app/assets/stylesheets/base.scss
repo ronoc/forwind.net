@@ -91,7 +91,7 @@ header {
 
 footer {
     .column-container {
-        min-height: 100px;
+        min-height: 84px;
         @include breakpoint(m) {
             align-items: flex-start;
         }
@@ -204,7 +204,7 @@ blockquote {
     top: -$top-negative-margin;
     .content-block {
         position: relative;
-        margin-bottom: $spacing-factor * 2;
+        margin-bottom: $spacing-factor * 3;
         padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
         @include breakpoint(m) {
             padding-bottom: 0;
@@ -241,7 +241,8 @@ blockquote {
             }
         }
         &__logos {
-            margin-top: -40px;
+            margin-top: - $spacing-factor * 2;
+            margin-bottom: $spacing-factor;
         }
     }
 }
