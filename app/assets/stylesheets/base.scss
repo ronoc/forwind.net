@@ -35,7 +35,7 @@ body {
 
 main {
     background: $page-bg;
-    background-image: url("ghosts.jpg");
+    background-image: url("https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/background.jpg");
     background-size: cover;
 }
 
@@ -56,7 +56,7 @@ img {
 }
 
 p {
-    margin-bottom: $spacing-factor * 2;
+    margin-bottom: $spacing-factor * 1.2;
 }
 
 header,
@@ -75,18 +75,23 @@ header {
     .logo {
         display: block;
         position: absolute;
-        top: $spacing-factor * 3;
+        top: $spacing-factor * 2;
         left: 50%;
         z-index: 10;
+        img {
+            width: 80px;
+            height: auto;
+            margin-left: -40px;
+        }
         @include breakpoint(m) {
-            left: $spacing-factor;
+            left: $spacing-factor + 40px;
         }
     }
 }
 
 footer {
     .column-container {
-        min-height: 100px;
+        min-height: 84px;
         @include breakpoint(m) {
             align-items: flex-start;
         }
@@ -143,9 +148,9 @@ blockquote {
             font-family: $font-family-secondary;
             display: inline-block;
             background-color: $background-color-block;
-            padding: $spacing-factor * 0.5 $spacing-factor;
+            padding: $spacing-factor * 0.5 $spacing-factor * 1;
             position: absolute;
-            left: $spacing-factor * 2;
+            left: $spacing-factor * 2.2;
             top: $spacing-factor;
         }
     }
@@ -199,7 +204,7 @@ blockquote {
     top: -$top-negative-margin;
     .content-block {
         position: relative;
-        margin-bottom: $spacing-factor * 2;
+        margin-bottom: $spacing-factor * 3;
         padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
         @include breakpoint(m) {
             padding-bottom: 0;
@@ -235,11 +240,15 @@ blockquote {
                 color: $link-color-secondary;
             }
         }
+        &__logos {
+            margin-top: - $spacing-factor * 2;
+            margin-bottom: $spacing-factor;
+        }
     }
 }
 
 .content-block__banner {
-    font-size: $font-size-md;
+    font-size: $font-size-sm;
     @include breakpoint(m) {
 		.heading--floating-button {
             display: none;
@@ -371,6 +380,9 @@ blockquote {
     }
     
     &__logo {        
+        width: 160px;
+        height: auto;
+        vertical-align: middle;
         margin-right: $spacing-factor * 4;
         @include breakpoint(sm) {
             margin: 0 auto $spacing-factor auto;

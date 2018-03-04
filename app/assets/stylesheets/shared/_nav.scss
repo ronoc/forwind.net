@@ -7,9 +7,18 @@
     &.nav--primary {
         position: relative;
         top: 45px;
-        left: $spacing-factor;
         @include breakpoint(m) {
             position: static;
+        }
+    }
+    &--social-media {
+        list-style: none;
+        li {
+            display: inline-block;
+            margin-right: $spacing-factor * 1.5;
+            @include breakpoint(m) {
+                display: block;
+            }
         }
     }
     ul {
