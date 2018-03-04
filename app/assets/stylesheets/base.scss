@@ -75,11 +75,16 @@ header {
     .logo {
         display: block;
         position: absolute;
-        top: $spacing-factor * 3;
+        top: $spacing-factor * 2;
         left: 50%;
         z-index: 10;
+        img {
+            width: 80px;
+            height: auto;
+            margin-left: -40px;
+        }
         @include breakpoint(m) {
-            left: $spacing-factor;
+            left: $spacing-factor + 40px;
         }
     }
 }
@@ -235,6 +240,9 @@ blockquote {
                 color: $link-color-secondary;
             }
         }
+        &__logos {
+            margin-top: -40px;
+        }
     }
 }
 
@@ -371,6 +379,9 @@ blockquote {
     }
     
     &__logo {        
+        width: 160px;
+        height: auto;
+        vertical-align: middle;
         margin-right: $spacing-factor * 4;
         @include breakpoint(sm) {
             margin: 0 auto $spacing-factor auto;
