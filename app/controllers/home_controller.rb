@@ -3,9 +3,12 @@ class HomeController < ApplicationController
   #before_action :random_promo
   
   def random_promo
-    featured = $redis.lrange("featuredReleases", 0, $redis.llen("releases")-1)
-    @small_releases = Release.where("cat IN (?)", featured)
-                             .order('random()').to_a                             
+    featuredReleases = $redis.lrange("featuredReleases", 0, $redis.llen("releases")-1)
+    featuredArtists = $redis.lrange("featuredArtists", 0, $redis.llen("artists")-1)
+    @small_releases = Release.where("cat IN (?)", featuredReleases)
+                             .order('random()').to_a                          
+    @small_artists = Release.where("name IN (?)", featuredArtists)
+                            .order('random()').to_a
     puts "small releases " + @small_releases.to_s
     pds = Podcast.pluck(:id)
     @podcast = Podcast.find(pds.sample)
