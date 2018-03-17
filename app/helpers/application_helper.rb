@@ -21,6 +21,14 @@ module ApplicationHelper
     return true
   end
 
+  def munge_artist_names(release)
+    result = []
+    release.artists.map do |artist|
+      result << "<a href=/artists/#{artist.slug}>#{artist.name.mb_chars.upcase.to_s}</a>"
+    end
+    result.join(" & ")
+  end
+
   def home_link
     if params[:controller]  != 'home'
       return "<span id='small_white_txt'>/ </span><span id='ct_links'><a href='/home'>HOME</a></span>"
@@ -44,5 +52,16 @@ module ApplicationHelper
     end
     return (audio_asset.length/60).to_s + ':' + minutes
   end
+
+  def small_artists_image(image)
+    elements = image.split('.')
+    elements[0] = elements[0] + '_sm.'
+    return elements.join('')
+  end
+  
+  def small_releases_image(release)
+    release.cat.downcase + '_sm.jpg'
+  end
+ 
 end
 

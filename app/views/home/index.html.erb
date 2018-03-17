@@ -59,39 +59,19 @@
 		</a>
 	</h2>
 	<div class="column-container column-container__3-cols">
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
+		<% @small_releases.each do |release| %>
+			<figure class="column-block column-block__figure">
+				<a href=<%= "/releases/" + release.cat%>>
+					<img src=<%= File.join(@s3_images, "releases", small_releases_image(release))%>>
+				</a> 
+				<figcaption class="figcaption">
+					<a href="#">
+						<span class="text-title"><%= raw(munge_artist_names(release)) %></span>
+						<span class="text-title"><%= release.title %></span>
+					</a>
+				</figcaption>  
+			</figure>
+		<% end %>
 	</div>
 </section>
 
@@ -103,28 +83,19 @@
 		</a>
 	</h2>
 	<div class="column-container column-container__2-cols"> 
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
+		<% @small_artists.each do |artist| %>
+			<figure class="column-block column-block__figure">
+				<a href=<%= "/artists/" + artist.slug %>>
+					<img src= <%= File.join(@s3_images, "artists", small_artists_image(artist.image)) %>
+				</a> 
+				<figcaption class="figcaption">
+					<a href="#">
+						<span class="text-title"><%=artist.name%></span>
+						<!-- span class="text-title">Scripts</span -->
+					</a>
+				</figcaption>  
+			</figure>
+		<% end %>
 	</div>
 </section>
 
