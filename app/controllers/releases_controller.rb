@@ -32,6 +32,7 @@ class ReleasesController < ApplicationController
     unless @release
       @release = Release.find(params[:id])
     end
+    render layout: 'base'
 	end
 
   def context
