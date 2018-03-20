@@ -23,10 +23,10 @@ div {
     @else if $point == m {
         @media all and (max-width: 980px) { @content ; }
     }
-    @else if $point == sm {
+    @else if $point == s {
         @media all and (max-width: 736px)  { @content ; }
     }
-    @else if $point == s {
+    @else if $point == xs {
         @media all and (max-width: 480px)  { @content ; }
     }
  }

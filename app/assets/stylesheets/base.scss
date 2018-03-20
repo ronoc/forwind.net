@@ -248,7 +248,7 @@ blockquote {
     &--v-centered {
         align-items: center;
     }
-    @include breakpoint(sm) {
+    @include breakpoint(s) {
         flex-direction: column;
     }
     .column-block {
@@ -256,12 +256,12 @@ blockquote {
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
-            @include breakpoint(sm) {
+            @include breakpoint(s) {
                 margin-right: auto;
             }
         }
         &__figure {
-            @include breakpoint(sm) {
+            @include breakpoint(s) {
                 margin: 0 auto $spacing-factor * 2 auto;
             }
         }
@@ -295,7 +295,7 @@ blockquote {
         flex-basis: 50%;
         .column-block {
             width: 50%;
-            @include breakpoint(m) {
+            @include breakpoint(s) {
                 width: auto;
             }
         }
@@ -364,7 +364,7 @@ blockquote {
     
     &__logo {        
         margin-right: $spacing-factor * 4;
-        @include breakpoint(sm) {
+        @include breakpoint(s) {
             margin: 0 auto $spacing-factor auto;
             display: block;
         }
@@ -416,7 +416,7 @@ blockquote {
             span {
                 display: block;
             }
-            @include breakpoint(sm) {
+            @include breakpoint(s) {
                 font-size: $font-size-sm;
                 padding: 0 $spacing-factor / 2 $spacing-factor / 2 0;
             }
@@ -424,7 +424,7 @@ blockquote {
         .img--thumb {
             margin-right: $spacing-factor * 2;
             float: left;
-            @include breakpoint(sm) {
+            @include breakpoint(s) {
                 margin-right: $spacing-factor;
             }
         }
