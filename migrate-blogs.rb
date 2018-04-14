@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
-require './config/environment.rb'
-require 'aws-sdk'
+#require 'aws-sdk'
+
 require 'open-uri'
+require './config/application.rb'
+
 
 results1 = []
 results2 = []
@@ -24,7 +26,7 @@ def parse (blog)
 
     p "--------------------------------------"
 
-    item = NewsItem.new()
+    item = New.new()
     item.title = blog.title
     item.slug = item.slug
 
