@@ -9,13 +9,10 @@ class HomeController < ApplicationController
                               .order('random()').to_a.slice(0,3)                          
     @small_artists   = Artist.where("name IN (?)", featuredArtists)
                              .order('random()').to_a.slice(0,3)
-    puts "small releases " + @small_releases.to_s
     pds = Podcast.pluck(:id)
     @podcast = Podcast.find(pds.sample)
     @context = ""
-    #@blogs = BlogPost.all(:limit => 6, :conditions => ["published_at IS NOT NULL"], :order => "published_at")
-    #                 .reject{|b| b.tags.include?("podcasts")}
-    #                 .first(3)x
+    @news = New.where("published = true").order("date").last(2);
   end
 end
 

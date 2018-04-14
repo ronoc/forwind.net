@@ -16,14 +16,6 @@ class ReleasesController < ApplicationController
     redirect_to action: "show", id: $redis.get("currentRelease")
   end
 
-  def share_text
-    unless @release
-      return ""
-    end
-    artists = @release.artists.map{|artist| artist.name}.join("|")
-    artists + " | " + @release.title + " | " + @release.cat
-  end
-
 	def show
     params[:id] = params[:id].upcase
     @release ||= Release.find_by_cat(params[:id])

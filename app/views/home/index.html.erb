@@ -19,42 +19,23 @@
 		</a>
 	</h2>
 	<div class="column-container column-container__2-cols">
-		<div class="column-block">
-			<h3 class="heading heading--article-title">
-				<a href="#">Analogue chat interview</a>
-			</h3>
-			<div class="content-block--article">
-				<p>
-					Richard from Analogue Chat and It's not music baby interviews Hannes and Conor about past, present and future for the Forwind project.
-				</p>
-				<p>
-					<iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&hide_artwork=1&feed=%2FAnalogueChat%2Fanalogue-chat-on-resonance-extra-interview-with-forwind-26th-april-2017%2F" frameborder="0" ></iframe>
-				</p>
-				<p>
-					 <a href="#">More</a>
-				</p>
-			</div>
-		</div>
-		<div class="column-block">
-			<h3 class="heading heading--article-title">
-				<a href="#">FWD18 - Thet Liturgiske Owäsendet - Wisconsin Mining State</a>
-			</h3>
-			<div class="content-block--article">
-				<p>
-					Thet Liturgiske Owäsendet are Linus Schrab and Johan Fotmeijer. Armed with guitars, field recordings and modular synths they've evolved their own brand of improvised soundscaping over a number of previous releases.While much of their output has tended to be long form, drone based textural explorations, this release opts for shorter running times and a greater variety in approach to both form and texture.
-				</p>
-				<p>
-					 <a href="#">More</a>
-				</p>
-			</div>
-		</div>
+		<% @news.each do |news_item| %>
+			<div class="column-block">
+				<h3 class="heading heading--article-title">
+					<a href="#"><%= news_item.title %></a>
+				</h3>		
+				<div class="content-block--article">
+					<%= raw news_item.content %>
+				</div>
+			</div>			
+		<% end %>
 	</div>
 </section>
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
 		Featured releases
-		<a href="#">
+		<a href="/releases">
 			<strong>Explore back catalogue</strong>
 		</a>
 	</h2>
@@ -78,7 +59,7 @@
 <section class="content-block">
 	<h2 class="heading heading--content-block">
 		Featured artists
-		<a href="#">
+		<a href="/artists">
 			<strong>Browse all artists</strong>
 		</a>
 	</h2>
