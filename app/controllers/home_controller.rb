@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     @small_artists   = Artist.where("name IN (?)", featuredArtists)
                              .order('random()').to_a.slice(0,3)
     pds = Podcast.pluck(:id)
-    @podcast = Podcast.find(16)#pds.sample)
+    @podcast = Podcast.find(pds.sample)
     @context = ""
     @news = New.where("published = true").order("date").last(2);
   end
