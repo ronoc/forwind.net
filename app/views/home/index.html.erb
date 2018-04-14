@@ -83,17 +83,17 @@
 <section class="content-block">
 	<h2 class="heading heading--content-block">
 		Featured podcast
-		<a href="#">
+		<a href="https://www.mixcloud.com/forwind" target="home">
 			<strong>Listen to more podcasts</strong>
 		</a>
 	</h2>
 	<div class="column-block">
-		<iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2FForwind%2Fthe-understate%2F" frameborder="0" ></iframe>
+		<iframe width="100%" height="120" src=<%=@podcast.mixcloud_embed%> frameborder="0" ></iframe>
 		<figcaption class="figcaption">
-			<a href="#">
-				<span class="text-title">The Understate</span>
-				<span class="text-title">Compiled & mixed by Traces</span>
-				<span class="text-title">Genre: Noise, industrial, experimental</span>
+			<a href=<%=@podcast.mixcloud_url%>>
+				<span class="text-title"><%= @podcast.title %></span>
+				<span class="text-title">Compiled & mixed by <%= @podcast.compiler %></span>
+				<span class="text-title">Genre : <%= @podcast.genre %></span>
 			</a>
 		</figcaption>  
 	</div>
