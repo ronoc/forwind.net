@@ -8,7 +8,7 @@ gem 'redis'
 gem 'listen'
 gem 'sass-rails'
 gem 'jquery-rails'
-#gem 'uglifier'
+gem 'uglifier'
 #gem 'rake', '12.3.0'
 
 
