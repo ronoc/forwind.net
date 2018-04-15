@@ -1,10 +1,29 @@
-<div id="content_container">
-<% @releases.each do |release| %>
-<div class="release_index_promo">
-<a href=<%="/releases/"+release.cat.downcase %>>
-<img src= <%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg") %>></img></a>
-<h2><a href=<%="/releases/"+release.cat.downcase %>> <%= release.title.html_safe%></a></h2>
-<p><%= release.short_desc.html_safe %></p>
-</div>
-<% end %>
-</div>
+<section class="column-block">
+    <table class="table table--catalogue">
+        <thead>
+            <th>Release</th>
+            <th>Format</th>
+            <th>Date</th>
+        </thead>
+        <tbody>
+            <% @releases.each do |release| %>
+                <tr class="table-row">
+                    <td class="table-cell table-cell--release">
+                        <a href=<%= "/releases/" + release.cat %>><img class="img img--thumb" src=<%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg")%> alt="Alt desc" /></a>
+                        <p>
+                            <span><a href=<%= "/releases/" + release.cat %>><%= release.title %></a></span>
+                            <span><%= raw munge_artist_names(release) %></span>
+                        </p>   
+                    </td>
+                    <td class="table-cell table-cell--format">
+                        <p>
+                            <span><%= release.cat %></span>
+                            <span><%= release.preferred_format %></span>
+                        </p>
+                    </td>
+                    <td class="table-cell table-cell--date"><%= release.release_date.strftime("%Y/%m/%d") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>

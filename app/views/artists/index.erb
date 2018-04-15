@@ -1,10 +1,26 @@
-<div id="content_container">
-
-<% @artists.each do |artist| %>
-<div class="artist_index_promo">
-<a href="<%= "/artists/#{artist.slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artist.image)) %>></a>
-<span><a href="<%= "/artists/#{artist.slug}" %>"><%= artist.name %></a></span>
-</div>
-<% end %>
-</div>
-
+<section class="column-block">
+    <table class="table table--catalogue">
+        <tbody>
+            <% @artists.each_slice(2) do |artists| %>
+                <tr class="table-row">
+                    <td class="table-cell table-cell--release">
+                        <a href="<%= "/artists/#{artists[0].slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artists[0].image)) %>></a>
+                        <p>
+                        <span><a href="<%= "/artists/#{artists[0].slug}" %>"><%= artists[0].name %></a></span>
+                        <span><%= artists[0].location %></a></span>
+                        </p>
+                    </td>
+                    <% if artists.length > 1 %>
+                        <td class="table-cell table-cell--release">
+                            <a href="<%= "/artists/#{artists[1].slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artists[1].image)) %>></a>
+                            <p>
+                            <span><a href="<%= "/artists/#{artists[1].slug}" %>"><%= artists[1].name %></a></span>
+                            <span><%= artists[1].location %></a></span>
+                            </p>
+                        </td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>

@@ -2,7 +2,7 @@
 ========================================================================== */
 .nav {
     @include breakpoint(m) {
-        font-size: $font-size;
+        font-size: $font-size-md;
     }
     &.nav--primary {
         position: relative;
@@ -73,11 +73,11 @@
         }
         input {
             display: block;
-            width: 30px;
-            height: 32px;
+            width: 45px;
+            height: 47px;
             position: absolute;
-            top: 35px;
-            right: 10px;
+            top: 30px;
+            right: 15px;
             cursor: pointer;
             opacity: 0; 
             z-index: 5;
@@ -85,28 +85,31 @@
                 transform: translate(0, 0);
             }
             &:checked ~ .hamburger .hamburger-line {
-              transform: rotate(45deg) translate(-7px, -17px);
+                transform: rotate(45deg) translate(-14px, -25px);
             }
             &:checked ~ .hamburger .hamburger-line:nth-last-child(3) {
-              opacity: 0;
-              transform: rotate(0deg) scale(0.2, 0.2);
+                opacity: 0;
+                transform: rotate(0deg) scale(0.2, 0.2);
             }
             &:checked ~ .hamburger .hamburger-line:nth-last-child(2) {
-              transform: rotate(-45deg) translate(-1px, 13px);
+                transform: rotate(-45deg) translate(-1px, 13px);
+            }
+            &:hover ~ .hamburger .hamburger-line {
+                background: $link-color-visited;
             }
         }
         .hamburger {
-            width: 30px;
-            height: 32px;
+            width: 45px;
+            height: 47px;
             position: absolute;
             top: $spacing-factor * 3;
             right: $spacing-factor;
         }
         .hamburger-line {
             display: block;
-            width: 30px;
-            height: 1px;
-            margin-bottom: $spacing-factor / 2;
+            width: 40px;
+            height: 3px;
+            margin-bottom: 10px;
             position: relative;
             background: $link-color-primary;
             z-index: 4;

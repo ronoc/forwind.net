@@ -1,20 +1,4 @@
-
-/*
-    forwind.net css
-*/
-
-/* Imports
-========================================================================== */
-//utils
-@import './shared/normalize';
-@import './shared/vars';
-@import './shared/mixins';
-@import './shared/placeholders';
-
-//modules
-@import './shared/nav';
-
-/* Site CSS
+/* Base site CSS
 ========================================================================== */
 
 html, body {
@@ -27,7 +11,7 @@ body {
     font-family: $font-family-primary;
     background: $background-color-block;
     color: $font-color-primary;
-    font-size: $font-size;
+    font-size: $base-font-size;
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;    
@@ -123,7 +107,7 @@ blockquote {
 		margin-bottom: $spacing-factor;
     }
     &--page-title {
-        font-size: $font-size-lg;
+        font-size: $font-size-md;
     }
     &--article-title {
         letter-spacing: $font-letter-spacing-heading;
@@ -214,7 +198,7 @@ blockquote {
             font-size: $font-size-sm;
             margin-bottom: $spacing-factor * 2;
             @include breakpoint(m) {
-                font-size: $font-size-md;
+                margin-bottom: $spacing-factor * 3;
             } 
             a {
                 @extend %alt-link;
@@ -229,9 +213,14 @@ blockquote {
                 display: inline-block;
             }
             .heading--article-title {
-                font-size: $font-size-lg;
+                font-size: $font-size-md;
             }
-            
+            @include breakpoint(m) {
+                height: auto;
+            }
+            .img {
+                width: 100%;
+            }
         }
         &--article {
             padding-top: $spacing-factor * 0.5;
@@ -265,7 +254,7 @@ blockquote {
     &--v-centered {
         align-items: center;
     }
-    @include breakpoint(sm) {
+    @include breakpoint(m) {
         flex-direction: column;
     }
     .column-block {
@@ -273,13 +262,20 @@ blockquote {
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
-            @include breakpoint(sm) {
+            @include breakpoint(m) {
                 margin-right: auto;
             }
         }
         &__figure {
-            @include breakpoint(sm) {
+            @include breakpoint(m) {
                 margin: 0 auto $spacing-factor * 2 auto;
+                width: 100%;
+            }
+        }
+        // isn't supposed to flow evenly onto a stacked sibling, like a paragraphy for example
+        &__no-flow {
+            @include breakpoint(m) {
+                margin-bottom: $spacing-factor * 2;
             }
         }
     }
@@ -304,6 +300,7 @@ blockquote {
                 @include breakpoint(m) {
                     order: 1;
                     flex-basis: 100%;
+                    align-self: unset;
                 }
             }
         }
@@ -314,6 +311,11 @@ blockquote {
             width: 50%;
             @include breakpoint(m) {
                 width: auto;
+            }
+            &__figure {
+                @include breakpoint(m) {
+                    width: 100%;
+                }
             }
         }
     }
@@ -343,6 +345,9 @@ blockquote {
             font-size: $font-size-lg;
         } 
     }
+    @include breakpoint(m) {
+        margin-bottom: $spacing-factor * 4;
+    }
 }
 
 .figcaption {
@@ -361,22 +366,35 @@ blockquote {
 .img {
     width: auto;
     display: inline-block;
+    @include breakpoint(m) {
+        display: block;
+    }
     &--thumb {
         border: 1px solid white;
     }
     &--center {
         margin: 0 auto $spacing-factor * 2 auto;
         display: block;
+        max-width: 100%;
     }
 
     &--right {
         float: right;
         margin: 0 0 $spacing-factor * 2 $spacing-factor * 2;
+        @include breakpoint(m) {
+            float: none;
+            margin: 0 0 $spacing-factor * 2 0;
+            max-width: 100%;
+        }
     }
 
     &--left {
         float: left;
         margin: 0 $spacing-factor * 2 $spacing-factor * 2 0;
+        @include breakpoint(m) {
+            float: none;
+            margin: 0 0 $spacing-factor * 2 0;
+        }
     }
     
     &__logo {        
@@ -384,9 +402,8 @@ blockquote {
         height: auto;
         vertical-align: middle;
         margin-right: $spacing-factor * 4;
-        @include breakpoint(sm) {
+        @include breakpoint(m) {
             margin: 0 auto $spacing-factor auto;
-            display: block;
         }
     }
 }
@@ -410,6 +427,9 @@ blockquote {
                 flex-basis: 75%;
             }
         }
+        @include breakpoint(m) {
+           font-size: $font-size-md;
+        }
     }
     caption {
         display: block;
@@ -421,8 +441,9 @@ blockquote {
         margin-left: $spacing-factor;
         th {
             height: $top-negative-margin - $spacing-factor;
-            font-size: $font-size-lg;
+            font-size: $font-size-md;
             padding-bottom: $spacing-factor * 2;
+            vertical-align: bottom;
         }
         .table-cell {
             font-family: $font-family-secondary;
@@ -436,7 +457,7 @@ blockquote {
             span {
                 display: block;
             }
-            @include breakpoint(sm) {
+            @include breakpoint(m) {
                 font-size: $font-size-sm;
                 padding: 0 $spacing-factor / 2 $spacing-factor / 2 0;
             }
@@ -444,7 +465,7 @@ blockquote {
         .img--thumb {
             margin-right: $spacing-factor * 2;
             float: left;
-            @include breakpoint(sm) {
+            @include breakpoint(m) {
                 margin-right: $spacing-factor;
             }
         }
