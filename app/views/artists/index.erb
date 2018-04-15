@@ -7,14 +7,18 @@
                         <a href="<%= "/artists/#{artists[0].slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artists[0].image)) %>></a>
                         <p>
                         <span><a href="<%= "/artists/#{artists[0].slug}" %>"><%= artists[0].name %></a></span>
+                        <span><%= artists[0].location %></a></span>
                         </p>
                     </td>
-                    <td class="table-cell table-cell--release">
-                        <a href="<%= "/artists/#{artists[1].slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artists[1].image)) %>></a>
-                        <p>
-                        <span><a href="<%= "/artists/#{artists[1].slug}" %>"><%= artists[1].name %></a></span>
-                        </p>
-                    </td>
+                    <% if artists.length > 1 %>
+                        <td class="table-cell table-cell--release">
+                            <a href="<%= "/artists/#{artists[1].slug}" %>"><img src= <%= File.join(@s3_images, "artists", small_artists_image(artists[1].image)) %>></a>
+                            <p>
+                            <span><a href="<%= "/artists/#{artists[1].slug}" %>"><%= artists[1].name %></a></span>
+                            <span><%= artists[1].location %></a></span>
+                            </p>
+                        </td>
+                    <% end %>
                 </tr>
             <% end %>
         </tbody>
