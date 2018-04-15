@@ -1,52 +1,45 @@
-<div id="content_container">
-
-<div id="container_2grid_left">
-
-	<img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
-		<br/><br/>
-		<div class="artist_desc">
-		<p>
-		<%= @artist.description.html_safe %></p>
+<article class="column-container column-container__article">
+    <section class="column-block column-block__main-content">
+        <div class="content-block content-block__banner">
+            <figure>
+				<img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
+            </figure>
+        </div>
+    
+        <div class="content-block content-block--article">
+            <p><%= @artist.description.html_safe %></p>
+        </div>
+        <div class="content-block aside__widget">
+            <span class="text-title">ARTIST <%= @artist.name %></span>
+			<span class="text-title">LOCATION <%= @artist.location %></span>
+			<% unless @artist.active %>
+				<span class="text-title">WHEN <%= @artist.start_date.year.to_s + " - " + @artist.end_date.year.to_s %></span>  
+			<% else %>
+				<span class="text-title">WHEN <%= @artist.start_date.year.to_s + " - " + DateTime.now.year.to_s %></span>  
+			<% end %>				
 		</div>
-</div>
 
-
-<div id= "container_1grid_right">
-
-
-	<dl>
-	    <dt>ARTIST :</dt>
-	    <dd><%= @artist.name.mb_chars.upcase.to_s %></dd>
-
-	    <dt>LOCATION :</dt>
-	    <dd><%= @artist.location.mb_chars.upcase.to_s %></dd>
-
-	    <dt>WHEN :</dt>
-	    <% unless @artist.active %>
-	    <dd><%= @artist.start_date.year.to_s + " - " + @artist.end_date.year.to_s %></dd>
-	    <% else %>
-	    <dd><%= @artist.start_date.year.to_s + " - " + DateTime.now.year.to_s %></dd>
-	    <% end %>
-	</dl>
-
-		<p>
-			FORWIND RELEASES :
-		</p>
-  		<ul>
-		<% @artist.releases.each do |rel| %>
-		<li><a href="<%= "/releases/" + rel.cat %>"><%= rel.title + " - " + rel.cat %></a></li>
-		<% end %>
-		</ul>
-		<p>
-			EXTERNAL LINKS :
-		</p>
-			<ul>
-			<% @artist.links.each do |link| %>
-			<li><a href=<%= link.location %>><%= external_link_trimmer(link.location) %></a></li>
+		<div class="content-block content-block--title-heading">
+            <h1>
+                <span class="text-title">Previous Releases</span>
+            </h1>    
+        </div>
+        <div class="content-block aside__widget">
+			<% @artist.releases.each do |rel| %>
+				<span class="text-title"><a href="<%= "/releases/" + rel.cat %>"><%= rel.title + " - " + rel.cat %></a></span>
 			<% end %>
-			</ul>
-</div>
+		</div>
+		<div class="content-block content-block--title-heading">
+            <h1>
+                <span class="text-title">Related Links</span>
+            </h1>    
+        </div>
+        <div class="content-block aside__widget">
+			<% @artist.links.each do |link| %>
+				<span class="text-title"><a href=<%= link.location %>><%= external_link_trimmer(link.location) %></a></span>
+			<% end %>
+		</div>		
+	</section>
 
-</div>
-
+</article>
 
