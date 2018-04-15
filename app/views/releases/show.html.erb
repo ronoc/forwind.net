@@ -62,22 +62,22 @@
         </div>  
 
         <div class="content-block aside__widget">
-            <a href="#" class="link--button">
-                Purchase from a reputable dealer
+            <a href=<%= @release.purchase %> class="link--button">
+                Purchase
             </a>
         </div>  
 
         <div class="content-block aside__widget">
             <h2 class="heading heading--widget"><time>2017/06/01</time></h2>
-            <span class="text-title">Produced by <a href="#">Someone over there</a></span>
-            <span class="text-title">Mastered by Skeletor</span>
-            <span class="text-title">Artwork by He-man</span>  
+            <span class="text-title">Produced by <%= @release.producer %></span>
+            <span class="text-title">Mastered by <%= @release.mastering %></span>
+            <span class="text-title">Artwork by <%= @release.artwork %></span>  
         </div>
 
         <div class="content-block aside__widget">
             <blockquote>
-                &ldquo;...it can be hard for a release such as this one to stand out. And yet, Wisconsin Mining State somehow does.&rdquo;
-                <cite>&mdash; Some guy</cite>
+                <%= @release.quote %>
+                <cite>&mdash; <%= @release.author %></cite>
             </blockquote>
             <h2 class="heading heading--widget">Online reviews from </h2>
             <% unless @release.reviews.empty? %>
