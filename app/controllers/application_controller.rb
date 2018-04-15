@@ -4,17 +4,6 @@ class ApplicationController < ActionController::Base
   layout 'default'
   before_action :set_up
 
-  helper_method :current_user
-
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
-  end
-
-  def set_sharing_details(text, link, title_subtext)
-    @share_details = {:text => text, :link => link, :title_subtext => title_subtext}
-  end
-
   def title(ttl)
     @page_title = ttl
   end

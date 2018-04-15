@@ -1,95 +1,98 @@
-<div id="release_container">
+<article class="column-container column-container__article">
+    <section class="column-block column-block__main-content">
+        <div class="content-block content-block__banner">
+            <figure>
+                <a href="#">
+                  <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
+                </a>    
+            </figure>
+        </div>    
+    
+        <div class="content-block content-block--article">
+            <p><%= @release.long_desc.html_safe %></p>
+        </div>    
+    </section>
 
-<img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
+    <aside class="column-block column-block__aside">
+        <!-- 
+            We duplicate this banner to show/hide it for mobile view
+            so we can keep the flex-box layout and avoid messy abstraction    
+        -->
+        <div class="content-block content-block__banner">
+            <figure>
+                <a href="#">
+                  <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
+                </a>    
+            </figure>
+        </div>
 
-<ol>
-<% unless @release.artists.size === 1%>
-<li><dl><dt><span>ARTISTS :</span> <p><%= raw munge_artist_names(@release) %></p></dt></dl></li>
-<% else %>
-<li><dl><dt><span>ARTIST :</span> <a href=<%= "/artists/" + @release.artists.first.slug %>><%= @release.artists.first.name.upcase%></a></dt></dl></li>
-<% end %>
-<li><dl><dt><span>ALBUM :</span><%= @release.title.upcase %></dt></dl></li>
-<li><dl><dt><span>RELEASE DATE :</span> <%= @release.release_date.strftime("%Y/%m/%d")%></dt></dl></li>
-<li><dl><dt><span>LABEL :</span> FORWIND</dt></dl></li>
-<li><dl><dt><span>CATALOGUE # :</span><%= @release.cat %></dt></dl></li>
-</ol>
-<ul>
-<% tracklistings(@release).each do |track| %>
-<% if track == "break" %>
-</br>
-<% else %>
-<li><dl><dt><span><%= track["number"] %>:</span><dd style="color:white;"><%= track["title"] %></dd><%= track["length"]%></dt></dl></li>
-<% end %>
-<% end %>
-</ul>
-<p>
-<%= raw @release.stream_location %>
-</p>
-</div>
-<div id="new_release_details">
-<p>
-<%= @release.long_desc.html_safe %>
-</p>
+        <div class="content-block content-block--title-heading">
+            <h1>
+                <span class="text-title"><%= raw(munge_artist_names(@release)) %></span>
+                <span class="text-title"><%= @release.title %></span>
+            </h1>    
+        </div>
 
-<ol>
-<% unless @release.reviews.empty? %>
-  Online reviews from
-  <% @release.reviews.each do |link| %>
-    <a href=<%= link.location %>><%= link.vendor %></a>
-    <% if @release.reviews.size > 1 %>
-      <% if @release.reviews.index(link) == @release.reviews.size - 2 %>
-        and
-      <% elsif @release.reviews.index(link) != @release.reviews.size - 1 %>
-        ,
-      <% end %>
-    <% end %>
-<% end %>
-<br/>
-<% end %>
+        <div class="content-block aside__widget">
+            <table class="table table--release-details">
+                <caption>
+                    <span class="text-title"><%= @release.cat %></span>
+                    <span class="text-title"><%= raw(munge_artist_names(@release)) %></span>
+                </caption>
+                <thead class="visually-hidden">
+                    <th>Track number</th>
+                    <th>Track name</th>
+                    <th>Track length (mm:ss)</th>
+                </thead>
+                <tbody>
+                
+                <% tracklistings(@release).each do |track| %>
+                    <tr class="table-row">
+                        <td class="table-cell table-cell--track-number"><%= track["number"] %></td>
+                        <td class="table-cell table-cell--track-name"><%= track["title"] %></td>
+                        <td class="table-cell table-cell--track-length"><%= track["length"] %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
 
-<% if @release.available == false %>
-  Availability links to follow shortly.
-<% else %>
-  <% unless @release.physicals.empty? %>
-    <% unless @release.reviews.empty? %>
-      <br/>
-    <% end %>
-    <%= @release.preferred_format %> available from
-    <% @release.physicals.each do |link| %>
-       <a href=<%= link.location %>><%= link.vendor %></a>
-        <% if @release.physicals.index(link) == @release.physicals.size - 2 %>
-        and
-        <% elsif @release.physicals.index(link) != @release.physicals.size - 1 %>
-        ,
-      <% end %> 
-    <% end %>
-  <br/>
-  <% end %>
-  <% unless @release.downloads.empty? %>
-    <% unless @release.reviews.empty?  && @release.physicals.empty? %>
-      <br/>
-    <% end %>
-    Flac and Mp3 available from
-    <% @release.downloads.each do |link| %>
-      <a href=<%= link.location %>><%= link.vendor %></a>
-        <% if @release.downloads.index(link) == @release.downloads.size - 2 %>
-        and
-        <% elsif @release.downloads.index(link) != @release.downloads.size - 1 %>
-        ,
-        <% end %>
-    <% end %>
-  <% end %>
+        <div class="content-block aside__widget">
+            <p><%= raw @release.stream_location %></p>
+        </div>  
 
-  <br/>
+        <div class="content-block aside__widget">
+            <a href="#" class="link--button">
+                Purchase from a reputable dealer
+            </a>
+        </div>  
 
-  <% unless @release.streams.empty? %>
-  <br/>
-    <% @release.streams.each do |link| %>
-      Stream sampler from <%= link_to link.vendor, link.location %>
-    <% end %>
-  <% end %>
+        <div class="content-block aside__widget">
+            <h2 class="heading heading--widget"><time>2017/06/01</time></h2>
+            <span class="text-title">Produced by <a href="#">Someone over there</a></span>
+            <span class="text-title">Mastered by Skeletor</span>
+            <span class="text-title">Artwork by He-man</span>  
+        </div>
 
-<% end %>
-</ol>
-</div>
-
+        <div class="content-block aside__widget">
+            <blockquote>
+                &ldquo;...it can be hard for a release such as this one to stand out. And yet, Wisconsin Mining State somehow does.&rdquo;
+                <cite>&mdash; Some guy</cite>
+            </blockquote>
+            <h2 class="heading heading--widget">Online reviews from </h2>
+            <% unless @release.reviews.empty? %>
+              <% @release.reviews.each do |link| %>
+                <a href=<%= link.location %>><%= link.vendor %></a>
+                <% if @release.reviews.size > 1 %>
+                  <% if @release.reviews.index(link) == @release.reviews.size - 2 %>
+                    and
+                  <% elsif @release.reviews.index(link) != @release.reviews.size - 1 %>
+                    ,
+                  <% end %>
+                <% end %>
+              <% end %> 
+              <br/>
+            <% end %>                      
+        </div> 
+    </aside>
+</article>

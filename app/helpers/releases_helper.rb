@@ -3,18 +3,6 @@ require 'net/http'
 
 module ReleasesHelper
 
-  def cjc_form
-    Album.find(:first)
-  end
-
-  def munge_artist_names(release)
-    result = []
-    release.artists.map do |artist|
-      result << "<a href=/artists/#{artist.slug}>#{artist.name.mb_chars.upcase.to_s}</a>"
-    end
-    result.join(" & ")
-  end
-
   def tracklistings(release)
     optimal = 8
     musicbrainz = "http://musicbrainz.org/ws/2/release/#{release.mb_id}?inc=recordings&fmt=json"
@@ -47,14 +35,6 @@ module ReleasesHelper
     releases
   end
 
-  def small_releases_image(release)
-    release.cat.downcase + '_sm.png'
-  end
-
-  def cjc
-    Artist.find(:first)
-  end
-
   def title_formatted(title)
     words = title.split(" ")
     words.join("  |  ")
@@ -72,14 +52,5 @@ module ReleasesHelper
     release.title != rel.title
   end
 
-   def vimeo_embed(id, width=725, height=(width*9/16))
-    <<-TAG
-    <object width="#{width}" height="#{height}" style="background-color:#000000">
-      <param name="allowfullscreen" value="true" />
-      <param name="allowscriptaccess" value="always" />
-      <param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=#{id}&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />
-      <embed src="http://vimeo.com/moogaloop.swf?clip_id=#{id}&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="#{width}" height="#{height}"/></object>
-    TAG
-  end
 end
 

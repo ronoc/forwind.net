@@ -10,29 +10,18 @@ class ReleasesController < ApplicationController
         @releases << release
       end
     end
-    render layout: 'base'
   end
 
   def current
     redirect_to action: "show", id: $redis.get("currentRelease")
   end
 
-  def share_text
-    unless @release
-      return ""
-    end
-    artists = @release.artists.map{|artist| artist.name}.join("|")
-    artists + " | " + @release.title + " | " + @release.cat
-  end
-
 	def show
     params[:id] = params[:id].upcase
-
     @release ||= Release.find_by_cat(params[:id])
     unless @release
       @release = Release.find(params[:id])
     end
-    set_sharing_details(share_text(), "http://www.forwind.net/releases/" + @release.cat.downcase, @release.title)
 	end
 
   def context

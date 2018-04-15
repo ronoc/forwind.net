@@ -2,7 +2,7 @@
 ==========
 
 ###### Overview
-* Rails 3 application
+* Rails 5 application
 * PostGres DB
 * Redis
 * Hosted on Heroku

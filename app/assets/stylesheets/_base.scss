@@ -9,11 +9,18 @@ html, body {
 
 body {
     font-family: $font-family-primary;
-    background: $page-bg;
+    background: $background-color-block;
     color: $font-color-primary;
     font-size: $base-font-size;
     line-height: 1.4;
-    -webkit-font-smoothing: antialiased;    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;    
+}
+
+main {
+    background: $page-bg;
+    background-image: url("https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/background.jpg");
+    background-size: cover;
 }
 
 a {
@@ -33,7 +40,7 @@ img {
 }
 
 p {
-    margin-bottom: $spacing-factor * 2;
+    margin-bottom: $spacing-factor * 1.2;
 }
 
 header,
@@ -46,24 +53,29 @@ footer {
 }
 
 header {
-    min-height: 205px;
+    min-height: 230px;
     position: relative;
     padding: 0;
     .logo {
         display: block;
         position: absolute;
-        top: $spacing-factor * 3;
+        top: $spacing-factor * 2;
         left: 50%;
         z-index: 10;
+        img {
+            width: 80px;
+            height: auto;
+            margin-left: -40px;
+        }
         @include breakpoint(m) {
-            left: $spacing-factor;
+            left: $spacing-factor + 40px;
         }
     }
 }
 
 footer {
     .column-container {
-        min-height: 100px;
+        min-height: 84px;
         @include breakpoint(m) {
             align-items: flex-start;
         }
@@ -120,25 +132,24 @@ blockquote {
             font-family: $font-family-secondary;
             display: inline-block;
             background-color: $background-color-block;
-            padding: $spacing-factor;
+            padding: $spacing-factor * 0.5 $spacing-factor * 1;
             position: absolute;
-            left: $spacing-factor * 2;
-            top: $spacing-factor * 2;
+            left: $spacing-factor * 2.2;
+            top: $spacing-factor;
         }
     }
-    &--content-block a {
+    &--content-block {
         font-family: $font-family-secondary;
         font-size: $font-size-md;
-        strong {
+        a strong {
             color: $font-color-secondary;
             font-size: $font-size-sm;
             text-transform: none;
             display: inline-block;
-            text-indent: $spacing-factor / 2;
-        }
+            text-indent: $spacing-factor * 0.67;
         &:hover {
-            background-color: white;
-            color: black;
+            opacity: 0.8;
+        }
         }
     }
     a {
@@ -177,7 +188,7 @@ blockquote {
     top: -$top-negative-margin;
     .content-block {
         position: relative;
-        margin-bottom: $spacing-factor * 2;
+        margin-bottom: $spacing-factor * 3;
         padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
         @include breakpoint(m) {
             padding-bottom: 0;
@@ -212,15 +223,21 @@ blockquote {
             }
         }
         &--article {
+            padding-top: $spacing-factor * 0.5;
             a {
                 @extend %alt-link;
                 color: $link-color-secondary;
             }
         }
+        &__logos {
+            margin-top: - $spacing-factor * 2;
+            margin-bottom: $spacing-factor;
+        }
     }
 }
 
 .content-block__banner {
+    font-size: $font-size-sm;
     @include breakpoint(m) {
 		.heading--floating-button {
             display: none;
@@ -241,7 +258,7 @@ blockquote {
         flex-direction: column;
     }
     .column-block {
-        margin-right: $spacing-factor;
+        margin-right: $spacing-factor * 2;
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
@@ -336,7 +353,7 @@ blockquote {
 .figcaption {
     display: block;
     font-family: $font-family-secondary;
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
     a {
         @extend %alt-link;
     }
@@ -381,6 +398,9 @@ blockquote {
     }
     
     &__logo {        
+        width: 160px;
+        height: auto;
+        vertical-align: middle;
         margin-right: $spacing-factor * 4;
         @include breakpoint(m) {
             margin: 0 auto $spacing-factor auto;

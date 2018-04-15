@@ -2,142 +2,107 @@
 
 <section class="content-block content-block__banner">
 	<h2 class="heading heading--floating-button">
-		<a href="#">Release</a>
+		<a href="#">Out now</a>
 	</h2>
 	<figure>
 		<a href="#">
-			<img src="https://placeimg.com/800/400/nature/grayscale" alt="Alt desc" />
+			<img src="https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/teaser_dummy.jpg" alt="FWD19" />
 		</a>    
 	</figure>
 </section>
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
+		Latest news
 		<a href="#">
-			Latest news
 			<strong>News archive</strong>
 		</a>
 	</h2>
 	<div class="column-container column-container__2-cols">
-		<div class="column-block column-block__no-flow">
-			<h3 class="heading heading--article-title">
-				<a href="#">Analogue chat interview</a>
-			</h3>
-			<div class="content-block--article">
-				<p>
-					Richard from Analogue Chat and It&#39;s not music baby interviews Hannes and Conor about past, present and future for the <a href="#">Forwind</a>
-				</p>
+		<% @news.each do |news_item| %>
+			<div class="column-block">
+				<h3 class="heading heading--article-title">
+					<a href="#"><%= news_item.title %></a>
+				</h3>
+				<div class="content-block--article">
+					<%= raw news_item.content %>
+				</div>
 			</div>
-		</div>
-		<div class="column-block column-block__no-flow">
-			<h3 class="heading heading--article-title">
-				<a href="#">Analogue chat interview</a>
-			</h3>
-			<div class="content-block--article">
-				<p>
-					Our aim is to provide a platform for music that maximises expressive potential.
-				</p>
-				<p>
-					 <a href="#">More</a>
-				</p>
-			</div>
-		</div>
+		<% end %>
 	</div>
 </section>
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		<a href="#">
-			Featured releases
+		Featured releases
+		<a href="/releases">
 			<strong>Explore back catalogue</strong>
 		</a>
 	</h2>
 	<div class="column-container column-container__3-cols">
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/300/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
+		<% @small_releases.each do |release| %>
+			<figure class="column-block column-block__figure">
+				<a href=<%= "/releases/" + release.cat%>>
+					<img src=<%= File.join(@s3_images, "releases", small_releases_image(release))%>>
+				</a> 
+				<figcaption class="figcaption">
+					<a href="#">
+						<span class="text-title"><%= raw(munge_artist_names(release)) %></span>
+						<span class="text-title"><%= release.title %></span>
+					</a>
+				</figcaption>  
+			</figure>
+		<% end %>
 	</div>
 </section>
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		<a href="#">
-			Featured artists
+		Featured artists
+		<a href="/artists">
 			<strong>Browse all artists</strong>
 		</a>
 	</h2>
 	<div class="column-container column-container__2-cols"> 
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
-		<figure class="column-block column-block__figure">
-			<a href="#">
-				<img src="https://placeimg.com/300/175/nature/grayscale" alt="Alt desc" />
-			</a> 
-			<figcaption class="figcaption">
-				<a href="#">
-					<span class="text-title">Jeremy Keenan</span>
-					<span class="text-title">Scripts</span>
-				</a>
-			</figcaption>  
-		</figure>
+		<% @small_artists.each do |artist| %>
+			<figure class="column-block column-block__figure">
+				<a href=<%= "/artists/" + artist.slug %>>
+					<img src= <%= File.join(@s3_images, "artists", small_artists_image(artist.image)) %>
+				</a> 
+				<figcaption class="figcaption">
+					<a href="#">
+						<span class="text-title"><%=artist.name%></span>
+						<!-- span class="text-title">Scripts</span -->
+					</a>
+				</figcaption>  
+			</figure>
+		<% end %>
 	</div>
 </section>
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		<a href="#">
-			Featured podcast
+		Featured podcast
+		<a href="https://www.mixcloud.com/forwind" target="home">
 			<strong>Listen to more podcasts</strong>
 		</a>
 	</h2>
 	<div class="column-block">
-		Player here
+		<iframe width="100%" height="120" src=<%=@podcast.mixcloud_embed%> frameborder="0" ></iframe>
+		<figcaption class="figcaption">
+			<a href=<%=@podcast.mixcloud_url%>>
+				<span class="text-title"><%= @podcast.title %></span>
+				<span class="text-title">Compiled & mixed by <%= @podcast.compiler %></span>
+				<span class="text-title">Genre : <%= @podcast.genre %></span>
+			</a>
+		</figcaption>  
 	</div>
 </section>
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
+		About
 		<a href="/about">
-			About
 			<strong>Read on and contact details</strong>
 		</a>
 	</h2>
@@ -158,7 +123,6 @@
 	</div>
 </section>
 <section class="content-block content-block__logos">
-	<a href="#"><img class="img img__logo" src="https://placeimg.com/175/110/any/grayscale" alt="Alt desc" /></a>
-	<a href="#"><img class="img img__logo" src="https://placeimg.com/175/110/any/grayscale" alt="Alt desc" /></a>
-	<a href="#"> <img class="img img__logo" src="https://placeimg.com/175/110/any/grayscale" alt="Alt desc" /></a>
+	<a href="https://www.imro.ie/"><img class="img img__logo" src="https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/imro_logo.png" alt="IMRO" /></a>
+	<a href="http://state51.com/"><img class="img img__logo" src="https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/state51_logo.png" alt="State 51" /></a>
 </section>
