@@ -1,20 +1,4 @@
-
-/*
-    forwind.net css
-*/
-
-/* Imports
-========================================================================== */
-//utils
-@import './shared/normalize';
-@import './shared/vars';
-@import './shared/mixins';
-@import './shared/placeholders';
-
-//modules
-@import './shared/nav';
-
-/* Site CSS
+/* Base site CSS
 ========================================================================== */
 
 html, body {
@@ -222,7 +206,10 @@ blockquote {
             }
             @include breakpoint(m) {
                 height: auto;
-            } 
+            }
+            .img {
+                width: 100%;
+            }
         }
         &--article {
             a {
@@ -362,13 +349,16 @@ blockquote {
 .img {
     width: auto;
     display: inline-block;
+    @include breakpoint(m) {
+        display: block;
+    }
     &--thumb {
         border: 1px solid white;
     }
     &--center {
         margin: 0 auto $spacing-factor * 2 auto;
         display: block;
-        width: 100%;
+        max-width: 100%;
     }
 
     &--right {
@@ -377,7 +367,7 @@ blockquote {
         @include breakpoint(m) {
             float: none;
             margin: 0 0 $spacing-factor * 2 0;
-            width: 100%;
+            max-width: 100%;
         }
     }
 
@@ -394,7 +384,6 @@ blockquote {
         margin-right: $spacing-factor * 4;
         @include breakpoint(m) {
             margin: 0 auto $spacing-factor auto;
-            display: block;
         }
     }
 }
