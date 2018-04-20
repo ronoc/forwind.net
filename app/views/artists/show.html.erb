@@ -2,6 +2,8 @@
     <section class="column-block column-block__main-content">
         <div class="content-block content-block__banner">
             <figure>
+                <a href= <%= File.join(@s3_images, "artists", @artist.image) %> class="gallery" >
+            
 				<img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
             </figure>
         </div>

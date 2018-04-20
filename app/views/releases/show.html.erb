@@ -2,7 +2,7 @@
     <section class="column-block column-block__main-content">
         <div class="content-block content-block__banner">
             <figure>
-                <a href="#">
+                <a href= <%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%> class="gallery" >
                   <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
                 </a>    
             </figure>
@@ -20,7 +20,7 @@
         -->
         <div class="content-block content-block__banner">
             <figure>
-                <a href="#">
+                <a href= <%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%> class="gallery" >
                   <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
                 </a>    
             </figure>
@@ -63,7 +63,11 @@
 
         <div class="content-block aside__widget">
             <a href=<%= @release.purchase %> class="link--button">
-                Buy <%= @release.preferred_format %>/ Digital @ Bandcamp 
+                <% unless @release.preferred_format == "Digital" %> 
+                    Buy <%= @release.preferred_format %>/ Digital @ Bandcamp 
+                <% else %>
+                    Buy Digital @ Bandcamp
+                <% end %>
             </a>
         </div>  
 
