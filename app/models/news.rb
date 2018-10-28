@@ -1,5 +1,5 @@
-class New < ActiveRecord::Base
-  has_many :image_link
+class News < ActiveRecord::Base
+  has_and_belongs_to_many :images
 
   def slug
     return @title.gsub(/(\s|\.|\')*/, '')

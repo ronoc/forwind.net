@@ -1,0 +1,16 @@
+<h1 class="visually-hidden">News</h1>
+<section>
+    <% @news.each do |new| %>
+        <div class="column-block">
+            <div class="content-block content-block--title-heading">
+                <h2 class="heading heading--article-title">
+                    <%= new.title %>
+                    <span class="sub-heading">Posted by <%= new.author %> on <time><%= format_time(new.date) %></time></span>
+                </h2>
+            </div>
+            <div class="content-block content-block--news">
+                <%= raw new.content %>
+            </div>    
+        </div>
+    <% end %>
+</section>

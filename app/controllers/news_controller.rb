@@ -1,10 +1,19 @@
 class NewsController < ApplicationController
-    layout 'base'
 
     def index
-    end
-
-    def show
-    end
+        puts "here"
+        @news = News.where("published = true").order(date: :desc);        
+        @new = @news.last
     
-end
+        respond_to do |format|
+          format.html { render :layout => 'base'}
+          format.xml  { render :xml => @news }
+                format.atom { render :atom => @news }
+        end
+      end
+    
+      def show
+        @news = News.where("published = true").order("date");
+      end
+    
+end  

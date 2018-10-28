@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     pds = Podcast.pluck(:id)
     @podcast = Podcast.find(pds.sample)
     @context = ""
-    @news = New.where("published = true").order("date").last(2);
+    @news = News.where("published = true").order("date").last(2);
   end
 end
 

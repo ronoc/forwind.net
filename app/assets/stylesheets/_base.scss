@@ -223,6 +223,7 @@ blockquote {
             }
         }
         &--article {
+            width: 100%;
             padding-top: $spacing-factor * 0.5;
             a {
                 @extend %alt-link;
@@ -232,6 +233,15 @@ blockquote {
         &__logos {
             margin-top: - $spacing-factor * 2;
             margin-bottom: $spacing-factor;
+        }
+        &--news {
+            width: 70%;
+            align-content: center;
+            padding-top: $spacing-factor * 0.5;
+            a {
+                @extend %alt-link;
+                color: $link-color-secondary;
+            }
         }
     }
 }

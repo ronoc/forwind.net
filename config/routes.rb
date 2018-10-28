@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get 'current', to: :current, controller: 'podcasts'
   get 'about', to: :about, controller: 'home'
   # created for UI-dev purposes
-  get 'news', to: :news, controller: 'home'
+  resources :news
   get 'catalogue', to: :catalogue, controller: 'home'
 end
