@@ -11,7 +11,7 @@ class HomeController < ApplicationController
                              .order('random()').to_a.slice(0,3)
     pds = Podcast.pluck(:id)
     @podcast = Podcast.find(pds.sample)
-    @context = ""
+    @context = "publishing"
     @news = News.where("published = true").order("date").last(2);
   end
 end

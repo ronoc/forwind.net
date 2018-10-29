@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+    before_action :context
 
     def index
         puts "here"
@@ -20,5 +21,9 @@ class NewsController < ApplicationController
                   format.atom { render :atom => @news }
           end  
       end
+
+      def context
+        @context = params[:controller].downcase
+      end    
     
 end  

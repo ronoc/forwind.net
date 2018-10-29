@@ -1,6 +1,7 @@
 class ReleasesController < ApplicationController
   layout 'base'
-
+  before_action :context
+  
   def index
     releaseCats = $redis.lrange("releases", 0, $redis.llen("releases")-1)
     @releases = [];
@@ -26,7 +27,6 @@ class ReleasesController < ApplicationController
 
   def context
     @context = params[:controller].upcase
-    @item = params[:id].nil? ? "FWD01" : params[:id].upcase
   end
 
 end
