@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     @small_releases  = Release.where("cat IN (?)", featuredReleases)
                               .order('random()').to_a.slice(0,3)                          
     @small_artists   = Artist.where("name IN (?)", featuredArtists)
-                             .order('random()').to_a.slice(0,3)
+                             .order('random()').to_a.slice(0,2)
     pds = Podcast.pluck(:id)
     @podcast = Podcast.find(pds.sample)
     @context = "music"

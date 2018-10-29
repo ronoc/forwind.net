@@ -36,11 +36,11 @@
 		<% @small_releases.each do |release| %>
 			<figure class="column-block column-block__figure">
 				<a href=<%= "/releases/" + release.cat%>>
-					<img src=<%= File.join(@s3_images, "releases", small_releases_image(release))%>>
+					<img src=<%= File.join(@s3_images, "releases", release.cat.downcase+".png")%>>
 				</a> 
 				<figcaption class="figcaption">
-					<a href="#">
-						<span class="text-title"><%= raw(munge_artist_names(release)) %></span>
+					<span class="text-title"><%= raw(munge_artist_names(release)) %></span>
+					<a href=<%= "/releases/" + release.cat%>>
 						<span class="text-title"><%= release.title %></span>
 					</a>
 				</figcaption>  
@@ -60,12 +60,11 @@
 		<% @small_artists.each do |artist| %>
 			<figure class="column-block column-block__figure">
 				<a href=<%= "/artists/" + artist.slug %>>
-					<img src= <%= File.join(@s3_images, "artists", small_artists_image(artist.image)) %>
+					<img src= <%= File.join(@s3_images, "artists", artist.image) %>
 				</a> 
 				<figcaption class="figcaption">
-					<a href="#">
+					<a href=<%= "/artists/" + artist.slug %>>
 						<span class="text-title"><%=artist.name%></span>
-						<!-- span class="text-title">Scripts</span -->
 					</a>
 				</figcaption>  
 			</figure>
@@ -102,15 +101,12 @@
 	<div class="column-container column-container__2-cols">
 		<div class="column-block">
 			<p>
-				Forwind (pronounced <em title="fɔː waɪnd">fɔː waɪnd</em>) is a multi-genre label currently operating from Berlin, Manchester and London.
-			</p>
-			<p>
-				We&#39;re not worried about fitting neatly into one section in the record shop. Our passion is for adventurous music with a serious attention to detail, from the performance to the production.
+				Experimental ambience / Erratic rhythms / Reclaimed reverberations under the global floorboards / Detected and developed in Dublin and Berlin
 			</p>
 		</div>
 		<div class="column-block">
 			<p>
-				Our aim is to provide a platform for music that maximises the expressive potential of sound, instruments and voices either through physical or electronic means, whether composed, constructed or improvised.    
+				Our aim is to provide a platform for music that maximises the expressive potential of sound, instruments and voices either through physical or electronic means, whether composed, constructed or improvised.
 			</p>
 		</div>
 	</div>
