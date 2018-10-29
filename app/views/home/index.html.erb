@@ -13,6 +13,7 @@
 	</h2>
 	<div class="column-container column-container__2-cols">
 		<% @news.each do |news_item| %>
+			</br></br>
 			<div class="column-block">
 				<h3 class="heading heading--article-title">
 					<a href=<%="/news/#{news_item.id}"%>><%= news_item.title %></a>
