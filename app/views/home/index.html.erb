@@ -14,7 +14,7 @@
 <section class="content-block">
 	<h2 class="heading heading--content-block">
 		Latest news
-		<a href="#">
+		<a href="/news">
 			<strong>News archive</strong>
 		</a>
 	</h2>
@@ -22,7 +22,7 @@
 		<% @news.each do |news_item| %>
 			<div class="column-block">
 				<h3 class="heading heading--article-title">
-					<a href="#"><%= news_item.title %></a>
+					<a href=<%="/news/#{news_item.id}"%>><%= news_item.title %></a>
 				</h3>
 				<div class="content-block--article">
 					<%= raw news_item.content %>
