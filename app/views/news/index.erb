@@ -5,7 +5,7 @@
         <div class="column-block" style="width:70%;justify-content: center;">
         <div class="content-block content-block--title-heading" style="overflow: visible;clear:both;">
             <h2 class="heading heading--article-title">
-                <%= new.title %>
+                <a href=<%="/news/#{new.id}"%>><%= new.title %></a>
                 <span class="sub-heading">Posted by <%= new.author %> on <time><%= format_time(new.date) %></time></span>
             </h2>
             <% if new.images.size == 1 %>
@@ -20,11 +20,13 @@
         </div>
         <div class="content-block content-block--news">
             <p>
-            <%= raw new.content %>
+                <%= raw new.content %>
             </p>
             <% if new.images.size > 1 %>
                 <% new.images.each do |image| %>
-                    <img src=<%=image.path%> class="news-image-bottom">
+                    <a href= <%=image.path%> class="gallery" >
+                        <img src=<%=image.path%> class="news-image-bottom">
+                    </a>
                 <% end %>
             <% end %>
         </div>

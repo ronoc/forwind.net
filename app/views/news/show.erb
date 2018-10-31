@@ -22,7 +22,9 @@
             </p>
             <% if @news.images.size > 1 %>
                 <% @news.images.each do |image| %>
-                    <img src=<%=image.path%> class="news-image-bottom">
+                    <a href= <%=image.path%> class="gallery" >
+                        <img src=<%=image.path%> class="news-image-bottom">
+                    </a>
                 <% end %>
             <% end %>
         </div>
