@@ -11,6 +11,20 @@
         <div class="content-block content-block--article">
             <p><%= @artist.description.html_safe %></p>
         </div>
+        
+        <aside class="column-block column-block__aside">
+            <!-- 
+                We duplicate this banner to show/hide it for mobile view
+                so we can keep the flex-box layout and avoid messy abstraction    
+            -->
+            <div class="content-block content-block__banner">
+                <figure>
+                    <a href= <%= File.join(@s3_images, "artists", @artist.image) %> class="gallery" >
+                        <img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
+                    </a>
+                </figure>
+            </div>        
+        </aside>
         <div class="content-block aside__widget">
             <span class="text-title">ARTIST <%= @artist.name %></span>
 			<span class="text-title">LOCATION <%= @artist.location %></span>
@@ -24,8 +38,9 @@
 		<div class="content-block content-block--title-heading">
             <h1>
                 <span class="text-title">Previous Releases</span>
-            </h1>    
+            </h1>  
         </div>
+
         <div class="content-block aside__widget">
 			<% @artist.releases.each do |rel| %>
 				<span class="text-title"><a href="<%= "/releases/" + rel.cat %>"><%= rel.title + " - " + rel.cat %></a></span>
