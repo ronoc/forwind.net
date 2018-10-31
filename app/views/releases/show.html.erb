@@ -2,11 +2,11 @@
     <section class="column-block column-block__main-content">
         <div class="content-block content-block__banner">
             <figure>
-                <a href= <%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%> class="gallery" >
-                  <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
-                </a>    
+                <a href= <%= File.join(@release_images_path, @release.cat.downcase + "_digital_cover.jpg")%> class="gallery" >
+                    <img src=<%= File.join(@release_images_path, @release.cat.downcase + "_digital_cover.jpg")%>>
+                </a>   
             </figure>
-        </div>    
+        </div>
     
         <div class="content-block content-block--article">
             <p><%= @release.long_desc.html_safe %></p>
@@ -21,7 +21,7 @@
         <div class="content-block content-block__banner">
             <figure>
                 <a href= <%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%> class="gallery" >
-                  <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
+                    <img src=<%= File.join(@s3_images, "releases", @release.cat.downcase + ".png")%>>
                 </a>    
             </figure>
         </div>
@@ -101,5 +101,14 @@
                 <% end %>
             <% end %>
         </div> 
+        <div class="content-block aside__widget">
+            <% @release.images.each do |image| %>
+                <figure>
+                    <a href= <%= File.join(@release_images_path, image.path + ".jpg")%> class="gallery" >
+                        <img src=<%= File.join(@release_images_path, image.path + "_thumbnail.jpg")%> class="thumbnail">
+                    </a>
+                </figure>
+            <% end %>
+        </div>
     </aside>
 </article>

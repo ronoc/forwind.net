@@ -246,6 +246,16 @@ blockquote {
     }
 }
 
+img.thumbnail {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 3px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width:30%;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+}
+
 img.news-image-top {
     width:50%;
     margin-left: auto;
