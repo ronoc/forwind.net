@@ -40,7 +40,7 @@
 					<img src=<%= File.join(@s3_images, "releases", release.cat.downcase+".png")%>>
 				</a> 
 				<figcaption class="figcaption">
-					<span class="text-title"><%= raw(munge_artist_names(release)) %></span>
+					<span class="text-title"><%= raw(munge_artist_names(release).titleize) %></span>
 					<a href=<%= "/releases/" + release.cat%>>
 						<span class="text-title"><%= release.title %></span>
 					</a>

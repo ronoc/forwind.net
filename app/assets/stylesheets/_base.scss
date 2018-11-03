@@ -204,6 +204,9 @@ blockquote {
                 @extend %alt-link;
                 color: $link-color-secondary;
             }
+            figure a img{
+                border: none;
+            }
         }
         &--title-heading {
             margin-bottom: 0;
@@ -223,7 +226,7 @@ blockquote {
             }
         }
         &--article {
-            width: 70%;
+            width: 95%;
             padding-top: $spacing-factor * 0.5;
             a {
                 @extend %alt-link;
@@ -363,6 +366,7 @@ img.news-image-top {
 .column-block__main-content {
     .content-block__banner {
         display: block;
+        margin-top: - $spacing-factor;
         @include breakpoint(m) {
             display: none;
         }
@@ -476,9 +480,9 @@ img.news-image-top {
         margin-right: $spacing-factor;
         margin-left: $spacing-factor;
         th {
-            height: $top-negative-margin - $spacing-factor;
-            font-size: $font-size-md;
-            padding-bottom: $spacing-factor * 2;
+            height: $top-negative-margin - $spacing-factor * 1.5;
+            font-size: $base-font-size;
+            padding-bottom: $spacing-factor * 3.5;
             vertical-align: bottom;
         }
         .table-cell {
@@ -486,6 +490,18 @@ img.news-image-top {
             font-size: $font-size-md;
             padding: 0 $spacing-factor $spacing-factor 0;
             width: 50%;
+            display: table-cell;
+            a {
+                text-decoration: none;
+            }
+            &--cover {
+                width: 0;
+                img {
+                    width: 60px;
+                    height: auto;
+                    border: 0;
+                }
+            }
             &--format,
             &--date {
                 width: 25%;
