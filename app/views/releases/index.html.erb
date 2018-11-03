@@ -1,27 +1,40 @@
 <section class="column-block">
     <table class="table table--catalogue">
         <thead>
+            <th></th>
             <th>Release</th>
             <th>Format</th>
             <th>Date</th>
         </thead>
         <tbody>
-            <% @releases.each do |release| %>
-                <tr class="table-row">
+            <% @releases.each do |release| %>           
+                     <td class="table-cell table-cell--cover">
+                        <a href=<%= "/releases/" + release.cat %>>
+                            <img class="img img--thumb" src=<%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg")%> alt="Alt desc" />
+                        </a>
+                    </td>
                     <td class="table-cell table-cell--release">
-                        <a href=<%= "/releases/" + release.cat %>><img class="img img--thumb" src=<%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg")%> alt="Alt desc" /></a>
+                        <a href=<%= "/releases/" + release.cat %>>
                         <p>
-                            <span><a href=<%= "/releases/" + release.cat %>><%= release.title %></a></span>
-                            <span><%= raw munge_artist_names(release) %></span>
+                            <span><%= raw munge_artist_names(release).titleize %></span> 
+                            <span><%= release.title %></span>
+
                         </p>   
+                        </a>
                     </td>
                     <td class="table-cell table-cell--format">
+                        <a href=<%= "/releases/" + release.cat %>>
                         <p>
                             <span><%= release.cat %></span>
                             <span><%= release.preferred_format %></span>
                         </p>
+                        </a>
                     </td>
-                    <td class="table-cell table-cell--date"><%= release.release_date.strftime("%Y/%m/%d") %></td>
+                    <td class="table-cell table-cell--date">
+                        <a href=<%= "/releases/" + release.cat %>>
+                        <%= release.release_date.strftime("%Y/%m/%d") %>
+                        </a>
+                    </td>
                 </tr>
             <% end %>
         </tbody>

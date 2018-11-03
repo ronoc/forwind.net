@@ -28,7 +28,7 @@
 
         <div class="content-block content-block--title-heading">
             <h1>
-                <span class="text-title"><%= raw(munge_artist_names(@release)) %></span>
+                <span class="text-title"><%= raw(munge_artist_names(@release).titleize) %></span>
                 <span class="text-title"><%= @release.title %></span>
             </h1>    
         </div>
@@ -37,7 +37,7 @@
             <table class="table table--release-details">
                 <caption>
                     <span class="text-title"><%= @release.cat %></span>
-                    <span class="text-title"><%= @release.title.upcase %></span>
+                    <span class="text-title"><%= @release.preferred_format %></span>
                 </caption>
                 <thead class="visually-hidden">
                     <th>Track number</th>
@@ -82,7 +82,7 @@
         <div class="content-block aside__widget">
             <% unless @release.quote.nil? %>
                 <blockquote>
-                    <%= @release.quote %>
+                    &ldquo;<%= @release.quote %>&rdquo;
                     <cite>&mdash; <%= @release.author %></cite>
                 </blockquote>
                 <h2 class="heading heading--widget">Online reviews from </h2>
