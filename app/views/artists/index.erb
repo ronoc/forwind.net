@@ -1,4 +1,6 @@
 <section class="column-block">
+
+
     <table class="table table--catalogue">
         <tbody>
             <% @artists.each_slice(2) do |artists| %>
@@ -23,4 +25,28 @@
             <% end %>
         </tbody>
     </table>
+</section>
+
+            <!-- 
+                first attempt to recycle the artist section from homepage
+                this would be cleaner as layout is 1:1 same and it reduces to one collumn in mobile view …    
+            -->
+
+
+    <section class="content-block">
+    <div class="column-container column-container__2-cols"> 
+        <% @artists.each_slice(2) do |artists| %>
+            <figure class="column-block column-block__figure">
+                <a href=<%= "/artists/#{artists[0].slug}" %>>
+                    <img src= <%= File.join(@s3_images, "artists", artists[0].image) %>
+                </a> 
+                <figcaption class="figcaption">
+                    <a href="<%= "/artists/#{artists[0].slug}" %>">
+                        <span class="text-title"><%= artists[0].name %></span>
+                        <span class="text-title"><%= artists[0].location %></span>
+                    </a>
+                </figcaption>  
+            </figure>
+        <% end %>
+    </div>
 </section>

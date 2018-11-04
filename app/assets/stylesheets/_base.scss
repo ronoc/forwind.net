@@ -151,6 +151,22 @@ blockquote {
             opacity: 0.8;
         }
         }
+        span.biography {
+            text-transform: none;
+            margin-left: 2 * $spacing-factor;
+            display: block;
+        }
+        span.biography a {
+            color: $link-color-secondary;
+            text-transform: none;
+            margin-left: - 2 * $spacing-factor;
+            display: block;
+        &:hover {
+            opacity: 0.8;
+        }
+        }
+
+        
     }
     a {
         text-decoration: none;
@@ -277,6 +293,12 @@ img.news-image-top {
 
 .content-block__banner {
     font-size: $font-size-sm;
+    img.artist {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;   
+        }
     @include breakpoint(m) {
 		.heading--floating-button {
             display: none;
