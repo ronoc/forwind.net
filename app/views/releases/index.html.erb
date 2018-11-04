@@ -9,18 +9,19 @@
         <tbody>
             <% @releases.each do |release| %>           
                      <td class="table-cell table-cell--cover">
-                        <a href=<%= "/releases/" + release.cat %>>
+                        <a href=<%= "/releases/" + release.cat.downcase %>>
                             <img class="img img--thumb" src=<%= File.join(@s3_images, "releases", release.cat.downcase + "_sm.jpg")%> alt="Alt desc" />
                         </a>
                     </td>
                     <td class="table-cell table-cell--release">
-                        <a href=<%= "/releases/" + release.cat %>>
+                        
                         <p>
-                            <span><%= raw munge_artist_names(release).titleize %></span> 
-                            <span><%= release.title %></span>
-
+                            <span><%= raw munge_artist_names(release) %></span> 
+                            <a href=<%= "/releases/" + release.cat.downcase %>>
+                                <span><%= release.title %></span>
+                            </a>
                         </p>   
-                        </a>
+                        
                     </td>
                     <td class="table-cell table-cell--format">
                         <a href=<%= "/releases/" + release.cat %>>

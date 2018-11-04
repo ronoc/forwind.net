@@ -24,8 +24,9 @@ module ApplicationHelper
   def munge_artist_names(release)
     result = []
     release.artists.map do |artist|
-      result << "<a href=/artists/#{artist.slug}>#{artist.name.mb_chars.upcase.to_s}</a>"
+      result << "<a href=/artists/#{artist.slug.downcase}>#{artist.name.mb_chars.titleize.to_s}</a>"
     end
+    puts result
     result.join(" & ")
   end
 
