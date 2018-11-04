@@ -24,15 +24,18 @@ main {
 }
 
 a {
-    &:link,
-    &:active,
-    &:visited,
+    color: $link-color-primary;
+    text-decoration: none;
+    &:visited, 
+    &:link, 
+    &:active {
+        opacity: 1;
+        text-decoration: none !important;
+        } 
     &:hover {
-        color: $link-color-primary;
-    }
-    &:hover {
-        text-decoration: underline;
-    }
+        opacity: 1;
+        text-decoration: none !important;
+        } 
 }
 
 img {
@@ -141,15 +144,14 @@ blockquote {
     &--content-block {
         font-family: $font-family-secondary;
         font-size: $font-size-md;
+        span {
+            padding-right: $spacing-factor * 0.67;
+        }
         a strong {
             color: $font-color-secondary;
             font-size: $font-size-sm;
             text-transform: none;
-            display: inline-block;
-            text-indent: $spacing-factor * 0.67;
-        &:hover {
-            opacity: 0.8;
-        }
+            display: inline-block;         
         }
         span.biography {
             text-transform: none;
@@ -161,9 +163,6 @@ blockquote {
             text-transform: none;
             margin-left: - 2 * $spacing-factor;
             display: block;
-        &:hover {
-            opacity: 0.8;
-        }
         }
 
         
@@ -204,7 +203,7 @@ blockquote {
     top: -$top-negative-margin;
     .content-block {
         position: relative;
-        margin-bottom: $spacing-factor * 3;
+        margin-bottom: $spacing-factor * 4;
         padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
         @include breakpoint(m) {
             padding-bottom: 0;
@@ -235,7 +234,7 @@ blockquote {
                 font-size: $font-size-md;
             }
             @include breakpoint(m) {
-                height: auto;
+                /* height: auto; */
             }
             .img {
                 width: 100%;
@@ -247,7 +246,7 @@ blockquote {
             a {
                 @extend %alt-link;
                 color: $link-color-secondary;
-            }
+                            }
         }
         &__logos {
             margin-top: - $spacing-factor * 2;
@@ -260,7 +259,7 @@ blockquote {
             a {
                 @extend %alt-link;
                 color: $link-color-secondary;
-            }
+                }
         }
     }
 }
@@ -319,7 +318,7 @@ img.news-image-top {
         flex-direction: column;
     }
     .column-block {
-        margin-right: $spacing-factor * 2;
+        margin-right: $spacing-factor * 1.5;
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
@@ -513,9 +512,6 @@ img.news-image-top {
             padding: 0 $spacing-factor $spacing-factor 0;
             width: 50%;
             display: table-cell;
-            a {
-                text-decoration: none;
-            }
             &--cover {
                 width: 0;
                 img {

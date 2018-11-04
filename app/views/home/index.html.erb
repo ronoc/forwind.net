@@ -6,14 +6,14 @@
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		Latest news
+		<span>Latest news</span>
 		<a href="/news">
-			<strong>News archive</strong>
+			<strong>View the news archive</strong>
 		</a>
 	</h2>
 	<div class="column-container column-container__2-cols">
 		<% @news.each do |news_item| %>
-			</br></br>
+			</br>
 			<div class="column-block">
 				<h3 class="heading heading--article-title">
 					<a href=<%="/news/#{news_item.id}"%>><%= news_item.title %></a>
@@ -28,9 +28,9 @@
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		Featured releases
+		<span>Selected releases</span>
 		<a href="/releases">
-			<strong>Explore back catalogue</strong>
+			<strong>Explore our full back catalogue</strong>
 		</a>
 	</h2>
 	<div class="column-container column-container__3-cols">
@@ -52,7 +52,7 @@
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		Featured artists
+		<span>Featured artists</span>
 		<a href="/artists">
 			<strong>Browse all artists</strong>
 		</a>
@@ -75,9 +75,9 @@
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		Featured podcast
-		<a href="https://www.mixcloud.com/forwind" target="home">
-			<strong>Listen to more podcasts</strong>
+		<span>Podcast highlight</span>
+		<a href="https://www.mixcloud.com/Forwind/uploads/" target="home">
+			<strong>All of our podcasts on Mixcloud</strong>
 		</a>
 	</h2>
 	<div class="column-block">
@@ -94,9 +94,9 @@
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		About
+		<span>About</span>
 		<a href="/about">
-			<strong>Read on and contact details</strong>
+			<strong>More details and contact address</strong>
 		</a>
 	</h2>
 	<div class="column-container column-container__2-cols">
