@@ -36,12 +36,12 @@
 	<div class="column-container column-container__3-cols">
 		<% @small_releases.each do |release| %>
 			<figure class="column-block column-block__figure">
-				<a href=<%= "/releases/" + release.cat%>>
+				<a href=<%= "/releases/" + release.cat.downcase%>>
 					<img src=<%= File.join(@s3_images, "releases", release.cat.downcase+".png")%>>
 				</a> 
 				<figcaption class="figcaption">
 					<span class="text-title"><%= raw(munge_artist_names(release).titleize) %></span>
-					<a href=<%= "/releases/" + release.cat%>>
+					<a href=<%= "/releases/" + release.cat.downcase%>>
 						<span class="text-title"><%= release.title %></span>
 					</a>
 				</figcaption>  

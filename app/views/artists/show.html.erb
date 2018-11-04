@@ -74,17 +74,17 @@
 
         <div class="column-block">
             <h2 class="heading heading--content-block">
-            Releases on Forwind
-            <% @artist.releases.each do |rel| %>
-            <span class="biography"><a href="<%= "/releases/" + rel.cat %>"><%= rel.title + " - " + rel.cat %></a></span>
-            <% end %>
+                Releases on Forwind
+                <% @artist.releases.each do |rel| %>
+                    <span class="biography"><a href="<%= "/releases/" + rel.cat.downcase %>"><%= rel.title + " - " + rel.cat %></a></span>
+                <% end %>
             </h2>
 
             <h2 class="heading heading--content-block">
-            Related Links
-            <% @artist.links.each do |link| %>
-            <span class="biography"><a href=<%= link.location %>><%= external_link_trimmer(link.location) %></a></span>
-            <% end %>
+                Related Links
+                <% @artist.links.each do |link| %>
+                    <span class="biography"><a href=<%= link.location %>><%= external_link_trimmer(link.location) %></a></span>
+                <% end %>
             </h2>
         </div>
     </div>
