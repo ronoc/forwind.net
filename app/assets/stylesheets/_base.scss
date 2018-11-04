@@ -141,12 +141,14 @@ blockquote {
     &--content-block {
         font-family: $font-family-secondary;
         font-size: $font-size-md;
+        span {
+            padding-right: $spacing-factor * 0.67;
+        }
         a strong {
             color: $font-color-secondary;
             font-size: $font-size-sm;
             text-transform: none;
-            display: inline-block;
-            text-indent: $spacing-factor * 0.67;
+            display: inline-block;         
         &:hover {
             opacity: 0.8;
         }
@@ -204,7 +206,7 @@ blockquote {
     top: -$top-negative-margin;
     .content-block {
         position: relative;
-        margin-bottom: $spacing-factor * 3;
+        margin-bottom: $spacing-factor * 4;
         padding: 0 $spacing-factor $spacing-factor * 2 $spacing-factor;
         @include breakpoint(m) {
             padding-bottom: 0;
@@ -319,7 +321,7 @@ img.news-image-top {
         flex-direction: column;
     }
     .column-block {
-        margin-right: $spacing-factor * 2;
+        margin-right: $spacing-factor * 1.5;
         flex-grow: 1;
         &:last-child {
             margin-right: 0;
