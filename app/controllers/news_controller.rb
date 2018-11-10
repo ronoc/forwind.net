@@ -14,7 +14,10 @@ class NewsController < ApplicationController
       end
     
       def show
-        @news = News.find(params[:id])
+        @news ||= News.find_by_slug(params[:id])
+        unless @news.present?
+          @news = News.find(params[:id])
+        end
         respond_to do |format|
             format.html { render :layout => 'base'}
             format.xml  { render :xml => @news }

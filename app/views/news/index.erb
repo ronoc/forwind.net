@@ -1,11 +1,10 @@
 <h1 class="visually-hidden">News</h1>
 <section>
     <% @news.each do |new| %>
-
         <div class="column-block" style="width:70%;justify-content: center;">
         <div class="content-block content-block--title-heading" style="overflow: visible;clear:both;">
             <h2 class="heading heading--article-title">
-                <a href=<%="/news/#{new.id}"%>><%= new.title %></a>
+                <a href=<%="/news/#{new.slug}"%>><%= new.title %></a>
                 <span class="sub-heading">Posted by <%= new.author %> on <time><%= format_time(new.date) %></time></span>
             </h2>
             <% if new.images.size == 1 %>
