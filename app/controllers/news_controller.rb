@@ -13,7 +13,7 @@ class NewsController < ApplicationController
         end
       end
     
-      def show
+      def show  
         @news ||= News.find_by_slug(params[:id])
         unless @news.present?
           @news = News.find(params[:id])
