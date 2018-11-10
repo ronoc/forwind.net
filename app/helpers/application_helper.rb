@@ -21,12 +21,17 @@ module ApplicationHelper
     return true
   end
 
-  def munge_artist_names(release)
+  def munge_artist_names(release, linkArtist=true)
     result = []
-    release.artists.map do |artist|
-      result << "<a href=/artists/#{artist.slug.downcase}>#{artist.name.mb_chars.titleize.to_s}</a>"
+    if linkArtist
+      release.artists.map do |artist|
+        result << "<a href=/artists/#{artist.slug.downcase}>#{artist.name.mb_chars.titleize.to_s}</a>"
+      end
+    else
+      release.artists.map do |artist|
+        result << "#{artist.name.mb_chars.titleize.to_s}"
+      end
     end
-    puts result
     result.join(" & ")
   end
 

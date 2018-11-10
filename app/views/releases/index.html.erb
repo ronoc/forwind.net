@@ -16,7 +16,7 @@
                     <td class="table-cell table-cell--release">
                         
                         <p>
-                            <span><%= raw munge_artist_names(release) %></span> 
+                            <span><%= raw munge_artist_names(release, false) %></span> 
                             <a href=<%= "/releases/" + release.cat.downcase %>>
                                 <span><%= release.title %></span>
                             </a>
