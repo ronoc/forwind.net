@@ -1,41 +1,6 @@
-<section class="column-block">
-
-
-    <table class="table table--catalogue">
-        <tbody>
-            <% @artists.each_slice(2) do |artists| %>
-                <tr class="table-row">
-                    <td class="table-cell table-cell--release">
-                        <a href="<%= "/artists/#{artists[0].slug}" %>"><img src= <%= File.join(@s3_images, "artists", artists[0].image) %>></a>
-                        <p>
-                        <span><a href="<%= "/artists/#{artists[0].slug}" %>"><%= artists[0].name %></a></span>
-                        <span><%= artists[0].location %></a></span>
-                        </p>
-                    </td>
-                    <% if artists.length > 1 %>
-                        <td class="table-cell table-cell--release">
-                            <a href="<%= "/artists/#{artists[1].slug}" %>"><img src= <%= File.join(@s3_images, "artists", artists[1].image) %>></a>
-                            <p>
-                            <span><a href="<%= "/artists/#{artists[1].slug}" %>"><%= artists[1].name %></a></span>
-                            <span><%= artists[1].location %></a></span>
-                            </p>
-                        </td>
-                    <% end %>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</section>
-
-            <!-- 
-                first attempt to recycle the artist section from homepage
-                this would be cleaner as layout is 1:1 same and it reduces to one collumn in mobile view …    
-            -->
-
-
-    <section class="content-block">
-    <div class="column-container column-container__2-cols"> 
-        <% @artists.each_slice(2) do |artists| %>
+<section class="content-block">
+    <% @artists.each_slice(2) do |artists| %>
+        <div class="column-container column-container__2-cols"> 
             <figure class="column-block column-block__figure">
                 <a href=<%= "/artists/#{artists[0].slug}" %>>
                     <img src= <%= File.join(@s3_images, "artists", artists[0].image) %>
@@ -47,6 +12,20 @@
                     </a>
                 </figcaption>  
             </figure>
-        <% end %>
-    </div>
+            <% unless artists.size != 2 %>
+                <figure class="column-block column-block__figure">
+                    <a href=<%= "/artists/#{artists[1].slug}" %>>
+                        <img src= <%= File.join(@s3_images, "artists", artists[1].image) %>
+                    </a> 
+                    <figcaption class="figcaption">
+                        <a href="<%= "/artists/#{artists[1].slug}" %>">
+                            <span class="text-title"><%= artists[1].name %></span>
+                            <span class="text-title"><%= artists[1].location %></span>
+                        </a>
+                    </figcaption>  
+                </figure>
+            <% end %>
+        </div>
+    <% end %>    
 </section>
+
