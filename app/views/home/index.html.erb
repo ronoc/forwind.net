@@ -37,7 +37,7 @@
 		<% @small_releases.each do |release| %>
 			<figure class="column-block column-block__figure">
 				<a href=<%= "/releases/" + release.cat.downcase%>>
-					<img src=<%= File.join(@s3_images, "releases", release.cat.downcase+".png")%>>
+					<img src=<%= File.join(@release_images_path, release.cat.downcase + "_digital_cover.jpg")%>>
 				</a> 
 				<figcaption class="figcaption">
 					<span class="text-title"><%= raw(munge_artist_names(release).titleize) %></span>

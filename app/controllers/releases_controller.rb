@@ -27,7 +27,6 @@ class ReleasesController < ApplicationController
 
   def context
     @context = params[:controller].upcase
-    @release_images_path = "https://s3-eu-west-1.amazonaws.com/forwind-net-images/releases"
   end
 
 end
