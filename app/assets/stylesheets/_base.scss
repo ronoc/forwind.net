@@ -155,6 +155,7 @@ blockquote {
         }
         span.biography {
             text-transform: none;
+            width: 93%;
             margin-left: 2 * $spacing-factor;
             display: block;
         }
@@ -163,6 +164,13 @@ blockquote {
             text-transform: none;
             margin-left: - 2 * $spacing-factor;
             display: block;
+
+            width: 100%;
+            margin-right: - 0.3 * $spacing-factor;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden; 
+
         }
 
         
@@ -234,15 +242,17 @@ blockquote {
                 font-size: $font-size-md;
             }
             @include breakpoint(m) {
-                /* height: auto; */
+                height: auto;
+                padding-bottom: $spacing-factor * 2;
             }
             .img {
                 width: 100%;
             }
         }
         &--article {
-            width: 95%;
+            width: 92%;
             padding-top: $spacing-factor * 0.5;
+            padding-right: 0;
             a {
                 @extend %alt-link;
                 color: $link-color-secondary;
@@ -317,12 +327,14 @@ img.news-image-top {
         flex-direction: column;
     }
     .column-block {
-        margin-right: $spacing-factor * 1.5;
+        /* margin-right: $spacing-factor * 0.3; */
         flex-grow: 1;
-        &:last-child {
+        &:last-child:not(:__3-cols) {
+            padding-left: $spacing-factor;
             margin-right: 0;
             @include breakpoint(m) {
-                margin-right: auto;
+                padding-left: 0;
+                margin-right: $spacing-factor * 0.3;
             }
         }
         &__figure {
@@ -347,6 +359,7 @@ img.news-image-top {
             align-self: start;
             &__main-content {
                 flex-basis: 66%;
+                margin-right: 1.2 * $spacing-factor;
                 order: 1;
                 @include breakpoint(m) {
                     order: 2;
@@ -356,6 +369,7 @@ img.news-image-top {
             &__aside {
                 flex-basis: 33%;
                 order: 2;
+                width: 100%;
                 @include breakpoint(m) {
                     order: 1;
                     flex-basis: 100%;
@@ -372,6 +386,15 @@ img.news-image-top {
                 width: auto;
             }
             &__figure {
+                padding-right: 1.5 * $spacing-factor;
+                &__artists {
+                padding-bottom: $spacing-factor * 3;
+                padding-right: 1.5 * $spacing-factor;
+                    @include breakpoint(m) {
+                    width: 100%;
+                    padding-bottom: $spacing-factor * 2;
+                    }
+                }
                 @include breakpoint(m) {
                     width: 100%;
                 }
@@ -380,6 +403,9 @@ img.news-image-top {
     }
     &__3-cols {
         flex-basis: 33.3%;
+        .column-block__figure {
+            padding-right: 1.5 * $spacing-factor;
+            }
     }
 }
 

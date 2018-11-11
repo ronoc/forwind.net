@@ -1,7 +1,7 @@
 <section class="content-block">
     <% @artists.each_slice(2) do |artists| %>
         <div class="column-container column-container__2-cols"> 
-            <figure class="column-block column-block__figure">
+            <figure class="column-block column-block__figure__artists">
                 <a href=<%= "/artists/#{artists[0].slug}" %>>
                     <img src= <%= File.join(@s3_images, "artists", artists[0].image) %>
                 </a> 
@@ -13,7 +13,7 @@
                 </figcaption>  
             </figure>
             <% unless artists.size != 2 %>
-                <figure class="column-block column-block__figure">
+                <figure class="column-block column-block__figure__artists">
                     <a href=<%= "/artists/#{artists[1].slug}" %>>
                         <img src= <%= File.join(@s3_images, "artists", artists[1].image) %>
                     </a> 

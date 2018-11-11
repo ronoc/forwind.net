@@ -11,7 +11,9 @@ $(function(){
     $('.gallery').featherlightGallery({
 		previousIcon: '&#10094;',     /* Code that is used as previous icon */
 		nextIcon: '&#10095;',         /* Code that is used as next icon */
-		galleryFadeIn: 100,          /* fadeIn speed when slide is loaded */
-		galleryFadeOut: 300          /* fadeOut speed before slide is loaded */
+		openSpeed:      250,                   /* Duration of opening animation */
+		closeSpeed:     250,                   /* Duration of closing animation */
+		galleryFadeIn: 250,          /* fadeIn speed when slide is loaded */
+		galleryFadeOut: 250          /* fadeOut speed before slide is loaded */
     });
 });
