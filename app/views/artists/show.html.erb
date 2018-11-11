@@ -7,24 +7,24 @@
             </figure>
         </div>
 
+            <aside class="column-block column-block__aside">
+            <!-- 
+                We duplicate this banner to show/hide it for mobile view
+                so we can keep the flex-box layout and avoid messy abstraction    
+            -->
+            <div class="content-block content-block__banner">
+                <figure class="artist_mobile">
+                    <img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
+                </figure>
+            </div>        
+        </aside>
+
         <div class="content-block content-block--article">
             <h3 class="heading heading--article-title">
                 <%= @artist.name %>
             </h3>
             <p><%= @artist.description.html_safe %></p>
         </div>
-        
-        <aside class="column-block column-block__aside">
-            <!-- 
-                We duplicate this banner to show/hide it for mobile view
-                so we can keep the flex-box layout and avoid messy abstraction    
-            -->
-            <div class="content-block content-block__banner">
-                <figure>
-                    <img src=<%= File.join(@s3_images, "artists", @artist.image) %>>
-                </figure>
-            </div>        
-        </aside>
 
 <section class="content-block">
     <div class="column-container column-container__2-cols">
