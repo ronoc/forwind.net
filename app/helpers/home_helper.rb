@@ -1,11 +1,11 @@
 module HomeHelper
 
   def banner
-    bannerLink = $redis.get("bannerLink")
-    bannerImage = File.join(@s3_images, "index", $redis.get("bannerImage"))
+    banner_link = $redis.get("banner_link")
+    banner_image = File.join(@s3_images_new, "banners", $redis.get("banner_image"))
     <<~HEREDOC
       <figure>
-        <a href="#{bannerLink}"><img alt="" src="#{bannerImage}"></a>
+        <a href="#{banner_link}"><img alt="" src="#{banner_image}"></a>
       </figure>
     HEREDOC
   end
