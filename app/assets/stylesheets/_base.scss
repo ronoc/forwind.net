@@ -155,7 +155,7 @@ blockquote {
         }
         span.biography {
             text-transform: none;
-            width: 95%;
+            width: 93%;
             margin-left: 2 * $spacing-factor;
             display: block;
         }
@@ -166,7 +166,7 @@ blockquote {
             display: block;
 
             width: 100%;
-            margin-right: - $spacing-factor;
+            margin-right: - 0.3 * $spacing-factor;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden; 
@@ -327,9 +327,9 @@ img.news-image-top {
         flex-direction: column;
     }
     .column-block {
-        margin-right: $spacing-factor * 0.3;
+        /* margin-right: $spacing-factor * 0.3; */
         flex-grow: 1;
-        &:last-child {
+        &:last-child:not(:__3-cols) {
             padding-left: $spacing-factor;
             margin-right: 0;
             @include breakpoint(m) {
@@ -359,6 +359,7 @@ img.news-image-top {
             align-self: start;
             &__main-content {
                 flex-basis: 66%;
+                margin-right: 1.2 * $spacing-factor;
                 order: 1;
                 @include breakpoint(m) {
                     order: 2;
@@ -385,8 +386,10 @@ img.news-image-top {
                 width: auto;
             }
             &__figure {
+                padding-right: 1.5 * $spacing-factor;
                 &__artists {
                 padding-bottom: $spacing-factor * 3;
+                padding-right: 1.5 * $spacing-factor;
                     @include breakpoint(m) {
                     width: 100%;
                     padding-bottom: $spacing-factor * 2;
@@ -400,6 +403,9 @@ img.news-image-top {
     }
     &__3-cols {
         flex-basis: 33.3%;
+        .column-block__figure {
+            padding-right: 1.5 * $spacing-factor;
+            }
     }
 }
 
