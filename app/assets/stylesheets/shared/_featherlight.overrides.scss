@@ -14,18 +14,18 @@
         span {
             display: block;
             text-indent: 10000px;
-            background: transparent url('/assets/icon-next.png') no-repeat center center;
+            background: transparent url('/assets/images/icon-next.png') no-repeat center center;
             @include breakpoint(m) {
-                background: transparent url('/assets/icon-next-sm.png') no-repeat center center;
+                background: transparent url('/assets/images/icon-next-sm.png') no-repeat center center;
             }
         }
     }
     .featherlight-previous {
         span {
             text-indent: -10000px;
-            background: transparent url('/assets/icon-previous.png') no-repeat center center;
+            background: transparent url('/assets/images/icon-previous.png') no-repeat center center;
             @include breakpoint(m) {
-                background: transparent url('/assets/icon-previous-sm.png') no-repeat center center;
+                background: transparent url('/assets/images/icon-previous-sm.png') no-repeat center center;
             }
         }
     }
