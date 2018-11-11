@@ -157,7 +157,7 @@ blockquote {
         span.biography {
             text-transform: none;
             width: 93%;
-            margin-left: 2 * $spacing-factor;
+            padding-left: 2 * $spacing-factor;
             display: block;
         }
         span.biography a {
@@ -165,13 +165,11 @@ blockquote {
             text-transform: none;
             margin-left: - 2 * $spacing-factor;
             display: block;
-
-            width: 100%;
+            width: 93%;
             margin-right: - 0.3 * $spacing-factor;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden; 
-
         }
 
         
@@ -387,7 +385,7 @@ img.news-image-top {
         .column-block {
             width: 50%;
             @include breakpoint(m) {
-                width: auto;
+                width: 100%;
             }
             &__figure {
                 padding-right: 1.5 * $spacing-factor;
