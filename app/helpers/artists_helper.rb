@@ -7,7 +7,7 @@ module ArtistsHelper
   def external_link_trimmer(link)
     r = link.split('.')
     v = r[r.length - 2]
-    if v.match(/(com|co|org)/)
+    if v.match(/(com|co|org)/) && r.length != 3
       v = r[r.length - 3]
     end
     v.capitalize
