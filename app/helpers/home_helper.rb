@@ -9,4 +9,8 @@ module HomeHelper
       </figure>
     HEREDOC
   end
+
+  def unfurl_twitter_urls(url)
+    
+  end
 end
