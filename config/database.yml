@@ -1,13 +1,16 @@
 common: &common
   adapter:  postgresql
-  host: localhost
+  host: 192.168.1.16
   pool:     5
   timeout:  5000
   min_messages: warning
 
 development: &development
   <<: *common
-  database: forwind_development
+  database: forwindlocal
+  username: harry
+  password: caul
+
 
 test: &test
   <<: *common
