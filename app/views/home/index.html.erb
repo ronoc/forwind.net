@@ -38,13 +38,13 @@
 			<figure class="column-block column-block__figure">
 				<a href=<%= "/releases/" + release.cat.downcase%>>
 					<img src=<%= File.join(@release_images_path, release.cat.downcase + "_digital_cover.jpg")%>>
-				</a> 
+				</a>
 				<figcaption class="figcaption">
 					<span class="text-title"><%= raw(munge_artist_names(release).titleize) %></span>
 					<a href=<%= "/releases/" + release.cat.downcase%>>
 						<span class="text-title"><%= release.title %></span>
 					</a>
-				</figcaption>  
+				</figcaption>
 			</figure>
 		<% end %>
 	</div>
@@ -57,17 +57,17 @@
 			<strong>Browse all artists</strong>
 		</a>
 	</h2>
-	<div class="column-container column-container__2-cols"> 
+	<div class="column-container column-container__2-cols">
 		<% @small_artists.each do |artist| %>
 			<figure class="column-block column-block__figure">
 				<a href=<%= "/artists/" + artist.slug %>>
 					<img src= <%= File.join(@s3_images, "artists", artist.image) %>
-				</a> 
+				</a>
 				<figcaption class="figcaption">
 					<a href=<%= "/artists/" + artist.slug %>>
 						<span class="text-title"><%=artist.name%></span>
 					</a>
-				</figcaption>  
+				</figcaption>
 			</figure>
 		<% end %>
 	</div>
@@ -88,7 +88,7 @@
 				<span class="text-title">Compiled & mixed by <%= @podcast.compiler %></span>
 				<span class="text-title">Genre: <%= @podcast.genre %></span>
 			</a>
-		</figcaption>  
+		</figcaption>
 	</div>
 </section>
 
@@ -102,12 +102,12 @@
 	<div class="column-container column-container__2-cols">
 		<div class="column-block column-block__figure">
 			<p>
-				Experimental ambience / Erratic rhythms / Reclaimed reverberations under the global floorboards / Detected and developed in Dublin and Berlin
+				<%= about_1 %>
 			</p>
 		</div>
 		<div class="column-block column-block__figure">
 			<p>
-				Our aim is to provide a platform for music that maximises the expressive potential of sound, instruments and voices either through physical or electronic means, whether composed, constructed or improvised.
+				<%= about_2 %>
 			</p>
 		</div>
 	</div>

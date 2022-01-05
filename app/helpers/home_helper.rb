@@ -11,6 +11,15 @@ module HomeHelper
   end
 
   def unfurl_twitter_urls(url)
-    
+
   end
+
+  def about_1
+    return $redis.get("about_1")
+  end
+
+  def about_2
+    return $redis.get("about_2")
+  end
+
 end

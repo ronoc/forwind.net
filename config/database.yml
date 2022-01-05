@@ -1,6 +1,6 @@
 common: &common
   adapter:  postgresql
-  host: 192.168.1.22
+  host: 192.168.1.26
   pool:     5
   timeout:  5000
   min_messages: warning
