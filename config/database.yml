@@ -1,0 +1,21 @@
+common: &common
+  adapter:  postgresql
+  host: 127.0.0.1
+  pool:     5
+  timeout:  5000
+  min_messages: warning
+
+development: &development
+  <<: *common
+  database: forwind
+  username: ronoc
+  password: 
+
+
+test: &test
+  <<: *common
+  database: forwind_test
+
+production: &production
+  <<: *common
+  database: forwind_development

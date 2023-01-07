@@ -1,0 +1,40 @@
+/* Override CSS for the featherlight lightbox jquery plugin
+========================================================================== */
+.featherlight {
+    .featherlight-content {
+        padding: 0;
+        border-bottom: 0;
+        position: static;
+    }
+    .featherlight-next,
+    .featherlight-previous {
+        &:hover {
+            background: transparent;
+        }
+        span {
+            display: block;
+            text-indent: 10000px;
+            background: transparent url('https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/icon-next.png') no-repeat center center;
+            @include breakpoint(m) {
+                background: transparent url('https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/icon-next-sm.png') no-repeat center center;
+            }
+        }
+    }
+    .featherlight-previous {
+        span {
+            text-indent: -10000px;
+            background: transparent url('https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/icon-previous.png') no-repeat center center;
+            @include breakpoint(m) {
+                background: transparent url('https://s3-eu-west-1.amazonaws.com/forwind-net-images/assets/icon-previous-sm.png') no-repeat center center;
+            }
+        }
+    }
+    .featherlight-next {}
+    .featherlight-close {
+        top: 20px;
+        right: 20px;
+        color: white;
+        background-color: $page-bg;
+        font-size: 1.4em;
+    }
+}

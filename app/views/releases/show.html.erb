@@ -1,0 +1,114 @@
+<article class="column-container column-container__article">
+    <section class="column-block column-block__main-content">
+        <div class="content-block content-block__banner">
+            <figure>
+                <a href= <%= File.join(@release_images_path, @release.cat.downcase + "_digital_cover.jpg")%> class="gallery" >
+                    <img src=<%= File.join(@release_images_path, @release.cat.downcase + "_digital_cover.jpg")%>>
+                </a>   
+            </figure>
+        </div>
+    
+        <div class="content-block content-block--article">
+            <p><%= @release.long_desc.html_safe %></p>
+        </div>    
+    </section>
+
+    <aside class="column-block column-block__aside">
+        <!-- 
+            We duplicate this banner to show/hide it for mobile view
+            so we can keep the flex-box layout and avoid messy abstraction    
+        -->
+        <div class="content-block content-block__banner">
+            <figure>
+                <a href= <%= File.join(@release_images_path, @release.cat.downcase + "_digital_cover.jpg")%> class="gallery">
+                    <img src=<%= File.join(@release_images_path, @release.cat.downcase + "_digital_cover.jpg")%>>
+                </a>
+            </figure>
+        </div>
+
+        <div class="content-block content-block--title-heading">
+            <h1>
+                <span class="text-title"><%= raw(munge_artist_names(@release)) %></span>
+                <span class="text-title"><%= @release.title %></span>
+            </h1>    
+        </div>
+
+        <div class="content-block aside__widget">
+            <table class="table table--release-details">
+                <caption>
+                    <span class="text-title"><%= @release.cat %></span>
+                    <span class="text-title"><%= @release.preferred_format %></span>
+                </caption>
+                <thead class="visually-hidden">
+                    <th>Track number</th>
+                    <th>Track name</th>
+                    <th>Track length (mm:ss)</th>
+                </thead>
+                <tbody>
+                
+                <% tracklistings(@release).each do |track| %>
+                    <tr class="table-row">
+                        <td class="table-cell table-cell--track-number"><%= track["number"] %></td>
+                        <td class="table-cell table-cell--track-name"><%= track["title"] %></td>
+                        <td class="table-cell table-cell--track-length"><%= track["length"] %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-block aside__widget">
+            <p><%= raw @release.stream_location %></p>
+        </div>  
+
+        <div class="content-block aside__widget">
+            <a href=<%= @release.purchase %> class="link--button">
+                <% unless @release.preferred_format == "Digital" %> 
+                    Buy <%= @release.preferred_format %> / Digital @ Bandcamp 
+                <% else %>
+                    Buy Digital @ Bandcamp
+                <% end %>
+            </a>
+        </div>  
+
+        <div class="content-block aside__widget">
+            <h2 class="heading heading--widget"><time><%= @release.release_date.strftime("%Y/%m/%d") %></time></h2>
+            <span class="text-title">Produced by <%= @release.producer %></span>
+            <span class="text-title">Artwork by <%= @release.artwork %></span>  
+            <span class="text-title">Mastered by <%= @release.mastering %></span>
+            <span class="text-title">Design by <%= @release.design %></span>
+        </div>
+
+        <div class="content-block aside__widget">
+            <% unless @release.quote.nil? %>
+                <blockquote>
+                    &ldquo;<%= @release.quote %>&rdquo;
+                    <cite>&mdash; <%= @release.author %></cite>
+                </blockquote>
+                <h2 class="heading heading--widget">Online reviews from </h2>
+                <% unless @release.reviews.empty? %>
+                <% @release.reviews.each do |link| %>
+                    <a href=<%= link.location %>><%= link.vendor %></a>
+                    <% if @release.reviews.size > 1 %>
+                    <% if @release.reviews.index(link) == @release.reviews.size - 2 %>
+                        and
+                    <% elsif @release.reviews.index(link) != @release.reviews.size - 1 %>
+                        ,
+                    <% end %>
+                    <% end %>
+                <% end %> 
+                <br/>
+                <% end %>
+            <% end %>
+        </div> 
+        <div class="content-block aside__widget">
+            <% @release.images.each do |image| %>
+                <figure>
+                    <a href= <%= File.join(@release_images_path, image.path + ".jpg")%> class="gallery" >
+                        <img src=<%= File.join(@release_images_path, image.path + "_thumbnail.jpg")%> class="thumbnail">
+                    </a>
+                </figure>
+            <% end %>
+        </div>
+    </aside>
+</article>

@@ -1,26 +1,114 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Forwind Publishing</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body {background-color: #FFFFFF;}
-    .center {
-      padding-top: 100px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-    }  
-  </style>
-</head>
+<h1 class="visually-hidden">Forwind &mdash; home</h1>
 
-<body>
-  <div>
-  <br>/ Be back soon / De retour bientôt / Bald zurück /
-    <div>
-      <img src="https://camo.githubusercontent.com/135fe766e3e8323450f0d53c227d3d051de5fe1b356b1fdfc19d7a6e9ac0a524/68747470733a2f2f73332d65752d776573742d312e616d617a6f6e6177732e636f6d2f666f7277696e642d696d616765732f70726573732f666f7277696e642d77686974652d6c6f676f2e6a7067" class="center">
-    </div>
-  </div>
-</body>
-</html>
+<section class="content-block content-block__banner">
+	<%= raw banner %>
+</section>
+
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<span>Latest news</span>
+		<a href="https://twitter.com/forwindings", target="home">
+			<strong>View full timeline on Twitter ...</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__2-cols">
+		<% @news.each do |tweet| %>
+			</br>
+			<div class="column-block">
+				<h3 class="heading heading--article-title">
+					<a href=<%="#{tweet["url"]}"%>><%= tweet["created_at"] %></a>
+				</h3>
+				<div class="content-block--article">
+					<%= raw tweet["text"] %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</section>
+
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<span>Selected releases</span>
+		<a href="/releases">
+			<strong>Explore our full back catalogue</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__3-cols">
+		<% @small_releases.each do |release| %>
+			<figure class="column-block column-block__figure">
+				<a href=<%= "/releases/" + release.cat.downcase%>>
+					<img src=<%= File.join(@release_images_path, release.cat.downcase + "_digital_cover.jpg")%>>
+				</a>
+				<figcaption class="figcaption">
+					<span class="text-title"><%= raw(munge_artist_names(release).titleize) %></span>
+					<a href=<%= "/releases/" + release.cat.downcase%>>
+						<span class="text-title"><%= release.title %></span>
+					</a>
+				</figcaption>
+			</figure>
+		<% end %>
+	</div>
+</section>
+
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<span>Featured artists</span>
+		<a href="/artists">
+			<strong>Browse all artists</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__2-cols">
+		<% @small_artists.each do |artist| %>
+			<figure class="column-block column-block__figure">
+				<a href=<%= "/artists/" + artist.slug %>>
+					<img src= <%= File.join(@s3_images, "artists", artist.image) %>
+				</a>
+				<figcaption class="figcaption">
+					<a href=<%= "/artists/" + artist.slug %>>
+						<span class="text-title"><%=artist.name%></span>
+					</a>
+				</figcaption>
+			</figure>
+		<% end %>
+	</div>
+</section>
+
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<span>Forwind Podcast highlight</span>
+		<a href="https://www.mixcloud.com/Forwind/uploads/" target="home">
+			<strong>All of our podcasts on Mixcloud</strong>
+		</a>
+	</h2>
+	<div class="column-block">
+		<iframe width="100%" height="120" src=<%=@podcast.mixcloud_embed%> frameborder="0" ></iframe>
+		<figcaption class="figcaption">
+			<a href=<%=@podcast.mixcloud_url%>>
+				<span class="text-title"><%= @podcast.title %></span>
+				<span class="text-title">Compiled & mixed by <%= @podcast.compiler %></span>
+				<span class="text-title">Genre: <%= @podcast.genre %></span>
+			</a>
+		</figcaption>
+	</div>
+</section>
+
+<section class="content-block">
+	<h2 class="heading heading--content-block">
+		<span>About</span>
+		<a href="/about">
+			<strong>More details and contact address</strong>
+		</a>
+	</h2>
+	<div class="column-container column-container__2-cols">
+		<div class="column-block column-block__figure">
+			<p>
+				<%= about_1 %>
+			</p>
+		</div>
+		<div class="column-block column-block__figure">
+			<p>
+				<%= about_2 %>
+			</p>
+		</div>
+	</div>
+</section>

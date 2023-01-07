@@ -1,0 +1,37 @@
+<h1 class="visually-hidden">News</h1>
+<section>
+    <div class="column-block" style="width:100%;justify-content: center;">
+        <div class="content-block content-block--title-heading" style="overflow: visible;">
+            <h2 class="heading heading--article-title">
+                <%= @news.title %>
+                <span class="sub-heading">Posted by <%= @news.author %> on <time><%= format_time(@news.date) %></time></span>
+            </h2>
+            <% if @news.images.size == 1 %>
+                <% unless @news.images[0].target.nil? %>
+                    <a href=<%=@news.images[0].target%>>
+                <% end %>
+                <img src=<%=@news.images[0].path%> class="news-image-top">
+                <% unless @news.images[0].target.nil? %>
+                    </a>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="content-block content-block--news">
+            <p>
+            <%= raw @news.content %>
+            </p>
+            <% if @news.images.size > 1 %>
+                <% @news.images.each do |image| %>
+                    <a href= <%=image.path%> class="gallery" >
+                        <img src=<%=image.path%> class="news-image-bottom">
+                    </a>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div class="content-block content-block--title-heading" style="overflow: hidden;width:100%;justify-content: center;">    
+        <a href="/news" class="link--button">
+            News Archive
+        </a>
+    </div>
+</section>
