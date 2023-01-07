@@ -1,4 +1,0 @@
-development:
-  adapter: postgresql
-  database: forwind_development
-  host: localhost
