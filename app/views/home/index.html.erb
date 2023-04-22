@@ -6,28 +6,6 @@
 
 <section class="content-block">
 	<h2 class="heading heading--content-block">
-		<span>Latest news</span>
-		<a href="https://twitter.com/forwindings", target="home">
-			<strong>View full timeline on Twitter ...</strong>
-		</a>
-	</h2>
-	<div class="column-container column-container__2-cols">
-		<% @news.each do |tweet| %>
-			</br>
-			<div class="column-block">
-				<h3 class="heading heading--article-title">
-					<a href=<%="#{tweet["url"]}"%>><%= tweet["created_at"] %></a>
-				</h3>
-				<div class="content-block--article">
-					<%= raw tweet["text"] %>
-				</div>
-			</div>
-		<% end %>
-	</div>
-</section>
-
-<section class="content-block">
-	<h2 class="heading heading--content-block">
 		<span>Selected releases</span>
 		<a href="/releases">
 			<strong>Explore our full back catalogue</strong>

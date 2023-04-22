@@ -14,16 +14,6 @@ class HomeController < ApplicationController
     pds = Podcast.pluck(:id)
     @podcast = Podcast.find(pds.sample)
     @context = "music"
-
-    begin
-      @news = []
-      #Keep our local cache updated, just in case twitter goes down.
-      Rails.cache.write("latest_news", @news.to_json)
-    rescue
-      cached_news = Rails.cache.fetch("latest_news")
-      @news = JSON::parse(cached_news) unless cached_news.nil?
-    rescue JSON::ParserError
-      # just don't bring down the appserver, @news already should be set to empty array...
-    end
   end
+  
 end
